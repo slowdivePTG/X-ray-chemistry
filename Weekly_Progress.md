@@ -21,6 +21,12 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
    F_X(E):\text{ erg}\cdot\text{ cm}^{-2}\cdot\text{ s}^{-1}
    $$
 
+
+6. Learn about the cosmic ray ionization
+
+
+
+
 ### Nov. 10, 2018
 1. Trace the most important reactions using the Jacobian Matrix pd(i,j)
    $$
@@ -31,7 +37,7 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
    \left(\frac{\text{d}n(i)}{\text{d}t}\right)_j=n(j)\cdot pd(i,j)
    $$
 
-2. Test a simple model but consider a mixture of H/He rather than H$_2$/He. $J_{X21}=0.1$ for 1 mys then turn off the X-ray radiation. Plot the abundance of CH$_4$ with time.
+2. Test a simple model but consider a mixture of H/He rather than $\text{H}_2/\text{He}$. $J_{X21}=0.1$ for 1 mys then turn off the X-ray radiation. Plot the abundance of $\text{CH}_4$ with time.
 
 > For this molecular cloud test we choose the **osu_01_2007** network and the initial conditions proposed by *Wakelam & Herbst (2008)*: a constant temperature of T = 10 K, H$_2$ density of 10$^4$ cm$^{−3}$, cosmic rays ionization rate of $1.3 \times 10^{−17}\text{ s}^{−1}$, and a visual extinction of 10.
 > The initial conditions of the species are listed in Table 7 and correspond to the EA2 model of *Wakelam & Herbst (2008)*, an high-metal environment observed in the diffuse cloud $\zeta$ *Ophiuchi*
@@ -70,11 +76,64 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
   x(KROME_idx_e) = krome_get_electrons(x(:))
 ```
 
-3. (From Prof. Du) The secondary ionization rate of molecular hydrogen can be approximately considered as 2 hydrogen atoms.
+
+
+### Nov. 15, 2018 
+
+1. (From Prof. Du) The secondary ionization rate of molecular hydrogen can be approximately considered as 2 hydrogen atoms.
 
    > Related readings:
    >
    > *X-ray chemistry in the envelopes around young stellar objects*, Stäuber 2005
    >
-   > *X-Ray--irradiated Molecular Gas. I. Physical Processes and General Results*, Dalgleish 1996
+   > *X-Ray--irradiated Molecular Gas. I. Physical Processes and General Results*, Maloney 1996
 
+   According to Maloney 1996, the main process in the X-ray (secondary) ionization of $\ce{H2}$ is:
+   $$
+   \ce{H2 + e- -> H2+ + 2e-}
+   $$
+   We can assume the rate coefficient is twice the ionization rates of $\ce{H}$, and thus include it in the network (krome_subs.f90).
+
+   ```fortran
+   !H2 -> H2+ + E
+   k(38) = rateEvaluateOnce(38)
+   
+   !H -> H+ + E
+   k(4430) = small + ((ratexH &
+       * (1d0+phiH) + n(idx_He)&
+       /(n(idx_H)+1d-40) * ratexHe * phiH)&
+       * J21xray)
+   k(38) = k(38) + 2*k(4430)
+   ```
+
+
+
+​	Some results are:
+
+   ![](add_H2_ionization.png)
+
+
+
+​	Obviously the ionization of $\ce{H2}$ becomes more significant, and the profile of $\ce{CH4}$ changes a lot.
+
+- *(NOT AT PRESENT)* For heavier atoms or other molecules, we can apply the approximation with the energy $E$ fixed, neglecting the dependence of the cross sections on energy:
+
+$$
+\zeta_i=\zeta _ { \mathrm { H } _ { 2 } }\frac{\sigma_i(E)}{\sigma_{\mathrm { H } _ { 2 }}(E)}
+$$
+
+2. Species observants most interested in:
+
+  > 经常观测的分子包括$\ce{CO、HCO+、N2H+、HCN}$、各种碳氢化合物$\ce{C2H、C3H3}$等等。可以关注一下代表了电离度的电子丰度$x_e$，以及$\ce{H3+、C+、OH+、H2O+}$等离子的丰度；$\ce{OH、CH、NH3、H2O}$等也可以看看。还可以看更复杂一些的$\ce{CH3CN、CH3OH}$等
+
+  $x_e$ is important because it decides the chemical composition and whether the heating process is sufficient
+
+
+
+3. The simple $\ce{H/He}$ model used before:
+
+   - Abundance of $\ce{CH4}$ too low
+   - Not enough time to form $\ce{H2}$
+   - Does not include $\ce{H2}$ formation on **grains**
+
+   Therefore it is not reasonable enough, and I shall focus on the new $\ce{H2/He}$ model to see what will happen if I turn off the X-ray after 1 mys.
