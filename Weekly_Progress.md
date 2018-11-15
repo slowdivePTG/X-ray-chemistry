@@ -22,6 +22,7 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
    $$
 
 
+
 6. Learn about the cosmic ray ionization
 
 
@@ -39,7 +40,7 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
 
 2. Test a simple model but consider a mixture of H/He rather than $\text{H}_2/\text{He}$. $J_{X21}=0.1$ for 1 mys then turn off the X-ray radiation. Plot the abundance of $\text{CH}_4$ with time.
 
-> For this molecular cloud test we choose the **osu_01_2007** network and the initial conditions proposed by *Wakelam & Herbst (2008)*: a constant temperature of T = 10 K, H$_2$ density of 10$^4$ cm$^{−3}$, cosmic rays ionization rate of $1.3 \times 10^{−17}\text{ s}^{−1}$, and a visual extinction of 10.
+> For this molecular cloud test we choose the **osu_01_2007** network and the initial conditions proposed by *Wakelam & Herbst (2008)*: a constant temperature of $\text{T} = 10\text{ K}$, $\ce{H2}$ density of $10^4\text{ cm}^{−3}$, cosmic rays ionization rate of $1.3 \times 10^{−17}\text{ s}^{−1}$, and a visual extinction of 10.
 > The initial conditions of the species are listed in Table 7 and correspond to the EA2 model of *Wakelam & Herbst (2008)*, an high-metal environment observed in the diffuse cloud $\zeta$ *Ophiuchi*
 
 ```fortran
@@ -92,7 +93,15 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
    $$
    \ce{H2 + e- -> H2+ + 2e-}
    $$
-   We can assume the rate coefficient is twice the ionization rates of $\ce{H}$, and thus include it in the network (krome_subs.f90).
+   We can assume the rate coefficient is twice the ionization rates of $\ce{H}$, and thus include it in the network.
+
+
+
+   > **INCLUDE** means when calculating the secondary ionization rates, we take the abundance of $\ce{H}$ :
+   > $$
+   > n_t(\ce{H})=n(\ce{H})+2n(\ce{H2})
+   > $$
+   > The modification of Fortran code in krome_subs.f90 is shown here
 
    ```fortran
    !H2 -> H2+ + E
@@ -101,20 +110,28 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
    !H -> H+ + E
    k(4430) = small + ((ratexH &
        * (1d0+phiH) + n(idx_He)&
-       /(n(idx_H)+1d-40) * ratexHe * phiH)&
+       /(n(idx_H)+2*n(idx_H2)+1d-40) * ratexHe * phiH)&
        * J21xray)
+       
    k(38) = k(38) + 2*k(4430)
+   
+   !HE -> HE+ + E
+   k(4431) = small + ((ratexHe &
+       * (1d0+phiHe) + (n(idx_H)+2*n(idx_H2))&
+       /(n(idx_He)+1d-40) * ratexH * phiHe)&
+       * J21xray)
+   
    ```
 
 
 
 ​	Some results are:
 
-   ![](add_H2_ionization.png)
+![](add_H2_ionization.png)
 
 
 
-​	Obviously the ionization of $\ce{H2}$ becomes more significant, and the profile of $\ce{CH4}$ changes a lot.
+​	Obviously the ionization of $\ce{H2}$ becomes more significant, and the profile of $\ce{CH4}$ changes a lot. If we don’t take $n_t(\ce{H})$ the effect is even more profound.
 
 - *(NOT AT PRESENT)* For heavier atoms or other molecules, we can apply the approximation with the energy $E$ fixed, neglecting the dependence of the cross sections on energy:
 
@@ -137,3 +154,7 @@ $$
    - Does not include $\ce{H2}$ formation on **grains**
 
    Therefore it is not reasonable enough, and I shall focus on the new $\ce{H2/He}$ model to see what will happen if I turn off the X-ray after 1 mys.
+
+   Without $\ce{H2}$ formation on **grains**, there seems no jump in the abundance of $\ce{CH4}$ , which is shown in the plot.
+
+![](add_H2_ionization_1_mys.png)
