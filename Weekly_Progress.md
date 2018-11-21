@@ -23,6 +23,14 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
 
 
 
+
+
+
+
+
+
+
+
 6. Learn about the cosmic ray ionization
 
 
@@ -101,7 +109,11 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
    > $$
    > n_t(\ce{H})=n(\ce{H})+2n(\ce{H2})
    > $$
-   > The modification of Fortran code in krome_subs.f90 is shown here
+   >
+
+​	
+
+​	The modification of Fortran code in krome_subs.f90 is shown here
 
    ```fortran
    !H2 -> H2+ + E
@@ -127,7 +139,7 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
 
 ​	Some results are:
 
-![](add_H2_ionization.png)
+![](Pics/add_H2_ionization.png)
 
 
 
@@ -157,4 +169,58 @@ $$
 
    Without $\ce{H2}$ formation on **grains**, there seems no jump in the abundance of $\ce{CH4}$ , which is shown in the plot.
 
-![](add_H2_ionization_1_mys.png)
+![](Pics/add_H2_ionization_1_mys.png)
+
+
+
+### Nov. 22, 2018
+
+1. More details on secondary ionization
+
+   The secondary ionization rate for $\ce{H}$ ( Stäuber 2005, Maloney 1996, ): 
+   $$
+   \zeta_H^{(2)}=\int_{E_{min}}^{E_{max}}\frac{F(E)}{E}N_{sec}(E,x_e)\sigma(E)\text{d}E\\
+   N_{sec}(E,x_e)=\frac{E-E_{th}}{W(E)}\approx\frac{E}{W(E)}
+   $$
+   $N_{sec}(E)$ is the number of secondary **ionizations** per unit energy produced by primary photoelectrons$W(E)$ is the mean energy expended to produce an ion pair through rapid electron process
+
+   ##### A BIG MISTAKE HERE LAST WEEK!
+
+   $N_{sec}(E)$ is not the number of secondary electrons but the number of ion pairs produced by a secondary electron. **WE DON’T COUNT ELECTRONS HERE! **
+
+   #### More comments on the formula
+
+   - $W(E)$ is nearly independent of $E$ if $E>200\text{ eV}$ , which is easy to satisfied in our case
+
+   - $N_{sec}(E,x_e)$ is dependent on $x_e$. When $x_e>1\%$ , the energy in photoelectrons will be mainly lost to Coulomb Interaction with ambient thermal electrons.  In our case, $n_e/n_\ce{H}<10^{-4}$ . For weakly ionized gases,  $\approx40\%$ of the primary electron energy will be used for ionization (Krolik 1983, Shull 1985) , then for a secondary electron with energy $1\text{ keV}$ , the number of $\ce{H}$ it can ionize is:
+     $$
+     N=\frac{0.40\times1\text{ keV}}{13.6\text{ eV}}\approx30
+     $$
+     More precise calculation ( Glassgold & Langer 1973, Dalgarno 1999, Glass- gold 2012 ) shows that in $\ce{H2 + He}$ neutral gas, $47\%$ of energy goes to ionization, $47\%$ in $\ce{H2}$ and $\ce{He}$ excitation, the rest goes for heating. $N_{sec}(E)\approx27$ and thus we can take $W(E)\approx37\text{ eV}$.
+
+   #### The formula I actually use
+
+   $$
+   \zeta _ { \mathrm { tot } } ^ { i } = \zeta _ { \mathrm { p } } ^ { i } + \sum _ { j = \mathrm { H } , \mathrm { He } } \frac { n _ { j } } { n _ { i } } \zeta _ { \mathrm { p } } ^ { j } \left\langle \phi ^ { i } \right\rangle
+   $$
+
+   - The numbers of secondary ionization of $\ce{H}$ and $\ce{He}$ per primary ionization are taken from Shull 1985
+     $$
+     \begin{aligned} \phi ^ { \mathrm { H } } \left( E , x _ { \mathrm { e } } \right) & = \left( \frac { E } { 13.6 \mathrm { eV } } - 1 \right) 0.3908 \left( 1 - x _ { \mathrm { e } } ^ { 0.4092 } \right) ^ { 1.7592 } \\ \phi ^ { \mathrm { He } } \left( E , x _ { \mathrm { e } } \right) & = \left( \frac { E } { 24.6 \mathrm { eV } } - 1 \right) 0.0554 \left( 1 - x _ { \mathrm { e } } ^ { 0.4014 } \right) ^ { 1.660 } \end{aligned}
+     $$
+
+   - Can be rewritten like this:
+     $$
+     \zeta_{tot}^\ce{H}=\zeta_p^\ce{H}(1+\frac{n_\ce{He}}{n_\ce{H}}\langle\phi^\ce{He}\rangle+\langle\phi^\ce{H}\rangle)
+     $$
+     which average $\phi$ over the X-ray spectrum $F(E)$
+
+      
+
+2. Test all the species listed last week
+
+   ![](Pics/list1.png)
+
+   ![](Pics/list2.png)
+
+3. 
