@@ -249,6 +249,7 @@ $$
 
 
 
+
 2. Why does KROME use a simplified formula to calculate the total ionization rate?
 
    - $\zeta_p^\ce{H},\zeta_p^\ce{He}$ are stored in data-files rateH.dat and rateHe.dat (column density *v.s.* primary ionization rate)
@@ -307,8 +308,12 @@ $$
 ### Dec. 5,  2018
 
 1. Try to repeat some results in former papers…but pretty difficult to do
-   - Krolik 1983 did not consider the x-ray ionization of $\ce{H2}$
+   - Krolik 1983 did not consider the X-ray ionization of $\ce{H2}$
+
+     > Dec. 12 review: Actually, $\ce{H2}$ ionization is considered with an approximate model (Brown and Gould’s 1970)
+
    - Those who have considered the x-ray ionization of $\ce{H2}$ usually have too complex physical problems and models, which means they are not easy to fully understand and repeat within hours
+
    - The model we consider is simple and does not include heating/cooling process and totally ignore UV-photon process
 2. Add molecular hydrogen formation process to the network (from react_primordial, primordial rates from several authors mostly based on Abel et al. 1997 + Grassi et al. 2014)
 
@@ -316,85 +321,20 @@ $$
 
 ### Dec. 12, 2018
 
-1. Reread and try to repeat Krolik 1983. 
+1. Reread and try to repeat the results in Krolik 1983. 
 
-   - X-ray Spectrum Model and Total Ionization Rate
+   [A Review on Krolik 1983](Paper review/Krolik 1983.md)
 
-     - Spectrum: 
-       $$
-       F(E)=\frac{F}{k T _ { * } } \exp \left( - E / k T _ { * } \right)(\text {cm}^{-2}\text{ s}^{-1})\\k T _ { \star } \approx 500 \text { eV}
-       $$
-       The bigger $k T _ { \star }$ is, the harder the spectrum will be
+   - Modify the codes
+     - Initial abundances
+     - Longer time period (steady-state solutions) $\Delta t=10^8\text{ yrs}$
+     - Set two branches for $\ce{H2}$ ionization & dissociation
+     - Add $\ce{H2}$ formation process on grains
+   - Step 1. Still use the power law spectrum,
+     - It is the total ionization rate rather than the detail of the spectrum that is the most important to the chemistry
 
-     -  Primary Rates:
-       $$
-       \zeta_x=\int_{E_{0}}^\infty \frac{F(E)}{E}\sigma(E)e^{-\tau(E)}\text{d}E\\
-       G=\int_{E_{0}}^\infty {F(E)}\sigma(E)e^{-\tau(E)}\text{d}E
-       $$
-       $\sigma​$ is the effective cross section per **Hydrogen atom**
+2. Grain process
 
-     - Elementary Data - Fixed free parameters
+3. A new paper on the enhanced molecular ionization in the central molecular zone of our Galaxy
 
-     - Density: $n _ { \ce{H}(\text {atoms} )} = 4 \times 10 ^ { 5 } \text { cm} ^ { - 3 }$
-
-     - Temperature: $T = 50 \text { K }$
-
-     - Incident X-ray flux
-
-     - Optical depth
-
-     - Initial abundances(per Hydrogen atom)
-       $$
-       \begin{align*}
-       \ce{H2} &= 0.5\\
-       \ce{He} &= 0.1\\
-       \ce{C+} &= 8\times10^{-5}\\
-       \ce{N} &= 2.15\times10^{-5}\\
-       \ce{O} &= 1.75\times10^{-4}\\
-       \ce{Mg} &= 1.07\times10^{-6}\\
-       \end{align*}
-       $$
-
-   - Ionization Rates
-
-     - Cosmic ray
-
-       - Molecular Hydrogen (2 branches)
-         $$
-         \ce{H2 + cosmic-ray -> H2+ + e-}\Rightarrow 95\%\\
-         \ce{H2 + cosmic-ray -> H+ + H + e-}\Rightarrow 5\%
-         $$
-         $\ce{H+}$ quickly react to become $\ce{H}$ 
-
-       - Helium: $\ce{He+}$ does not react with $\ce{H2}$ , accounts for the greatest part of the net rate
-
-       - $\ce{C,N,O,CO}$ 
-
-     - X-ray
-
-       - Molecular Hydrogen (2 branches)
-         $$
-         \ce{H2 + \gamma -> H2+ + e-}\Rightarrow 80\%\\
-         \ce{H2 + \gamma -> H+ + H + e-}\Rightarrow 20\%
-         $$
-
-       - Helium
-
-       - Heavy elements: assume that the photo-ionization cross sections of all elements other than $\ce{H}$ are unaffected by molecular binding, which mostly concerns valence shell electrons - Auger electrons, double charged
-
-         - Diatomic Molecules: $\ce{CO}$ rule: $80\%$ dissociates into equally charged ions, $20\%$ gives one fragment neutral and the other double charged
-         - Three or More Atoms: 2 fragments , $\ce{CO}$ rule
-
-       - Secondary Electrons
-
-         - $45\%$ of the energy goes to ionization
-         - Assume all secondary electrons comes from $\ce{H2}$ and $\ce{He}$ 
-         - mean energy: $19 \text{ eV}$ , $\sim29.6$ every $\text{keV}$
-
-     - Reaction Rates
-
-       - $\ce{H2}$ Formation on Grains: a conventional dust-to-gas ratio, a conventional formation rate of $1.2 \times 10 ^ { - 12 } \left( n / 10 ^ { 5 }\right) \text { cm} ^ { - 3 } \text{ s} ^ { - 1 }$
-
-     - Numerical Method
-
-       - Solve the steady-state rate equations
+   [Molecular Ionization Rates and Ultracompact Dark Matter Minihalos, Silk, J. 2018, PRL](Paper Review/Silk 2018.md)
