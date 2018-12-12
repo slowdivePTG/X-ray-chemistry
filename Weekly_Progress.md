@@ -323,7 +323,7 @@ $$
 
 1. Reread and try to repeat the results in Krolik 1983. 
 
-   [A Review on Krolik 1983](Paper review/Krolik 1983.md)
+   [A Review on Krolik 1983](https://github.com/slowdivePTG/X-ray-chemistry/blob/master/Paper%20Review/Krolik%201983.md)
 
    - Modify the codes
      - Initial abundances
@@ -337,4 +337,4 @@ $$
 
 3. A new paper on the enhanced molecular ionization in the central molecular zone of our Galaxy
 
-   [Molecular Ionization Rates and Ultracompact Dark Matter Minihalos, Silk, J. 2018, PRL](Paper Review/Silk 2018.md)
+   [Molecular Ionization Rates and Ultracompact Dark Matter Minihalos, Silk, J. 2018, PRL](https://github.com/slowdivePTG/X-ray-chemistry/blob/master/Paper%20Review/Silk%202018.md)
