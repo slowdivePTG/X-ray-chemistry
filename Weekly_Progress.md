@@ -250,6 +250,7 @@ $$
 
 
 
+
 2. Why does KROME use a simplified formula to calculate the total ionization rate?
 
    - $\zeta_p^\ce{H},\zeta_p^\ce{He}$ are stored in data-files rateH.dat and rateHe.dat (column density *v.s.* primary ionization rate)
@@ -323,7 +324,7 @@ $$
 
 1. Reread and try to repeat the results in Krolik 1983. 
 
-   [A Review on Krolik 1983](https://github.com/slowdivePTG/X-ray-chemistry/blob/master/Paper%20Review/Krolik%201983.md)
+   [A Review on Krolik 1983](Paper_Review/Krolik1983.md)
 
    - Modify the codes
      - Initial abundances
@@ -337,4 +338,4 @@ $$
 
 3. A new paper on the enhanced molecular ionization in the central molecular zone of our Galaxy
 
-   [Molecular Ionization Rates and Ultracompact Dark Matter Minihalos, Silk, J. 2018, PRL](https://github.com/slowdivePTG/X-ray-chemistry/blob/master/Paper%20Review/Silk%202018.md)
+   [Molecular Ionization Rates and Ultracompact Dark Matter Minihalos, Silk, J. 2018, PRL](Paper_Review/Silk_2018.md)
