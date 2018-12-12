@@ -324,7 +324,7 @@ $$
 
 1. Reread and try to repeat the results in Krolik 1983. 
 
-   [A Review on Krolik 1983](Paper_Review/Krolik1983.md)
+   [A Review on Krolik 1983](Paper_Review/Krolik_1983.md)
 
    - Modify the codes
      - Initial abundances
