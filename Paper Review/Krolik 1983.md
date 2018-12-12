@@ -1,3 +1,5 @@
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
 # X-ray ionization and the Orion molecular cloud
 
 J. Krolik, T. Kallman, 1983, APJ
