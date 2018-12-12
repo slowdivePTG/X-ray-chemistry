@@ -1,5 +1,5 @@
 # The Weekly Progress
-##### Starting in Nov. 10, 2018
+##### Since Nov. 10, 2018
 
 In the autumn semester, hopefully I'll record my progress every Thursday morning
 
@@ -20,16 +20,6 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
    $$
    F_X(E):\text{ erg}\cdot\text{ cm}^{-2}\cdot\text{ s}^{-1}
    $$
-
-
-
-
-
-
-
-
-
-
 
 6. Learn about the cosmic ray ionization
 
@@ -67,7 +57,7 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
 
   x(:) = 1.d-20
   !initial densities (model EA2 Wakelam+Herbst 2008)
-  x(KROME_idx_H2)  = 0.5d0   * xH !In this case we actually use x(KROME_idx_H)  = 0.5d0   * xH, which is not true
+  x(KROME_idx_H2)  = 0.5d0   * xH !In this case we actually use  x(KROME_idx_H)  = 0.5d0   * xH, which is not true
   x(KROME_idx_He)  = 9d-2   * xH
   x(KROME_idx_N)   = 7.6d-5  * xH
   x(KROME_idx_O)   = 2.56d-4 * xH
@@ -106,12 +96,10 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
 
 
    > **INCLUDE** means when calculating the secondary ionization rates, we take the abundance of $\ce{H}$ :
-   > $$
-   > n_t(\ce{H})=n(\ce{H})+2n(\ce{H2})
-   > $$
-   >
+$$
+n_t(\ce{H})=n(\ce{H})+2n(\ce{H2})
+$$
 
-​	
 
 ​	The modification of Fortran code in krome_subs.f90 is shown here
 
@@ -196,7 +184,7 @@ $$
      $$
      N=\frac{0.40\times1\text{ keV}}{13.6\text{ eV}}\approx30
      $$
-     More precise calculation ( Glassgold & Langer 1973, Dalgarno 1999, Glass- gold 2012 ) shows that in $\ce{H2 + He}$ neutral gas, $47\%$ of energy goes to ionization, $47\%$ in $\ce{H2}$ and $\ce{He}$ excitation, the rest goes for heating. $N_{sec}(E)\approx27$ and thus we can take $W(E)\approx37\text{ eV}$.
+     More precise calculation ( Glassgold & Langer 1973, Dalgarno 1999, Glassgold 2012 ) shows that in $\ce{H2 + He}$ neutral gas, $47\%$ of energy goes to ionization, $47\%$ in $\ce{H2}$ and $\ce{He}$ excitation, the rest goes for heating. $N_{sec}(E)\approx27$ and thus we can take $W(E)\approx37\text{ eV}$.
 
    #### The formula I actually use
 
@@ -211,7 +199,8 @@ $$
 
    - Can be rewritten like this:
      $$
-     \zeta_{tot}^\ce{H}=\zeta_p^\ce{H}(1+\frac{n_\ce{He}}{n_\ce{H}}\langle\phi^\ce{He}\rangle+\langle\phi^\ce{H}\rangle)
+     \zeta_{tot}^\ce{H}=\zeta_p^\ce{H}(1+\langle\phi^\ce{H}\rangle)+\zeta_p^\ce{He}\frac{n_\ce{He}}{n_\ce{H}}\langle\phi^\ce{H}\rangle\\
+     \zeta_{tot}^\ce{He}=\zeta_p^\ce{He}(1+\langle\phi^\ce{He}\rangle)+\zeta_p^\ce{H}\frac{n_\ce{H}}{n_\ce{He}}\langle\phi^\ce{He}\rangle
      $$
      which average $\phi$ over the X-ray spectrum $F(E)$
 
@@ -223,4 +212,189 @@ $$
 
    ![](Pics/list2.png)
 
-3. 
+
+
+### Nov. 29, 2018
+
+1. Recalculate the ionization rate using the primal formula
+   $$
+   \zeta_{tot}^\ce{H}=\zeta_p^\ce{H}+\frac{n_\ce{He}}{n_\ce{H}}\int_{E_{min}}^{E_{max}}\frac{F(E)}{E}e^{-\tau(E)}\phi^\ce{H}\sigma_{\ce{He}}(E)\text{d}E+\int_{E_{min}}^{E_{max}}\frac{F(E)}{E}e^{-\tau(E)}\phi^\ce{H}\sigma_{\ce{H}}(E)\text{d}E
+   $$
+   rather than the simplified one
+   $$
+   \zeta_{tot}^\ce{H}=\zeta_p^\ce{H}(1+\langle\phi^\ce{H}\rangle)+\zeta_p^\ce{He}\frac{n_\ce{He}}{n_\ce{H}}\langle\phi^\ce{H}\rangle
+   $$
+   and compare the results.
+
+   When we set $n_\ce{H}=2\times10^4\text{ cm}^{-3},n_\ce{He}=2\times10^3\text{ cm}^{-3},J_{X21}=0.1,T=160\text{ K}​$ , we get
+   $$
+   \zeta_\ce{H}=4.09\times10^{-18}\text{ s}^{-1},\quad\zeta_\ce{He}=3.61\times10^{-18}\text{ s}^{-1}\quad(\text{Primal})\\
+   \zeta_\ce{H'}=7.23\times10^{-18}\text{ s}^{-1},\quad\zeta_\ce{He'}=6.07\times10^{-18}\text{ s}^{-1}\quad(\text{Simplified})\\
+   \frac{\zeta_\ce{H}}{\zeta_\ce{H'}}\approx\frac{\zeta_\ce{He}}{\zeta_\ce{He'}}\approx0.56
+   $$
+
+   Since we take $E_{min}=2\text{ keV},E_{max}=10\text{ keV}$ , and in our case, $F(E)\propto E^{-1.5}$, $ \sigma(E)\propto E^{-3}$ , $\phi(E,x_e)\propto E$, $e^{-\tau(E)}\sim1$, we have
+   $$
+   \zeta^{(2)}=\int_{E_{min}}^{E_{max}}\frac{F(E)}{E}\phi(E)\sigma(E)\text{d}E=F_0\phi_0\sigma_0\cdot\int_{2}^{10}E^{-4.5}\text{d}E=\frac{2^{-3.5}-10^{-3.5}}{3.5}F_0\phi_0\sigma_0\approx0.025F_0\phi_0\sigma_0\\
+   $$
+   and
+   $$
+   \int_{E_{min}}^{E_{max}}\frac{F(E)}{E}\sigma(E)\text{d}E=F_0\sigma_0\int_{2}^{10}E^{-5.5}\text{d}E\approx0.0098F_0\sigma_0\\
+   \int_{E_{min}}^{E_{max}}{F(E)}\phi(E)\text{d}E=F_0\phi_0\int_{2}^{10}E^{-0.5}\text{d}E\approx3.50F_0\phi_0\\
+   \int_{E_{min}}^{E_{max}}{F(E)}\text{d}E=F_0\int_{2}^{10}E^{-1.5}\text{d}E\approx0.078F_0\\
+   \Rightarrow \zeta^{(2)'}\approx\frac{0.0098F_0\sigma_0\cdot3.50F_0\phi_0}{0.078F_0}\approx0.044F_0\phi_0\sigma_0\approx0.57\zeta^{(2)}
+   $$
+
+
+
+
+
+2. Why does KROME use a simplified formula to calculate the total ionization rate?
+
+   - $\zeta_p^\ce{H},\zeta_p^\ce{He}$ are stored in data-files rateH.dat and rateHe.dat (column density *v.s.* primary ionization rate)
+   - To calculate $\zeta^{(2)}$ the program needs to read $x_e,n_\ce{H},n_\ce{He}$ for each calculation
+   - By using the simplified formula, we may avoid integration
+
+   Here is part of the codes (krome_subs.f90):
+
+   ```fortran
+       T = Tgas
+       Trad = 2d4
+       ncolH = num2col(n(idx_H),n(:))
+       ncolHe = num2col(n(idx_He),n(:)) !number density to column density
+       logHe = log10(ncolHe) !take log
+       logH = log10(ncolH)
+       xe = min(n(idx_e) / (get_Hnuclei(n(:)) + 1d-40), 1d0)
+       user_xray_H = fit_anytab2D(user_xray_H_anytabx(:), &
+           user_xray_H_anytaby(:), &
+           user_xray_H_anytabz(:,:), &
+           user_xray_H_anytabxmul, &
+           user_xray_H_anytabymul, &
+           logH,logHe-logH)
+           !linear interpolation to find the proper rate for the column density
+       phiH = .3908d0*(1e0-xe**.4092)**1.7592 * 327.832286034056d0 ! avoid integration
+       ratexH = 1d1**user_xray_H
+       user_xray_He = fit_anytab2D(user_xray_He_anytabx(:), &
+           user_xray_He_anytaby(:), &
+           user_xray_He_anytabz(:,:), &
+           user_xray_He_anytabxmul, &
+           user_xray_He_anytabymul, &
+           logH,logHe-logH)
+       phiHe = .0554d0*(1d0-xe**.4614)**1.666 * 180.793458763612d0
+       ratexHe = 1d1**user_xray_He
+       
+       k(:) = small !inizialize coefficients
+   
+       !H -> H+ + E
+       k(1) = small + ((ratexH &
+           * (1d0+phiH) + n(idx_He)&
+           /(n(idx_H)+1d-40) * ratexHe * phiH)&
+           * J21xray)
+   
+       !HE -> HE+ + E
+       k(2) = small + ((ratexHe &
+           * (1d0+phiHe) + n(idx_H)&
+           /(n(idx_He)+1d-40) * ratexH * phiHe)&
+           * J21xray)
+           
+       print '(a10,E15.8)',"XrateH:",log10(k(1))
+       print '(a10,E15.8)',"XrateHe:",log10(k(2))
+       coe(:) = k(:) !set coefficients to return variable
+   ```
+
+
+
+### Dec. 5,  2018
+
+1. Try to repeat some results in former papers…but pretty difficult to do
+   - Krolik 1983 did not consider the x-ray ionization of $\ce{H2}$
+   - Those who have considered the x-ray ionization of $\ce{H2}$ usually have too complex physical problems and models, which means they are not easy to fully understand and repeat within hours
+   - The model we consider is simple and does not include heating/cooling process and totally ignore UV-photon process
+2. Add molecular hydrogen formation process to the network (from react_primordial, primordial rates from several authors mostly based on Abel et al. 1997 + Grassi et al. 2014)
+
+
+
+### Dec. 12, 2018
+
+1. Reread and try to repeat Krolik 1983. 
+
+   - X-ray Spectrum Model and Total Ionization Rate
+
+     - Spectrum: 
+       $$
+       F(E)=\frac{F}{k T _ { * } } \exp \left( - E / k T _ { * } \right)(\text {cm}^{-2}\text{ s}^{-1})\\k T _ { \star } \approx 500 \text { eV}
+       $$
+       The bigger $k T _ { \star }$ is, the harder the spectrum will be
+
+     -  Primary Rates:
+       $$
+       \zeta_x=\int_{E_{0}}^\infty \frac{F(E)}{E}\sigma(E)e^{-\tau(E)}\text{d}E\\
+       G=\int_{E_{0}}^\infty {F(E)}\sigma(E)e^{-\tau(E)}\text{d}E
+       $$
+       $\sigma​$ is the effective cross section per **Hydrogen atom**
+
+     - Elementary Data - Fixed free parameters
+
+     - Density: $n _ { \ce{H}(\text {atoms} )} = 4 \times 10 ^ { 5 } \text { cm} ^ { - 3 }$
+
+     - Temperature: $T = 50 \text { K }$
+
+     - Incident X-ray flux
+
+     - Optical depth
+
+     - Initial abundances(per Hydrogen atom)
+       $$
+       \begin{align*}
+       \ce{H2} &= 0.5\\
+       \ce{He} &= 0.1\\
+       \ce{C+} &= 8\times10^{-5}\\
+       \ce{N} &= 2.15\times10^{-5}\\
+       \ce{O} &= 1.75\times10^{-4}\\
+       \ce{Mg} &= 1.07\times10^{-6}\\
+       \end{align*}
+       $$
+
+   - Ionization Rates
+
+     - Cosmic ray
+
+       - Molecular Hydrogen (2 branches)
+         $$
+         \ce{H2 + cosmic-ray -> H2+ + e-}\Rightarrow 95\%\\
+         \ce{H2 + cosmic-ray -> H+ + H + e-}\Rightarrow 5\%
+         $$
+         $\ce{H+}$ quickly react to become $\ce{H}$ 
+
+       - Helium: $\ce{He+}$ does not react with $\ce{H2}$ , accounts for the greatest part of the net rate
+
+       - $\ce{C,N,O,CO}$ 
+
+     - X-ray
+
+       - Molecular Hydrogen (2 branches)
+         $$
+         \ce{H2 + \gamma -> H2+ + e-}\Rightarrow 80\%\\
+         \ce{H2 + \gamma -> H+ + H + e-}\Rightarrow 20\%
+         $$
+
+       - Helium
+
+       - Heavy elements: assume that the photo-ionization cross sections of all elements other than $\ce{H}$ are unaffected by molecular binding, which mostly concerns valence shell electrons - Auger electrons, double charged
+
+         - Diatomic Molecules: $\ce{CO}$ rule: $80\%$ dissociates into equally charged ions, $20\%$ gives one fragment neutral and the other double charged
+         - Three or More Atoms: 2 fragments , $\ce{CO}$ rule
+
+       - Secondary Electrons
+
+         - $45\%$ of the energy goes to ionization
+         - Assume all secondary electrons comes from $\ce{H2}$ and $\ce{He}$ 
+         - mean energy: $19 \text{ eV}$ , $\sim29.6$ every $\text{keV}$
+
+     - Reaction Rates
+
+       - $\ce{H2}$ Formation on Grains: a conventional dust-to-gas ratio, a conventional formation rate of $1.2 \times 10 ^ { - 12 } \left( n / 10 ^ { 5 }\right) \text { cm} ^ { - 3 } \text{ s} ^ { - 1 }$
+
+     - Numerical Method
+
+       - Solve the steady-state rate equations
