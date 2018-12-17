@@ -101,7 +101,7 @@ n_t(\ce{H})=n(\ce{H})+2n(\ce{H2})
 $$
 
 
-​	The modification of Fortran code in krome_subs.f90 is shown here
+​	The modification of Fortran code in `krome_subs.f90` is shown here
 
    ```fortran
    !H2 -> H2+ + E
@@ -251,13 +251,14 @@ $$
 
 
 
+
 2. Why does KROME use a simplified formula to calculate the total ionization rate?
 
    - $\zeta_p^\ce{H},\zeta_p^\ce{He}$ are stored in data-files rateH.dat and rateHe.dat (column density *v.s.* primary ionization rate)
    - To calculate $\zeta^{(2)}$ the program needs to read $x_e,n_\ce{H},n_\ce{He}$ for each calculation
    - By using the simplified formula, we may avoid integration
 
-   Here is part of the codes (krome_subs.f90):
+   Here is part of the codes (`krome_subs.f90`):
 
    ```fortran
        T = Tgas
@@ -328,14 +329,72 @@ $$
 
    - Modify the codes
      - Initial abundances
+
      - Longer time period (steady-state solutions) $\Delta t=10^8\text{ yrs}$
+
+       (Strange tendency appears when $\Delta t>10^8\text{ yrs}$, abundances of some species changes rapidly)
+
      - Set two branches for $\ce{H2}$ ionization & dissociation
+
      - Add $\ce{H2}$ formation process on grains
    - Step 1. Still use the power law spectrum,
+
      - It is the total ionization rate rather than the detail of the spectrum that is the most important to the chemistry
 
-2. Grain process
-
-3. A new paper on the enhanced molecular ionization in the central molecular zone of our Galaxy
+2. A new paper on the enhanced molecular ionization in the central molecular zone of our Galaxy
 
    [Molecular Ionization Rates and Ultracompact Dark Matter Minihalos, Silk, J. 2018, PRL](Paper_Review/Silk_2018.md)
+
+
+
+### Dec. 17, 2018
+
+1. Grain Process
+
+   - It’s important to find out how $\ce{H2}$ molecules form on the grain surface as well as how KROME deal with the process 
+     $$
+     \ce{H + H + dust -> H2 +dust}
+     $$
+
+   - Theoretically, KROME uses
+     $$
+     \frac { \mathrm { d } n _ { \mathrm { H } _ { 2 } } } { \mathrm { d } t } = \frac { \pi } { 2 } n _ { \mathrm { H } } v _ { g } \sum _ { j \in [ \mathrm { C } , \mathrm { Si } ] } \sum _ { i } n _ { i j } a _ { i j } ^ { 2 } \epsilon _ { j } \left( T , T _ { i } \right) \alpha \left( T , T _ { i } \right)
+     $$
+     where $v_g$ is the gas thermal velocity, $a_{ij}$ is the size of the grain, $T_i$ is the dust temperature, $\epsilon_j$ depends on the type of the dust and $\alpha$ is the sticking coefficient
+
+   - The rate is defined in the file `krome_dust.f90`
+
+     ```fortran
+     function krome_H2_dust(nndust,Tgas,Tdust,nH,H2_eps_f,myvgas)
+         !H2 formed on dust (1/cm3/s)
+         use krome_constants
+         use krome_commons
+         real*8::H2_dust, krome_H2_dust,Tgas,Tdust(:)
+         real*8::myvgas,H2_eps,nndust(:),nH,H2_eps_f
+         integer::i
+     
+         H2_dust = 0.d0
+         do i = 1,size(Tdust)
+           H2_eps = H2_eps_f(Tgas, Tdust(i))
+           H2_dust = H2_dust + 0.5d0 * nH * myvgas * nndust(i) &
+               * krome_dust_asize2(i) &
+               * pi * H2_eps * stick(Tgas, Tdust(i))
+         end do
+     
+         krome_H2_dust = H2_dust
+     
+       end function krome_H2_dust
+     ```
+
+     as well as related functions. Again in `krome_ode.f90` this rate is added to the total rate of $\ce{H2}$ formation. The process is shown in `kromeobj.py` where
+
+     ```python
+     #add H2 formation on dust
+     if(self.useDustH2const):
+         if("H"==specs[idnw].name): x += " - 2d0*nH2dust"
+         if("H2"==specs[idnw].name): x += " + nH2dust"
+     ```
+
+     It seems that the bug comes from the `nH2dust` , of which the output is `NAN`
+
+2. 
