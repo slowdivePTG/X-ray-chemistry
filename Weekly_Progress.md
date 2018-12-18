@@ -252,6 +252,7 @@ $$
 
 
 
+
 2. Why does KROME use a simplified formula to calculate the total ionization rate?
 
    - $\zeta_p^\ce{H},\zeta_p^\ce{He}$ are stored in data-files rateH.dat and rateHe.dat (column density *v.s.* primary ionization rate)
@@ -395,6 +396,4 @@ $$
          if("H2"==specs[idnw].name): x += " + nH2dust"
      ```
 
-     It seems that the bug comes from the `nH2dust` , of which the output is `NAN`
-
-2. 
+2. Compare with the results without the $\ce{H2}$ formation on grains
