@@ -254,6 +254,10 @@ $$
 
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/master
 2. Why does KROME use a simplified formula to calculate the total ionization rate?
 
    - $\zeta_p^\ce{H},\zeta_p^\ce{He}$ are stored in data-files rateH.dat and rateHe.dat (column density *v.s.* primary ionization rate)
@@ -350,7 +354,6 @@ $$
 
 
 ### Dec. 19, 2018
-
 1. Grain Process
 
    - It’s important to find out how $\ce{H2}$ molecules form on the grain surface as well as how KROME deal with the process 
