@@ -254,6 +254,7 @@ $$
 
 
 
+
 <<<<<<< HEAD
 
 =======
@@ -353,7 +354,7 @@ $$
 
 
 
-### Dec. 19, 2018
+### Dec. 20, 2018
 1. Grain Process
 
    - It’s important to find out how $\ce{H2}$ molecules form on the grain surface as well as how KROME deal with the process 
@@ -400,4 +401,35 @@ $$
          if("H2"==specs[idnw].name): x += " + nH2dust"
      ```
 
-2. Compare with the results without the $\ce{H2}$ formation on grains
+2. Slightly modify the X-ray ionization
+
+   - In Krolik 1983, there are two branches for molecular Hydrogen ionization (See **X-ray** module in the [review](https://github.com/slowdivePTG/X-ray-chemistry/blob/master/Paper_Review/Krolik_1983.md))
+
+   - Modify the `krome_subs.f90`
+
+     ```fortran
+     !H2 -> H+ + H + E
+     k(36) = rateEvaluateOnce(36)
+     
+     !H2 -> H2+ + E
+     k(38) = rateEvaluateOnce(38)
+     
+     !H -> H+ + E
+         k(4452) = small + ((ratexH &
+             * (1d0+phiH) + n(idx_He)&
+             /(n(idx_H)+2*n(idx_H2)+1d-40) * ratexHe * phiH)&
+             * J21xray)
+         k(36) = k(36) + 2*k(4452)*0.2
+         k(38) = k(38) + 2*k(4452)*0.8
+     !HE -> HE+ + E
+         k(4453) = small + ((ratexHe &
+             * (1d0+phiHe) + (n(idx_H)+2*n(idx_H2))&
+             /(n(idx_He)+1d-40) * ratexH * phiHe)&
+             * J21xray)
+     ```
+
+3. [Repeat Krolik’s results](https://github.com/slowdivePTG/X-ray-chemistry/blob/master/KROME/build_dustH2/data/alpha.ipynb)
+
+   - Cosmic ray
+     - well matched, except for several species such as $\ce{HNO+}$ which has a larger $\alpha$
+     - The difference in $\alpha$ between stronger and weaker ionization rates is larger
