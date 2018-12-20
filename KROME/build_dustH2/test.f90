@@ -22,18 +22,14 @@ program test_krome
   integer::i,j
 
   spy = 3600. * 24. * 365. !seconds per year
-  Tgas = 1d1 !gas temperature (K)
-  xH = 2d4 !Hydrogen density
+  Tgas = 5d1 !gas temperature (K)
+  xH = 4d5 !Hydrogen density
 
   !user commons for opacity and CR rate
-  call krome_set_user_av(2d1) !opacity Av (#)E11.3,
-  call krome_set_user_crate(6.8d-18) !CR rate (1/s)
+  call krome_set_user_av(1d1) !opacity Av (#)E11.3,
   call krome_set_user_gas_dust_ratio(7.57d11) !gas/dust
   !Second run:j21xs=1d-1
   call krome_init()
-  !j21xs = 0d0
-  !call krome_set_J21xray(j21xs)
-  !print *,"J21 Xray = ",j21xs
 
   x(:) = 1.d-20
   !initial densities (model EA2 Wakelam+Herbst 2008)
@@ -57,9 +53,12 @@ program test_krome
   ! myCoe(:) is defined in krome_user_commons
   !myCoe(:) = krome_get_coef(Tgas,x(:))
 
-  dt = 1d6*spy/3 !time-step (s)
+  dt = 1d6*spy !time-step (s)
   t = 0d0 !initial time (s)
 
+  call krome_set_user_crate(6.8d-18) !CR rate (1/s)
+  !j21xs=1d-1
+  !call krome_set_J21xray(j21xs)
   !output header
   open(unit=77, file='./data/case1')
   write(77,'(a)') "#CRrate=6.8e-18 "
@@ -70,20 +69,20 @@ program test_krome
      call krome(x1(:),Tgas,dt) !call KROME
      !call jex(nx,t,x(:),1)
      t = t + dt !increase time
-     dt = max(1d3*spy,t/3d0) !increase time-step
+     dt = max(1d6*spy,t/3d0) !increase time-step
      write(77,'(999E12.5)') t/spy,x1(:)/xH
-     if(t>1.2d7*spy) exit !exit when overshoot 5d6 years
+     if(t>1d7*spy) exit !exit when overshoot 5d6 years
   end do
 
 
-    dt = 1d6*spy/3 !time-step (s)
+    dt = 1d6*spy !time-step (s)
     t = 0d0 !initial time (s)
-
-    call krome_set_user_crate(6.9d-18) !CR rate (1/s)
-    !call krome_set_user_crate(16.8d-19) !CR rate (1/s)
+    !j21xs=1d-1*7.0/6.8
+    !call krome_set_J21xray(j21xs)
+    call krome_set_user_crate(7.8d-18) !CR rate (1/s)
     !output header
     open(unit=77, file='./data/case1_1')
-    write(77,'(a)') "#CRrate=6.9e-18 "
+    write(77,'(a)') "#CRrate=7.8e-18 "
     write(77,'(a)') "#time "//trim(krome_get_names_header())
     x2(:)=x(:)
     do
@@ -91,8 +90,8 @@ program test_krome
        call krome(x2(:),Tgas,dt) !call KROME
        !call jex(nx,t,x(:),1)
        t = t + dt !increase time
-       dt = max(1d3*spy,t/3d0) !increase time-step
+       dt = max(1d6*spy,t/3d0) !increase time-step
        write(77,'(999E12.5)') t/spy,x2(:)/xH
-       if(t>1.2d7*spy) exit !exit when overshoot 5d6 years
+       if(t>1d7*spy) exit !exit when overshoot 5d6 years
     end do
 end program test_krome

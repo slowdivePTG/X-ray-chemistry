@@ -15553,15 +15553,16 @@ contains
     !H -> H+ + E
     k(4452) = small + ((ratexH &
         * (1d0+phiH) + n(idx_He)&
-        /(n(idx_H)+1d-40) * ratexHe * phiH)&
+        /(n(idx_H)+2*n(idx_H2)+1d-40) * ratexHe * phiH)&
         * J21xray)
-
+    !k(36) = k(36) + 2*k(4452)*0.2
+    !k(38) = k(38) + 2*k(4452)*0.8
     !HE -> HE+ + E
     k(4453) = small + ((ratexHe &
-        * (1d0+phiHe) + n(idx_H)&
+        * (1d0+phiHe) + (n(idx_H)+2*n(idx_H2))&
         /(n(idx_He)+1d-40) * ratexH * phiHe)&
         * J21xray)
-
+    !print '(E11.3)',k(4452)/k(36)
     coe(:) = k(:) !set coefficients to return variable
 
     !!uncomment below to check coefficient values
