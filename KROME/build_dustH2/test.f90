@@ -31,7 +31,7 @@ program test_krome
   !Second run:j21xs=1d-1
   call krome_init()
 
-  x(:) = 1.d-20
+  x(:) = 1d-20
   !initial densities (model EA2 Wakelam+Herbst 2008)
   x(KROME_idx_H2)  = 0.5d0   * xH
   x(KROME_idx_He)  = 0.1d0   * xH
@@ -56,12 +56,12 @@ program test_krome
   dt = 1d3*spy !time-step (s)
   t = 0d0 !initial time (s)
 
-  !call krome_set_user_crate(6.8d-18) !CR rate (1/s)
-  j21xs=1d2
+  !call krome_set_user_crate(6.8d-16) !CR rate (1/s)
+  j21xs=80d0
   call krome_set_J21xray(j21xs)
   !output header
   open(unit=77, file='./data/case5')
-  write(77,'(a)') "#Jx21=100 "
+  !write(77,'(a)') "#Jx21=0.1 "
   write(77,'(a)') "#time "//trim(krome_get_names_header())
   x1(:)=x(:)
   do
@@ -69,20 +69,20 @@ program test_krome
      call krome(x1(:),Tgas,dt) !call KROME
      !call jex(nx,t,x(:),1)
      t = t + dt !increase time
-     dt = max(1d5*spy,t/3d0) !increase time-step
+     dt = max(1d4*spy,t/3d0) !increase time-step
      write(77,'(999E12.5)') t/spy,x1(:)/xH
-     if(t>8d5*spy) exit !exit when overshoot 5d6 years
+     if(t>5d5*spy) exit !exit when overshoot 5d6 years
   end do
 
 
     dt = 1d3*spy !time-step (s)
     t = 0d0 !initial time (s)
-    j21xs=1d2*1.02
+    j21xs=80*1.2d0
     call krome_set_J21xray(j21xs)
-    !call krome_set_user_crate(7.8d-18) !CR rate (1/s)
+    !call krome_set_user_crate(7.8d-16) !CR rate (1/s)
     !output header
     open(unit=77, file='./data/case5_1')
-    write(77,'(a)') "#Jx21=110 "
+    !write(77,'(a)') "#Jx21=0.11 "
     write(77,'(a)') "#time "//trim(krome_get_names_header())
     x2(:)=x(:)
     do
@@ -90,8 +90,8 @@ program test_krome
        call krome(x2(:),Tgas,dt) !call KROME
        !call jex(nx,t,x(:),1)
        t = t + dt !increase time
-       dt = max(1d5*spy,t/3d0) !increase time-step
+       dt = max(1d4*spy,t/3d0) !increase time-step
        write(77,'(999E12.5)') t/spy,x2(:)/xH
-       if(t>8d5*spy) exit !exit when overshoot 5d6 years
+       if(t>5d5*spy) exit !exit when overshoot 5d6 years
     end do
 end program test_krome

@@ -2,8 +2,15 @@
 - Case 1: cosmic ray ionization, zeta=6.8e-18/s, t=1e7 yrs
   - `case1`: zeta=6.8e-18 /s
   - `case1_1`: zeta=7.8e-18 /s
-  - `case1_alpha`: alpha value of case 1
 - Case 2: cosmic ray ionization,zeta=6.8e-16, t=4e5 yrs
   - `case2`: zeta=6.8e-16 /s
   - `case2_1`: zeta=7.8e-16 /s
-  - `case2_alpha`: alpha value of case 2
+- Case 3: cosmic ray ionization,jx21=0.08, t=1e7 yrs
+  - `case3`: jx21=0.08
+  - `case3_1`: jx21=0.096
+- Case 4: cosmic ray ionization,jx21=8, t=1e7 yrs
+  - `case3`: jx21=8
+  - `case3_1`: jx21=9.6
+- Case 5: cosmic ray ionization,jx21=80, t=1e7 yrs
+  - `case3`: jx21=80
+  - `case3_1`: jx21=96
