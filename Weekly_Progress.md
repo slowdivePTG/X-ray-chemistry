@@ -255,6 +255,7 @@ $$
 
 
 
+
 <<<<<<< HEAD
 
 =======
@@ -415,12 +416,21 @@ $$
      k(38) = rateEvaluateOnce(38)
      
      !H -> H+ + E
-         k(4452) = small + ((ratexH &
-             * (1d0+phiH) + n(idx_He)&
-             /(n(idx_H)+2*n(idx_H2)+1d-40) * ratexHe * phiH)&
-             * J21xray)
-         k(36) = k(36) + 2*k(4452)*0.2
-         k(38) = k(38) + 2*k(4452)*0.8
+     k(4452) = small + ((ratexH &
+         * (1d0+phiH) + n(idx_He)&
+         /(n(idx_H)+2*n(idx_H2)+1d-40) * ratexHe * phiH)&
+         * J21xray)
+        
+     !1keV cross section ratio
+     k(14) = k(14) + 150*k(4452) !C
+     k(22) = k(22) + 400*k(4452) !O
+     k(20) = k(20) + 280*k(4452) !N
+     k(19) = k(19) + 7*k(4452) !Mg
+     k(36) = k(36) + 2*k(4452)*0.2
+     k(38) = k(38) + 2*k(4452)*0.8
+     
+     !Many molecular species are also included
+     
      !HE -> HE+ + E
          k(4453) = small + ((ratexHe &
              * (1d0+phiHe) + (n(idx_H)+2*n(idx_H2))&

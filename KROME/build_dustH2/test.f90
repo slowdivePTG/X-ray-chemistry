@@ -60,18 +60,18 @@ program test_krome
   j21xs=80d0
   call krome_set_J21xray(j21xs)
   !output header
-  open(unit=77, file='./data/case5')
+  open(unit=77, file="./data/case5")
   !write(77,'(a)') "#Jx21=0.1 "
   write(77,'(a)') "#time "//trim(krome_get_names_header())
   x1(:)=x(:)
   do
      print '(a10,E11.3,a3)',"time:",t/spy,"yr"
      call krome(x1(:),Tgas,dt) !call KROME
-     !call jex(nx,t,x(:),1)
+     !call jex(nx,t,x1(:),"./data/Trace5_0")
      t = t + dt !increase time
      dt = max(1d4*spy,t/3d0) !increase time-step
      write(77,'(999E12.5)') t/spy,x1(:)/xH
-     if(t>5d5*spy) exit !exit when overshoot 5d6 years
+     if(t>120d4*spy) exit !exit when overshoot 5d6 years
   end do
 
 
@@ -81,17 +81,17 @@ program test_krome
     call krome_set_J21xray(j21xs)
     !call krome_set_user_crate(7.8d-16) !CR rate (1/s)
     !output header
-    open(unit=77, file='./data/case5_1')
+    open(unit=77, file="./data/case5_1")
     !write(77,'(a)') "#Jx21=0.11 "
     write(77,'(a)') "#time "//trim(krome_get_names_header())
     x2(:)=x(:)
     do
        print '(a10,E11.3,a3)',"time:",t/spy,"yr"
        call krome(x2(:),Tgas,dt) !call KROME
-       !call jex(nx,t,x(:),1)
+       !call jex(nx,t,x2(:),"./data/Trace5_1") !Jacobian Matrix
        t = t + dt !increase time
        dt = max(1d4*spy,t/3d0) !increase time-step
        write(77,'(999E12.5)') t/spy,x2(:)/xH
-       if(t>5d5*spy) exit !exit when overshoot 5d6 years
+       if(t>120d4*spy) exit !exit when overshoot 5d6 years
     end do
 end program test_krome
