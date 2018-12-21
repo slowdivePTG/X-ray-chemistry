@@ -8,9 +8,11 @@
 - Case 3: cosmic ray ionization,jx21=0.08, t=1e7 yrs
   - `case3`: jx21=0.08
   - `case3_1`: jx21=0.096
-- Case 4: cosmic ray ionization,jx21=8, t=1e7 yrs
+- Case 4: cosmic ray ionization,jx21=8, t=5e6 yrs
   - `case3`: jx21=8
   - `case3_1`: jx21=9.6
-- Case 5: cosmic ray ionization,jx21=80, t=1e7 yrs
+- Case 5: cosmic ray ionization,jx21=80, t=?
   - `case3`: jx21=80
   - `case3_1`: jx21=96
+  - NO CHEMICAL EQUILIBRIUM
+- Trace

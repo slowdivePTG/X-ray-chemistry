@@ -36,6 +36,8 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
    \left(\frac{\text{d}n(i)}{\text{d}t}\right)_j=n(j)\cdot pd(i,j)
    $$
 
+   In `krome_oed.f90`, the `jex` function calculate the Jacobian Matrix.
+
 2. Test a simple model but consider a mixture of H/He rather than $\text{H}_2/\text{He}$. $J_{X21}=0.1$ for 1 mys then turn off the X-ray radiation. Plot the abundance of $\text{CH}_4$ with time.
 
 > For this molecular cloud test we choose the **osu_01_2007** network and the initial conditions proposed by *Wakelam & Herbst (2008)*: a constant temperature of $\text{T} = 10\text{ K}$, $\ce{H2}$ density of $10^4\text{ cm}^{−3}$, cosmic rays ionization rate of $1.3 \times 10^{−17}\text{ s}^{−1}$, and a visual extinction of 10.
@@ -256,6 +258,7 @@ $$
 
 
 
+
 <<<<<<< HEAD
 
 =======
@@ -441,5 +444,19 @@ $$
 3. [Repeat Krolik’s results](https://github.com/slowdivePTG/X-ray-chemistry/blob/master/KROME/build_dustH2/data/alpha.ipynb)
 
    - Cosmic ray
-     - well matched, except for several species such as $\ce{HNO+}$ which has a larger $\alpha$
-     - The difference in $\alpha$ between stronger and weaker ionization rates is larger
+     - well matched, except for several species such as $\ce{HNO+}$ which has a larger $\alpha$.
+     - The difference in $\alpha$ between stronger and weaker ionization rates is larger.
+   - X-ray
+     - For lower ionization rate (Jx21=0.08 and 8), the result is not far from Krolik’s.
+     - For high ionization rate (Jx21=80), a strange problem occurs at about 20 million yrs, when the abundances of many species and reaction rates change by a few order of magnitude ‘in a sudden’. Perhaps because of some calculation errors in the program?
+     - There seems not to be a state of chemical equilibrium, the abundance of molecular Hydrogen continue to go down.
+
+4. Ameliorate [the program to trace the important species](https://github.com/slowdivePTG/X-ray-chemistry/blob/master/KROME/build_dustH2/data/Trace.ipynb)
+
+
+
+## To do list
+
+- Plot the $\alpha$ with error bar given by Krolik 1983
+- Check the step-length of KROME differential equation solver
+- Check if there is any threshold (bound) of abundances 

@@ -8,23 +8,23 @@ set xlabel "log(t/yr)"
 set ylabel "log(x)"
 set key t r
 set grid
-set xrange[1e3:1e6]
+set xrange[1e3:1e8]
 
 nkrome=1
 load 'species.gps'
 
 set ylabel "log(n(HCN)/x(CO))"
-plot 'case3' u 1:(column(krome_idx_HCN)/column(krome_idx_CO)) w l t "1",'case3_1' u 1:(column(krome_idx_HCN)/column(krome_idx_CO)) w l t "2",'case5' u 1:(column(krome_idx_HCN)/column(krome_idx_CO)) w l t "3",'case5_1' u 1:(column(krome_idx_HCN)/column(krome_idx_CO)) w l t "4"
+plot 'case5' u 1:(column(krome_idx_HCN)/column(krome_idx_CO)) w l t "3",'case5_1' u 1:(column(krome_idx_HCN)/column(krome_idx_CO)) w l t "4"
 
 
 set ylabel "log(n(H2)/x(H))"
-plot 'case3' u 1:(column(krome_idx_H2)) w l t "1",'case3_1' u 1:(column(krome_idx_H2)) w l t "2",'case5' u 1:(column(krome_idx_H2)) w l t "3",'case5_1' u 1:(column(krome_idx_H2)) w l t "4"
+plot 'case5' u 1:(column(krome_idx_H2)) w l t "3",'case5_1' u 1:(column(krome_idx_H2)) w l t "4"
 
 set ylabel "log(n(H)/x(H))"
-plot 'case3' u 1:(column(krome_idx_H)) w l t "1",'case3_1' u 1:(column(krome_idx_H)) w l t "2",'case5' u 1:(column(krome_idx_H)) w l t "3",'case5_1' u 1:(column(krome_idx_H)) w l t "4"
+plot 'case5' u 1:(column(krome_idx_H)) w l t "3",'case5_1' u 1:(column(krome_idx_H)) w l t "4"
 
-set ylabel "log(n(H2+)/x(H))"
-plot 'case3' u 1:(column(krome_idx_H2j)) w l t "1",'case3_1' u 1:(column(krome_idx_H2j)) w l t "2",'case5' u 1:(column(krome_idx_H2j)) w l t "3",'case5_1' u 1:(column(krome_idx_H2j)) w l t "4"
+set ylabel "log(n(H+)/x(H))"
+plot 'case5' u 1:(column(krome_idx_Hj)) w l t "3",'case5_1' u 1:(column(krome_idx_Hj)) w l t "4"
 
 unset multiplot
 

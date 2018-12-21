@@ -20,7 +20,6 @@ program test_krome
   integer,parameter::nd=krome_ndust,imax=100
   real*8::xdust(nd),adust(nd),xdusti(nd),data(imax,nd),dataT(imax)
   integer::i,j
-
   spy = 3600. * 24. * 365. !seconds per year
   Tgas = 5d1 !gas temperature (K)
   xH = 4d5 !Hydrogen density
@@ -53,11 +52,11 @@ program test_krome
   ! myCoe(:) is defined in krome_user_commons
   !myCoe(:) = krome_get_coef(Tgas,x(:))
 
-  dt = 1d3*spy !time-step (s)
+  dt = 0.5d6*spy !time-step (s)
   t = 0d0 !initial time (s)
 
   !call krome_set_user_crate(6.8d-16) !CR rate (1/s)
-  j21xs=80d0
+  j21xs=800d0
   call krome_set_J21xray(j21xs)
   !output header
   open(unit=77, file="./data/case5")
@@ -69,15 +68,15 @@ program test_krome
      call krome(x1(:),Tgas,dt) !call KROME
      !call jex(nx,t,x1(:),"./data/Trace5_0")
      t = t + dt !increase time
-     dt = max(1d4*spy,t/3d0) !increase time-step
-     write(77,'(999E12.5)') t/spy,x1(:)/xH
-     if(t>120d4*spy) exit !exit when overshoot 5d6 years
+     dt = max(0.5d6*spy,t/3d0) !increase time-step
+     write(77,'(999E15.5)') t/spy,x1(:)/xH
+     if(t>3d6*spy) exit !exit when overshoot 5d6 years
   end do
 
 
-    dt = 1d3*spy !time-step (s)
+    dt = 0.5d6*spy !time-step (s)
     t = 0d0 !initial time (s)
-    j21xs=80*1.2d0
+    j21xs=800*1.2d0
     call krome_set_J21xray(j21xs)
     !call krome_set_user_crate(7.8d-16) !CR rate (1/s)
     !output header
@@ -90,8 +89,8 @@ program test_krome
        call krome(x2(:),Tgas,dt) !call KROME
        !call jex(nx,t,x2(:),"./data/Trace5_1") !Jacobian Matrix
        t = t + dt !increase time
-       dt = max(1d4*spy,t/3d0) !increase time-step
+       dt = max(0.5d6*spy,t/3d0) !increase time-step
        write(77,'(999E12.5)') t/spy,x2(:)/xH
-       if(t>120d4*spy) exit !exit when overshoot 5d6 years
+       if(t>3d6*spy) exit !exit when overshoot 5d6 years
     end do
 end program test_krome
