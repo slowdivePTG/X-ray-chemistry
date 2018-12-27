@@ -1,9 +1,9 @@
 # The Weekly Progress
-##### Since Nov. 10, 2018
+**Since Nov. 10, 2018**
 
 In the autumn semester, hopefully I'll record my progress every Thursday morning
 
-### SO FAR
+## Before Nov. 10, 2018
 1. Understand why X-ray cause profound effects to ISM
 
 2. Aquire the X-ray spectra emitted the SMBH in the center of Milky Way Galaxy several mys ago  
@@ -26,7 +26,7 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
 
 
 
-### Nov. 10, 2018
+## Nov. 10, 2018
 1. Trace the most important reactions using the Jacobian Matrix pd(i,j)
    $$
    pd(i,j)=\frac{\partial}{\partial n(j)}\left(\frac{\text{d}n(i)}{\text{d}t}\right)
@@ -79,7 +79,7 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
 
 
 
-### Nov. 15, 2018 
+## Nov. 15, 2018 
 
 1. (From Prof. Du) The secondary ionization rate of molecular hydrogen can be approximately considered as 2 hydrogen atoms.
 
@@ -163,7 +163,7 @@ $$
 
 
 
-### Nov. 22, 2018
+## Nov. 22, 2018
 
 1. More details on secondary ionization
 
@@ -174,11 +174,11 @@ $$
    $$
    $N_{sec}(E)$ is the number of secondary **ionizations** per unit energy produced by primary photoelectrons$W(E)$ is the mean energy expended to produce an ion pair through rapid electron process
 
-   ##### A BIG MISTAKE HERE LAST WEEK!
+   #### A BIG MISTAKE HERE LAST WEEK!
 
    $N_{sec}(E)$ is not the number of secondary electrons but the number of ion pairs produced by a secondary electron. **WE DON’T COUNT ELECTRONS HERE! **
 
-   #### More comments on the formula
+   ### More comments on the formula
 
    - $W(E)$ is nearly independent of $E$ if $E>200\text{ eV}$ , which is easy to satisfied in our case
 
@@ -188,7 +188,7 @@ $$
      $$
      More precise calculation ( Glassgold & Langer 1973, Dalgarno 1999, Glassgold 2012 ) shows that in $\ce{H2 + He}$ neutral gas, $47\%$ of energy goes to ionization, $47\%$ in $\ce{H2}$ and $\ce{He}$ excitation, the rest goes for heating. $N_{sec}(E)\approx27$ and thus we can take $W(E)\approx37\text{ eV}$.
 
-   #### The formula I actually use
+   ### The formula I actually use
 
    $$
    \zeta _ { \mathrm { tot } } ^ { i } = \zeta _ { \mathrm { p } } ^ { i } + \sum _ { j = \mathrm { H } , \mathrm { He } } \frac { n _ { j } } { n _ { i } } \zeta _ { \mathrm { p } } ^ { j } \left\langle \phi ^ { i } \right\rangle
@@ -216,7 +216,7 @@ $$
 
 
 
-### Nov. 29, 2018
+## Nov. 29, 2018
 
 1. Recalculate the ionization rate using the primal formula
    $$
@@ -246,6 +246,7 @@ $$
    \int_{E_{min}}^{E_{max}}{F(E)}\text{d}E=F_0\int_{2}^{10}E^{-1.5}\text{d}E\approx0.078F_0\\
    \Rightarrow \zeta^{(2)'}\approx\frac{0.0098F_0\sigma_0\cdot3.50F_0\phi_0}{0.078F_0}\approx0.044F_0\phi_0\sigma_0\approx0.57\zeta^{(2)}
    $$
+
 
 
 
@@ -318,7 +319,7 @@ $$
 
 
 
-### Dec. 5,  2018
+## Dec. 5,  2018
 
 1. Try to repeat some results in former papers…but pretty difficult to do
    - Krolik 1983 did not consider the X-ray ionization of $\ce{H2}$
@@ -332,7 +333,7 @@ $$
 
 
 
-### Dec. 12, 2018
+## Dec. 12, 2018
 
 1. Reread and try to repeat the results in Krolik 1983. 
 
@@ -358,7 +359,7 @@ $$
 
 
 
-### Dec. 20, 2018
+## Dec. 20, 2018
 1. Grain Process
 
    - It’s important to find out how $\ce{H2}$ molecules form on the grain surface as well as how KROME deal with the process 
@@ -455,8 +456,19 @@ $$
 
 
 
+## Dec. 27, 2018
+
+1. Plot and compare the $\alpha$ of Krolik’s and the calculation results
+
+![](./KROME/build_dustH2/data/Table1.png)
+
+![](./KROME/build_dustH2/data/Table2.png)
+
+![](./KROME/build_dustH2/data/Table3.png)
+
+![](./KROME/build_dustH2/data/Table4.png)
+
 ## To do list
 
-- Plot the $\alpha$ with error bar given by Krolik 1983
 - Check the step-length of KROME differential equation solver
 - Check if there is any threshold (bound) of abundances 
