@@ -23,8 +23,7 @@ plot 'case5' u 1:(column(krome_idx_H2)) w l t "3",'case5_1' u 1:(column(krome_id
 set ylabel "log(n(H)/x(H))"
 plot 'case5' u 1:(column(krome_idx_H)) w l t "3",'case5_1' u 1:(column(krome_idx_H)) w l t "4"
 
-set ylabel "log(n(H+)/x(H))"
-plot 'case5' u 1:(column(krome_idx_Hj)) w l t "3",'case5_1' u 1:(column(krome_idx_Hj)) w l t "4"
+set ylabel "log(n(CH4)/x(H))"
+plot 'case5' u 1:(column(krome_idx_CH4)) w l t "3",'case5_1' u 1:(column(krome_idx_CH4)) w l t "4"
 
 unset multiplot
-

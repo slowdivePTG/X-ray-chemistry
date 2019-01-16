@@ -15551,11 +15551,10 @@ contains
     end if
 
     !H -> H+ + E
-    k(4452) = small + ((ratexH &
+    k(4452) = (small + (ratexH &
         * (1d0+phiH) + n(idx_He)&
         /(n(idx_H)+2*n(idx_H2)+1d-40) * ratexHe * phiH)&
-        * J21xray)
-    !print '(E11.3)',k(4452)
+        )* J21xray
     k(14) = k(14) + 150*k(4452) !C
     k(22) = k(22) + 400*k(4452) !O
     k(20) = k(20) + 280*k(4452) !N
@@ -15570,10 +15569,10 @@ contains
     k(30) = k(30) + 430*k(4452)
 
     !CO -> C + O
-    k(31) = k(30) + 550*k(4452)*0.8
+    k(31) = k(31) + 550*k(4452)*0.8
 
     !CO -> CO+ + E
-    k(32) = k(30) + 550*k(4452)*0.2
+    k(32) = k(32) + 550*k(4452)*0.2
 
     !NH -> N + H
     k(45) = k(45) + 280*k(4452)
@@ -15603,10 +15602,10 @@ contains
     k(77) = k(77) + 550*k(4452)*0.2
 
     !HE -> HE+ + E
-    k(4453) = small + ((ratexHe &
+    k(4453) = (small + (ratexHe &
         * (1d0+phiHe) + (n(idx_H)+2*n(idx_H2))&
         /(n(idx_He)+1d-40) * ratexH * phiHe)&
-        * J21xray)
+        )* J21xray
     !print '(E11.3)',k(4452)/k(36)
     coe(:) = k(:) !set coefficients to return variable
 

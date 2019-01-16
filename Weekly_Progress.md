@@ -247,23 +247,6 @@ $$
    \Rightarrow \zeta^{(2)'}\approx\frac{0.0098F_0\sigma_0\cdot3.50F_0\phi_0}{0.078F_0}\approx0.044F_0\phi_0\sigma_0\approx0.57\zeta^{(2)}
    $$
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 2. Why does KROME use a simplified formula to calculate the total ionization rate?
 
    - $\zeta_p^\ce{H},\zeta_p^\ce{He}$ are stored in data-files rateH.dat and rateHe.dat (column density *v.s.* primary ionization rate)
@@ -325,6 +308,8 @@ $$
    - Krolik 1983 did not consider the X-ray ionization of $\ce{H2}$
 
      > Dec. 12 review: Actually, $\ce{H2}$ ionization is considered with an approximate model (Brown and Gould’s 1970)
+
+     
 
    - Those who have considered the x-ray ionization of $\ce{H2}$ usually have too complex physical problems and models, which means they are not easy to fully understand and repeat within hours
 
@@ -468,7 +453,26 @@ $$
 
 ![](./KROME/build_dustH2/data/Table4.png)
 
-## To do list
 
-- Check the step-length of KROME differential equation solver
-- Check if there is any threshold (bound) of abundances 
+
+## Jan. 3, 2019
+
+1. Find the internal time-step of KROME to see whether it may cause instability of the calculation.
+
+   In the introduction of KROME, it goes like this
+
+   > Note that the internal time-step of Krome is chosen according to the ODE system and the stiffness of the set of equations is evaluated and the user has no need to provide it, since it is automatically determined by the solver using the values of relative and absolute tolerance employed.
+
+   Do I have to find out how the solver would choose the value?
+
+
+
+## Jan. 16, 2019
+
+1. Realize that there is a mistake in the rate coefficient of $\ce{H}$. The result is that the number of each atom is not conserved so there would not be any equilibrium state for the system. After fixing the bug, the system reaches equilibrium within as most several million years whatever the initial condition is, and we can re-plot the diagram.
+
+   In this case the step-length should be okay, and there seems no threshold of abundances. For safety I set a lower bound of `1d-99*nH` for each species.
+
+2. For high ionization rate situation, the result is far from Krolik’s though a steady equilibrium is quickly reached.
+
+   ![](./Pics/jx21_80_equilibrium.png)
