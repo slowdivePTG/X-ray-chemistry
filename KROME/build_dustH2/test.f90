@@ -57,12 +57,12 @@ program test_krome
   t = 0d0 !initial time (s)
 
   call krome_set_user_crate(0d0) !CR rate (1/s)
-  j21xs=8d-2
+  j21xs=8.0
   call krome_set_J21xray(j21xs)
   !output header
-  open(unit=77, file="./data/case3")
-  !write(77,'(a)') "#zeta=6.8e-18/s"
-  write(77,'(a)') "#Jx21=0.08"
+  open(unit=77, file="./data/case4")
+  !write(77,'(a)') "#zeta=6.8e-16/s"
+  write(77,'(a)') "#Jx21=8"
   write(77,'(a)') "#time "//trim(krome_get_names_header())
   x1(:)=x(:)
   m(:)=get_mass()
@@ -80,13 +80,13 @@ program test_krome
 
     dt = 0.1d4*spy !time-step (s)
     t = 0d0 !initial time (s)
-    j21xs=8*1.2d-2
+    j21xs=9.6
     call krome_set_J21xray(j21xs)
     call krome_set_user_crate(0d0) !CR rate (1/s)
     !output header
-    open(unit=77, file="./data/case3_1")
-    !write(77,'(a)') "#zeta=7.8e-18/s"
-    write(77,'(a)') "#Jx21=0.096"
+    open(unit=77, file="./data/case4_1")
+    !write(77,'(a)') "#zeta=7.8e-16/s"
+    write(77,'(a)') "#Jx21=9.6"
     !write(77,'(a)') "#time "//trim(krome_get_names_header())
     x2(:)=x(:)
     do
