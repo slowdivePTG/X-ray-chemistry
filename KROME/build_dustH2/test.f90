@@ -53,16 +53,16 @@ program test_krome
   ! myCoe(:) is defined in krome_user_commons
   !myCoe(:) = krome_get_coef(Tgas,x(:))
 
-  dt = 0.1d4*spy !time-step (s)
+  dt = 1d7*spy !time-step (s)
   t = 0d0 !initial time (s)
 
-  call krome_set_user_crate(0d0) !CR rate (1/s)
-  j21xs=8.0
+  call krome_set_user_crate(6.7d-16) !CR rate (1/s)
+  j21xs=0d0!4.56*1.0003
   call krome_set_J21xray(j21xs)
   !output header
-  open(unit=77, file="./data/case4")
+  open(unit=77, file="./data/case2")
   !write(77,'(a)') "#zeta=6.8e-16/s"
-  write(77,'(a)') "#Jx21=8"
+  !write(77,'(a)') "#Jx21=0.08"
   write(77,'(a)') "#time "//trim(krome_get_names_header())
   x1(:)=x(:)
   m(:)=get_mass()
@@ -78,15 +78,15 @@ program test_krome
   end do
 
 
-    dt = 0.1d4*spy !time-step (s)
+    dt = 1d6*spy !time-step (s)
     t = 0d0 !initial time (s)
-    j21xs=9.6
+    j21xs=4.56*0.9997
     call krome_set_J21xray(j21xs)
     call krome_set_user_crate(0d0) !CR rate (1/s)
     !output header
     open(unit=77, file="./data/case4_1")
     !write(77,'(a)') "#zeta=7.8e-16/s"
-    write(77,'(a)') "#Jx21=9.6"
+    !write(77,'(a)') "#Jx21=0.08004"
     !write(77,'(a)') "#time "//trim(krome_get_names_header())
     x2(:)=x(:)
     do

@@ -463,6 +463,8 @@ $$
 
    > Note that the internal time-step of Krome is chosen according to the ODE system and the stiffness of the set of equations is evaluated and the user has no need to provide it, since it is automatically determined by the solver using the values of relative and absolute tolerance employed.
 
+   
+
    Do I have to find out how the solver would choose the value?
 
 
