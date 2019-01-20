@@ -3,7 +3,7 @@
 -0.375 O2, H2O,
 -0.125 H2, He, O, N2, CO, NO,
 0.125 E, N, Mg+,
-0.375 HCO, HCO+, N2H+,
+0.375 HCO, HCO+, N2H+, HNO+,
 0.625 H3+, OH, H3O+, NH2,
 0.875 H, H2+, He+, C, N+, N2+, O+, CO+, OH+, H2O+,  NH, NH+, NH3+, HCN,
 1.125 H+, C+, CH, CH2, CH3+, CN, NH2+,

@@ -1,8 +1,8 @@
 - # Data
   - t=3e8 yrs
   - Case 1: cosmic ray ionization, zeta=6.8e-18/s
-    - `case1`: zeta=6.7e-18 /s
-    - `case1_1`: zeta=6.9e-18 /s
+    - `case1`: zeta=6.79e-18 /s
+    - `case1_1`: zeta=6.81e-18 /s
   - Case 2: cosmic ray ionization,zeta=6.8e-16
     - `case2`: zeta=6.7e-16 /s
     - `case2_1`: zeta=6.9e-16 /s
