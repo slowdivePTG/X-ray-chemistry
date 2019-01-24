@@ -478,3 +478,17 @@ $$
 2. For high ionization rate situation, the result is far from Krolik’s though a steady equilibrium is quickly reached.
 
    ![](./Pics/jx21_80_equilibrium.png)
+   
+ 
+ ## Jan. 24, 2019
+ 
+ 1. Recheck the X-ray ionization mechanism in the present code and compare the mechanism with those in present papers.
+ 
+ 2. Move on.
+ 
+ 
+ ## To do list
+ 
+ 1. Find more physical details of ISM closer to the galactic center with higher temperature and higher degree of ionization. 
+ 
+ 2. Figure out the extra process we need to consider (such as heating when the degree of ionization is high).
