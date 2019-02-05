@@ -15,7 +15,7 @@
 
 #### Energy Deposition, Ionization, Heating Rates
 
-- The physical and chemical state of the dense cloud is insensitive to the shape of the X-ray spectrum, but depend mostly on the ***ratio*** of **the local X-ray energy deposition rate per particle $H_X​$** to **the gas density $n​$**
+- The physical and chemical state of the dense cloud is insensitive to the shape of the X-ray spectrum, but depend mostly on the ***ratio*** of **the local X-ray energy deposition rate per particle $H_X$** to **the gas density $n$**
   $$
   H_ {  { X } } = \int _ { E _ { \min } } ^ { E _ { \max } } \sigma _ { \mathrm { pa } } ( E ) F ( E ) \mathrm d E
   $$
@@ -58,21 +58,30 @@
 
       For the $11\ \mathrm{eV}$ released, $2\ \mathrm{eV}$ goes to the ionization, $8\ \mathrm{eV}$ goes to heating
 
-    - Significant amount of the primary nonthermal photoelectron energy can go into ***excitation*** of **the rotation-vibration bands of $\ce{H2}$** & **dissociative electrons**
+    - Significant amount of the primary nonthermal photoelectron energy can go into ***excitation*** of **the rotation-vibration bands of $\ce{H2}​$** & **dissociative electrons**
 
 #### UV photon flux from secondary electrons
 
-...
+- Internally generated **FUV photons** ($6\ \mathrm { eV } \lesssim h \nu \lesssim 13.6\ \mathrm { eV }​$) produced by energetic non-thermal electrons colliding with hydrogen atoms and molecules -- emission of Ly$\alpha​$ and Lyman-Werner band photons
+
+> Lyman and Werner absorption bands of molecular hydrogen, $11.2 \sim 13.6 \ \mathrm { eV }$
+
+- $x_e\lesssim0.01$, over $40\%$ of the energy deposited by X-ray goes to FUV photons -- the dense, opaque (to FUV) regions for X-ray photons can chemically resemble photodissociation regions (PDRs) with $\ce{Fe+,Si+,C+}$ and large abundances of neutral atomic oxygen
+- Most of the FUV is absorbed by dust, but the gas is generally heated by the X-ray-induced photoelectrons -- a much higher ratio ($\sim0.1-1$) of **gas heating** to **grain heating** than that of PDRs ($\sim10^{-3}-10^{-2}$)
+- Nearly all FUV produced in atomic gas is Ly$\alpha$, thus not energetic enough to ionize $\ce{C}$ or $\ce{S}$
 
 #### Excitation of molecular hydrogen vibration-rotation levels
 
-...
+- Direct collisional excitation from the ground rotation and vibration states
+  - The apparent excitation temperature is determined by the relative collisional cross sections
+- Cascade following collisional excitation of excited electron states
+  - Einstein *A*-coefficients -- the level distribution is essentially the same as in the case of UV pumping of the electron states
 
 #### The effect of X-ray on molecular and atomic species
 
 - For atomic Hydrogen and Helium, they assume that the secondary ionization dominates
 
-- For other atomic species including $\ce{C,O,S,Si,Fe}$, they also introduce the primary ionization using the cross section of Verner et. al. (1993)
+- For other atomic species including $\ce{C,O,S,Si,Fe}​$, they also introduce the primary ionization using the cross section of Verner et. al. (1993)
 
   - For $\ce{C,O}$, they assume X-ray ionization produces singly charged ions because of the rapid charge exchange with hydrogen
   - For $\ce{S,Si,Fe}$, they assume that X-ray ionization produces doubly charged ions and explicitly calculate the relative abundance of neutral, singly charged and doubly charged species
@@ -204,3 +213,11 @@
   - The theory applies generally to any ionization stage, though ions beyond $\ce{A2+}$ have negligible abundances because of rapid charge exchange with atomic and molecular hydrogen and other species
 
 ### Direct Rates by Shell
+
+- Consider **the ionization state of the product** and **the number of electrons released**
+
+- Direct ionization can produce a variety of charge states depending on the X-ray energy, i.e., on whether the K, L, or M threshold (in Table 2)
+  $$
+  \zeta _ { \mathrm { A } , \mathrm { dir } } = \zeta _ { \mathrm { K } } + \zeta _ { \mathrm { L } } + \zeta _ { \mathrm { M } }
+  $$
+  
