@@ -90,7 +90,7 @@
 
 - Sometimes the secondary ionization of heavy elements can also be significant, and in the lowest order
   $$
-  \zeta _ { s , m } = \zeta _ { s , H } \frac { \sigma _ { \mathrm { ei } , m } ( E ) } { \sigma _ { \mathrm { ei } , \mathrm { H } } ( E ) } \mathrm { s } ^ { - 1 }
+  \zeta _ { s , m } = \zeta _ { s , \ce{H} } \frac { \sigma _ { \mathrm { ei } , m } ( E ) } { \sigma _ { \mathrm { ei } , \mathrm { H } } ( E ) } \mathrm { s } ^ { - 1 }
   $$
 
   - $\sigma_{ \mathrm { ei } }(E) $ is the electron-impact cross section at energy $E$ , a few hundred $\mathrm{eV}$s for primary electrons and $50\ \mathrm{eV}$ for secondary electrons
