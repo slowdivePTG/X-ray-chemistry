@@ -479,16 +479,71 @@ $$
 
    ![](./Pics/jx21_80_equilibrium.png)
    
- 
+
  ## Jan. 24, 2019
- 
- 1. Recheck the X-ray ionization mechanism in the present code and compare the mechanism with those in present papers.
- 
- 2. Move on.
- 
- 
+
+  1. Recheck the X-ray ionization mechanism in the present code and compare the mechanism with those in present papers.
+  2. Move on.
+
+## Feb. 19, 2019
+
+1. Consider electron cross section ratios in the calculation of secondary ionization of other species according to Maloney+ 1996
+
+   In `krome_subs.f90`
+
+   ```fortran
+       k(14) = k(14) + 3.1136*k(4452) !C
+       k(22) = k(22) + 1.5957*k(4452) !O
+       k(20) = k(20) + 2.0029*k(4452) !N
+       k(19) = k(19) + 13.1726*k(4452) !Mg 50eV cross section ratio
+       k(36) = k(36) + 2*k(4452)*0.05
+       k(38) = k(38) + 2*k(4452)*0.95
+   
+       !C2 -> C + C
+       k(26) = k(26) + 3.1136*2*k(4452)
+   
+       !CN -> C + N
+       k(30) = k(30) + (2.0029+3.1136)*k(4452)
+   
+       !CO -> C + O
+       k(31) = k(31) + (3.1136+1.5957)*k(4452)*0.8
+   
+       !CO -> CO+ + E
+       k(32) = k(32) + (3.1136+1.5957)*k(4452)*0.2
+   
+       !NH -> N + H
+       k(45) = k(45) + (1+2.0029)*k(4452)
+   
+       !NO -> N + O
+       k(46) = k(46) + (2.0029+1.5957)*k(4452)*0.8
+   
+       !NO -> NO+ + E
+       k(47) = k(47) + (2.0029+1.5957)*k(4452)*0.2
+   
+       !O2 -> O + O
+       k(49) = k(49) + 1.5957*2*k(4452)*0.8
+   
+       !O2 -> O2+ + E
+       k(50) =k(50) + 1.5957*2*k(4452)*0.2
+   
+       !H2O -> OH + H
+       k(72) = k(72) + (1.5957+2)*k(4452)
+   
+       !HCN -> CN + H
+       k(75) = k(75) + (1+3.1136+2.0029)*k(4452)
+   
+       !HCO -> CO + H
+       k(76) = k(76) + (1+3.1136+1.5957)*k(4452)*0.8
+   
+       !HCO -> HCO+ + E
+       k(77) = k(77) + (1+3.1136+1.5957)*k(4452)*0.2
+   ```
+
+   
+
+
  ## To do list
- 
+
  1. Find more physical details of ISM closer to the galactic center with higher temperature and higher degree of ionization. 
- 
+
  2. Figure out the extra process we need to consider (such as heating when the degree of ionization is high).
