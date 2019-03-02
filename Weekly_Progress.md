@@ -492,10 +492,11 @@ $$
    In `krome_subs.f90`
 
    ```fortran
+       ! 50eV cross section ratio
        k(14) = k(14) + 3.1136*k(4452) !C
        k(22) = k(22) + 1.5957*k(4452) !O
        k(20) = k(20) + 2.0029*k(4452) !N
-       k(19) = k(19) + 13.1726*k(4452) !Mg 50eV cross section ratio
+       k(19) = k(19) + 13.1726*k(4452) !Mg
        k(36) = k(36) + 2*k(4452)*0.05
        k(38) = k(38) + 2*k(4452)*0.95
    
@@ -541,6 +542,9 @@ $$
 
    
 
+## Mar. 2, 2019
+
+1. Include X-ray heating and $\ce{H2}$ cooling processes to the code, still with bugs.
 
  ## To do list
 
