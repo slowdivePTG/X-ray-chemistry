@@ -107,7 +107,14 @@
 
 ###Gas cooling mechanisms
 
-...
+- Highest temperature
+  - Collisional excitation of Ly$\alpha$ and forbidden and semi-forbidden transitions of $\left[\mathrm{OI}\right](\lambda \lambda 6300,6363)$, $[\ce{CI}](\lambda \lambda 9823,9850 )$, $[\mathrm{Fe} \mathrm{II}](1.26 \text { and } 1.64 \mu \mathrm{m})$, $[\mathrm{S} \mathrm{II}]({\lambda} \lambda 6716,6731)$
+- Below $T\sim 5000\ \text K$
+  - Fine structure transitions of neutral and singly charged atomic species such as $[\mathrm{O} \mathrm{I}](63 \mu \mathrm{m})$, $[\operatorname{SiII}](35 \mu \mathrm{m})$, $[\mathrm{C} \mathrm{II}](158 \mu \mathrm{m})$, $[\mathrm{CI} ](369 \text { and } 609 \mu \mathrm{m})$
+- Cooling by the rotational and vibrational transitions of $\ce{H2,H2O,CO}$
+- Cooling by the rotational lines of $\ce{OH}$
+- Electron impact excitation
+- Cooling from $\ce{H2}$ collision dissociation
 
 
 
