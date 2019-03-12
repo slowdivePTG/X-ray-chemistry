@@ -546,8 +546,19 @@ $$
 
 1. Include X-ray heating and $\ce{H2}$ cooling processes to the code, still with bugs.
 
+
+
+##Mar. 12, 2019
+
+1. Got Guangshuai's spectra, writing pipelines to plot and calculate X-ray spectra in different distances from Galactic center and different X-ray models (  different $\alpha,\ \beta,\ \dot{m}$ )
+
+
+
  ## To do list
 
  1. Find more physical details of ISM closer to the galactic center with higher temperature and higher degree of ionization. 
 
  2. Figure out the extra process we need to consider (such as heating when the degree of ionization is high).
+
+
+
