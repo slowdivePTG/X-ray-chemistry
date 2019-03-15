@@ -548,11 +548,30 @@ $$
 
 
 
-##Mar. 12, 2019
+##Mar. 14, 2019
 
-1. Got Guangshuai's spectra, writing pipelines to plot and calculate X-ray spectra in different distances from Galactic center and different X-ray models (  different $\alpha,\ \beta,\ \dot{m}$ )
+1. Got Guangshuai's spectra, writing pipelines to plot and calculate X-ray spectra in different distances from Galactic center and different X-ray models ( different $\alpha,\ \beta,\ \dot{m}$ )
 
+2. Plot several figures
+   - The standard (Latif+ 2015) X-ray spectra in comparison with Guangshuai's data (both with and without absorption)
+     - $J_{X21}=0.1,1,10​$
+     - $\alpha=0.1,\beta=100,\dot m=0.5$ in difference distances ($1, 2, 4, 8$ kpc)
 
+   ![](./Calc_ionization_rate/Fnu-nu.eps)
+
+   ![](./Calc_ionization_rate/nuF-nu.eps)
+
+   ![](./Calc_ionization_rate/nuL-nu.eps)
+
+   - The total flux in different distances as well as using the standard spectrum
+
+   ![](./Calc_ionization_rate/total_flux.eps)
+
+   - The comparison in ionization rates
+
+   ![](./Calc_ionization_rate/ionization_H.eps)
+
+   ![](./Calc_ionization_rate/ionization_He.eps)
 
  ## To do list
 

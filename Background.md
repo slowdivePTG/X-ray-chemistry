@@ -7,15 +7,15 @@
 
 - Significance
 
-  - Find possible chemical impacts at different distance from the Galactic center
-  - Galactic Habitable Zone
+  - Find possible chemical impacts at different distances from the Galactic center
+  - Determine Galactic Habitable Zone
 
 - Methods
 
   - KROME - solve equilibrium equations ( ODEs ) and calculate chemical evolutions
   - X-ray ionization
 
-- Machanism
+- Mechanism
 
   - Primary Ionization
 
