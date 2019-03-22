@@ -3468,7 +3468,7 @@ contains
     real*8::num2col,ncalc,n(:),Tgas
     Tgas = max(n(idx_Tgas),phys_Tcmb)
 
-    num2col = 1.87d21*(max(ncalc,1d-40)*1d-3)**(2./3.)
+    num2col = 0.5d0 * max(ncalc,1d-40) * get_jeans_length(n(:),Tgas)
 
   end function num2col
 
@@ -3480,10 +3480,9 @@ contains
     real*8::col2num,ncalc,n(:),Tgas
     Tgas = max(n(idx_Tgas),phys_Tcmb)
 
-    col2num = 1d3 * (max(ncalc,1d-40)/1.87d21)**1.5
+    col2num = 2d0 * max(ncalc,1d-40) / get_jeans_length(n(:),Tgas)
 
   end function col2num
-
   !************************
   !get electrons by balancing charges
   function get_electrons(n)

@@ -63,6 +63,7 @@ contains
     nmax = max(maxval(n(1:nmols)),1d0)
     small = 1d-40/(nmax*nmax*nmax*nmax)
 
+    T32 = Tgas*0.0033333333333333335
     sqrT32 = sqrt(T32)
 
     T = Tgas
@@ -71,7 +72,6 @@ contains
     invsqrT32 = 1d0/sqrt(Tgas/3d2)
     Te = Tgas*8.617343d-5
     lnTe = log(Te)
-    T32 = Tgas*0.0033333333333333335
     invT = 1.d0/Tgas
     invTe = 1.d0/Te
     sqrTgas = sqrt(Tgas)

@@ -258,7 +258,7 @@ $$
    ```fortran
        T = Tgas
        Trad = 2d4
-       ncolH = num2col(n(idx_H),n(:))
+       ncolH = num2col(n(idx_H)+2*n(idx_H2),n(:))
        ncolHe = num2col(n(idx_He),n(:)) !number density to column density
        logHe = log10(ncolHe) !take log
        logH = log10(ncolH)
@@ -572,6 +572,16 @@ $$
    ![](./Calc_ionization_rate/ionization_H.eps)
 
    ![](./Calc_ionization_rate/ionization_He.eps)
+
+
+
+## Mar. 22, 2019
+
+1. More insights into `ratexH.dat/ratexHe.dat`
+
+   To convert column density to number density, the datafile seems not to use the Jeans length but utilize an approximation to simplify the calculation. Details in `The way KROME calculates the 'auto' ionization rate`
+
+2. 
 
  ## To do list
 
