@@ -581,13 +581,19 @@ $$
 
    To convert column density to number density, the datafile seems not to use the Jeans length but utilize an approximation to simplify the calculation. Details in `The way KROME calculates the 'auto' ionization rate`
 
-2. 
+2. Succeed in creating `ratexH.dat` using Guangshuai's data, using Jeans length and formula
+   $$
+   N^i=n^i\frac{\lambda_j}{2}
+   $$
+   for number density/column density conversion
+
+
 
  ## To do list
 
- 1. Find more physical details of ISM closer to the galactic center with higher temperature and higher degree of ionization. 
-
- 2. Figure out the extra process we need to consider (such as heating when the degree of ionization is high).
+  1. Check again the consistency with former work
+  2. Find more physical details of ISM closer to the galactic center with higher temperature and higher degree of ionization. 
+  3. Figure out the extra process we need to consider (such as heating when the degree of ionization is high).
 
 
 
