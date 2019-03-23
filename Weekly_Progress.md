@@ -575,7 +575,7 @@ $$
 
 
 
-## Mar. 22, 2019
+## Mar. 23, 2019
 
 1. More insights into `ratexH.dat/ratexHe.dat`
 
@@ -587,7 +587,7 @@ $$
    $$
    for number density/column density conversion
 
-
+3. Sucessfully repeat the EA1 and EA2 cases in Wakelam & Herbst 2008, which shows the evolution of certain species without X-ray
 
  ## To do list
 

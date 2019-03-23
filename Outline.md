@@ -1,4 +1,4 @@
-# Background
+# Outline
 
 - Active SMBH - hard X-ray
 
@@ -12,13 +12,17 @@
 
 - Methods
 
+  - Pseudo-time-dependent approach
+    - Computes the chemical evolution at a fixed temperature and density
   - KROME - solve equilibrium equations ( ODEs ) and calculate chemical evolutions
+  - Cosmic-ray ionization
   - X-ray ionization
 
 - Mechanism
 
   - Primary Ionization
 
+    - AGN model ( from Guangshuai )
     - X-ray photon comes across atoms - absorption + release fast electrons with high energy
 
     - The ionization rate ( for certain energy $E$ ) is proportional to the flux as well as the photon-ionization cross section
