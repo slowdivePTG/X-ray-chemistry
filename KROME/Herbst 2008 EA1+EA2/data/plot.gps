@@ -1,0 +1,41 @@
+reset
+set multiplot layout 4,2 rowsfirst
+set logscale
+set autoscale
+set format x "%L"
+set format y "%L"
+set xlabel "log(t/yr)"
+set ylabel "log(x)"
+set key t r
+set grid
+set xrange[1e2:1e8]
+
+nkrome=1
+load 'species.gps'
+
+set ylabel "log(n(C)/x(H))"
+plot 'case1' u 1:(column(krome_idx_C)) w l t "EA1", 'case2' u 1:(column(krome_idx_C)) w l t "EA2"
+
+set ylabel "log(n(C+)/x(H))"
+plot 'case1' u 1:(column(krome_idx_Cj)) w l t "EA1",  'case2' u 1:(column(krome_idx_Cj)) w l t "EA2"
+
+set ylabel "log(n(H3+)/x(H))"
+plot 'case1' u 1:(column(krome_idx_H3j)) w l t "EA1",  'case2' u 1:(column(krome_idx_H3j)) w l t "EA2"
+
+set ylabel "log(n(HCO+)/x(H))"
+plot 'case1' u 1:(column(krome_idx_HCOj)) w l t "EA1",  'case2' u 1:(column(krome_idx_HCOj)) w l t "EA2"
+
+set ylabel "log(n(H3O+)/x(H))"
+plot 'case1' u 1:(column(krome_idx_H3Oj)) w l t "EA1",  'case2' u 1:(column(krome_idx_H3Oj)) w l t "EA2"
+
+set ylabel "log(n(OH)/x(H))"
+plot 'case1' u 1:(column(krome_idx_OH)) w l t "EA1",  'case2' u 1:(column(krome_idx_OH)) w l t "EA2"
+
+set ylabel "log(n(H2O)/x(H))"
+plot 'case1' u 1:(column(krome_idx_H2O)) w l t "EA1",  'case2' u 1:(column(krome_idx_H2O)) w l t "EA2"
+
+set ylabel "log(n(O2)/x(H))"
+plot 'case1' u 1:(column(krome_idx_O2)) w l t "EA1",  'case2' u 1:(column(krome_idx_O2)) w l t "EA2"
+
+
+unset multiplot
