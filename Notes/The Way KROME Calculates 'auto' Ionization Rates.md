@@ -72,3 +72,4 @@ $$
 - To get the certain X-ray ionization rate
   - the KROME package first turns the **number densities** of $\ce{H, He}$ into **column densities**. Note that the Jeans length now does not only depend on $\ce{H,He}$ but also other atoms. 
   - Then it reads the datafile `rateH.dat/rateHe.dat` and does **2-Dimension linear interpolation** to find the ionization rate.
+  - 

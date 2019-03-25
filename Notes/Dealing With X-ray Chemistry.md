@@ -94,7 +94,7 @@
   $$
 
   - $\sigma_{ \mathrm { ei } }(E) $ is the electron-impact cross section at energy $E$ , a few hundred $\mathrm{eV}$s for primary electrons and $50\ \mathrm{eV}$ for secondary electrons
-  - A mean value of the ratio from $0.1$ to $1\ \mathrm{keV}​$ is obtained, but the dependence on energy is small
+  - A mean value of the ratio from $0.1$ to $1\ \mathrm{keV}$ is obtained, but t he dependence on energy is small
   - Typically the ratio is $3\sim7$
 
 ### Grain heating and cooling mechanisms

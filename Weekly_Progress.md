@@ -589,6 +589,18 @@ $$
 
 3. Sucessfully repeat the EA1 and EA2 cases in Wakelam & Herbst 2008, which shows the evolution of certain species without X-ray
 
+
+
+## Mar. 25, 2019
+
+1. Distinguish between the direct ionization of heavy elements and the secondary ionization of heavy elements/molecules due to the fast electrons released mainly by $\ce{H2}$ and $\ce{He}$. The former causes Auger effect, which means a K-shell electron will be ionized and an outer electron will fill in the room. To get rid of extra energy the atom release another electron (Auger electron) and is thus doubly ionized. Doubly ionized species will soon react with other molecules or dissociate to form two singly charged parts (for molecules). **However**, as we consider mainly the secondary ionization, we do not count direct ionization of heavy elements and again use the approximation
+   $$
+   \zeta_{m}\approx\frac{\sigma_{e,m}(E)}{\sigma_{e,\ce{H2}}(E)}\zeta_{\ce{H2}}
+   $$
+   $\sigma_{e,m}$ can be found on [NIST (atom)](https://physics.nist.gov/PhysRefData/Ionization/atom_index.html) or [NIST (molecule)](https://physics.nist.gov/PhysRefData/Ionization/molTable.html)
+
+   
+
  ## To do list
 
   1. Check again the consistency with former work
