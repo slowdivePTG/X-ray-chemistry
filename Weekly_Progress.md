@@ -591,7 +591,7 @@ $$
 
 
 
-## Mar. 25, 2019
+## Mar. 26, 2019
 
 1. Distinguish between the direct ionization of heavy elements and the secondary ionization of heavy elements/molecules due to the fast electrons released mainly by $\ce{H2}$ and $\ce{He}$. The former causes Auger effect, which means a K-shell electron will be ionized and an outer electron will fill in the room. To get rid of extra energy the atom release another electron (Auger electron) and is thus doubly ionized. Doubly ionized species will soon react with other molecules or dissociate to form two singly charged parts (for molecules). **However**, as we consider mainly the secondary ionization, we do not count direct ionization of heavy elements and again use the approximation
    $$
@@ -599,7 +599,21 @@ $$
    $$
    $\sigma_{e,m}$ can be found on [NIST (atom)](https://physics.nist.gov/PhysRefData/Ionization/atom_index.html) or [NIST (molecule)](https://physics.nist.gov/PhysRefData/Ionization/molTable.html)
 
-   
+2. Several possible reasons for the inconsistency with Krolik's work
+
+   - We do not consider directly ionization of heavy elements, neither do we include doubly charged species (according to Maloney+1996 they are usually not important)
+
+   - Our chemical network is much larger
+
+     Eg. $\ce{NH3}$
+
+     $\ce{NH3}$ is included in Krolik's network. In the X-ray ionization case, when the ionization rate $\zeta\approx7\times10^{-16}$, the $\alpha$ value of $\ce{NH3}$ given by Krolik is low as $\sim0.5$ , significantly lower than $\sim0$ as we calculated. Krolik notes that the destruction of $\ce{NH3}$ is mainly due to the reaction with ionized $\ce{C+}$, however, using the trace module I wrote, I discover that this is not the case. $\ce{NH4+}$ accounts for the formation of $\ce{NH3}$ and the reaction rate is one order of magnitude higher than the destruction rate due to $\ce{C+}$.
+     As a test, I 'stopped' the reaction below
+     $$
+     \ce{NH4+ + E -> NH3}
+     $$
+     As a result, the $\alpha$ value of $\ce{NH3}$ is much closer to Krolik's result, which is also true for $\zeta\approx7\times10^{-18}$, suggesting that there may be reactions that Krolik did not consider which influence the sensitivity of some species to the X-ray ionization
+
 
  ## To do list
 
