@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.1.31)  28 MAR 2019 23:10
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.1.31)  29 MAR 2019 13:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1474,16 +1474,44 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 . - 'normal' (m/n) with NFSS spec.: <->"STFangsong/OT"
 . - 'small caps'  (m/sc) with NFSS spec.: 
 .................................................
+File: Wakelam1.png Graphic file (type bmp)
+<Wakelam1.png>
+File: 1.eps Graphic file (type eps)
+<1.eps>
+
+LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <10.53937> not available
+(Font)              size <10.95> substituted on input line 31.
+
+File: Wakelam2.png Graphic file (type bmp)
+<Wakelam2.png>
+
+Overfull \hbox (2.69104pt too wide) in paragraph at lines 39--40
+ [][] 
+ []
+
+File: 2.eps Graphic file (type eps)
+<2.eps>
+
+Underfull \hbox (badness 4024) in paragraph at lines 45--45
+[]\TU/STSong(0)/m/n/10.53937 图 \TU/lmr/m/n/10.53937 4: \TU/STSong(0)/m/n/10.539
+37 复 现 三 种 模 型 中 $[][][][][][][][][][][]$\TU/lmr/m/n/10.53937 ,
+ []
+
 [1
 
-] (./Materials.aux) ) 
-Here is how much of TeX's memory you used:
- 16388 strings out of 492970
- 372586 string characters out of 6133938
- 461807 words of memory out of 5000000
- 20231 multiletter control sequences out of 15000+600000
- 533932 words of font info for 53 fonts, out of 8000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 53i,7n,67p,10436b,442s stack positions out of 5000i,500n,10000p,200000b,80000s
+] [2] (./Materials.aux)
 
-Output written on Materials.pdf (1 page).
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.41063pt have occurred.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 16433 strings out of 492970
+ 373907 string characters out of 6133938
+ 463807 words of memory out of 5000000
+ 20265 multiletter control sequences out of 15000+600000
+ 535542 words of font info for 61 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 53i,11n,67p,10436b,743s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on Materials.pdf (2 pages).
