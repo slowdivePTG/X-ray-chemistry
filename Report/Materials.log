@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.1.31)  29 MAR 2019 13:57
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018) (preloaded format=xelatex 2019.1.31)  29 MAR 2019 14:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1497,21 +1497,25 @@ Underfull \hbox (badness 4024) in paragraph at lines 45--45
 37 复 现 三 种 模 型 中 $[][][][][][][][][][][]$\TU/lmr/m/n/10.53937 ,
  []
 
+File: 4.eps Graphic file (type eps)
+<4.eps>
+File: 3.eps Graphic file (type eps)
+<3.eps>
 [1
 
-] [2] (./Materials.aux)
+] [2] [3] (./Materials.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.41063pt have occurred.
 
  ) 
 Here is how much of TeX's memory you used:
- 16433 strings out of 492970
- 373907 string characters out of 6133938
- 463807 words of memory out of 5000000
- 20265 multiletter control sequences out of 15000+600000
+ 16450 strings out of 492970
+ 374640 string characters out of 6133938
+ 465807 words of memory out of 5000000
+ 20280 multiletter control sequences out of 15000+600000
  535542 words of font info for 61 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  53i,11n,67p,10436b,743s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Materials.pdf (2 pages).
+Output written on Materials.pdf (3 pages).
