@@ -13,17 +13,17 @@ program test_krome
   use krome_user_commons
   use krome_ode
   use krome_getphys
-  use krome_commons
 
   implicit none
 
   integer,parameter::nx=krome_nmols
   real*8::x(nx),m(nx+24),Tgas,t,dt,spy,xH,j21xs,dust2gas,x1(nx),x2(nx)
-  real*8::ncolH, ncolHe
+  integer,parameter::nd=krome_ndust,imax=100
+  real*8::xdust(nd),adust(nd),xdusti(nd),data(imax,nd),dataT(imax)
   integer::i,j
   spy = 3600. * 24. * 365. !seconds per year
-  Tgas = 1.6d2 !gas temperature (K)
-  xH = 1d5 !Hydrogen density
+  Tgas = 5d1 !gas temperature (K)
+  xH = 4d5 !Hydrogen density
 
   !user commons for opacity and CR rate
   call krome_set_user_av(1d1) !opacity Av (#)E11.3,
@@ -33,7 +33,7 @@ program test_krome
 
   x(:) = 0d0
   !initial densities (model EA2 Wakelam+Herbst 2008)
-  x(KROME_idx_H)  = 1d0   * xH
+  x(KROME_idx_H2)  = 0.5d0   * xH
   x(KROME_idx_He)  = 0.1d0   * xH
   x(KROME_idx_N)   = 2.15d-5  * xH
   x(KROME_idx_O)   = 1.75d-4 * xH
@@ -43,41 +43,60 @@ program test_krome
   !calculate elctrons (neutral cloud)
   x(KROME_idx_e) = krome_get_electrons(x(:))
 
+  !REMEMBER TO INITIAL X(:) FIRST
+  call krome_init_dust_distribution(x(:), 1d0/1.86d8)
+  call krome_set_Tdust(Tgas)
+
   !NOTE: here myCoe array is employed to store the
   ! coefficient values, since the temperature is
   ! constant during the model evolution.
   ! myCoe(:) is defined in krome_user_commons
   !myCoe(:) = krome_get_coef(Tgas,x(:))
 
-  dt = 0.1d4*spy !time-step (s)
+  dt = 1d8*spy !time-step (s)
   t = 0d0 !initial time (s)
 
-  call krome_set_user_crate(6.8d-16) !CR rate (1/s)
-  j21xs=0d0
+  call krome_set_user_crate(0d0) !CR rate (1/s)
+  j21xs=9d-2
   call krome_set_J21xray(j21xs)
   !output header
-  !open(unit=77, file="./data/case2")
+  open(unit=77, file="./data/case3")
   !write(77,'(a)') "#zeta=6.8e-16/s"
-  !write(77,'(a)') "#Jx21=8"
-  !write(77,'(a)') "#time "//trim(krome_get_names_header())
+  !write(77,'(a)') "#Jx21=0.08"
+  write(77,'(a)') "#time "//trim(krome_get_names_header())
   x1(:)=x(:)
   m(:)=get_mass()
   do
      print '(a10,E11.3,a3)',"time:",t/spy,"yr"
-     ncolH = num2col(x1(idx_H),x1(:))
-     ncolHe = num2col(x1(idx_He),x1(:))
-
-     print '(a10,E11.3)',"ncolH:",ncolH/get_jeans_length(x1(:),Tgas)/x1(idx_H)
-     print '(a10,E11.3)',"ncolHe:",ncolHe/get_jeans_length(x1(:),Tgas)/x1(idx_He)
-     print '(a10,E11.3)',"Jeans:",get_jeans_length(x1(:),Tgas)
-
      call krome(x1(:),Tgas,dt) !call KROME
-
      x1(:)=max(1d-99*xH,x1(:))
-     !call jex(nx,t,x1(:),"./data/Trace5_0")
+     !call jex(nx,t,x1(:),"./data/Trace3_0")
      t = t + dt !increase time
      dt = max(dt,t/3d0) !increase time-step
-     !write(77,'(999E15.5)') t/spy,x1(:)/xH
-     if(t>3d3*spy) exit !exit when overshoot 5d6 years
+     write(77,'(999E15.5)') t/spy,x1(:)/xH
+     if(t>20d8*spy) exit !exit when overshoot 5d6 years
   end do
+
+
+    dt = 1d8*spy !time-step (s)
+    t = 0d0 !initial time (s)
+    j21xs=9.1d-2
+    call krome_set_J21xray(j21xs)
+    call krome_set_user_crate(0d0) !CR rate (1/s)
+    !output header
+    open(unit=77, file="./data/case3_1")
+    !write(77,'(a)') "#zeta=7.8e-16/s"
+    !write(77,'(a)') "#Jx21=0.08004"
+    !write(77,'(a)') "#time "//trim(krome_get_names_header())
+    x2(:)=x(:)
+    do
+       print '(a10,E11.3,a3)',"time:",t/spy,"yr"
+       call krome(x2(:),Tgas,dt) !call KROME
+       x2(:)=max(1d-99*xH,x2(:))
+       !call jex(nx,t,x2(:),"./data/Trace4_1") !Jacobian Matrix
+       t = t + dt !increase time
+       dt = max(dt,t/3d0) !increase time-step
+       write(77,'(999E12.5)') t/spy,x2(:)/xH
+       if(t>20d8*spy) exit !exit when overshoot 5d6 years
+    end do
 end program test_krome

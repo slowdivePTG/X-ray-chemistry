@@ -13513,12 +13513,10 @@ contains
         *invsqrT32)
 
     !NH4+ + E -> NH2 + H + H
-    k(3903) = small + (3.20e-07&
-        *invsqrT32)
+    k(3903) = small + (3.20e-07*invsqrT32)
 
     !NH4+ + E -> NH2 + H2
-    k(3904) = small + (1.50e-07&
-        *invsqrT32)
+    k(3904) = small + (1.50e-07*invsqrT32)
 
     !NH4+ + E -> NH3 + H
     k(3905) = small + (1.05e-06*invsqrT32)

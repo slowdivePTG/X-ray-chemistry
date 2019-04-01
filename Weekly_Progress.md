@@ -610,9 +610,18 @@ $$
      $\ce{NH3}$ is included in Krolik's network. In the X-ray ionization case, when the ionization rate $\zeta\approx7\times10^{-16}$, the $\alpha$ value of $\ce{NH3}$ given by Krolik is low as $\sim0.5$ , significantly lower than $\sim0$ as we calculated. Krolik notes that the destruction of $\ce{NH3}$ is mainly due to the reaction with ionized $\ce{C+}$, however, using the trace module I wrote, I discover that this is not the case. $\ce{NH4+}$ accounts for the formation of $\ce{NH3}$ and the reaction rate is one order of magnitude higher than the destruction rate due to $\ce{C+}$.
      As a test, I 'stopped' the reaction below
      $$
-     \ce{NH4+ + E -> NH3}
+     \ce{NH4+ + e- -> NH3}
      $$
      As a result, the $\alpha$ value of $\ce{NH3}$ is much closer to Krolik's result, which is also true for $\zeta\approx7\times10^{-18}$, suggesting that there may be reactions that Krolik did not consider which influence the sensitivity of some species to the X-ray ionization
+
+
+
+## Apr. 1, 2019
+
+1. Continue on looking for the differences between the current chemical network and Krolik's network, but have not found any species with significant impacts on the $\alpha​$ group as $\ce{NH4+}​$ does. The best simulation result (closest to Krolik's) is
+
+   ![](./KROME/build_constant_H2/data/NH4+.eps) 
+
 
 
  ## To do list

@@ -2014,8 +2014,7 @@ contains
         *invsqrT32)
 
     !H+ + NH2CHO -> NH4+ + CO
-    k(575) = small + (8.62e-09&
-        *invsqrT32)
+    k(575) = small !+ (8.62e-09*invsqrT32)
 
     !H+ + NH2CHO -> HCO+ + NH3
     k(576) = small + (8.62e-09&
@@ -4224,7 +4223,7 @@ contains
     k(1197) = small + (4.59e-10)
 
     !CH+ + NH3 -> NH4+ + C
-    k(1198) = small + (4.05e-10)
+    k(1198) = small !+ (4.05e-10)
 
     !CH+ + CH4 -> C2H2+ + H2 + H
     k(1199) = small + (1.40e-10)
@@ -4692,7 +4691,7 @@ contains
     k(1353) = small + (8.40e-10)
 
     !HS+ + NH3 -> NH4+ + S
-    k(1354) = small + (7.70e-10)
+    k(1354) = small !+ (7.70e-10)
 
     !HS+ + CH4 -> H3CS+ + H2
     k(1355) = small + (5.40e-10)
@@ -4932,7 +4931,7 @@ contains
     k(1433) = small + (1.80e-09)
 
     !NH+ + NH3 -> NH4+ + N
-    k(1434) = small + (6.00e-10)
+    k(1434) = small !+ (6.00e-10)
 
     !NO+ + FE -> FE+ + NO
     k(1435) = small + (9.20e-10)
@@ -5161,7 +5160,7 @@ contains
     k(1509) = small + (1.20e-09)
 
     !OH+ + NH3 -> NH4+ + O
-    k(1510) = small + (1.20e-09)
+    k(1510) = small !+ (1.20e-09)
 
     !OH+ + CH4 -> H3O+ + CH2
     k(1511) = small + (1.40e-09)
@@ -5199,8 +5198,7 @@ contains
         *invsqrT32)
 
     !PH+ + NH3 -> NH4+ + P
-    k(1521) = small + (5.70e-10&
-        *invsqrT32)
+    k(1521) = small !+ (5.70e-10*invsqrT32)
 
     !PH+ + NH3 -> PNH3+ + H
     k(1522) = small + (5.70e-10&
@@ -5252,7 +5250,7 @@ contains
     k(1537) = small + (6.10e-10)
 
     !SIH+ + NH3 -> NH4+ + SI
-    k(1538) = small + (1.00e-09)
+    k(1538) = small !+ (1.00e-09)
 
     !SIN+ + O -> SIO+ + N
     k(1539) = small + (1.00e-09)
@@ -5399,7 +5397,7 @@ contains
     k(1586) = small + (5.50e-10)
 
     !C2H+ + NH3 -> NH4+ + C2
-    k(1587) = small + (5.50e-10)
+    k(1587) = small !+ (5.50e-10)
 
     !C2H+ + CH4 -> C2H2+ + CH3
     k(1588) = small + (3.74e-10)
@@ -5534,7 +5532,7 @@ contains
     k(1631) = small + (3.30e-10)
 
     !CH2+ + NH3 -> NH4+ + CH
-    k(1632) = small + (1.30e-09)
+    k(1632) = small !+ (1.30e-09)
 
     !CH2+ + NH3 -> CH4N+ + H
     k(1633) = small + (1.50e-09)
@@ -5720,7 +5718,7 @@ contains
     k(1693) = small + (2.20e-09)
 
     !H2O+ + NH3 -> NH4+ + OH
-    k(1694) = small + (9.00e-10)
+    k(1694) = small !+ (9.00e-10)
 
     !H2O+ + CH4 -> H3O+ + CH3
     k(1695) = small + (1.30e-09)
@@ -5771,7 +5769,7 @@ contains
     k(1710) = small + (5.60e-10)
 
     !H2S+ + NH3 -> NH4+ + HS
-    k(1711) = small + (1.30e-09)
+    k(1711) = small !+ (1.30e-09)
 
     !H3+ + C -> CH+ + H2
     k(1712) = small + (2.00e-09)
@@ -6083,8 +6081,7 @@ contains
     k(1794) = small + (1.00e-09)
 
     !H3+ + NH3 -> NH4+ + H2
-    k(1795) = small + (3.60e-09&
-        *invsqrT32)
+    k(1795) = small !+ (3.60e-09*invsqrT32)
 
     !H3+ + SIC2H -> SIC2H2+ + H2
     k(1796) = small + (3.21e-09&
@@ -6712,8 +6709,7 @@ contains
     k(1965) = small + (1.00e-09)
 
     !HCO+ + NH3 -> NH4+ + CO
-    k(1966) = small + (1.70e-09&
-        *invsqrT32)
+    k(1966) = small !+ (1.70e-09*invsqrT32)
 
     !HCO+ + SIC2H -> SIC2H2+ + CO
     k(1967) = small + (1.25e-09&
@@ -6988,8 +6984,7 @@ contains
     k(2038) = small + (5.00e-10)
 
     !HCS+ + NH3 -> NH4+ + CS
-    k(2039) = small + (1.62e-09&
-        *invsqrT32)
+    k(2039) = small !+ (1.62e-09*invsqrT32)
 
     !HNC+ + C -> CH+ + CN
     k(2040) = small + (1.10e-09)
@@ -7116,8 +7111,7 @@ contains
         *invsqrT32)
 
     !HNO+ + NH3 -> NH4+ + NO
-    k(2077) = small + (1.70e-09&
-        *invsqrT32)
+    k(2077) = small !+ (1.70e-09*invsqrT32)
 
     !HNO+ + CH4 -> CH5+ + NO
     k(2078) = small + (1.00e-10)
@@ -7206,8 +7200,7 @@ contains
         *invsqrT32)
 
     !N2H+ + NH3 -> NH4+ + N2
-    k(2103) = small + (1.70e-09&
-        *invsqrT32)
+    k(2103) = small !+ (1.70e-09*invsqrT32)
 
     !N2H+ + CH4 -> CH5+ + N2
     k(2104) = small + (9.00e-10)
@@ -7299,7 +7292,7 @@ contains
     k(2131) = small + (1.00e-10)
 
     !NH2+ + H2O -> NH4+ + O
-    k(2132) = small + (3.00e-11)
+    k(2132) = small !+ (3.00e-11)
 
     !NH2+ + H2S -> HS+ + NH3
     k(2133) = small + (1.80e-10)
@@ -7314,7 +7307,7 @@ contains
     k(2136) = small + (4.50e-10)
 
     !NH2+ + H2S -> NH4+ + S
-    k(2137) = small + (1.80e-10)
+    k(2137) = small !+ (1.80e-10)
 
     !NH2+ + HCN -> HCNH+ + NH
     k(2138) = small + (1.20e-09)
@@ -7338,7 +7331,7 @@ contains
     k(2144) = small + (1.50e-09)
 
     !NH2+ + NH3 -> NH4+ + NH
-    k(2145) = small + (1.00e-09)
+    k(2145) = small !+ (1.00e-09)
 
     !NO2+ + H -> NO+ + OH
     k(2146) = small + (1.90e-10)
@@ -7413,7 +7406,7 @@ contains
     k(2169) = small + (9.80e-10)
 
     !O2H+ + NH3 -> NH4+ + O2
-    k(2170) = small + (2.00e-09)
+    k(2170) = small !+ (2.00e-09)
 
     !OCS+ + NH3 -> NH3+ + OCS
     k(2171) = small + (1.60e-09&
@@ -7617,8 +7610,7 @@ contains
         *invsqrT32)
 
     !C2H2+ + NH3 -> NH4+ + C2H
-    k(2230) = small + (5.50e-10&
-        *invsqrT32)
+    k(2230) = small !+ (5.50e-10*invsqrT32)
 
     !C2H2+ + C2H3 -> C2H3+ + C2H2
     k(2231) = small + (5.30e-10&
@@ -7854,8 +7846,7 @@ contains
         *invsqrT32)
 
     !C3H+ + NH3 -> NH4+ + C3
-    k(2294) = small + (5.57e-10&
-        *invsqrT32)
+    k(2294) = small !+ (5.57e-10*invsqrT32)
 
     !C3H+ + CH4 -> C2H3+ + C2H2
     k(2295) = small + (6.12e-10)
@@ -8056,8 +8047,7 @@ contains
         *invsqrT32)
 
     !CH3+ + NH3 -> NH4+ + CH2
-    k(2353) = small + (3.00e-10&
-        *invsqrT32)
+    k(2353) = small !+ (3.00e-10*invsqrT32)
 
     !CH3+ + NH3 -> CH4N+ + H2
     k(2354) = small + (1.72e-09&
@@ -8223,12 +8213,10 @@ contains
         *invsqrT32)
 
     !HCNH+ + NH3 -> NH4+ + HCN
-    k(2398) = small + (8.75e-10&
-        *invsqrT32)
+    k(2398) = small !+ (8.75e-10*invsqrT32)
 
     !HCNH+ + NH3 -> NH4+ + HNC
-    k(2399) = small + (8.75e-10&
-        *invsqrT32)
+    k(2399) = small !+ (8.75e-10*invsqrT32)
 
     !H2CO+ + FE -> FE+ + H2CO
     k(2400) = small + (1.90e-09)
@@ -8300,7 +8288,7 @@ contains
     k(2422) = small + (4.30e-10)
 
     !H2CO+ + NH3 -> NH4+ + HCO
-    k(2423) = small + (1.30e-09)
+    k(2423) = small !+ (1.30e-09)
 
     !H2CO+ + CH4 -> H3CO+ + CH3
     k(2424) = small + (9.35e-11)
@@ -8460,8 +8448,7 @@ contains
     k(2465) = small + (1.00e-09)
 
     !H3O+ + NH3 -> NH4+ + H2O
-    k(2466) = small + (1.90e-09&
-        *invsqrT32)
+    k(2466) = small !+ (1.90e-09*invsqrT32)
 
     !H3O+ + SIC2H -> SIC2H2+ + H2O
     k(2467) = small + (1.45e-09&
@@ -8582,7 +8569,7 @@ contains
     k(2497) = small + (2.20e-09)
 
     !H3S+ + NH3 -> NH4+ + H2S
-    k(2498) = small + (1.90e-09)
+    k(2498) = small !+ (1.90e-09)
 
     !HCO2+ + C -> CH+ + CO2
     k(2499) = small + (1.00e-09)
@@ -8602,8 +8589,7 @@ contains
     k(2503) = small + (1.37e-09)
 
     !HCO2+ + NH3 -> NH4+ + CO2
-    k(2504) = small + (1.62e-09&
-        *invsqrT32)
+    k(2504) = small !+ (1.62e-09*invsqrT32)
 
     !HCO2+ + CH4 -> CH5+ + CO2
     k(2505) = small + (7.80e-10)
@@ -8616,7 +8602,7 @@ contains
     k(2507) = small + (2.13e-09)
 
     !HSO2+ + NH3 -> NH4+ + SO2
-    k(2508) = small + (2.00e-09)
+    k(2508) = small !+ (2.00e-09)
 
     !NH3+ + FE -> FE+ + NH3
     k(2509) = small + (2.30e-09)
@@ -8640,59 +8626,49 @@ contains
     k(2515) = small + (1.00e-11)
 
     !NH3+ + CH -> NH4+ + C
-    k(2516) = small + (4.90e-09&
-        *invsqrT32)
+    k(2516) = small !+ (4.90e-09*invsqrT32)
 
     !NH3+ + H2 -> NH4+ + H
-    k(2517) = small + (1.50e-14&
-        *T32**(-1.50e+00))
+    k(2517) = small !+ (1.50e-14*T32**(-1.50e+00))
 
     !NH3+ + NH -> NH4+ + N
-    k(2518) = small + (4.20e-09&
-        *invsqrT32)
+    k(2518) = small !+ (4.20e-09*invsqrT32)
 
     !NH3+ + NO -> NO+ + NH3
     k(2519) = small + (4.30e-10&
         *invsqrT32)
 
     !NH3+ + OH -> NH4+ + O
-    k(2520) = small + (5.20e-09&
-        *invsqrT32)
+    k(2520) = small !+ (5.20e-09*invsqrT32)
 
     !NH3+ + CH2 -> CH3+ + NH2
     k(2521) = small + (7.97e-10&
         *invsqrT32)
 
     !NH3+ + H2O -> NH4+ + OH
-    k(2522) = small + (2.40e-09&
-        *invsqrT32)
+    k(2522) = small !+ (2.40e-09*invsqrT32)
 
     !NH3+ + H2S -> NH4+ + HS
-    k(2523) = small + (9.60e-10&
-        *invsqrT32)
+    k(2523) = small !+ (9.60e-10*invsqrT32)
 
     !NH3+ + HCO -> HCO+ + NH3
     k(2524) = small + (5.90e-10&
         *invsqrT32)
 
     !NH3+ + HCO -> NH4+ + CO
-    k(2525) = small + (5.90e-10&
-        *invsqrT32)
+    k(2525) = small !+ (5.90e-10*invsqrT32)
 
     !NH3+ + NH2 -> NH4+ + NH
-    k(2526) = small + (2.50e-09&
-        *invsqrT32)
+    k(2526) = small !+ (2.50e-09*invsqrT32)
 
     !NH3+ + H2CO -> NH4+ + HCO
-    k(2527) = small + (2.70e-09&
-        *invsqrT32)
+    k(2527) = small !+ (2.70e-09*invsqrT32)
 
     !NH3+ + NH3 -> NH4+ + NH2
-    k(2528) = small + (2.00e-09&
-        *invsqrT32)
+    k(2528) = small !+ (2.00e-09*invsqrT32)
 
     !NH3+ + CH4 -> NH4+ + CH3
-    k(2529) = small + (3.90e-10)
+    k(2529) = small !+ (3.90e-10)
 
     !PC2H+ + C2H2 -> PC4H2+ + H
     k(2530) = small + (9.10e-10)
@@ -8819,8 +8795,7 @@ contains
         *invsqrT32)
 
     !C2H3+ + NH3 -> NH4+ + C2H2
-    k(2567) = small + (1.80e-09&
-        *invsqrT32)
+    k(2567) = small !+ (1.80e-09*invsqrT32)
 
     !C2H3+ + C2H3 -> C3H3+ + CH3
     k(2568) = small + (2.65e-10&
@@ -9409,7 +9384,7 @@ contains
     k(2733) = small + (6.90e-10)
 
     !CH4+ + NH3 -> NH4+ + CH3
-    k(2734) = small + (6.60e-10)
+    k(2734) = small !+ (6.60e-10)
 
     !CH4+ + NH3 -> CH5+ + NH2
     k(2735) = small + (3.00e-11)
@@ -9445,14 +9420,13 @@ contains
         *invsqrT32)
 
     !H3CO+ + NH3 -> NH4+ + H2CO
-    k(2745) = small + (1.70e-09&
-        *invsqrT32)
+    k(2745) = small !+ (1.70e-09*invsqrT32)
 
     !NH4+ + C -> HCNH+ + H2
-    k(2746) = small + (1.00e-11)
+    k(2746) = small !+ (1.00e-11)
 
     !NH4+ + C -> H2NC+ + H2
-    k(2747) = small + (1.00e-11)
+    k(2747) = small !+ (1.00e-11)
 
     !SIC2H2+ + C -> SIC3H+ + H
     k(2748) = small + (2.00e-10)
@@ -9559,8 +9533,7 @@ contains
         *invsqrT32)
 
     !C2H4+ + NH3 -> NH4+ + C2H3
-    k(2780) = small + (8.75e-10&
-        *invsqrT32)
+    k(2780) = small !+ (8.75e-10*invsqrT32)
 
     !C2H4+ + C2H3 -> C2H3+ + C2H4
     k(2781) = small + (5.20e-10&
@@ -10098,8 +10071,7 @@ contains
         *invsqrT32)
 
     !CH5+ + NH3 -> NH4+ + CH4
-    k(2930) = small + (2.00e-09&
-        *invsqrT32)
+    k(2930) = small !+ (2.00e-09*invsqrT32)
 
     !CH5+ + HC3N -> C3H2N+ + CH4
     k(2931) = small + (9.55e-09&
@@ -10177,8 +10149,7 @@ contains
         *invsqrT32)
 
     !C2H5+ + NH3 -> NH4+ + C2H4
-    k(2954) = small + (1.74e-09&
-        *invsqrT32)
+    k(2954) = small !+ (1.74e-09*invsqrT32)
 
     !C2H5+ + C2H4 -> C3H5+ + CH4
     k(2955) = small + (3.90e-10)
@@ -13513,15 +13484,13 @@ contains
         *invsqrT32)
 
     !NH4+ + E -> NH2 + H + H
-    k(3903) = small + (3.20e-07&
-        *invsqrT32)
+    k(3903) = small !+ (3.20e-07*invsqrT32)
 
     !NH4+ + E -> NH2 + H2
-    k(3904) = small + (1.50e-07&
-        *invsqrT32)
+    k(3904) = small !+ (1.50e-07*invsqrT32)
 
     !NH4+ + E -> NH3 + H
-    k(3905) = small + (1.05e-06*invsqrT32)
+    k(3905) = small !+ (1.05e-06*invsqrT32)
 
     !OCS+H2 + E -> OCS + H2
     k(3906) = small + (3.00e-07)
@@ -14823,8 +14792,7 @@ contains
         *invsqrT32)
 
     !NH4+ + H- -> NH3 + H2
-    k(4240) = small + (2.30e-07&
-        *invsqrT32)
+    k(4240) = small !+ (2.30e-07*invsqrT32)
 
     !C + E -> C-
     k(4241) = small + (3.00e-15)
@@ -15555,51 +15523,106 @@ contains
         * (1d0+phiH) + n(idx_He)&
         /(n(idx_H)+2*n(idx_H2)+1d-40) * ratexHe * phiH)&
         )* J21xray
-    k(14) = k(14) + 150*k(4452) !C
-    k(22) = k(22) + 400*k(4452) !O
-    k(20) = k(20) + 280*k(4452) !N
-    k(19) = k(19) + 7*k(4452) !Mg 1keV cross section ratio
-    k(36) = k(36) + 2*k(4452)*0.05
-    k(38) = k(38) + 2*k(4452)*0.95
 
-    !C2 -> C + C
-    k(26) = k(26) + 300*k(4452)
+        k(14) = k(14) + 3.1136*k(4452) !C
+        k(22) = k(22) + 1.5957*k(4452) !O
+        k(20) = k(20) + 2.0029*k(4452) !N
+        k(19) = k(19) + 13.1726*k(4452) !Mg 50eV cross section ratio
+        k(36) = k(36) + 2*k(4452)*0.05 !H2 -> H + H+ + E
+        k(38) = k(38) + 2*k(4452)*0.95 !H2 -> H2+ + E
 
-    !CN -> C + N
-    k(30) = k(30) + 430*k(4452)
+        !C2 -> C + C
+        k(26) = k(26) + 3.1136*2*k(4452)
 
-    !CO -> C + O
-    k(31) = k(31) + 550*k(4452)*0.8
+        !CH -> C + H
+        k(28) = k(28) + (1+3.1136)*k(4452)
 
-    !CO -> CO+ + E
-    k(32) = k(32) + 550*k(4452)*0.2
+        !CN -> C + N
+        k(30) = k(30) + (2.0029+3.1136)*k(4452)
 
-    !NH -> N + H
-    k(45) = k(45) + 280*k(4452)
+        !CO -> C + O
+        k(31) = k(31) + (3.1136+1.5957)*k(4452)*0.8
 
-    !NO -> N + O
-    k(46) = k(46) + 680*k(4452)*0.8
+        !CO -> CO+ + E
+        k(32) = k(32) + (3.1136+1.5957)*k(4452)*0.2
 
-    !NO -> NO+ + E
-    k(47) = k(47) + 680*k(4452)*0.2
+        !MGH -> MG + H
+        k(42) = k(42) + (13.1726+1)*k(4452)
 
-    !O2 -> O + O
-    k(49) = k(49) + 800*k(4452)*0.8
+        !N2 -> N + N
+        k(43) = k(43) + 2*2.0029*k(4452)
 
-    !O2 -> O2+ + E
-    k(50) =k(50) + 800*k(4452)*0.2
+        !NH -> N + H
+        k(45) = k(45) + (1+2.0029)*k(4452)
 
-    !H2O -> OH + H
-    k(72) = k(72) + 400*k(4452)
+        !NO -> N + O
+        k(46) = k(46) + (2.0029+1.5957)*k(4452)*0.8
 
-    !HCN -> CN + H
-    k(75) = k(75) + 430*k(4452)
+        !NO -> NO+ + E
+        k(47) = k(47) + (2.0029+1.5957)*k(4452)*0.2
 
-    !HCO -> CO + H
-    k(76) = k(76) + 550*k(4452)*0.8
+        !O2 -> O + O
+        k(49) = k(49) + 1.5957*2*k(4452)*0.8
 
-    !HCO -> HCO+ + E
-    k(77) = k(77) + 550*k(4452)*0.2
+        !O2 -> O2+ + E
+        k(50) =k(50) + 1.5957*2*k(4452)*0.2
+
+        !OH -> O + H
+        k(51) = k(51) + (1.5957+1)*k(4452)
+
+        !C2H -> C2 + H
+        k(62) = k(62) + (2*3.1136+1)*k(4452)*0.5
+
+        !C2N -> C + CN
+        k(63) = k(63) + (2*3.1136+1)*k(4452)*0.5
+
+        !C3 -> C2 + C
+        k(65) = k(65) + (3*3.1136)*k(4452)
+
+        !CCO -> C2 + O
+        k(66) = k(66) + (2*3.1136+1.5957)*k(4452)*0.5
+
+        !CCO -> CO + C
+        k(67) = k(67) + (2*3.1136+1.5957)*k(4452)*0.5
+
+        !CH2 -> CH2+ + E
+        k(70) = k(70) + (3.1136+2*1)*k(4452)
+
+        !CO2 -> CO + O
+        k(71) = k(71) + (3.1136+2*1.5957)*k(4452)
+
+        !H2O -> OH + H
+        k(72) = k(72) + (1.5957+2)*k(4452)
+
+        !HCN -> CN + H
+        k(75) = k(75) + (1+3.1136+2.0029)*k(4452)
+
+        !HCO -> CO + H
+        k(76) = k(76) + (1+3.1136+1.5957)*k(4452)*0.8
+
+        !HCO -> HCO+ + E
+        k(77) = k(77) + (1+3.1136+1.5957)*k(4452)*0.2
+
+        !HNC -> CN + H
+        k(81) = k(81) + (1+2.0029+3.1136)*k(4452)
+
+        !HNO -> HNO+ + E
+        k(82) = k(82) + (1+2.0029+1.5957)*k(4452)
+
+        !N2O -> NO + N
+        k(86) = k(86) + (2*2.0029+1.5957)*k(4452)
+
+        !NH2 -> NH + H
+        k(88) = k(88) + (2*1+2.0029)*k(4452)*0.8
+
+        !NH2 -> NH2+ + E
+        k(89) = k(88) + (2*1+2.0029)*k(4452)*0.2
+
+        !NH3 -> NH3+ + E
+        k(121) = k(121) + (3*1+2.0029)*k(4452)
+
+        !C2H2 -> C2H2+ + E
+        !k(4306) = k(4306) + (2*1+2*3.1139)*k(4452)
 
     !HE -> HE+ + E
     k(4453) = (small + (ratexHe &

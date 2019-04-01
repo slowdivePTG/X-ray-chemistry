@@ -10,8 +10,8 @@
     - `case3`: jx21=0.08
     - `case3_1`: jx21=0.096
   - Case 4: cosmic ray ionization,jx21=8
-    - `case3`: jx21=8
-    - `case3_1`: jx21=9.6
+    - `case3`: jx21=9.0
+    - `case3_1`: jx21=9.1
   - Case 5: cosmic ray ionization,jx21=80
     - `case3`: jx21=80
     - `case3_1`: jx21=96
