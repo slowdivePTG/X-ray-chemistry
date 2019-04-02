@@ -2,10 +2,14 @@
 
 Manasvi Lingam, Idan Ginsburg, Shmuel Bialy, 2019, arXiv
 
-## Two Purposes
+## Positive
 
-- Explicate some of the positive consequences associated with AGNs (during the quasar phase) for the synthesis of prebiotic compounds
+- Explicate some of the positive consequences associated with AGNs (during the quasar phase) for the synthesis of prebiotic compounds (precursors of RNA)
 - enabling photosynthesis on free-floating planets up to a certain distance from the SMBH
+
+## Negative
+
+- Some crucial factors that not considered explicitly before
 
 ## Ultraviolet Fluxes for Prebiotic Chemistry
 
@@ -20,18 +24,18 @@ Manasvi Lingam, Idan Ginsburg, Shmuel Bialy, 2019, arXiv
 
 - Consider the fraction $\eta_{OL}​$ (in the wavelength)
 
-  - cyanosulfidic metabolism (related to cyanide and sulfide, i.e. $\ce{(H)CN,(H2)S}$)
+  - cyanosulfidic metabolism (related to cyanide and sulfide, i.e. $\ce{(H)CN,(H2)S}​$)
   - a reaction network that yields the **precursors of amino acids, nucleic acids, and lipids** from a common set of reactants under potentially plausible geochemical conditions
   - $200-280\text{ nm}​$
 
-- Energy flux $\Psi_{OL}$ (isotropic assumption)
+- Energy flux $\Psi_{OL}​$ (isotropic assumption)
   $$
   \Psi_{O L} \approx \frac{\eta_{O L} L}{4 \pi d^{2}}\approx \frac{2.1\times10^{-2}L}{4 \pi d^{2}}
   $$
 
 - Photon number flux threshold
 
-  Consider the reaction between $\ce{HCN}$ and $\ce{SO3^2-}$ to finally form RNA pyrimidine
+  Consider the reaction between $\ce{HCN}​$ and $\ce{SO3^2-}​$ to finally form RNA pyrimidine
 
   ![](./Lingam2019_fig1.png)
 
@@ -76,7 +80,7 @@ Manasvi Lingam, Idan Ginsburg, Shmuel Bialy, 2019, arXiv
 
 - **Photosynthesis**
 
-  the biological synthesis of organic compounds from inorganic carbon sources via oxygenic photosynthesis that is usually accompanied by the release of $\ce{O2}$ as a product
+  the biological synthesis of organic compounds from inorganic carbon sources via oxygenic photosynthesis that is usually accompanied by the release of $\ce{O2}​$ as a product
 
 - Free-floating planets
 
@@ -90,17 +94,17 @@ Manasvi Lingam, Idan Ginsburg, Shmuel Bialy, 2019, arXiv
   $$
   \Psi_{P A R} \approx \frac{\eta_{P A R} L}{4 \pi d^{2}}
   $$
-  $\eta_{PAR}​$ is the fraction of radiation suitable for photosynthesis
+  $\eta_{PAR}$ is the fraction of radiation suitable for photosynthesis
 
   - $400-1000\text{ nm}$
     - Lower bound - inhabitation of photosynthesis by UV radiation
     - Upper bound - Energy to split a water molecule
-  - $\eta_{PAR}\approx5.7\times10^{-2}$ (sometimes high as 0.1)
+  - $\eta_{PAR}\approx5.7\times10^{-2}​$ (sometimes high as 0.1)
 
 - $\Psi_{0} \sim 2.1 \text { erg } \mathrm{cm}^{-2} \mathrm{s}^{-1}$
 
-  - $\overline{E}_{P A R} \approx3.5 \times 10^{-12} \text { erg }$
-  - Number flux $\sim 6 \times 10^{11} \text { photons } \mathrm{cm}^{-2}\mathrm{s}^{-1}$
+  - $\overline{E}_{P A R} \approx3.5 \times 10^{-12} \text { erg }​$
+  - Number flux $\sim 6 \times 10^{11} \text { photons } \mathrm{cm}^{-2}\mathrm{s}^{-1}​$
 
 - Critical distance
   $$
@@ -110,12 +114,15 @@ Manasvi Lingam, Idan Ginsburg, Shmuel Bialy, 2019, arXiv
   - Low productivity at low light levels
   - Other species are needed, such as $\ce{PO4^3-}$ and water
 
-### Timeslaces
+### Timescales
 
 - Photosynthesis evolution timescale on earth - $10^8-10^9\text{ yrs}$ after the origin of life
 - May be able to permit the evolution of anoxygenic photosynthesis at the minimum, but not to maintain it
 
 ## Harmful Effects of Ultraviolet Radiation on Biospheres
+
+- Inhibition of photosynthesis
+- The damage of DNA and other biomolecules
 
 ### Critical galactic distance
 
@@ -136,33 +143,34 @@ Manasvi Lingam, Idan Ginsburg, Shmuel Bialy, 2019, arXiv
 
 - Other worlds
 
-  - Archean Earth at $\sim$ 3.9 Ga
+  - Ancient Earth at $\sim$ 3.9 Ga
     - High UV-C flux
-    - Extreme UV radiation $871 \text { erg } \mathrm{cm}^{-2}\mathrm{s}^{-1}$
+    - Extreme UV radiation $871 \text { erg } \mathrm{cm}^{-2}\mathrm{s}^{-1}​$
     - Evidence of simple forms of life
-  - Modern Earth
+  - Modern Earth (with ozone layer)
     - UV-B flux dominates
     - Complex biota adapted to live in temperate environments
 
 - Critical TOA UV flux
 
+  - TOA UV-B flux contributed by AGN equals the TOA UV-B flux arising from the sun
   - Modern Earth - $8.6 \times 10^{3} \text { erg } \mathrm{cm}^{-2} \mathrm{s}^{-1}​$
-  - Earth-like planets in the HZ of late M-dwarfs - a factor of $\sim4\times10^{-3}$ relative to earth
+  - Earth-like planets in the HZ of late M-dwarfs - a factor of $\sim4\times10^{-3}​$ relative to earth
 
 - Critical distance
   $$
-  d_{B} \approx 9.6 \times 10^{-4} \mathrm{pc} \varepsilon_{\mathrm{Edd}}^{1 / 2} \sqrt{\frac{M_{B H}}{M_{\odot}}},\ \text{or }d_{B} \approx 1.5 \times 10^{-2} \operatorname{pc} \varepsilon_{\mathrm{Edd}}^{1 / 2} \sqrt{\frac{M_{B H}}{M_{\odot}}}
+  d_{B} \approx 9.6 \times 10^{-4} \mathrm{pc}\ \varepsilon_{\mathrm{Edd}}^{1 / 2} \sqrt{\frac{M_{B H}}{M_{\odot}}},\ \text{or }d_{B} \approx 1.5 \times 10^{-2} \operatorname{pc} \varepsilon_{\mathrm{Edd}}^{1 / 2} \sqrt{\frac{M_{B H}}{M_{\odot}}}
   $$
   2 pc / 30 pc
 
-  - Obviously too small, and even for $d\sim d_B$, UV radiation will not necessarily cause extinction-level events
+  - Obviously too small, and even for $d\sim d_B​$, UV radiation will not necessarily cause extinction-level events
   - Can be very large for more massive SMBHs ($d_{B} \lesssim 0.2-3\ \mathrm{kpc}$)
 
 ### X-rays and Gamma rays
 
 - Mainly absorbed by earth-like atmospheres and merely reach the surface
   - Atmospheric escape
-  - Photolysis of atmospheric $\ce{H2O}$ leading to the depletion of oceans
+  - Photolysis of atmospheric $\ce{H2O}​$ leading to the depletion of oceans
   - Chemical impacts
   - Ozone depletion
 
