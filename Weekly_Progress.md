@@ -618,7 +618,7 @@ $$
 
 ## Apr. 1, 2019
 
-1. Continue on looking for the differences between the current chemical network and Krolik's network, but have not found any species with significant impacts on the $\alpha​$ group as $\ce{NH4+}​$ does. The best simulation result (closest to Krolik's) is
+1. Continue on looking for the differences between the current chemical network and Krolik's network, but have not found any species with significant impacts on the $\alpha$ group as $\ce{NH4+}$ does. The best simulation result (closest to Krolik's) is
 
    ![](./KROME/build_constant_H2/data/NH4+.eps) 
 
