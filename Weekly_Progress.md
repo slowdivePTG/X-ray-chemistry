@@ -624,6 +624,16 @@ $$
 
 
 
+## Apr. 7, 2019
+
+1. Review several important molecules that are closely related to observations (details in [Observations and Important Molecules](https://github.com/slowdivePTG/X-ray-chemistry/blob/master/Notes/Observations%20and%20Important%20Molecules.md))
+   - $\ce{Si/SiO}$ - grain process induced by shocks or X-ray evaporation
+   - $\ce{HCO+/HOC+}$
+   - $\ce{CN/HCN}$
+   - Several species v.s. $\ce{CO}$
+
+
+
  ## To do list
 
   1. Check again the consistency with former work
