@@ -12,7 +12,7 @@
 
 ### Important species
 
-- S/SiO (evaporation of dust by X-ray/grain process by shocks (not X-ray)) (Martín-Pintado et al. 2000)
+- Si/SiO (evaporation of dust by X-ray/grain process by shocks (not X-ray)) (Martín-Pintado et al. 2000)
 - HCO+ (and its metastable isomer HOC+) - ratio can be low as 50-100
 - CN/HCN (>1 in XDR)
 - High CS/CO ratio
