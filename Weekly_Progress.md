@@ -347,7 +347,7 @@ $$
 ## Dec. 20, 2018
 1. Grain Process
 
-   - It’s important to find out how $\ce{H2}$ molecules form on the grain surface as well as how KROME deal with the process 
+   - It’s important to find out how $\ce{H2}​$ molecules form on the grain surface as well as how KROME deal with the process 
      $$
      \ce{H + H + dust -> H2 +dust}
      $$
@@ -633,6 +633,10 @@ $$
    - Several species v.s. $\ce{CO}$
 
 
+
+### Apr. 10, 2019
+
+1. Determine a typical gas-to-dust ratio $\sim100$ (Bohlin et al. 1978), but can be much lower in planetary disks (Ansdell et al. 2016)
 
  ## To do list
 

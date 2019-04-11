@@ -44,7 +44,7 @@ program test_krome
   x(KROME_idx_e) = krome_get_electrons(x(:))
 
   !REMEMBER TO INITIAL X(:) FIRST
-  call krome_init_dust_distribution(x(:), 1d0/1d2)!/1.86d8)
+  call krome_init_dust_distribution(x(:), 1d0/1.86d8)!/1.86d8)
   call krome_set_Tdust(Tgas)
 
   !NOTE: here myCoe array is employed to store the
@@ -63,7 +63,7 @@ program test_krome
   open(unit=77, file="./data/case4")
   !write(77,'(a)') "#zeta=6.8e-16/s"
   !write(77,'(a)') "#Jx21=0.08"
-  write(77,'(a)') "#time "//trim(krome_get_names_header())
+  !write(77,'(a)') "#time "//trim(krome_get_names_header())
   x1(:)=x(:)
   m(:)=get_mass()
   do
@@ -73,7 +73,7 @@ program test_krome
      !call jex(nx,t,x1(:),"./data/Trace5_0")
      t = t + dt !increase time
      dt = max(dt,t/3d0) !increase time-step
-     write(77,'(999E15.5)') t/spy,x1(:)/xH
+     !write(77,'(999E15.5)') t/spy,x1(:)/xH
      if(t>30d7*spy) exit !exit when overshoot 5d6 years
   end do
 
@@ -96,7 +96,7 @@ program test_krome
        !call jex(nx,t,x2(:),"./data/Trace5_1") !Jacobian Matrix
        t = t + dt !increase time
        dt = max(dt,t/3d0) !increase time-step
-       write(77,'(999E12.5)') t/spy,x2(:)/xH
+       !write(77,'(999E12.5)') t/spy,x2(:)/xH
        if(t>30d7*spy) exit !exit when overshoot 5d6 years
     end do
 end program test_krome
