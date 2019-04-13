@@ -55,21 +55,26 @@ T=160\text{ K}\\
 J_{X,21}=1\\
 $$
 
-- The datafile is a $30\times30$ table which shows $\log(N_{\ce H}), \log(N_{\ce H})-\log(N_{\ce He})$, $N$ stands for the column density. The size of the cloud is estimated by its Jeans length and the number density $n$
+- The datafile is a $30\times30$ table which shows $\log(N_{\ce H}), \log(N_{\ce H})-\log(N_{\ce He})$, $N$ stands for the column density
 
+- The column densities influence the ionization rates by changing the optical depth
+  $$
+  \tau(E)={N_\ce{H}\sigma_\ce H(E)+N_\ce{He}\sigma_\ce{He}(E)}
+  $$
+
+- The size of the cloud is estimated by its Jeans length and the number density $n$
   $$
   n^i=\frac{N^i}{\lambda_J/2}
   $$
 
 - **But wait here** (Mar. 22), this is actually not the formula applied. The datafile utilizes an approximation
   $$
-  N^i=1.83\times{10}^{21}\left(\frac{n^i}{1000}\right)^{2/3}
+  N^i=1.87\times{10}^{21}\left(\frac{n^i}{1000}\right)^{2/3}
   $$
-  by assuming the number of $\ce{H/He}$ in different molecular clouds as a constant
+  by assuming the total number of $\ce{H/He}$ atoms in different molecular clouds as a constant
 
 - The third column is $\log(\zeta_p^i(\text{s}^{-1}))$ showing the **primary ionization rate**. It varies only because the total optical depth $\tau$ varies
 
 - To get the certain X-ray ionization rate
   - the KROME package first turns the **number densities** of $\ce{H, He}$ into **column densities**. Note that the Jeans length now does not only depend on $\ce{H,He}$ but also other atoms. 
   - Then it reads the datafile `rateH.dat/rateHe.dat` and does **2-Dimension linear interpolation** to find the ionization rate.
-  - 
