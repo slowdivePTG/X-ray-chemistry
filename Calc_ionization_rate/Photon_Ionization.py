@@ -103,12 +103,12 @@ def main():
     #C.draw()
     #O.draw()
     #plt.show()
-    print(O.cross(500)/H.cross(500))
-    print(C.cross(500)/H.cross(500))
-    print(O.cross(1000)/H.cross(1000))
-    print(C.cross(1000)/H.cross(1000))
-    print(N.cross(1000)/H.cross(1000))
-    print(Mg.cross(1000)/H.cross(1000)) #Ratios
+    #print(O.cross(500)/H.cross(500))
+    #print(C.cross(500)/H.cross(500))
+    #print(O.cross(1000)/H.cross(1000))
+    #print(C.cross(1000)/H.cross(1000))
+    #print(N.cross(1000)/H.cross(1000))
+    #print(Mg.cross(1000)/H.cross(1000)) #Ratios
 
 
 
@@ -142,10 +142,11 @@ def Ion_p(H, He, A, spec = None, nH = 1e5, nHe = 1e4):
     if spec == None:
         val1, err1 = quad(lambda epsilon:F_E(epsilon)/epsilon*np.exp(-Tau(epsilon, H, He, nH, nHe))*A.cross(epsilon), 2000, 10000)
         return(val1)
+
     y = np.array([])
     for i in range(len(spec.E_eV)):
         y = np.append(y, spec.Fnu_abs[i]/h/spec.E_eV[i]*np.exp(-Tau(spec.E_eV[i], H, He, nH, nHe))*A.cross(spec.E_eV[i]))
-    return(inte(spec.E_eV, y))
+    return(inte(spec.E_eV, y, lower = 100, upper = 1e6))
 
 
 # - Optical depth $\tau$ is determined by the size of the cloud as well as the abundance of each species

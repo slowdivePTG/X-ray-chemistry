@@ -86,18 +86,33 @@ class Spec:
     def absorb(self, Abs):
         self.flux(Abs.distance)
         self.Fnu_abs = self.Fnu.copy()
+        Abs_UV_raw = np.loadtxt('./Galactic_absorption_UV/dist_1.0kpc')
+        Abs_UV_E = Abs_UV_raw[:,0]
+        Abs_UV = Abs_UV_raw[:,2]
+        for j in range(len(self.E_eV)):
+            for i in range(len(Abs_UV_E)):
+                if self.E_keV[j]<Abs_UV_E[i]:
+                    break
+            if i == 0:
+                slope = (Abs_UV[1]-Abs_UV[0])/(Abs_UV_E[1]-Abs_UV_E[0])
+                self.Fnu_abs[j] = self.Fnu[j]*(Abs_UV[0]+slope*(self.E_keV[j]-Abs_UV_E[0]))
+            elif i == len(Abs.E):
+                pass
+            else:
+                slope = (Abs_UV[i-1]-Abs_UV[i])/(Abs_UV_E[i-1]-Abs_UV_E[i])
+                self.Fnu_abs[j] = self.Fnu[j]*(Abs_UV[i]+slope*(self.E_keV[j]-Abs_UV_E[i]))
         for j in range(len(self.E_eV)):
             for i in range(len(Abs.E)):
                 if self.E_keV[j]<Abs.E[i]:
                     break
             if i == 0:
                 slope = (Abs.absorb[1]-Abs.absorb[0])/(Abs.E[1]-Abs.E[0])
-                self.Fnu_abs[j] = self.Fnu[j]*(Abs.absorb[0]+slope*(self.E_keV[j]-Abs.E[0]))
+                self.Fnu_abs[j] = self.Fnu_abs[j]*(Abs.absorb[0]+slope*(self.E_keV[j]-Abs.E[0]))
             elif i == len(Abs.E):
                 pass
             else:
                 slope = (Abs.absorb[i-1]-Abs.absorb[i])/(Abs.E[i-1]-Abs.E[i])
-                self.Fnu_abs[j] = self.Fnu[j]*(Abs.absorb[i]+slope*(self.E_keV[j]-Abs.E[i]))
+                self.Fnu_abs[j] = self.Fnu_abs[j]*(Abs.absorb[i]+slope*(self.E_keV[j]-Abs.E[i]))
 
     def info(self, alpha=True, beta=True, mdot=True):
         temp = {}
