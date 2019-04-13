@@ -27,7 +27,7 @@ program test_krome
 
   !user commons for opacity and CR rate
   call krome_set_user_av(1d1) !opacity Av (#)E11.3,
-  call krome_set_user_gas_dust_ratio(7.57d11) !gas/dust
+  call krome_set_user_gas_dust_ratio(1d2) !gas/dust
   !Second run:j21xs=1d-1
   call krome_init()
 
@@ -56,14 +56,14 @@ program test_krome
   dt = 1d7*spy !time-step (s)
   t = 0d0 !initial time (s)
 
-  call krome_set_user_crate(6.7d-16) !CR rate (1/s)
-  j21xs=0d0!4.56*1.0003
+  call krome_set_user_crate(0d0) !CR rate (1/s)
+  j21xs=4.56
   call krome_set_J21xray(j21xs)
   !output header
   open(unit=77, file="./data/case4")
   !write(77,'(a)') "#zeta=6.8e-16/s"
   !write(77,'(a)') "#Jx21=0.08"
-  !write(77,'(a)') "#time "//trim(krome_get_names_header())
+  write(77,'(a)') "#time "//trim(krome_get_names_header())
   x1(:)=x(:)
   m(:)=get_mass()
   do
@@ -73,21 +73,21 @@ program test_krome
      !call jex(nx,t,x1(:),"./data/Trace5_0")
      t = t + dt !increase time
      dt = max(dt,t/3d0) !increase time-step
-     !write(77,'(999E15.5)') t/spy,x1(:)/xH
+     write(77,'(999E15.5)') t/spy,x1(:)/xH
      if(t>30d7*spy) exit !exit when overshoot 5d6 years
   end do
 
 
-    dt = 1d6*spy !time-step (s)
+    dt = 1d7*spy !time-step (s)
     t = 0d0 !initial time (s)
-    j21xs=4.56*0.9997
+    j21xs=4.56*0.9
     call krome_set_J21xray(j21xs)
     call krome_set_user_crate(0d0) !CR rate (1/s)
     !output header
     open(unit=77, file="./data/case4_1")
     !write(77,'(a)') "#zeta=7.8e-16/s"
     !write(77,'(a)') "#Jx21=0.08004"
-    !write(77,'(a)') "#time "//trim(krome_get_names_header())
+    write(77,'(a)') "#time "//trim(krome_get_names_header())
     x2(:)=x(:)
     do
        print '(a10,E11.3,a3)',"time:",t/spy,"yr"
@@ -96,7 +96,7 @@ program test_krome
        !call jex(nx,t,x2(:),"./data/Trace5_1") !Jacobian Matrix
        t = t + dt !increase time
        dt = max(dt,t/3d0) !increase time-step
-       !write(77,'(999E12.5)') t/spy,x2(:)/xH
+       write(77,'(999E12.5)') t/spy,x2(:)/xH
        if(t>30d7*spy) exit !exit when overshoot 5d6 years
     end do
 end program test_krome
