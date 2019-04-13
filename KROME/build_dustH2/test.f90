@@ -44,7 +44,7 @@ program test_krome
   x(KROME_idx_e) = krome_get_electrons(x(:))
 
   !REMEMBER TO INITIAL X(:) FIRST
-  call krome_init_dust_distribution(x(:), 1d0/1.86d8)!/1.86d8)
+  call krome_init_dust_distribution(x(:), 1d0/1d2)!/1.86d8)
   call krome_set_Tdust(Tgas)
 
   !NOTE: here myCoe array is employed to store the
