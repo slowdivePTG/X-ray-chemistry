@@ -634,9 +634,13 @@ $$
 
 
 
-### Apr. 10, 2019
+### Apr. 13, 2019
 
-1. Determine a typical gas-to-dust ratio $\sim100$ (Bohlin et al. 1978), but can be much lower in planetary disks (Ansdell et al. 2016)
+1. Determine a typical gas-to-dust ratio $\sim100​$ (Bohlin et al. 1978), but can be much lower in planetary disks (Ansdell et al. 2016)
+
+2. Finish the pipeline
+
+   ![](/Users/chang/X-ray-chemistry/Report/pipeline.eps)
 
  ## To do list
 
