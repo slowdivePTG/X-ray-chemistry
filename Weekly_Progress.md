@@ -228,7 +228,7 @@ $$
    $$
    and compare the results.
 
-   When we set $n_\ce{H}=2\times10^4\text{ cm}^{-3},n_\ce{He}=2\times10^3\text{ cm}^{-3},J_{X21}=0.1,T=160\text{ K}​$ , we get
+   When we set $n_\ce{H}=2\times10^4\text{ cm}^{-3},n_\ce{He}=2\times10^3\text{ cm}^{-3},J_{X21}=0.1,T=160\text{ K}$ , we get
    $$
    \zeta_\ce{H}=4.09\times10^{-18}\text{ s}^{-1},\quad\zeta_\ce{He}=3.61\times10^{-18}\text{ s}^{-1}\quad(\text{Primal})\\
    \zeta_\ce{H'}=7.23\times10^{-18}\text{ s}^{-1},\quad\zeta_\ce{He'}=6.07\times10^{-18}\text{ s}^{-1}\quad(\text{Simplified})\\
@@ -347,7 +347,7 @@ $$
 ## Dec. 20, 2018
 1. Grain Process
 
-   - It’s important to find out how $\ce{H2}​$ molecules form on the grain surface as well as how KROME deal with the process 
+   - It’s important to find out how $\ce{H2}$ molecules form on the grain surface as well as how KROME deal with the process 
      $$
      \ce{H + H + dust -> H2 +dust}
      $$
@@ -554,7 +554,7 @@ $$
 
 2. Plot several figures
    - The standard (Latif+ 2015) X-ray spectra in comparison with Guangshuai's data (both with and without absorption)
-     - $J_{X21}=0.1,1,10​$
+     - $J_{X21}=0.1,1,10$
      - $\alpha=0.1,\beta=100,\dot m=0.5$ in difference distances ($1, 2, 4, 8$ kpc)
 
    ![](./Calc_ionization_rate/Fnu-nu.eps)
@@ -634,17 +634,40 @@ $$
 
 
 
-### Apr. 13, 2019
+## Apr. 13, 2019
 
-1. Determine a typical gas-to-dust ratio $\sim100​$ (Bohlin et al. 1978), but can be much lower in planetary disks (Ansdell et al. 2016)
+1. Determine a typical gas-to-dust ratio $\sim100$ (Bohlin et al. 1978), but can be much lower in planetary disks (Ansdell et al. 2016)
 
 2. Finish the pipeline
 
    ![](/Users/chang/X-ray-chemistry/Report/pipeline.eps)
 
- ## To do list
+- The electron fraction of molecular clouds whose galactic distance $D>1\text{ kpc}$ is less than $10^{-4}$
+- For $D=1,\ 2\text{ kpc}$, the tendency of chemical evolution of many species are quite different
+- Abundances of several radicals significantly increase for smaller galactic distance
 
-  1. Check again the consistency with former work
+
+
+## Apr. 23, 2019
+
+1. Study the organic molecules formation process in cold cores (Herbst & Dishoeck 2009)
+
+   - Prebiotic molecules
+     - Involved in the processes leading to the origin of life
+     - Species with **structural elements** in common with those found in living organisms
+     - Most of the interstellar prebiotic molecular are detected in Sgr B2
+
+   - Gas-phase model
+     - Chains of ion-molecular reactions starting with $\ce{H3+}$ and primeval atomic species lead to a variety of complex molecular ions - unsaturated (few hydrogen atoms)
+       - Many H-atom transfer reactions involving molecular ions ($\ce{X+}$) of the type $\ce{X+ + H2 -> XH+ + H}$ are either **endothermic** or possess potential barriers
+       - Once the positive molecular ions are formed, they undergo dissociative recombinations $\ce{CnH^2+ + e- -> CnH + H}$, which will take one or two hydrogen atoms out of them
+       - Ion-molecular reactions with $\ce{C+}$ or $\ce{C}$ and neutral-neutral reactions with $\ce{C}$ lead to carbon insertion and growth of carbon chains
+   - Gas-grain model
+
+2. 
+
+## To do list
+
   2. Find more physical details of ISM closer to the galactic center with higher temperature and higher degree of ionization. 
   3. Figure out the extra process we need to consider (such as heating when the degree of ionization is high).
 
