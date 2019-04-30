@@ -212,10 +212,17 @@ def phi(E, A):
     ph = (E/A.min()-1)*aa*np.power(1-np.power(xe, bb), cc)
     return ph
 
-def phi_bar(A):
-    J_Phi, err1 = quad(lambda epsilon:J21*1e-21*np.power(epsilon/1000.0,-1.5)*phi(epsilon, A), 2000, 10000)
-    J, err2 = quad(lambda epsilon:J21*1e-21*np.power(epsilon/1000.0,-1.5), 2000, 10000)
-    return(J_Phi/J)
+def phi_bar(A, spec = None):
+    if spec == None:
+        J_Phi, err1 = quad(lambda epsilon:J21*1e-21*np.power(epsilon/1000.0,-1.5)*phi(epsilon, A), 2000, 10000)
+        J, err2 = quad(lambda epsilon:J21*1e-21*np.power(epsilon/1000.0,-1.5), 2000, 10000)
+        return(J_Phi/J)
+    J_Phi = np.array([])
+    J = np.array([])
+    for i in range(len(spec.E_eV)):
+        J_Phi = np.append(J_Phi, spec.Fnu_abs[i]*phi(spec.E_eV[i], A))
+        J = np.append(J_Phi, spec.Fnu_abs[i])
+    return(inte(spec.E_eV, J_Phi)/inte(spec.E_eV, J))
 
 def phi_b(A):
     aa, bb, cc = A.getabc()
@@ -227,12 +234,16 @@ def phi_b(A):
         return 0
 
 def Ion_x(n1, n2, H, He, A, B, spec = None): #the method offered in Latif 2015
-    Ip = Ion_p(H, He, A, spec)
-    zeta_2 = (Ip + n2/n1*Ion_p(H, He, B, spec))*phi_bar(A)
+    nH = max(n1, n2)
+    nHe = min(n1, n2)
+    Ip = Ion_p(H, He, A, spec, nH, nHe)
+    zeta_2 = (Ip + n2/n1*Ion_p(H, He, B, spec))*phi_bar(A, spec)
     return(Ip + zeta_2)
 
 def Ion_xx(n1, n2, H, He, A, B, spec = None): #what krome is actually using(simplified phi_b)
-    Ip = Ion_p(H, He, A, spec)
+    nH = max(n1, n2)
+    nHe = min(n1, n2)
+    Ip = Ion_p(H, He, A, spec, nH, nHe)
     zeta_2 = (Ip + n2/n1*Ion_p(H, He, B, spec))*phi_b(A)
     return(Ip + zeta_2)
 
@@ -240,9 +251,9 @@ def Ion_xxx(n1, n2, H, He, A, B, spec = None):
     Ip = Ion_p(H, He, A, spec)
     I21,err1 = quad(lambda epsilon:F_E(epsilon)*np.exp(-Tau(epsilon, H, He))/epsilon*B.cross(epsilon)*phi(epsilon,A), 2000, 10000)
     I22,err2 = quad(lambda epsilon:F_E(epsilon)*np.exp(-Tau(epsilon, H, He))/epsilon*A.cross(epsilon)*phi(epsilon,A), 2000, 10000)
-    print(I22/Ion_p(H, He, A, spec)/phi_bar(A))
-    print(I21/Ion_p(H, He, B, spec)/phi_bar(A))
-    print()
+    #print(I22/Ion_p(H, He, A, spec)/phi_bar(A))
+    #print(I21/Ion_p(H, He, B, spec)/phi_bar(A))
+    #print()
     return(Ip+n2/n1*I21+I22)
 
 
@@ -258,17 +269,8 @@ def Ion_xxx(n1, n2, H, He, A, B, spec = None):
 
 
 def test(H, He, spec = None):
-    print(H.name, np.log10(Ion_p(H, He, H, spec)), np.log10(Ion_x(nH, nHe, H, He, H, He, spec)))
-    print(He.name, np.log10(Ion_p(H, He, He, spec)), np.log10(Ion_x(nHe, nH, H, He, He, H, spec)))
-    print()
-    #print(Ion_x(nH, nHe, H, He, H, He, spec)/Ion_p(H, He, H, spec), np.log10(Ion_x(nH, nHe, H, He, H, He, spec)))
-    #print(Ion_x(nHe, nH, H, He, He, H, spec)/Ion_p(H, He, H, spec), np.log10(Ion_x(nHe, nH, H, He, He, H, spec)))
-    #print()
-    #print(Ion_xx(nH, nHe, H, He, H, He), np.log10(Ion_xx(nH, nHe, H, He, H, He)))
-    #print(Ion_xx(nHe, nH, H, He, He, H), np.log10(Ion_xx(nHe, nH, H, He, He, H)))
-    #print()
-    #print(Ion_xxx(nH, nHe, H, He, H, He), np.log10(Ion_xxx(nH, nHe, H, He, H, He)))
-    #print(Ion_xxx(nHe, nH, H, He, He, H), np.log10(Ion_xxx(nHe, nH, H, He, He, H)))
+    print(H.name, np.log10(Ion_p(H, He, H, spec)), np.log10(Ion_x(nH, nHe, H, He, H, He, spec)), np.log10(Ion_xx(nH, nHe, H, He, H, He, spec)))
+    print(He.name, np.log10(Ion_p(H, He, He, spec)), np.log10(Ion_x(nHe, nH, H, He, He, H, spec)), np.log10(Ion_xx(nHe, nH, H, He, He, H, spec)))
 
 
 # ## Draw the flux-energy diagram
