@@ -598,7 +598,7 @@ $$
    \zeta_{m}\approx\frac{\sigma_{e,m}(E)}{\sigma_{e,\ce{H2}}(E)}\zeta_{\ce{H2}}
    $$
    $\sigma_{e,m}$ can be found on [NIST (atom)](https://physics.nist.gov/PhysRefData/Ionization/atom_index.html) or [NIST (molecule)](https://physics.nist.gov/PhysRefData/Ionization/molTable.html)
-
+   
 2. Several possible reasons for the inconsistency with Krolik's work
 
    - We do not consider directly ionization of heavy elements, neither do we include doubly charged species (according to Maloney+1996 they are usually not important)
@@ -709,8 +709,10 @@ $$
      - **Hot core phase** - temperature of the hot core or corino
        
        **Second generation species** - formed once the core becomes a hot core or corino with a temperature of 100 K - 300 K. Only gas phase reactions occur and most complex species are eventually destroyed 
-       
-       
+
+2. Add X-ray secondary ionization processes to around 200 gaseous species ( in `krome_subs.f90`)
+
+
 
 ## To do list
 
