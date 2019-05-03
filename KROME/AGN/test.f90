@@ -47,6 +47,7 @@ program test_krome
   x(KROME_idx_Clj) = 1.8d-7  * xH
   x(KROME_idx_Pj)  = 1.17d-7 * xH
   x(KROME_idx_Fj)  = 1.8d-8  * xH
+  x(KROME_idx_CH4O) = 2d-10  * xH
 
   !calculate elctrons (neutral cloud)
   x(KROME_idx_e) = krome_get_electrons(x(:))
@@ -80,7 +81,7 @@ program test_krome
      t = t + dt !increase time
      dt = max(dt,t/10d0) !increase time-step
      write(77,'(999E15.5)') t/spy,x1(:)/xH
-     if(t>1d7*spy) exit !exit when overshoot 5d6 years
+     if(t>1d7*spy) exit !exit when overshoot 1d7 years
   end do
 
 end program test_krome

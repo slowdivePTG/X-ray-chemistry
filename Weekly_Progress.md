@@ -688,6 +688,30 @@ $$
 
 
 
+## May 3, 2019
+
+1. Study the organic molecules formation process in hot cores and corinos (Herbst & Dishoeck 2009)
+
+   >Corino - The warm, dense inner region of the envelope of young stellar objects where complex organic molecules are located
+   
+   
+   
+   - Main physical processes
+   
+     - **Cold phase** - cold cores undergo isothermal (equal temperature) collapse
+   
+       **Zeroth-generation species** - large molecules formed in the gas and on granular mantles - $\ce{CH3OH}$
+   
+     - **Warm-up phase** - passive warm-up of the inner envolope of the protostar, from 10 K to 100 K - 300 K
+   
+       **First-generation species** - formed at least partially in and on granular mantles during the warm-up period as a cold core becomes a YSO - photodissociation of large species produces radicals such as $\ce{CH3O,HCO}$, which can form larger molecules on the surface (such as $\ce{HCOOCH3}$)
+   
+     - **Hot core phase** - temperature of the hot core or corino
+       
+       **Second generation species** - formed once the core becomes a hot core or corino with a temperature of 100 K - 300 K. Only gas phase reactions occur and most complex species are eventually destroyed 
+       
+       
+
 ## To do list
 
   2. Find more physical details of ISM closer to the galactic center with higher temperature and higher degree of ionization. 
