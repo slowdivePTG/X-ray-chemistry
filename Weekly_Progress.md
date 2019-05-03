@@ -662,9 +662,31 @@ $$
        - Many H-atom transfer reactions involving molecular ions ($\ce{X+}$) of the type $\ce{X+ + H2 -> XH+ + H}$ are either **endothermic** or possess potential barriers
        - Once the positive molecular ions are formed, they undergo dissociative recombinations $\ce{CnH^2+ + e- -> CnH + H}$, which will take one or two hydrogen atoms out of them
        - Ion-molecular reactions with $\ce{C+}$ or $\ce{C}$ and neutral-neutral reactions with $\ce{C}$ lead to carbon insertion and growth of carbon chains
-   - Gas-grain model
+     
+   - Gas-grain model (grain surface chemistry)
 
-2. 
+     - Tend to produce saturated species
+
+       - Atomic hydrogen - effective reactant (small, light atoms diffuse rapidly on the surface)
+
+       - $\ce{CO}$ can be hydrogenated to the complex molecule methanol via
+         $$
+         \ce{CO -> HCO -> H2CO -> H2COH -> CH3OH}
+         $$
+         which involves atomic hydrogen
+
+       - $\ce{CH3CH2OH}$ can be produced in similar way
+
+   - Chemical models
+
+     - Pseudo-time-dependent mode
+       - Homogeneous, time-independent physical conditions are assumed
+       - The mathematical treatment of grain-surface reactions is tricky because of the small size and heterogeneity of individual grains
+     - Models including anionic chemistry have been run
+     - Both the best overall agreement with observations and the largest abundances of carbon-chain complex species typically occur at $10^5-10^6$ yrs with normal oxygen-rich elemental abundances (C/O=0.4)
+
+
+
 
 ## To do list
 
