@@ -1,0 +1,557 @@
+    !C -> C+ + E
+    k(14) = rateEvaluateOnce(14)
+
+    !CL -> CL+ + E
+    k(15) = rateEvaluateOnce(15)
+
+    !FE -> FE+ + E
+    k(16) = rateEvaluateOnce(16)
+
+    !H -> H+ + E
+    k(17) = rateEvaluateOnce(17)
+
+    !MG -> MG+ + E
+    k(19) = rateEvaluateOnce(19)
+
+    !N -> N+ + E
+    k(20) = rateEvaluateOnce(20)
+
+    !NA -> NA+ + E
+    k(21) = rateEvaluateOnce(21)
+
+    !O -> O+ + E
+    k(22) = rateEvaluateOnce(22)
+
+    !P -> P+ + E
+    k(23) = rateEvaluateOnce(23)
+
+    !S -> S+ + E
+    k(24) = rateEvaluateOnce(24)
+
+    !SI -> SI+ + E
+    k(25) = rateEvaluateOnce(25)
+
+    !C2 -> C + C
+    k(26) = rateEvaluateOnce(26)
+
+    !CCL -> C + CL
+    k(27) = rateEvaluateOnce(27)
+
+    !CH -> C + H
+    k(28) = rateEvaluateOnce(28)
+
+    !CLO -> CL + O
+    k(29) = rateEvaluateOnce(29)
+
+    !CN -> C + N
+    k(30) = rateEvaluateOnce(30)
+
+    !CO -> C + O
+    k(31) = rateEvaluateOnce(31)
+
+    !CO -> CO+ + E
+    k(32) = rateEvaluateOnce(32)
+
+    !CP -> C + P
+    k(33) = rateEvaluateOnce(33)
+
+    !CS -> C + S
+    k(34) = rateEvaluateOnce(34)
+
+    !H2 -> H + H
+    k(35) = rateEvaluateOnce(35)
+
+    !H2 -> H+ + H + E
+    k(36) = rateEvaluateOnce(36)
+
+    !H2 -> H+ + H-
+    k(37) = rateEvaluateOnce(37)
+
+    !H2 -> H2+ + E
+    k(38) = rateEvaluateOnce(38)
+
+    !HCL -> H + CL
+    k(39) = rateEvaluateOnce(39)
+
+    !HF -> F + H
+    k(40) = rateEvaluateOnce(40)
+
+    !HS -> H + S
+    k(41) = rateEvaluateOnce(41)
+
+    !MGH -> MG + H
+    k(42) = rateEvaluateOnce(42)
+
+    !N2 -> N + N
+    k(43) = rateEvaluateOnce(43)
+
+    !NAH -> NA + H
+    k(44) = rateEvaluateOnce(44)
+
+    !NH -> N + H
+    k(45) = rateEvaluateOnce(45)
+
+    !NO -> N + O
+    k(46) = rateEvaluateOnce(46)
+
+    !NO -> NO+ + E
+    k(47) = rateEvaluateOnce(47)
+
+    !NS -> N + S
+    k(48) = rateEvaluateOnce(48)
+
+    !O2 -> O + O
+    k(49) = rateEvaluateOnce(49)
+
+    !O2 -> O2+ + E
+    k(50) = rateEvaluateOnce(50)
+
+    !OH -> O + H
+    k(51) = rateEvaluateOnce(51)
+
+    !PH -> P + H
+    k(52) = rateEvaluateOnce(52)
+
+    !PN -> P + N
+    k(53) = rateEvaluateOnce(53)
+
+    !PO -> P + O
+    k(54) = rateEvaluateOnce(54)
+
+    !S2 -> S + S
+    k(55) = rateEvaluateOnce(55)
+
+    !SIC -> SI + C
+    k(56) = rateEvaluateOnce(56)
+
+    !SIH -> SI + H
+    k(57) = rateEvaluateOnce(57)
+
+    !SIN -> SI + N
+    k(58) = rateEvaluateOnce(58)
+
+    !SIO -> SI + O
+    k(59) = rateEvaluateOnce(59)
+
+    !SIS -> SI + S
+    k(60) = rateEvaluateOnce(60)
+
+    !SO -> S + O
+    k(61) = rateEvaluateOnce(61)
+
+    !C2H -> C2 + H
+    k(62) = rateEvaluateOnce(62)
+
+    !C2N -> C + CN
+    k(63) = rateEvaluateOnce(63)
+
+    !C2S -> CS + C
+    k(64) = rateEvaluateOnce(64)
+
+    !C3 -> C2 + C
+    k(65) = rateEvaluateOnce(65)
+
+    !CCO -> C2 + O
+    k(66) = rateEvaluateOnce(66)
+
+    !CCO -> CO + C
+    k(67) = rateEvaluateOnce(67)
+
+    !CCP -> C2 + P
+    k(68) = rateEvaluateOnce(68)
+
+    !CCP -> CP + C
+    k(69) = rateEvaluateOnce(69)
+
+    !CH2 -> CH2+ + E
+    k(70) = rateEvaluateOnce(70)
+
+    !CO2 -> CO + O
+    k(71) = rateEvaluateOnce(71)
+
+    !H2O -> OH + H
+    k(72) = rateEvaluateOnce(72)
+
+    !H2S -> H2 + S
+    k(73) = rateEvaluateOnce(73)
+
+    !H2S -> H2S+ + E
+    k(74) = rateEvaluateOnce(74)
+
+    !HCN -> CN + H
+    k(75) = rateEvaluateOnce(75)
+
+    !HCO -> CO + H
+    k(76) = rateEvaluateOnce(76)
+
+    !HCO -> HCO+ + E
+    k(77) = rateEvaluateOnce(77)
+
+    !HCP -> CP + H
+    k(78) = rateEvaluateOnce(78)
+
+    !HCS -> HCS+ + E
+    k(79) = rateEvaluateOnce(79)
+
+    !HCSI -> CH + SI
+    k(80) = rateEvaluateOnce(80)
+
+    !HNC -> CN + H
+    k(81) = rateEvaluateOnce(81)
+
+    !HNO -> HNO+ + E
+    k(82) = rateEvaluateOnce(82)
+
+    !HNSI -> SIN + H
+    k(83) = rateEvaluateOnce(83)
+
+    !HPO -> PO + H
+    k(84) = rateEvaluateOnce(84)
+
+    !HS2 -> HS + S
+    k(85) = rateEvaluateOnce(85)
+
+    !N2O -> NO + N
+    k(86) = rateEvaluateOnce(86)
+
+    !NAOH -> NA + OH
+    k(87) = rateEvaluateOnce(87)
+
+    !NH2 -> NH + H
+    k(88) = rateEvaluateOnce(88)
+
+    !NH2 -> NH2+ + E
+    k(89) = rateEvaluateOnce(89)
+
+    !NO2 -> NO + O
+    k(90) = rateEvaluateOnce(90)
+
+    !O2H -> O + OH
+    k(91) = rateEvaluateOnce(91)
+
+    !O2H -> O2 + H
+    k(92) = rateEvaluateOnce(92)
+
+    !OCN -> CN + O
+    k(93) = rateEvaluateOnce(93)
+
+    !OCS -> CO + S
+    k(94) = rateEvaluateOnce(94)
+
+    !OCS -> OCS+ + E
+    k(95) = rateEvaluateOnce(95)
+
+    !PH2 -> PH + H
+    k(96) = rateEvaluateOnce(96)
+
+    !SIC2 -> SIC + C
+    k(97) = rateEvaluateOnce(97)
+
+    !SIH2 -> SIH + H
+    k(98) = rateEvaluateOnce(98)
+
+    !SINC -> SI + CN
+    k(99) = rateEvaluateOnce(99)
+
+    !SIO2 -> SIO + O
+    k(100) = rateEvaluateOnce(100)
+
+    !SO2 -> SO + O
+    k(101) = rateEvaluateOnce(101)
+
+    !C2H2 -> C2H + H
+    k(102) = rateEvaluateOnce(102)
+
+    !C2H2 -> C2H2+ + E
+    k(103) = rateEvaluateOnce(103)
+
+    !C3H -> C3 + H
+    k(104) = rateEvaluateOnce(104)
+
+    !HC3 -> C3 + H
+    k(105) = rateEvaluateOnce(105)
+
+    !C3N -> C2 + CN
+    k(106) = rateEvaluateOnce(106)
+
+    !C3O -> C2 + CO
+    k(107) = rateEvaluateOnce(107)
+
+    !C3P -> CCP + C
+    k(108) = rateEvaluateOnce(108)
+
+    !C3S -> C2 + CS
+    k(109) = rateEvaluateOnce(109)
+
+    !C4 -> C3 + C
+    k(110) = rateEvaluateOnce(110)
+
+    !CH3 -> CH2 + H
+    k(111) = rateEvaluateOnce(111)
+
+    !CH3 -> CH3+ + E
+    k(112) = rateEvaluateOnce(112)
+
+    !H2CO -> CO + H2
+    k(113) = rateEvaluateOnce(113)
+
+    !H2CS -> H2 + CS
+    k(114) = rateEvaluateOnce(114)
+
+    !H2O2 -> OH + OH
+    k(115) = rateEvaluateOnce(115)
+
+    !H2S2 -> HS + HS
+    k(116) = rateEvaluateOnce(116)
+
+    !H2SIO -> SIO + H2
+    k(117) = rateEvaluateOnce(117)
+
+    !HCCP -> CCP + H
+    k(118) = rateEvaluateOnce(118)
+
+    !NH3 -> NH + H2
+    k(119) = rateEvaluateOnce(119)
+
+    !NH3 -> NH2 + H
+    k(120) = rateEvaluateOnce(120)
+
+    !NH3 -> NH3+ + E
+    k(121) = rateEvaluateOnce(121)
+
+    !SIC2H -> SIC2 + H
+    k(122) = rateEvaluateOnce(122)
+
+    !SIC3 -> SIC2 + C
+    k(123) = rateEvaluateOnce(123)
+
+    !SICH2 -> SIC + H2
+    k(124) = rateEvaluateOnce(124)
+
+    !SIH3 -> SIH2 + H
+    k(125) = rateEvaluateOnce(125)
+
+    !C2H2N -> CH2 + CN
+    k(126) = rateEvaluateOnce(126)
+
+    !C2H2O -> CH2 + CO
+    k(127) = rateEvaluateOnce(127)
+
+    !C2H2O -> C2H2O+ + E
+    k(128) = rateEvaluateOnce(128)
+
+    !C2H3 -> C2H2 + H
+    k(129) = rateEvaluateOnce(129)
+
+    !C3H2 -> C3H + H
+    k(130) = rateEvaluateOnce(130)
+
+    !H2C3 -> HC3 + H
+    k(131) = rateEvaluateOnce(131)
+
+    !C4H -> C4 + H
+    k(132) = rateEvaluateOnce(132)
+
+    !C4N -> C3 + CN
+    k(133) = rateEvaluateOnce(133)
+
+    !C4P -> C3P + C
+    k(134) = rateEvaluateOnce(134)
+
+    !C4S -> C3 + CS
+    k(135) = rateEvaluateOnce(135)
+
+    !C5 -> C4 + C
+    k(136) = rateEvaluateOnce(136)
+
+    !CH2O2 -> HCO + OH
+    k(137) = rateEvaluateOnce(137)
+
+    !CH2O2 -> CH2O2+ + E
+    k(138) = rateEvaluateOnce(138)
+
+    !CH2PH -> HCP + H2
+    k(139) = rateEvaluateOnce(139)
+
+    !CH3N -> HCN + H2
+    k(140) = rateEvaluateOnce(140)
+
+    !CH4 -> CH2 + H2
+    k(141) = rateEvaluateOnce(141)
+
+    !HC3N -> C2H + CN
+    k(142) = rateEvaluateOnce(142)
+
+    !SIC2H2 -> SIC2 + H2
+    k(143) = rateEvaluateOnce(143)
+
+    !SIC3H -> SIC3 + H
+    k(144) = rateEvaluateOnce(144)
+
+    !SIC4 -> SIC2 + C2
+    k(145) = rateEvaluateOnce(145)
+
+    !SICH3 -> SICH2 + H
+    k(146) = rateEvaluateOnce(146)
+
+    !SIH4 -> SIH2 + H2
+    k(147) = rateEvaluateOnce(147)
+
+    !C2H3N -> CH3 + CN
+    k(148) = rateEvaluateOnce(148)
+
+    !C2H3N -> C2H3N+ + E
+    k(149) = rateEvaluateOnce(149)
+
+    !C2H4 -> C2H2 + H2
+    k(150) = rateEvaluateOnce(150)
+
+    !C2H4 -> C2H4+ + E
+    k(151) = rateEvaluateOnce(151)
+
+    !C3H3 -> C3H2 + H
+    k(152) = rateEvaluateOnce(152)
+
+    !C3H3 -> H2C3 + H
+    k(153) = rateEvaluateOnce(153)
+
+    !C4H2 -> C2H + C2H
+    k(154) = rateEvaluateOnce(154)
+
+    !C4H2 -> C4H + H
+    k(155) = rateEvaluateOnce(155)
+
+    !C4H2 -> C4H2+ + E
+    k(156) = rateEvaluateOnce(156)
+
+    !C5H -> C5 + H
+    k(157) = rateEvaluateOnce(157)
+
+    !C5N -> C4 + CN
+    k(158) = rateEvaluateOnce(158)
+
+    !C6 -> C5 + C
+    k(159) = rateEvaluateOnce(159)
+
+    !CH4O -> CH3 + OH
+    k(160) = rateEvaluateOnce(160)
+
+    !CH4O -> H2CO + H2
+    k(161) = rateEvaluateOnce(161)
+
+    !CH4O -> H3CO+ + H + E
+    k(162) = rateEvaluateOnce(162)
+
+    !CH4O -> CH4O+ + E
+    k(163) = rateEvaluateOnce(163)
+
+    !C2H4O -> CH3 + HCO
+    k(164) = rateEvaluateOnce(164)
+
+    !C2H4O -> CH4 + CO
+    k(165) = rateEvaluateOnce(165)
+
+    !C2H4O -> C2H4O+ + E
+    k(166) = rateEvaluateOnce(166)
+
+    !C2H5 -> C2H4 + H
+    k(167) = rateEvaluateOnce(167)
+
+    !C3H3N -> C2H3 + CN
+    k(168) = rateEvaluateOnce(168)
+
+    !C3H4 -> C3H3 + H
+    k(169) = rateEvaluateOnce(169)
+
+    !C3H4 -> C3H4+ + E
+    k(170) = rateEvaluateOnce(170)
+
+    !C5H2 -> C5H + H
+    k(171) = rateEvaluateOnce(171)
+
+    !C6H -> C6 + H
+    k(172) = rateEvaluateOnce(172)
+
+    !C7 -> C6 + C
+    k(173) = rateEvaluateOnce(173)
+
+    !CH5N -> HCN + H2 + H + H
+    k(174) = rateEvaluateOnce(174)
+
+    !CH5N -> CH5N+ + E
+    k(175) = rateEvaluateOnce(175)
+
+    !HC5N -> C4H + CN
+    k(176) = rateEvaluateOnce(176)
+
+    !C6H2 -> C6H + H
+    k(177) = rateEvaluateOnce(177)
+
+    !C7H -> C7 + H
+    k(178) = rateEvaluateOnce(178)
+
+    !C7N -> C6 + CN
+    k(179) = rateEvaluateOnce(179)
+
+    !C8 -> C7 + C
+    k(180) = rateEvaluateOnce(180)
+
+    !CH3C3N -> CH3 + C3N
+    k(181) = rateEvaluateOnce(181)
+
+    !HCOOCH3 -> H2CO + H2CO
+    k(182) = rateEvaluateOnce(182)
+
+    !C2H5OH -> C2H5OH+ + E
+    k(183) = rateEvaluateOnce(183)
+
+    !C7H2 -> C7H + H
+    k(184) = rateEvaluateOnce(184)
+
+    !C8H -> C8 + H
+    k(185) = rateEvaluateOnce(185)
+
+    !C9 -> C8 + C
+    k(186) = rateEvaluateOnce(186)
+
+    !CH3C4H -> CH3 + C4H
+    k(187) = rateEvaluateOnce(187)
+
+    !CH3OCH3 -> H2CO + CH4
+    k(188) = rateEvaluateOnce(188)
+
+    !CH3OCH3 -> CH3OCH3+ + E
+    k(189) = rateEvaluateOnce(189)
+
+    !HC7N -> C6H + CN
+    k(190) = rateEvaluateOnce(190)
+
+    !C2H6CO -> C2H2O + CH4
+    k(191) = rateEvaluateOnce(191)
+
+    !C8H2 -> C8H + H
+    k(192) = rateEvaluateOnce(192)
+
+    !C9H -> C9 + H
+    k(193) = rateEvaluateOnce(193)
+
+    !C9N -> C8 + CN
+    k(194) = rateEvaluateOnce(194)
+
+    !CH3C5N -> CH3 + C5N
+    k(195) = rateEvaluateOnce(195)
+
+    !C9H2 -> C9H + H
+    k(196) = rateEvaluateOnce(196)
+
+    !CH3C6H -> CH3 + C6H
+    k(197) = rateEvaluateOnce(197)
+
+    !CH3C7N -> CH3 + C7N
+    k(198) = rateEvaluateOnce(198)
+
+    !HC9N -> C8H + CN
+    k(199) = rateEvaluateOnce(199)
+
+    !CH+ -> C + H+
+    k(200) = rateEvaluateOnce(200)
