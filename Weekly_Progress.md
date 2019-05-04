@@ -167,12 +167,12 @@ $$
 
 1. More details on secondary ionization
 
-   The secondary ionization rate for $\ce{H}$ ( Stäuber 2005, Maloney 1996, ): 
+   The secondary ionization rate for $\ce{H}$ ( Stäuber 2005, Maloney 1996): 
    $$
    \zeta_H^{(2)}=\int_{E_{min}}^{E_{max}}\frac{F(E)}{E}N_{sec}(E,x_e)\sigma(E)\text{d}E\\
    N_{sec}(E,x_e)=\frac{E-E_{th}}{W(E)}\approx\frac{E}{W(E)}
    $$
-   $N_{sec}(E)$ is the number of secondary **ionizations** per unit energy produced by primary photoelectrons$W(E)$ is the mean energy expended to produce an ion pair through rapid electron process
+   $N_{sec}(E)$ is the number of secondary **ionizations** per unit energy produced by primary photoelectrons, $W(E)$ is the mean energy expended to produce an ion pair through rapid electron process
 
    #### A BIG MISTAKE HERE LAST WEEK!
 
