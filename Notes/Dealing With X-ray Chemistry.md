@@ -58,11 +58,11 @@
 
       For the $11\ \mathrm{eV}$ released, $2\ \mathrm{eV}$ goes to the ionization, $8\ \mathrm{eV}$ goes to heating
 
-    - Significant amount of the primary nonthermal photoelectron energy can go into ***excitation*** of **the rotation-vibration bands of $\ce{H2}​$** & **dissociative electrons**
+    - Significant amount of the primary nonthermal photoelectron energy can go into ***excitation*** of **the rotation-vibration bands of $\ce{H2}$** & **dissociative electrons**
 
 #### UV photon flux from secondary electrons
 
-- Internally generated **FUV photons** ($6\ \mathrm { eV } \lesssim h \nu \lesssim 13.6\ \mathrm { eV }$) produced by energetic non-thermal electrons colliding with hydrogen atoms and molecules -- emission of Ly$\alpha​$ and Lyman-Werner band photons
+- Internally generated **FUV photons** ($6\ \mathrm { eV } \lesssim h \nu \lesssim 13.6\ \mathrm { eV }$) produced by energetic non-thermal electrons colliding with hydrogen atoms and molecules -- emission of Ly$\alpha$ and Lyman-Werner band photons
 
 > Lyman and Werner absorption bands of molecular hydrogen, $11.2 \sim 13.6 \ \mathrm { eV }$
 
@@ -81,7 +81,7 @@
 
 - For atomic Hydrogen and Helium, they assume that the secondary ionization dominates
 
-- For other atomic species including $\ce{C,O,S,Si,Fe}​$, they also introduce the primary ionization using the cross section of Verner et. al. (1993)
+- For other atomic species including $\ce{C,O,S,Si,Fe}$, they also introduce the primary ionization using the cross section of Verner et. al. (1993)
 
   - For $\ce{C,O}$, they assume X-ray ionization produces singly charged ions because of the rapid charge exchange with hydrogen
   - For $\ce{S,Si,Fe}$, they assume that X-ray ionization produces doubly charged ions and explicitly calculate the relative abundance of neutral, singly charged and doubly charged species
@@ -157,7 +157,7 @@
   $$
   \zeta _ { \mathrm { H } _ { 2 } } = \int F ( E , r ) \sigma _ { \mathrm { eff } } ( E ) \frac { E } { W ( E ) x \left( \mathrm { H } _ { 2 } \right) } \mathrm { d } E \quad \left[ \mathrm { s } ^ { - 1 } \right]
   $$
-  $E​$ is the energy of the fast electron, $W(E)​$ is the mean energy per ion pair,  $x \left( \mathrm { H } _ { 2 } \right) \approx 0.5​$ is the fractional abundance of molecular hydrogen, $\sigma_{\mathrm{eff}}​$ is the **effective or total photoionization cross section**, including the cross section for Compton scattering, assuming that each scattering process will ionize a hydrogen molecule
+  $E$ is the energy of the fast electron, $W(E)$ is the mean energy per ion pair,  $x \left( \mathrm { H } _ { 2 } \right) \approx 0.5$ is the fractional abundance of molecular hydrogen, $\sigma_{\mathrm{eff}}$ is the **effective or total photoionization cross section**, including the cross section for Compton scattering, assuming that each scattering process will ionize a hydrogen molecule
 
 - $\zeta_i$ for other species can be calculated as a first approximation by multiplying the $\ce{H2}$ ionization rate with the ratio of the electron impact cross sections of species $i$ to $\ce{H2}$ at a specific energy
 

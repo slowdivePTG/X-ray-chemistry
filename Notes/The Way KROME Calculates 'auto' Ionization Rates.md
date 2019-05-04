@@ -7,7 +7,7 @@ $$
 \zeta_x^i=\zeta_p^i+\sum_{j=H,He}\frac{n_j}{n_i}\zeta_p^j\langle\phi^j\rangle
 $$
 
-where $n_j​$ is the number density.
+where $n_j$ is the number density.
 
 - The primary ionization rate
 
@@ -35,14 +35,14 @@ $$
 
 - $\sigma^i$ comes from Verner $\&$ Ferland (1996)
 
-- $\langle\phi^j\rangle​$ is much more complex. For $E>100​$eV and H, He mixture
+- $\langle\phi^j\rangle$ is much more complex. For $E>100$eV and H, He mixture
 
 $$
 \phi^H(E,x_e)=\left( \frac{E}{13.6\text{eV}}-1\right)0.3908(1-x_e^{0.4092})^{1.7592}\\
 \phi^{He}(E,x_e)=\left( \frac{E}{24.6\text{eV}}-1\right)0.0554(1-x_e^{0.4614})^{1.666}
 $$
 
-where $x_e​$ is the electron fraction
+where $x_e$ is the electron fraction
 $$
 \langle\phi^i\rangle=\frac{\int J(E)\phi^i(E,x_e)\text{d}E}{\int J(E)\text{d}E}
 $$

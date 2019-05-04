@@ -336,15 +336,14 @@ def inte(x, y, lower = -np.inf, upper = np.inf): #integration with bounds
 
 
 def draw_Fnu(i, col1, col2, col3, absorb = True):
-    plt.loglog(i.E_eV, i.Fnu, label = i.title(), lw = 0.4, color = col1)
+    plt.loglog(i.E_eV, i.Fnu, label = i.title(), lw = 0.4, color = col2)
     plt.xlabel(r'$E$(eV)')
     plt.ylabel(r'$F($erg s$^{-1}$ cm $^{-2}$ Hz $^{-1}$)')
 
     plt.xlim([1e-1,1e6])
     if absorb:
-        plt.loglog(i.E_eV, i.Fnu_abs, '--', label = i.title() + ' (absorption)', lw = 1, color = col2)
-
-    plt.loglog(i.E_eV, i.Fnu_abs*np.exp(-Tau(i.E_eV, H, He)), '-.', label = i.title() + ' (absorption*)', lw = 1, color = col3)
+        plt.loglog(i.E_eV, i.Fnu_abs, '.', lw = 1, color = col3)
+    plt.loglog(i.E_eV, i.Fnu_abs*np.exp(-Tau(i.E_eV, H, He)), '-.', lw = 1, color = col2)
     #plt.legend()
 
     plt.xlim([1e2,1e6])
