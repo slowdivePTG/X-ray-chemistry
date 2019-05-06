@@ -1,0 +1,85 @@
+\begin{thebibliography}{}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Aalto(2014)}]{Aalto2014}
+Aalto, S. 2014, Proceedings of the International Astronomical Union, 9, 15
+
+\bibitem[{Amaro-Seoane \& Chen(2014)}]{Amaro-Seoane2014}
+Amaro-Seoane, P., \& Chen, X. 2014, 1, 3
+
+\bibitem[{Brown \& Gould(1970)}]{Brown1970}
+Brown, R.~L., \& Gould, R.~J. 1970, Phys. Rev. D, 1, 2252
+
+\bibitem[{Grassi {et~al.}(2014)Grassi, Bovino, Schleicher, Prieto, Seifried,
+  Simoncini, \& Gianturco}]{Grassi2014}
+Grassi, T., Bovino, S., Schleicher, D.~R., {et~al.} 2014, Monthly Notices of
+  the Royal Astronomical Society, 439, 2386
+
+\bibitem[{Herbst \& Klemperer(1973)}]{Herbst1973}
+Herbst, E., \& Klemperer, W. 1973, The Astrophysical Journal, 185, 505
+
+\bibitem[{Herbst \& van Dishoeck(2009)}]{Herbst2009}
+Herbst, E., \& van Dishoeck, E.~F. 2009, Annual Review of Astronomy and
+  Astrophysics, 47, 427
+
+\bibitem[{Krolik \& Kallman(1983)}]{Krolik1983}
+Krolik, J.~H., \& Kallman, T.~R. 1983, The Astrophysical Journal, 267, 610
+
+\bibitem[{Latif {et~al.}(2015)Latif, Bovino, Grassi, Schleicher, \&
+  Spaans}]{Latif2015}
+Latif, M.~A., Bovino, S., Grassi, T., Schleicher, D.~R., \& Spaans, M. 2015,
+  Monthly Notices of the Royal Astronomical Society, 446, 3163
+
+\bibitem[{Loeb \& Forbes(2018)}]{Loeb2018}
+Loeb, A., \& Forbes, J.~C. 2018, Monthly Notices of the Royal Astronomical
+  Society, 479, 171
+
+\bibitem[{Maloney {et~al.}(1996)Maloney, Hollenbach, \& Tielens}]{Maloney1996}
+Maloney, P.~R., Hollenbach, D.~J., \& Tielens, A. G. G.~M. 1996, The
+  Astrophysical Journal, 466, 561
+
+\bibitem[{Neufeld {et~al.}(1994)Neufeld, Maloney, \& Conger}]{Neufeld1994}
+Neufeld, D.~A., Maloney, P.~R., \& Conger, S. 1994, The Astrophysical Journal,
+  doi:10.1086/187649
+
+\bibitem[{Nicastro {et~al.}(2016)Nicastro, Senatore, Krongold, Mathur, \&
+  Elvis}]{Nicastro2016}
+Nicastro, F., Senatore, F., Krongold, Y., Mathur, S., \& Elvis, M. 2016, The
+  Astrophysical Journal Letters, 828, 1
+
+\bibitem[{Ruffle \& Herbst(2003)}]{Ruffle2003}
+Ruffle, D.~P., \& Herbst, E. 2003, Monthly Notices of the Royal Astronomical
+  Society, 319, 837
+
+\bibitem[{Sabha {et~al.}(2010)Sabha, Witzel, Eckart, Buchholz, Bremer,
+  Giessuebel, Garcia-Marin, Kunneriath, Muzic, Schoedel, Straubmeier,
+  Zamaninasab, \& Zernickel}]{Sabha2010}
+Sabha, N., Witzel, G., Eckart, A., {et~al.} 2010, A\&A, 2, 1
+
+\bibitem[{Shull \& Steenberg(1985)}]{Shull1985}
+Shull, J.~M., \& Steenberg, M. E.~V. 1985, Image (Rochester, N.Y.), 1, 268
+
+\bibitem[{St{\"{a}}uber {et~al.}(2005)St{\"{a}}uber, Benz, Doty, \& {Van
+  Dishoeck}}]{Stauber2005}
+St{\"{a}}uber, P., Benz, A.~O., Doty, S.~D., \& {Van Dishoeck}, E.~F. 2005,
+  European Space Agency, (Special Publication) ESA SP, 966, 413
+
+\bibitem[{Verner {et~al.}(1996)Verner, Ferland, Korista, \&
+  Yakovlev}]{Verner1996}
+Verner, D.~A., Ferland, G.~J., Korista, K.~T., \& Yakovlev, D.~G. 1996, The
+  Astrophysical Journal, 465, 487
+
+\bibitem[{Wakelam \& Herbst(2008)}]{Wakelam2008}
+Wakelam, V., \& Herbst, E. 2008, The Astrophysical Journal, 680, 371
+
+\bibitem[{Wakelam {et~al.}(2010)Wakelam, Smith, Herbst, Troe, Geppert,
+  Linnartz, {\"{O}}berg, Roueff, Ag{\'{u}}ndez, Pernot, Cuppen, Loison, \&
+  Talbi}]{Wakelam2010}
+Wakelam, V., Smith, I.~W., Herbst, E., {et~al.} 2010, Space Science Reviews,
+  156, 13
+
+\bibitem[{Wis{\l}ocka {et~al.}(2019)Wis{\l}ocka, Kova{\v{c}}evi´c, \&
+  Balbi}]{Wis2019}
+Wis{\l}ocka, A.~M., Kova{\v{c}}evi´c, A. B.~K., \& Balbi, A. 2019, 1
+
+\end{thebibliography}

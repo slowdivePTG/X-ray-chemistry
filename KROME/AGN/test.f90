@@ -20,7 +20,7 @@ program test_krome
   real*8::x(nx),m(nx+24),Tgas,t,dt,spy,xH,dust2gas,x1(nx)
   integer,parameter::nd=krome_ndust,imax=100
   real*8::xdust(nd),adust(nd),xdusti(nd),data(imax,nd),dataT(imax)
-  integer::i,j
+  integer::i,j,k
   spy = 3600. * 24. * 365. !seconds per year
   Tgas = 1d1 !gas temperature (K)
   xH = 2d4 !Hydrogen density
@@ -73,12 +73,14 @@ program test_krome
   write(77,'(a)') "#time "//trim(krome_get_names_header())
   x1(:)=x(:)
   m(:)=get_mass()
+  k = 0
   do
      print '(a10,E11.3,a3)',"time:",t/spy,"yr"
      call krome(x1(:),Tgas,dt) !call KROME
      x1(:)=max(1d-99*xH,x1(:))
-     !call jex(nx,t,x1(:),"./data/Trace5_0")
+     k = k + 1
      t = t + dt !increase time
+     if (mod(k,10) == 0) call jex(nx,t,x1(:),"./data/Trace")
      dt = max(dt,t/10d0) !increase time-step
      write(77,'(999E15.5)') t/spy,x1(:)/xH
      if(t>1d7*spy) exit !exit when overshoot 1d7 years

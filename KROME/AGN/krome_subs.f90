@@ -54,18 +54,6 @@ contains
     real*8::ncolH !preproc from coevar
     real*8::invTe  !preproc from coevar
     real*8:: T  !preproc from coevar
-    real*8:: C, N, O, F, MG, FE, NA, SI, P, S, CL
-    C = 3.11361486414008
-    N = 2.0028570095656733
-    O = 1.5956962140327202
-    F = 4.205895677811162
-    MG = 13.172565985638398
-    FE = 5.606452630363866
-    NA = 6.40905424645587
-    SI = 9.045711843382838
-    P = 7.645255352429739
-    S = 4.865322856655347
-    CL = 4.803406385704663
     !Tgas is in K
     Tgas = max(n(idx_Tgas), phys_Tcmb)
     Tgas = min(Tgas,1d9)
