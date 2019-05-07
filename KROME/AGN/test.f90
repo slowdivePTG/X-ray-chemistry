@@ -40,7 +40,7 @@ program test_krome
   x(KROME_idx_O)   = 2.56d-4 * xH
   x(KROME_idx_Cj)  = 1.2d-4  * xH
   x(KROME_idx_Sj)  = 1.5d-5  * xH
-  x(KROME_idx_Sij) = 1.7d-6  * xH
+  x(KROME_idx_SIj) = 1.7d-6  * xH
   x(KROME_idx_Fej) = 2d-7   * xH
   x(KROME_idx_Naj) = 2d-7   * xH
   x(KROME_idx_Mgj) = 2.4d-6  * xH
@@ -80,7 +80,7 @@ program test_krome
      x1(:)=max(1d-99*xH,x1(:))
      k = k + 1
      t = t + dt !increase time
-     if (mod(k,10) == 0) call jex(nx,t,x1(:),"./data/Trace")
+     !if (mod(k,10) == 0) call jex(nx,t,x1(:),"./data/Trace")
      dt = max(dt,t/10d0) !increase time-step
      write(77,'(999E15.5)') t/spy,x1(:)/xH
      if(t>1d7*spy) exit !exit when overshoot 1d7 years
