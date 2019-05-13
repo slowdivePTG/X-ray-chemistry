@@ -714,6 +714,13 @@ $$
 
 
 
+## May 7, 2019
+
+1. Plot the main pathways of formation and destruction as a function of time for different species
+2. For high ionization rate (d < 3 kpc), most of the elements tend to stay in their atomic state rather than stay in complex molecules.
+
+
+
 ## To do list
 
   2. Find more physical details of ISM closer to the galactic center with higher temperature and higher degree of ionization. 
