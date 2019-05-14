@@ -721,6 +721,20 @@ $$
 
 
 
+## May 14, 2019
+
+1. Again, remove the X-ray radiation at 1 Myr and calculate the evolution later on. For several abundant species ($\ce{H2,H3+}$), the abundances get close to the equilibrium state very quickly, while for one of the ratios we are interested in, that is $\ce{HCN/CO}$, the equilibrium state will not be reached until several Myrs later.
+
+   ![](./KROME/AGN/HCN_CO.eps)
+
+2. For the precursors of complex organic molecules (radicals/carbon chains), the figures are shown below
+
+   ![](./KROME/AGN/Radicals.eps)
+
+   ![](./KROME/AGN/Carbon_chain.eps)
+
+   Carbon-chain species take more time to reach the equilibrium states.
+
 ## To do list
 
   2. Find more physical details of ISM closer to the galactic center with higher temperature and higher degree of ionization. 
