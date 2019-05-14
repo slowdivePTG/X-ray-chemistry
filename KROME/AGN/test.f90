@@ -65,9 +65,9 @@ program test_krome
   dt = 1d2*spy !time-step (s)
   t = 0d0 !initial time (s)
 
-  call krome_set_J21xray(1d0)
+  call krome_set_J21xray(0d0)
   !output header
-  open(unit=77, file="./data/dis")
+  open(unit=77, file="./data/dis_inf")
   !write(77,'(a)') "#zeta=6.8e-16/s"
   !write(77,'(a)') "#Jx21=0.08"
   write(77,'(a)') "#time "//trim(krome_get_names_header())
@@ -80,10 +80,10 @@ program test_krome
      x1(:)=max(1d-99*xH,x1(:))
      k = k + 1
      t = t + dt !increase time
-     !if (mod(k,10) == 0) call jex(nx,t,x1(:),"./data/Trace")
+     if (mod(k,10) == 0) call jex(nx,t,x1(:),"./data/Trace_inf")
      dt = max(dt,t/10d0) !increase time-step
      write(77,'(999E15.5)') t/spy,x1(:)/xH
-     if(t>1d7*spy) exit !exit when overshoot 1d7 years
+     if(t>1d8*spy) exit !exit when overshoot 1d7 years
   end do
 
 end program test_krome
