@@ -735,6 +735,8 @@ $$
 
    Carbon-chain species take more time to reach the equilibrium states.
 
+
+
 ## May 23, 2019
 
 1. Check whether the accretion of carbon chain species are significant in the model ($n_\ce{H}\sim 10^4\text{ cm}^{-3},\ T\sim 10\text{ K}$) and in the timescale of several million years
@@ -749,25 +751,72 @@ $$
 
      Therefore the total number density is
      $$
-     N=\int \text{d}n(a)=K\int_{a_0}^{a_1}a^{-3.5}\text{d}a=2.5K\left(a_0^{-2.5}-a_0^{-2.5}\right)
+     N=\int \text{d}n(a)=K\int_{a_0}^{a_1}a^{-3.5}\text{d}a=0.4K\left(a_0^{-2.5}-a_1^{-2.5}\right)
      $$
      and the total surface area per cubic centimeter is
      $$
-     \Sigma=\int \pi a^2\text{d}n(a)=\pi K\int_{a_0}^{a_1}a^{-1.5}\text{d}a=0.5\pi K\left(a_0^{-0.5}-a_0^{-0.5}\right)
+     \Sigma=\int \pi a^2\text{d}n(a)=\pi K\int_{a_0}^{a_1}a^{-1.5}\text{d}a=2\pi K\left(a_0^{-0.5}-a_1^{-0.5}\right)
      $$
 
      $$
-     \Sigma=\frac{\pi\left(a_0^{-0.5}-a_0^{-0.5}\right)}{5\left(a_0^{-2.5}-a_0^{-2.5}\right)}\frac{N}{1\text{ cm}^{-3}}\approx2.7\times10^{-9}\eta^{-1}\text{ cm}^{2}
+     \Sigma=\frac{5\pi\left(a_0^{-0.5}-a_1^{-0.5}\right)}{a_0^{-2.5}-a_1^{-2.5}}\frac{N}{1\text{ cm}^{-3}}\approx3.37\times10^{-12}\frac{N}{1\text{ cm}^{-3}}\text{ cm}^{2}
      $$
 
-     where $\eta\sim100$ is the gas-to-dust ratio, and finally
+     $\eta\sim100$ is the gas-to-dust ratio in mass, and thus for $n_{\ce{H}}\sim10^4\text{ cm}^{-3}$
      $$
-     \Sigma\approx2.7\times10^{-11}\text{ cm}^{2}
+     \begin{align*}
+     \int m_d(a)n(a)\text{d}a&=\eta^{-1}m_\ce{H}n_{\ce{H}}\sim3.35\times10^{-22}\text{ g/cm}^{3}\\
+     &=\frac{\pi\rho}{3}\int_{a_0}^{a_1} n(a)a^3\text{d}a\\
+     &=\frac{\pi\rho K}{3}\int_{a_0}^{a_1}a^{-0.5}\text{d}a\\
+     &=\frac{2\pi\rho K}{3}\left(a_1^{0.5}-a_0^{0.5}\right)
+     \end{align*}
+     $$
+     where $\rho\sim 3\text{ g/cm}^3$ is the mass density of the dust, then
+     $$
+     N=\frac{3.35\times10^{-22}}{5\pi}\frac{a_0^{-2.5}-a_1^{-2.5}}{a_1^{0.5}-a_0^{0.5}}=2.81\times10^{-5}\text{ cm}^{-3}
      $$
 
-   - For typical interstellar cloud conditions ($n=10^{4}\ \mathrm{cm}^{-3}, T=10\ \mathrm{K}$), the flux of reactive species is $10^{5} \text { species } /\left(\mathrm{cm}^{2} / \mathrm{s}\right)$ for hydrogen atoms (Tielens 2013). In 1 Myr, about 850 hydrogen atoms per cubic centimeter will be accreted into the surface of grains, this is about 4.3% of the total hygrogen atoms
+     $$
+     \Sigma\approx9.5\times10^{-17}\text{ cm}^{2}
+     $$
 
+   - In Hasegawa, Herbst and Leung 1992, they assumed a single radius of dust $\sim 1000\ \overset\circ{\text{A}}$ and used the same gas-dust-ratio and mass density of dust
+     $$
+     N\sim1.33\times10^{-12}n_\ce{H}\sim2.66\times10^{-8}\text{ cm}^{-3}
+     $$
 
+     $$
+     \Sigma\sim3.3\times10^{-17}\text{ cm}^2
+     $$
+
+   - For typical interstellar cloud conditions ($n=2\times10^{4}\ \mathrm{cm}^{-3}, T=10\ \mathrm{K}$), the flux of reactive species is $10^{5} \text { species } /\left(\mathrm{cm}^{2} \cdot \mathrm{s}\right)$ for hydrogen atoms (Tielens 2013), then we get the accretion rate in the unit per second
+     $$
+     \frac{R_{\mathrm{acc}}(\ce{H})}{n(\ce{H})}\approx 4.73\times10^{-16}\text{ s}^{-1}
+     $$
+     In 1 Myr, about 300 hydrogen atoms per cubic centimeter will be accreted into the surface of grains, this is about 1.5% of the total hygrogen atoms
+
+   - More specific accretion rate is given in Hasegawa, Herbst and Leung 1992, where we have the accretion rate for species $i$
+     $$
+     R_{\mathrm{acc}}(i)=\overline{\sigma_{d}n_{d}}\langle v(i)\rangle n(i) = n(i)\sqrt{\frac{2 k_{B} T}{\pi m}} \left(\frac{\Sigma/4}{1\text{ cm}^3}\right)
+     $$
+     For hydrogen atoms, it goes to
+     $$
+     \frac{R_{\mathrm{acc}}(\ce{H})}{n(\ce{H})}\approx 5.42\times10^{-13}\text{ s}^{-1}
+     $$
+     For carbon chain species
+     $$
+     \frac{R_{\mathrm{acc}}(\ce{C})}{n(\ce{C})}\approx 1.57\times10^{-13}\text{ s}^{-1}
+     $$
+
+     $$
+     \frac{R_{\mathrm{acc}}(\ce{C2})}{n(\ce{C2})}\approx 1.11\times10^{-13}\text{ s}^{-1}
+     $$
+
+     $$
+     \frac{R_{\mathrm{acc}}(\ce{C3})}{n(\ce{C3})}\approx 9.04\times10^{-14}\text{ s}^{-1}
+     $$
+
+     
 
 ## To do list
 
