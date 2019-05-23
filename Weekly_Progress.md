@@ -640,7 +640,7 @@ $$
 
 2. Finish the pipeline
 
-   ![](/Users/chang/X-ray-chemistry/Report/pipeline.eps)
+   ![](/Users/chang/Report/pipeline.eps)
 
 - The electron fraction of molecular clouds whose galactic distance $D>1\text{ kpc}$ is less than $10^{-4}$
 - For $D=1,\ 2\text{ kpc}$, the tendency of chemical evolution of many species are quite different
@@ -734,6 +734,40 @@ $$
    ![](./KROME/AGN/Carbon_chain.eps)
 
    Carbon-chain species take more time to reach the equilibrium states.
+
+## May 23, 2019
+
+1. Check whether the accretion of carbon chain species are significant in the model ($n_\ce{H}\sim 10^4\text{ cm}^{-3},\ T\sim 10\text{ K}$) and in the timescale of several million years
+
+   - surface chemistry on interstellar grains occurs in the **diffusion limit** where transport of material to the surface controls the chemistry (Tielens and Hagen, 1982)
+
+   - The dust in KROME is modelled with a standard distribution of bins of different sizes following an MRN profile (Mathis, Rumpl & Nordsieck 1977; Draine & Lee 1984)
+     $$
+     \mathrm{d} n(a) / \mathrm{d} a \propto a^{-3.5}
+     $$
+     where $n$ is the density and $a$ is the grain size ($50\overset\circ{\mathrm{A}}<a<2500 \overset\circ{\mathrm{A}}$)
+
+     Therefore the total number density is
+     $$
+     N=\int \text{d}n(a)=K\int_{a_0}^{a_1}a^{-3.5}\text{d}a=2.5K\left(a_0^{-2.5}-a_0^{-2.5}\right)
+     $$
+     and the total surface area per cubic centimeter is
+     $$
+     \Sigma=\int \pi a^2\text{d}n(a)=\pi K\int_{a_0}^{a_1}a^{-1.5}\text{d}a=0.5\pi K\left(a_0^{-0.5}-a_0^{-0.5}\right)
+     $$
+
+     $$
+     \Sigma=\frac{\pi\left(a_0^{-0.5}-a_0^{-0.5}\right)}{5\left(a_0^{-2.5}-a_0^{-2.5}\right)}\frac{N}{1\text{ cm}^{-3}}\approx2.7\times10^{-9}\eta^{-1}\text{ cm}^{2}
+     $$
+
+     where $\eta\sim100$ is the gas-to-dust ratio, and finally
+     $$
+     \Sigma\approx2.7\times10^{-11}\text{ cm}^{2}
+     $$
+
+   - For typical interstellar cloud conditions ($n=10^{4}\ \mathrm{cm}^{-3}, T=10\ \mathrm{K}$), the flux of reactive species is $10^{5} \text { species } /\left(\mathrm{cm}^{2} / \mathrm{s}\right)$ for hydrogen atoms (Tielens 2013). In 1 Myr, about 850 hydrogen atoms per cubic centimeter will be accreted into the surface of grains, this is about 4.3% of the total hygrogen atoms
+
+
 
 ## To do list
 
