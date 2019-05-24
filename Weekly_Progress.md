@@ -737,7 +737,7 @@ $$
 
 
 
-## May 23, 2019
+## May 24, 2019
 
 1. Check whether the accretion of carbon chain species are significant in the model ($n_\ce{H}\sim 10^4\text{ cm}^{-3},\ T\sim 10\text{ K}$) and in the timescale of several million years
 
@@ -789,11 +789,11 @@ $$
      \Sigma\sim3.3\times10^{-17}\text{ cm}^2
      $$
 
-   - For typical interstellar cloud conditions ($n=2\times10^{4}\ \mathrm{cm}^{-3}, T=10\ \mathrm{K}$), the flux of reactive species is $10^{5} \text { species } /\left(\mathrm{cm}^{2} \cdot \mathrm{s}\right)$ for hydrogen atoms (Tielens 2013), then we get the accretion rate in the unit per second
+   - For typical interstellar cloud conditions ($n=2\times10^{4}\ \mathrm{cm}^{-3}, T=10\ \mathrm{K}$), the number density for single hydrogen atoms is approximately $2\text{ cm}^{-3}$ and the flux of reactive species is $10^{5} \text { species } /\left(\mathrm{cm}^{2} \cdot \mathrm{s}\right)$ (Tielens 2013), then we get the accretion rate in the unit per second
      $$
-     \frac{R_{\mathrm{acc}}(\ce{H})}{n(\ce{H})}\approx 4.73\times10^{-16}\text{ s}^{-1}
+     \frac{R_{\mathrm{acc}}(\ce{H})}{n(\ce{H})}\approx 4.73\times10^{-12}\text{ s}^{-1}
      $$
-     In 1 Myr, about 300 hydrogen atoms per cubic centimeter will be accreted into the surface of grains, this is about 1.5% of the total hygrogen atoms
+     If so, during a timescale of 1 Myr, the accretion onto the dust would be quite significant
 
    - More specific accretion rate is given in Hasegawa, Herbst and Leung 1992, where we have the accretion rate for species $i$
      $$
