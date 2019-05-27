@@ -4,7 +4,7 @@
 
 **The total X-ray ionization rate for certain species $i$**
 $$
-\zeta_x^i=\zeta_p^i+\sum_{j=H,He}\frac{n_j}{n_i}\zeta_p^j\langle\phi^j\rangle
+\zeta_x^i=\zeta_p^i+\sum_{j=\ce{H,He}}\frac{n_j}{n_i}\zeta_p^j\langle\phi^j\rangle
 $$
 
 where $n_j$ is the number density.
@@ -19,7 +19,7 @@ $$
 - Optical depth $\tau$ is determined by the size of the cloud as well as the abundance of each species
 
 $$
-\tau(E)=\sum_{i=\ce H,\ce He}N_i\sigma^i=\frac{\lambda_J}{2}\sum_{i=\ce H,\ce He}n_i\sigma^i
+\tau(E)=\sum_{i=\ce H,\ce {He}}N_i\sigma^i=\frac{\lambda_J}{2}\sum_{i=\ce H,\ce {He}}n_i\sigma^i
 $$
 
 - To estimate the size we take Jeans length
@@ -38,8 +38,8 @@ $$
 - $\langle\phi^j\rangle$ is much more complex. For $E>100$eV and H, He mixture
 
 $$
-\phi^H(E,x_e)=\left( \frac{E}{13.6\text{eV}}-1\right)0.3908(1-x_e^{0.4092})^{1.7592}\\
-\phi^{He}(E,x_e)=\left( \frac{E}{24.6\text{eV}}-1\right)0.0554(1-x_e^{0.4614})^{1.666}
+\phi^\ce{H}(E,x_e)=\left( \frac{E}{13.6\text{eV}}-1\right)0.3908(1-x_e^{0.4092})^{1.7592}\\
+\phi^\ce{He}(E,x_e)=\left( \frac{E}{24.6\text{eV}}-1\right)0.0554(1-x_e^{0.4614})^{1.666}
 $$
 
 where $x_e$ is the electron fraction

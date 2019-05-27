@@ -389,11 +389,21 @@ def draw_nuF_model():
 # In[15]:
 
 
-def draw_nuL(i, col1, col2):
-    plt.loglog(i.nu, i.Lnu*i.nu, lw = 0.4, color = col1)
-    plt.loglog(i.nu, i.Fnu_abs*i.nu*4*np.pi*i.distance_cm**2, '-.', label = i.title(), lw = 0.8, color = col2)
+def draw_nuL(i, col, xlabel = 'nu'):
+    if xlabel == 'nu':
+        x = i.nu
+        plt.xlim([1e13,1e21])
+    elif xlabel == 'eV':
+        x = i.E_eV
+        plt.xlim([1e-1,1e7])
+    elif xlabel == 'keV':
+        x = i.E_keV
+        plt.xlim([1e-4,1e4])
+    col1 = col[0]
+    plt.loglog(x, i.Lnu*i.nu, lw = 1, color = col1)
+    if len(col) == 2:
+        plt.loglog(x, i.Fnu_abs*i.nu*4*np.pi*i.distance_cm**2, '-.', label = i.title(), lw = 1.2, color = col[1])
     plt.ylim([1e40,(i.Lnu*i.nu).max()*10])
-    plt.xlim([1e13,1e21])
     #plt.legend()
 
 def draw_nuL_model():
