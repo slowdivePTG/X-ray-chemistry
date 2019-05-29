@@ -41,7 +41,7 @@ In the autumn semester, hopefully I'll record my progress every Thursday morning
 2. Test a simple model but consider a mixture of H/He rather than $\text{H}_2/\text{He}$. $J_{X21}=0.1$ for 1 mys then turn off the X-ray radiation. Plot the abundance of $\text{CH}_4$ with time.
 
 > For this molecular cloud test we choose the **osu_01_2007** network and the initial conditions proposed by *Wakelam & Herbst (2008)*: a constant temperature of $\text{T} = 10\text{ K}$, $\ce{H2}$ density of $10^4\text{ cm}^{−3}$, cosmic rays ionization rate of $1.3 \times 10^{−17}\text{ s}^{−1}$, and a visual extinction of 10.
-> The initial conditions of the species are listed in Table 7 and correspond to the EA2 model of *Wakelam & Herbst (2008)*, an high-metal environment observed in the diffuse cloud $\zeta$ *Ophiuchi*
+> The initial conditions of the species are listed in Table 7 and correspond to the EA2 model of *Wakelam & Herbst (2008)*, a high-metal environment observed in the diffuse cloud $\zeta$ *Ophiuchi*
 
 ```fortran
   Tgas = 1d1 !gas temperature (K)
@@ -816,7 +816,14 @@ $$
      \frac{R_{\mathrm{acc}}(\ce{C3})}{n(\ce{C3})}\approx 9.04\times10^{-14}\text{ s}^{-1}
      $$
 
-     
+
+## May 27, 2019
+
+1. Properties of EA2 model in Wakelam & Herbst 2008
+   - Mainly based on the high-metal abundances observed in the $\zeta$ Oph diffuse cloud, but is modified based on recent observations
+   - The abundance of $\ce{He}$ is based on observations in the Orion Nebula
+
+
 
 ## To do list
 
