@@ -817,18 +817,14 @@ $$
      $$
 
 
-## May 27, 2019
+## June 2, 2019
 
 1. Properties of EA2 model in Wakelam & Herbst 2008
    - Mainly based on the high-metal abundances observed in the $\zeta$ Oph diffuse cloud, but is modified based on recent observations
    - The abundance of $\ce{He}$ is based on observations in the Orion Nebula
 
-
-
-## To do list
-
-  2. Find more physical details of ISM closer to the galactic center with higher temperature and higher degree of ionization. 
-  3. Figure out the extra process we need to consider (such as heating when the degree of ionization is high).
+2. More on the accretion timescale
+   - The sites for atomic hydrogen to be physisorbed on grains per unit area is $\sim 2\times10^{15}\text{ cm}^{-2}$. Even if all the sites are occupied, the loss of gaseous atomic hydrogen is $\sim0.19\text{ cm}^{-3}$, not too much comparing to $2\text{ cm}^{-3}$. According to the accretion rate above, it takes only $\sim6000\text{ yr}$ for all the sites to be occupied.
 
 
 
