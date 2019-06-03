@@ -817,7 +817,7 @@ $$
      $$
 
 
-## June 2, 2019
+## June 3, 2019
 
 1. Properties of EA2 model in Wakelam & Herbst 2008
    - Mainly based on the high-metal abundances observed in the $\zeta$ Oph diffuse cloud, but is modified based on recent observations
@@ -826,5 +826,28 @@ $$
 2. More on the accretion timescale
    - The sites for atomic hydrogen to be physisorbed on grains per unit area is $\sim 2\times10^{15}\text{ cm}^{-2}$. Even if all the sites are occupied, the loss of gaseous atomic hydrogen is $\sim0.19\text{ cm}^{-3}$, not too much comparing to $2\text{ cm}^{-3}$. According to the accretion rate above, it takes only $\sim6000\text{ yr}$ for all the sites to be occupied.
 
+3. Discussion with Prof. Du
 
+   1. The ratio HCN/CO seems too sensitive to X-ray ionization rates that even at a very low ionization rate $\sim 10^{-18}\text{ s}^{-1}$ comparing to cosmic-ray ionization $\sim 10^{-17}\text{ s}^{-1}$. Therefore we gradually lower the ionization rate (a factor of 0.5, 0.2, 0.1, 0.05, 0.02, 0.01 comparing to the 8 kpc case) to see whether it is physical (or just numerical errors).
+
+      ![](./KROME/AGN/X_sensitivity.eps)
+
+      At least for lower X-ray ionization rates, the ratio of HCN/CO get closer to the case with no X-ray ionization. Furthermore, we vary the cosmic-ray ionization rates, to find that higher cosmic-ray radiation leads to a lower HCN/CO ratio.
+
+   2. According to our results, at 1 kpc from the galactic center, most of the species are in atomic states, which is not coherent with current observations. The case is that it may be a non-physical result because some important issues have not been considered, and that some of our assumptions are not valid (such as the total column density of a molecular cloud), or, on the other hand, this actually happened in the past, but the remnants of the ancient activity of Sgr A* have been washed away.
+
+   3. Our assumptions of the radius of molecular clouds may not be valid
+
+      - The sizes of molecular clouds obey certain distribution, some of which are quite large (several tens of parsecs) while others can be quite small.
+      - High column density (such as $\sim 10^{25}\text{ cm}^{-2}$) of a molecular cloud have significant extinction, and therefore the X-ray ionization may be not important in the center. However, this does not mean we can not observe X-ray induced chemistry because the outer part of the cloud may be significantly ionized. In fact observers care more about the abundance times the column density of a certain molecule.
+      - In our model, we assume that the size of the molecular cloud is Jeans length. It means the kinetic energy of the system is provided totally by thermal motions. For $T\sim 10\text{ K}$, the thermal velocity of atoms are approximately $100\text{ m/s}$. However, according to the observations, the turbulent motion for molecular cloud can be large as $1000\text{ m/s}$, then our estimation of the size, and thus the column density, may be too conservative. 
+
+      At present, we can vary the column density of the molecular cloud to see the influence.
+
+   4. Our initial condition for the temperature may be too naive. The clouds closer to the galactic center shall have higher temperatures. Empirical formula for temperature distribution in the galactic disk may be of help.
+
+   5. The species we are interested in
+
+      - Some useful molecular pairs in observation
+      - Carbon chain species (which may quickly form in warmer environments)
 
