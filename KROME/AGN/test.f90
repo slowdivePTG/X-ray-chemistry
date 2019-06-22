@@ -27,7 +27,7 @@ program test_krome
 
   !user commons for opacity and CR rate
   call krome_set_user_av(1d1) !opacity Av (#)
-  call krome_set_user_crate(1.3d-17/2) !CR rate (1/s)
+  call krome_set_user_crate(1.3d-17) !CR rate (1/s)
   call krome_set_user_gas_dust_ratio(1d2) !gas/dust
 
   call krome_init()
@@ -67,7 +67,7 @@ program test_krome
 
   call krome_set_J21xray(0d0)
   !output header
-  open(unit=77, file="./data/dis_inf3")
+  open(unit=77, file="./data/dis_inf")
   !write(77,'(a)') "#zeta=6.8e-16/s"
   !write(77,'(a)') "#Jx21=0.08"
   write(77,'(a)') "#time "//trim(krome_get_names_header())
@@ -80,10 +80,10 @@ program test_krome
      x1(:)=max(1d-99*xH,x1(:))
      k = k + 1
      t = t + dt !increase time
-     !if (mod(k,10) == 0) call jex(nx,t,x1(:),"./data/Trace_inf")
+     if (mod(k,10) == 0) call jex(nx,t,x1(:),"./data/Trace_inf")
      dt = max(dt,t/10d0) !increase time-step
      write(77,'(999E15.5)') t/spy,x1(:)/xH
-     if(t>2d7*spy) exit !exit when overshoot 1d7 years
+     if(t>1d8*spy) exit !exit when overshoot 1d7 years
   end do
 
 end program test_krome
