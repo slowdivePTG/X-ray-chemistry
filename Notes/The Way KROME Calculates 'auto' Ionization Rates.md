@@ -62,7 +62,7 @@ $$
   \tau(E)={N_\ce{H}\sigma_\ce H(E)+N_\ce{He}\sigma_\ce{He}(E)}
   $$
 
-- The size of the cloud is estimated by its Jeans length and the number density $n$
+- The size of the cloud is estimated by its Jeans length, and the number density $n$ is
   $$
   n^i=\frac{N^i}{\lambda_J/2}
   $$
