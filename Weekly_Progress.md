@@ -824,8 +824,9 @@ $$
    - The abundance of $\ce{He}$ is based on observations in the Orion Nebula
 
 2. More on the accretion timescale
-   - The sites for atomic hydrogen to be physisorbed on grains per unit area is $\sim 2\times10^{15}\text{ cm}^{-2}$. Even if all the sites are occupied, the loss of gaseous atomic hydrogen is $\sim0.19\text{ cm}^{-3}$, not too much comparing to $2\text{ cm}^{-3}$. According to the accretion rate above, it takes only $\sim6000\text{ yr}$ for all the sites to be occupied.
-
+  
+- The sites for atomic hydrogen to be physisorbed on grains per unit area is $\sim 2\times10^{15}\text{ cm}^{-2}$. Even if all the sites are occupied, the loss of gaseous atomic hydrogen is $\sim0.19\text{ cm}^{-3}$, not too much comparing to $2\text{ cm}^{-3}$. According to the accretion rate above, it takes only $\sim6000\text{ yr}$ for all the sites to be occupied.
+  
 3. Discussion with Prof. Du
 
    1. The ratio HCN/CO seems too sensitive to X-ray ionization rates that even at a very low ionization rate $\sim 10^{-18}\text{ s}^{-1}$ comparing to cosmic-ray ionization $\sim 10^{-17}\text{ s}^{-1}$. Therefore we gradually lower the ionization rate (a factor of 0.5, 0.2, 0.1, 0.05, 0.02, 0.01 comparing to the 8 kpc case) to see whether it is physical (or just numerical errors).
@@ -858,3 +859,9 @@ $$
       - Some useful molecular pairs in observation
       - Carbon chain species (which may quickly form in warmer environments)
 
+
+
+## June 30, 2019
+
+1. Slightly revise the reactions related to ionizations, add $\ce{C^2+}$ and related species.
+2. Choose a fixed radius for the molecular cloud, thus the total column density. In this way, all the fluxes have to be recalculated.
