@@ -1,0 +1,19 @@
+- # Data
+  - t=3e8 yrs
+  - Case 1: cosmic ray ionization, zeta=6.8e-18/s
+    - `case1`: zeta=6.79e-18 /s
+    - `case1_1`: zeta=6.81e-18 /s
+  - Case 2: cosmic ray ionization,zeta=6.8e-16
+    - `case2`: zeta=6.7e-16 /s
+    - `case2_1`: zeta=6.9e-16 /s
+  - Case 3: cosmic ray ionization,jx21=0.0868
+    - `case3`: jx21=0.0868*1.0003
+    - `case3_1`: jx21=0.096*0.9997
+  - Case 4: cosmic ray ionization,jx21=8.81
+    - `case3`: jx21=4.56*1.0003
+    - `case3_1`: jx21=4.56*0.9997
+  - Case 5: cosmic ray ionization,jx21=80
+    - `case3`: jx21=80
+    - `case3_1`: jx21=96
+    - Far from Krolik's result
+  - Trace
