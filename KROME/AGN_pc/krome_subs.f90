@@ -16110,9 +16110,6 @@ contains
     k(4453) = (small + ratexHe) * J21xray
     !print '(E11.3)',k(4452)/k(36)
 
-    !CO -> C+ + O+ + 2E
-    k(4454) = 4.7093110781728 * k(4452)*0.8
-
     coe(:) = k(:) !set coefficients to return variable
 
 

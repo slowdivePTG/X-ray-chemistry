@@ -47,7 +47,6 @@ program test_krome
   x(KROME_idx_Clj) = 1.8d-7  * xH
   x(KROME_idx_Pj)  = 1.17d-7 * xH
   x(KROME_idx_Fj)  = 1.8d-8  * xH
-  x(KROME_idx_CH4O) = 2d-10  * xH
 
   !calculate elctrons (neutral cloud)
   x(KROME_idx_e) = krome_get_electrons(x(:))
@@ -67,7 +66,7 @@ program test_krome
 
   call krome_set_J21xray(0d0)
   !output header
-  open(unit=77, file="./data/2e-1dis_inf")
+  open(unit=77, file="./data/5dis_inf")
   !write(77,'(a)') "#zeta=6.8e-16/s"
   !write(77,'(a)') "#Jx21=0.08"
   write(77,'(a)') "#time "//trim(krome_get_names_header())

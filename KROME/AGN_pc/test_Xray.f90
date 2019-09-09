@@ -47,7 +47,6 @@ program test_krome
   x(KROME_idx_Clj) = 1.8d-7  * xH
   x(KROME_idx_Pj)  = 1.17d-7 * xH
   x(KROME_idx_Fj)  = 1.8d-8  * xH
-  x(KROME_idx_CH4O) = 2d-10  * xH
 
   !calculate elctrons (neutral cloud)
   x(KROME_idx_e) = krome_get_electrons(x(:))
@@ -67,7 +66,7 @@ program test_krome
 
   call krome_set_J21xray(1d0)
   !output header
-  open(unit=77, file="./data/2e-1dis")
+  open(unit=77, file="./data/5dis")
   !write(77,'(a)') "#zeta=6.8e-16/s"
   !write(77,'(a)') "#Jx21=0.08"
   write(77,'(a)') "#time "//trim(krome_get_names_header())
@@ -80,7 +79,7 @@ program test_krome
      x1(:)=max(1d-99*xH,x1(:))
      k = k + 1
      t = t + dt !increase time
-     if (mod(k,10) == 0) call jex(nx,t,x1(:),"./data/Trace")
+     !if (mod(k,10) == 0) call jex(nx,t,x1(:),"./data/Trace")
      dt = max(dt,t/10d0) !increase time-step
      write(77,'(999E15.5)') t/spy,x1(:)/xH
      if(t>1d8*spy) exit !exit when overshoot 1d7 years

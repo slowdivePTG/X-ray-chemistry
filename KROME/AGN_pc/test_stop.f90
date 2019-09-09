@@ -47,7 +47,6 @@ program test_krome
   x(KROME_idx_Clj) = 1.8d-7  * xH
   x(KROME_idx_Pj)  = 1.17d-7 * xH
   x(KROME_idx_Fj)  = 1.8d-8  * xH
-  x(KROME_idx_CH4O) = 2d-10  * xH
 
   !calculate elctrons (neutral cloud)
   x(KROME_idx_e) = krome_get_electrons(x(:))
@@ -62,16 +61,17 @@ program test_krome
   ! myCoe(:) is defined in krome_user_commons
   !myCoe(:) = krome_get_coef(Tgas,x(:))
 
-  dt = 1d6*spy !time-step (s)
-  t = 0 !initial time (s)
+  dt = 1d2*spy !time-step (s)
+  t = 1d6*spy !initial time (s)
 
   call krome_set_J21xray(1d0)
   !output header
-  open(unit=77, file="./data/2e-1dis")
+  open(unit=77, file="./data/5dis")
   !write(77,'(a)') "#zeta=6.8e-16/s"
   !write(77,'(a)') "#Jx21=0.08"
   write(77,'(a)') "#time "//trim(krome_get_names_header())
   x1(:)=x(:)
+  call krome(x1(:),Tgas,1d6*spy)
   m(:)=get_mass()
   k = 0
   do
@@ -81,13 +81,10 @@ program test_krome
     k = k + 1
     t = t + dt !increase time
     !if (mod(k,10) == 0) call jex(nx,t,x1(:),"./data/Trace_inf")
-    dt = max(dt,t/10d0)
-    if (t<5d6*spy) then
-      call krome_set_J21xray(0d0)
-      dt = (t-1d6)/100d0 !increase time-step
-    end if
+    call krome_set_J21xray(0d0)
+    dt = max(dt, (t-1d6*spy)/1d1) !increase time-step
     write(77,'(999E15.5)') t/spy,x1(:)/xH
-    if(t>1d8*spy) exit !exit when overshoot 1d7 years
+    if(t>1d8*spy) exit !exit when overshoot 1d8 years
   end do
 
 end program test_krome
