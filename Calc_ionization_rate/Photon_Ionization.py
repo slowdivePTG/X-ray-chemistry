@@ -324,23 +324,24 @@ def inte(x, y, lower=-np.inf, upper=np.inf):  #integration with bounds
 # In[13]:
 
 
-def draw_Fnu(i, col1, col2, col3, absorb=True):
-    plt.loglog(i.E_eV, i.Fnu, label=i.title(), lw=0.4, color=col2)
-    plt.xlabel(r'$E$(eV)')
-    plt.ylabel(r'$F($erg s$^{-1}$ cm $^{-2}$ Hz $^{-1}$)')
+def draw_Fnu(i, col1, col2, col3, absorb=True, ax=None):
+    if ax == None:
+        f, ax = plt.subplots(figsize=(12, 8))
+    ax.loglog(i.E_eV, i.Fnu, label=i.title(), lw=0.4, color=col2)
+    ax.set_xlabel(r'$E$(eV)')
+    ax.set_ylabel(r'$F($erg s$^{-1}$ cm $^{-2}$ Hz $^{-1}$)')
 
-    plt.xlim([1e-1, 1e6])
+    ax.set_xlim([1e-1, 1e6])
     if absorb:
-        plt.loglog(i.E_eV, i.Fnu_abs, '.', lw=1, color=col3)
-    plt.loglog(i.E_eV,
+        ax.loglog(i.E_eV, i.Fnu_abs, '.', lw=1, color=col3)
+    ax.loglog(i.E_eV,
                i.Fnu_abs * np.exp(-Tau(i.E_eV, H, He)),
                '-.',
                lw=1,
                color=col2)
     #plt.legend()
 
-    plt.xlim([1e2, 1e6])
-    plt.ylim([1e-30, (i.Fnu).max() * 10])
+    ax.set_ylim([1e-30, (i.Fnu).max() * 10])
 
 
 def draw_Fnu_model():
@@ -435,7 +436,7 @@ def draw_nuL_model():
 
 def compare(distance, dic):
     ty = '.txt'
-    path = '/Users/chang/X-ray-chemistry/Calc_ionization_rate/spectrum data/spectrum/'
+    path = './spectrum data/spectrum/'
     ab, ab_UV = spi.read_abs()
     data_list = spi.readfile(path, ty, distance, ab, ab_UV)
 
