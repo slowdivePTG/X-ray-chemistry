@@ -840,11 +840,11 @@ $$
       k_{\mathrm{photo}}=A \exp \left(-C A_{v}\right)\ \mathrm{s}^{-1}
       $$
       So-called average interstellar radiation field is utilized.
-      
+   
 3. According to our results, at 1 kpc from the galactic center, most of the species are in atomic states, which is not coherent with current observations. The case is that it may be a non-physical result because some important issues have not been considered, and that some of our assumptions are not valid (such as the total column density of a molecular cloud), or, on the other hand, this actually happened in the past, but the remnants of the ancient activity of Sgr A* have been washed away.
-   
+  
 4. Our assumptions of the radius of molecular clouds may not be valid
-   
+  
    - The sizes of molecular clouds obey certain distribution, some of which are quite large (several tens of parsecs) while others can be quite small.
       - High column density (such as $\sim 10^{25}\text{ cm}^{-2}$) of a molecular cloud have significant extinction, and therefore the X-ray ionization may be not important in the center. However, this does not mean we can not observe X-ray induced chemistry because the outer part of the cloud may be significantly ionized. In fact observers care more about the abundance times the column density of a certain molecule.
       - In our model, we assume that the size of the molecular cloud is Jeans length. It means the kinetic energy of the system is provided totally by thermal motions. For $T\sim 10\text{ K}$, the thermal velocity of atoms are approximately $100\text{ m/s}$. However, according to the observations, the turbulent motion for molecular cloud can be large as $1000\text{ m/s}$, then our estimation of the size, and thus the column density, may be too conservative. 
@@ -852,15 +852,24 @@ $$
    At present, we can vary the column density of the molecular cloud to see the influence.
    
 5. Our initial condition for the temperature may be too naive. The clouds closer to the galactic center shall have higher temperatures. Empirical formula for temperature distribution in the galactic disk may be of help.
-   
+  
 6. The species we are interested in
-   
+  
    - Some useful molecular pairs in observation
       - Carbon chain species (which may quickly form in warmer environments)
 
 
 
-## June 30, 2019
+## Sept 9, 2019
 
-1. Slightly revise the reactions related to ionizations, add $\ce{C^2+}$ and related species (?).
-2. Choose a fixed radius for the molecular cloud, thus the total column density. In this way, all the fluxes have to be recalculated.
+1. BH model - X-ray duration timescale
+
+2. timescale of significant change in chemical components
+
+3. inside 4 kpc
+
+4. Choose a fixed radius for the molecular cloud (0.2, 1 and 5 pc), thus the total column density. In this way, all the fluxes have to be recalculated.
+
+   - The ionization rate is determined only by the ratio of number densities for hydrogen and helium. With the former assumption (size $\sim$ Jeans length), the number densities are fixed as soon as column densities are set. Now that the column density and number density are linearly related ($N=rn$, where $r$ is the radius), we only need one `ratexH.dat/ratexHe.dat` calculated by the 
+
+   

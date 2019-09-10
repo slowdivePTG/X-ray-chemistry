@@ -66,7 +66,7 @@ program test_krome
 
   call krome_set_J21xray(0d0)
   !output header
-  open(unit=77, file="./data/5dis_inf")
+  open(unit=77, file="./data/dis_inf")
   !write(77,'(a)') "#zeta=6.8e-16/s"
   !write(77,'(a)') "#Jx21=0.08"
   write(77,'(a)') "#time "//trim(krome_get_names_header())

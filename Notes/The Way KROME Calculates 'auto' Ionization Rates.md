@@ -67,12 +67,17 @@ $$
   n^i=\frac{N^i}{\lambda_J/2}
   $$
 
-- **But wait here** (Mar. 22), this is actually not the formula applied. The datafile utilizes an approximation
+  - **But wait here** (Mar. 22), this is actually not the formula applied. The datafile utilizes an approximation by assuming the total number of $\ce{H/He}$ atoms in different molecular clouds as a constant
+  
   $$
   N^i=1.87\times{10}^{21}\left(\frac{n^i}{1000}\right)^{2/3}
   $$
-  by assuming the total number of $\ce{H/He}$ atoms in different molecular clouds as a constant
-
+  - Since sizes of molecular clouds could vary a lot, it is not wise to assume a fixed size. Therefore, we consider three typical sizes (0.2, 1 and 5 pc) and derive the column densities by
+  
+  $$
+  N^i=rn^i
+  $$
+  
 - The third column is $\log(\zeta_p^i(\text{s}^{-1}))$ showing the **primary ionization rate**. It varies only because the total optical depth $\tau$ varies
 
 - To get the certain X-ray ionization rate
