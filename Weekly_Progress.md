@@ -640,7 +640,7 @@ $$
 
 2. Finish the pipeline
 
-   ![](/Users/chang/Report/pipeline.eps)
+   ![](../Report/pipeline.eps)
 
 - The electron fraction of molecular clouds whose galactic distance $D>1\text{ kpc}$ is less than $10^{-4}$
 - For $D=1,\ 2\text{ kpc}$, the tendency of chemical evolution of many species are quite different
@@ -860,16 +860,29 @@ $$
 
 
 
-## Sept 9, 2019
+## Sept 12, 2019
 
-1. BH model - X-ray duration timescale
+1. Our focus
 
-2. timescale of significant change in chemical components
+   1. BH model - X-ray duration timescale
+   2. Timescale of significant change in chemical components
+   3. Inside 4 kpc
 
-3. inside 4 kpc
-
-4. Choose a fixed radius for the molecular cloud (0.2, 1 and 5 pc), thus the total column density. In this way, all the fluxes have to be recalculated.
+2. Choose a fixed radius for the molecular cloud (0.2, 1 and 5 pc), thus the total column density. In this way, all the fluxes have to be recalculated.
 
    - The ionization rate is determined only by the ratio of number densities for hydrogen and helium. With the former assumption (size $\sim$ Jeans length), the number densities are fixed as soon as column densities are set. Now that the column density and number density are linearly related ($N=rn$, where $r$ is the radius), we only need one `ratexH.dat/ratexHe.dat` calculated by the 
 
-   
+3. Several grain processes ($\ce{H2O}$ related species)
+
+4. Plots: abundances v.s. time (no X-ray -> X-ray -> no X-ray)
+
+   - Three (?) different galactic distances
+
+   - Three (?) different column densities for each galactic distance
+
+     - Extinction for UV for the dust and gas together (see Draine 2011, *Physics of the Interstellar and Intergalactic Medium*)
+       $$
+       \frac{A_{V}}{N_{\mathrm{H}}}=\frac{3.1}{5.8 \times 10^{21}\ \mathrm{H}\ \mathrm{cm}^{-2}\ \mathrm{mag}^{-1}}=5.3 \times 10^{-22} \mathrm{mag}\ \mathrm{cm}^{2}\ \mathrm{H}^{-1}
+       $$
+
+     - Extinction for X-ray (see figures plotted on Mar. 14, 2019)
