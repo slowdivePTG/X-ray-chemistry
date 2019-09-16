@@ -860,7 +860,7 @@ $$
 
 
 
-## Sept 12, 2019
+## September 12, 2019
 
 1. Our focus
 
@@ -870,9 +870,12 @@ $$
 
 2. Choose a fixed radius for the molecular cloud (0.2, 1 and 5 pc), thus the total column density. In this way, all the fluxes have to be recalculated.
 
-   - The ionization rate is determined only by the ratio of number densities for hydrogen and helium. With the former assumption (size $\sim$ Jeans length), the number densities are fixed as soon as column densities are set. Now that the column density and number density are linearly related ($N=rn$, where $r$ is the radius), we only need one `ratexH.dat/ratexHe.dat` calculated by the 
+   - The ionization rate is determined only by the ratio of number densities for hydrogen and helium. With the former assumption (size $\sim$ Jeans length), the number densities are fixed as soon as column densities are set. Now that the column density and number density are linearly related ($N=rn$, where $r$ is the radius), we only need one `ratexH.dat/ratexHe.dat` calculated for each galactic distance.
+   - So far, high resolution (initial step length = 0.1 yr) figures after removing the X-ray at 1 myr are plotted.
 
 3. Several grain processes ($\ce{H2O}$ related species)
+
+   http://hosting.astro.cornell.edu/~rgarrod/resources/
 
 4. Plots: abundances v.s. time (no X-ray -> X-ray -> no X-ray)
 
@@ -886,3 +889,9 @@ $$
        $$
 
      - Extinction for X-ray (see figures plotted on Mar. 14, 2019)
+
+
+
+## September 16, 2019
+
+1. More grain processes (details in notes)
