@@ -9,8 +9,8 @@ contains
 
   ! *************************************************************
   !  This file has been generated with:
-  !  KROME 14.08.dev on 2018-12-17 22:20:39
-  !  Changeset 4b727c9
+  !  KROME 14.08.dev on 2019-09-17 14:46:01
+  !  Changeset xxxxxxx
   !  see http://kromepackage.org
   !
   !  Written and developed by Tommaso Grassi and Stefano Bovino
@@ -22,7 +22,7 @@ contains
   !  KROME is provided "as it is", without any warranty.
   ! *************************************************************
 
-  !********************************
+  !*******************************
   !KROME main (interface to the solver library)
 
   subroutine krome(x,Tgas,dt  )
@@ -46,9 +46,9 @@ contains
     !DLSODES variables
     integer,parameter::meth=2 !1=adam, 2=BDF
     integer::neq(1),itol,itask,istate,iopt,lrw,liw,mf
-    integer::iwork(13039)
+    integer::iwork(13041)
     real*8::atol(nspec),rtol(nspec)
-    real*8::rwork(565342)
+    real*8::rwork(529912)
     logical::got_error,equil
 
     !****************************
@@ -169,9 +169,9 @@ contains
     real*8 :: rhogas
     real*8::tloc,n(nspec),mass(nspec),ni(nspec)
     real*8::dt,xin
-    integer::iwork(13039)
+    integer::iwork(13041)
     real*8::atol(nspec),rtol(nspec)
-    real*8::rwork(565342)
+    real*8::rwork(529912)
     real*8::ertol,eatol,max_time,t_tot,ntot_tol,err_species
     logical::converged
 

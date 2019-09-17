@@ -6,7 +6,7 @@ Species we are interested in are listed in the table `grain.csv`
 
 ## Grain model
 
-- Fixed size - radius of 3 angstrom, density of 3 g/cm$^3$, $N_s=10^6$ surface sites for absorption
+- Fixed size - radius of 1000 angstrom, density of 3 g/cm$^3$, $N_s=10^6$ surface sites for absorption
 - Gas-to-dust ratio by mass - 100
 - Number density - $1.33\times10^{-12}n$, where $n$ is the concentration of hydrogen nuclei ($2\times10^4$)
 - Dust temperature - 10 K
@@ -18,6 +18,10 @@ Species we are interested in are listed in the table `grain.csv`
 - Accretion rate
   $$
   R_{\mathrm{acc}}(i)=\overline{\sigma_{d}n_{d}}\langle v(i)\rangle n(i) = \sqrt{\frac{2 k_{B} T}{\pi m}}\sigma_{d}n_{d}n(i)
+  $$
+
+  $$
+  k_i= \sqrt{\frac{2 k_{B} T}{\pi m}}\sigma_{d}n_{d}n(i)=6.0557\sqrt{\frac{T\ (\text{K})}{\mu}}\times10^{-14}\text{ s}^{-1}
   $$
 
 - Do not consider absorption of molecular and atomic ions

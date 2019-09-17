@@ -3217,6 +3217,7 @@ C- + OH -> HCO + E
 C- + CH2 -> C2H2 + E
 C- + H2O -> H2CO + E
 H- + C -> CH + E
+H- + H -> H2 + E
 H- + N -> NH + E
 H- + O -> OH + E
 H- + C2 -> C2H + E
@@ -3662,6 +3663,7 @@ CN+ + E -> C + N
 CO+ + E -> O + C
 CP+ + E -> P + C
 CS+ + E -> C + S
+H2+ + E -> H + H
 HCL+ + E -> H + CL
 HF+ + E -> H + F
 HEH+ + E -> H + HE
@@ -4192,6 +4194,8 @@ C9H5+ + E -> C9H2 + H2 + H
 C+ + E -> C
 CL+ + E -> CL
 FE+ + E -> FE
+H+ + E -> H
+HE+ + E -> HE
 MG+ + E -> MG
 N+ + E -> N
 NA+ + E -> NA
@@ -4233,6 +4237,7 @@ S+ + S- -> S + S
 SI+ + C- -> SI + C
 SI+ + H- -> SI + H
 SI+ + S- -> SI + S
+H2+ + H- -> H + H2
 H3+ + H- -> H2 + H2
 HCO+ + H- -> CO + H2
 H3O+ + H- -> OH + H2 + H
@@ -4422,32 +4427,18 @@ O- -> O + E
 S- -> S + E
 CN- -> CN + E
 OH- -> OH + E
-H+ + E -> H
-H+ + E -> H
-HE + E -> HE+ + E + E
-HE+ + E -> HE
-HE+ + E -> HE
-HE+ + E -> HE++ + E + E
-HE++ + E -> HE+
-H- + H -> H2 + E
-H- + H -> H2 + E
-H + H+ -> H2+
-H + H+ -> H2+
-H2+ + H -> H2 + H+
-H2 + H+ -> H2+ + H
-H2 + E -> H + H + E
-H2 + H -> H + H + H
-H- + E -> H + E + E
-H- + H -> H + H + E
-H- + H -> H + H + E
-H- + H+ -> H + H
-H- + H+ -> H2+ + E
-H2+ + E -> H + H
-H2+ + E -> H + H
-H2+ + H- -> H + H2
-H + H + H -> H2 + H
-H + H + H -> H2 + H
-H2 + H + H -> H2 + H2
-H2 + H + H -> H2 + H2
 H -> H+ + E
 HE -> HE+ + E
+H_DUST -> H
+H_DUSTH_DUST -> H2
+O_DUST -> O
+O_DUSTH_DUST -> OH
+H -> H_DUST
+H2 -> H_DUSTH_DUST
+O -> O_DUST
+OH -> O_DUSTH_DUST
+H2O -> H_DUSTH_DUSTO_DUST
+H_DUST + H_DUST -> H_DUSTH_DUST
+H_DUST + O_DUST -> O_DUSTH_DUST
+H_DUST + O_DUSTH_DUST -> H_DUSTH_DUSTO_DUST
+O_DUST + O_DUST -> O_DUSTO_DUST

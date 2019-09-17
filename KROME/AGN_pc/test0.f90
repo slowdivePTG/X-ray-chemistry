@@ -15,7 +15,7 @@ program test_krome
   implicit none
 
   integer,parameter::nx=krome_nmols
-  real*8::x(nx),m(nx+24),Tgas,t,dt,spy,xH,dust2gas,x1(nx)
+  real*8::x(nx),m(nx+4),Tgas,t,dt,spy,xH,dust2gas,x1(nx)
   integer,parameter::nd=krome_ndust,imax=100
   real*8::xdust(nd),adust(nd),xdusti(nd),data(imax,nd),dataT(imax)
   integer::i,j,k
@@ -47,10 +47,6 @@ program test_krome
 
   !calculate elctrons (neutral cloud)
   x(KROME_idx_e) = krome_get_electrons(x(:))
-
-  !REMEMBER TO INITIAL X(:) FIRST
-  call krome_init_dust_distribution(x(:), 1d0/1d2)
-  call krome_set_Tdust(Tgas)
 
   !NOTE: here myCoe array is employed to store the
   ! coefficient values, since the temperature is

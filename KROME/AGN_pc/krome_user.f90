@@ -5,8 +5,8 @@ module krome_user
 
   ! *************************************************************
   !  This file has been generated with:
-  !  KROME 14.08.dev on 2018-12-17 22:20:39
-  !  Changeset 4b727c9
+  !  KROME 14.08.dev on 2019-09-17 14:46:01
+  !  Changeset xxxxxxx
   !  see http://kromepackage.org
   !
   !  Written and developed by Tommaso Grassi and Stefano Bovino
@@ -213,288 +213,273 @@ module krome_user
   integer,parameter::KROME_idx_NC10N = 193	!NC10N
   integer,parameter::KROME_idx_NC12N = 194	!NC12N
   integer,parameter::KROME_idx_HC13N = 195	!HC13N
-  integer,parameter::KROME_idx_Cj = 196	!C+
-  integer,parameter::KROME_idx_FEj = 197	!FE+
-  integer,parameter::KROME_idx_Hj = 198	!H+
-  integer,parameter::KROME_idx_HEj = 199	!HE+
-  integer,parameter::KROME_idx_MGj = 200	!MG+
-  integer,parameter::KROME_idx_Nj = 201	!N+
-  integer,parameter::KROME_idx_NAj = 202	!NA+
-  integer,parameter::KROME_idx_Oj = 203	!O+
-  integer,parameter::KROME_idx_Sj = 204	!S+
-  integer,parameter::KROME_idx_SIj = 205	!SI+
-  integer,parameter::KROME_idx_H3j = 206	!H3+
-  integer,parameter::KROME_idx_HCOj = 207	!HCO+
-  integer,parameter::KROME_idx_CLj = 208	!CL+
-  integer,parameter::KROME_idx_Pj = 209	!P+
-  integer,parameter::KROME_idx_COj = 210	!CO+
-  integer,parameter::KROME_idx_H2j = 211	!H2+
-  integer,parameter::KROME_idx_NOj = 212	!NO+
-  integer,parameter::KROME_idx_O2j = 213	!O2+
-  integer,parameter::KROME_idx_CH2j = 214	!CH2+
-  integer,parameter::KROME_idx_H2Sj = 215	!H2S+
-  integer,parameter::KROME_idx_HCSj = 216	!HCS+
-  integer,parameter::KROME_idx_HNOj = 217	!HNO+
-  integer,parameter::KROME_idx_NH2j = 218	!NH2+
-  integer,parameter::KROME_idx_OCSj = 219	!OCS+
-  integer,parameter::KROME_idx_C2H2j = 220	!C2H2+
-  integer,parameter::KROME_idx_CH3j = 221	!CH3+
-  integer,parameter::KROME_idx_NH3j = 222	!NH3+
-  integer,parameter::KROME_idx_C2H2Oj = 223	!C2H2O+
-  integer,parameter::KROME_idx_CH2O2j = 224	!CH2O2+
-  integer,parameter::KROME_idx_C2H3Nj = 225	!C2H3N+
-  integer,parameter::KROME_idx_C2H4j = 226	!C2H4+
-  integer,parameter::KROME_idx_C4H2j = 227	!C4H2+
-  integer,parameter::KROME_idx_H3COj = 228	!H3CO+
-  integer,parameter::KROME_idx_CH4Oj = 229	!CH4O+
-  integer,parameter::KROME_idx_C2H4Oj = 230	!C2H4O+
-  integer,parameter::KROME_idx_C3H4j = 231	!C3H4+
-  integer,parameter::KROME_idx_CH5Nj = 232	!CH5N+
-  integer,parameter::KROME_idx_C2H5OHj = 233	!C2H5OH+
-  integer,parameter::KROME_idx_CH3OCH3j = 234	!CH3OCH3+
-  integer,parameter::KROME_idx_CHj = 235	!CH+
-  integer,parameter::KROME_idx_CCLj = 236	!CCL+
-  integer,parameter::KROME_idx_C2j = 237	!C2+
-  integer,parameter::KROME_idx_CLOj = 238	!CLO+
-  integer,parameter::KROME_idx_CPj = 239	!CP+
-  integer,parameter::KROME_idx_CFj = 240	!CF+
-  integer,parameter::KROME_idx_CSj = 241	!CS+
-  integer,parameter::KROME_idx_CNj = 242	!CN+
-  integer,parameter::KROME_idx_NSj = 243	!NS+
-  integer,parameter::KROME_idx_PHj = 244	!PH+
-  integer,parameter::KROME_idx_POj = 245	!PO+
-  integer,parameter::KROME_idx_SICj = 246	!SIC+
-  integer,parameter::KROME_idx_SINj = 247	!SIN+
-  integer,parameter::KROME_idx_SISj = 248	!SIS+
-  integer,parameter::KROME_idx_SOj = 249	!SO+
-  integer,parameter::KROME_idx_C3j = 250	!C3+
-  integer,parameter::KROME_idx_C2Sj = 251	!C2S+
-  integer,parameter::KROME_idx_C2Oj = 252	!C2O+
-  integer,parameter::KROME_idx_CCPj = 253	!CCP+
-  integer,parameter::KROME_idx_C2Hj = 254	!C2H+
-  integer,parameter::KROME_idx_HOCj = 255	!HOC+
-  integer,parameter::KROME_idx_C2Nj = 256	!C2N+
-  integer,parameter::KROME_idx_CNCj = 257	!CNC+
-  integer,parameter::KROME_idx_HCPj = 258	!HCP+
-  integer,parameter::KROME_idx_SIC2j = 259	!SIC2+
-  integer,parameter::KROME_idx_SINCj = 260	!SINC+
-  integer,parameter::KROME_idx_HPOj = 261	!HPO+
-  integer,parameter::KROME_idx_HCNj = 262	!HCN+
-  integer,parameter::KROME_idx_CHSIj = 263	!CHSI+
-  integer,parameter::KROME_idx_SIH2j = 264	!SIH2+
-  integer,parameter::KROME_idx_C3Hj = 265	!C3H+
-  integer,parameter::KROME_idx_C4j = 266	!C4+
-  integer,parameter::KROME_idx_C3Oj = 267	!C3O+
-  integer,parameter::KROME_idx_C3Sj = 268	!C3S+
-  integer,parameter::KROME_idx_H2COj = 269	!H2CO+
-  integer,parameter::KROME_idx_H2SIOj = 270	!H2SIO+
-  integer,parameter::KROME_idx_HCNHj = 271	!HCNH+
-  integer,parameter::KROME_idx_SIC2Hj = 272	!SIC2H+
-  integer,parameter::KROME_idx_SIC3j = 273	!SIC3+
-  integer,parameter::KROME_idx_CH2SIj = 274	!CH2SI+
-  integer,parameter::KROME_idx_SIH3j = 275	!SIH3+
-  integer,parameter::KROME_idx_C2H2Nj = 276	!C2H2N+
-  integer,parameter::KROME_idx_C2H3j = 277	!C2H3+
-  integer,parameter::KROME_idx_C3H2j = 278	!C3H2+
-  integer,parameter::KROME_idx_H2C3j = 279	!H2C3+
-  integer,parameter::KROME_idx_C4Hj = 280	!C4H+
-  integer,parameter::KROME_idx_C5j = 281	!C5+
-  integer,parameter::KROME_idx_C4Sj = 282	!C4S+
-  integer,parameter::KROME_idx_PC2Hj = 283	!PC2H+
-  integer,parameter::KROME_idx_C3Nj = 284	!C3N+
-  integer,parameter::KROME_idx_C4Nj = 285	!C4N+
-  integer,parameter::KROME_idx_C3HNj = 286	!C3HN+
-  integer,parameter::KROME_idx_HNCj = 287	!HNC+
-  integer,parameter::KROME_idx_SIC3Hj = 288	!SIC3H+
-  integer,parameter::KROME_idx_SIC4j = 289	!SIC4+
-  integer,parameter::KROME_idx_SIC2H2j = 290	!SIC2H2+
-  integer,parameter::KROME_idx_SICH3j = 291	!SICH3+
-  integer,parameter::KROME_idx_HC2NCHj = 292	!HC2NCH+
-  integer,parameter::KROME_idx_C3H3j = 293	!C3H3+
-  integer,parameter::KROME_idx_H3C3j = 294	!H3C3+
-  integer,parameter::KROME_idx_C5Hj = 295	!C5H+
-  integer,parameter::KROME_idx_C6j = 296	!C6+
-  integer,parameter::KROME_idx_C2H3Oj = 297	!C2H3O+
-  integer,parameter::KROME_idx_C2H5j = 298	!C2H5+
-  integer,parameter::KROME_idx_C3H3Nj = 299	!C3H3N+
-  integer,parameter::KROME_idx_C5H2j = 300	!C5H2+
-  integer,parameter::KROME_idx_C4H3j = 301	!C4H3+
-  integer,parameter::KROME_idx_C6Hj = 302	!C6H+
-  integer,parameter::KROME_idx_C7j = 303	!C7+
-  integer,parameter::KROME_idx_CH4Nj = 304	!CH4N+
-  integer,parameter::KROME_idx_C5HNj = 305	!C5HN+
-  integer,parameter::KROME_idx_C7Hj = 306	!C7H+
-  integer,parameter::KROME_idx_C8j = 307	!C8+
-  integer,parameter::KROME_idx_COOCH4j = 308	!COOCH4+
-  integer,parameter::KROME_idx_C2H5Oj = 309	!C2H5O+
-  integer,parameter::KROME_idx_C8Hj = 310	!C8H+
-  integer,parameter::KROME_idx_C9j = 311	!C9+
-  integer,parameter::KROME_idx_C5H3j = 312	!C5H3+
-  integer,parameter::KROME_idx_C6H2j = 313	!C6H2+
-  integer,parameter::KROME_idx_C6H3j = 314	!C6H3+
-  integer,parameter::KROME_idx_C2H6COj = 315	!C2H6CO+
-  integer,parameter::KROME_idx_C9Hj = 316	!C9H+
-  integer,parameter::KROME_idx_C10j = 317	!C10+
-  integer,parameter::KROME_idx_C7H3j = 318	!C7H3+
-  integer,parameter::KROME_idx_C8H2j = 319	!C8H2+
-  integer,parameter::KROME_idx_C8H3j = 320	!C8H3+
-  integer,parameter::KROME_idx_HCLj = 321	!HCL+
-  integer,parameter::KROME_idx_Fj = 322	!F+
-  integer,parameter::KROME_idx_HFj = 323	!HF+
-  integer,parameter::KROME_idx_HSj = 324	!HS+
-  integer,parameter::KROME_idx_NHj = 325	!NH+
-  integer,parameter::KROME_idx_OHj = 326	!OH+
-  integer,parameter::KROME_idx_PNj = 327	!PN+
-  integer,parameter::KROME_idx_S2j = 328	!S2+
-  integer,parameter::KROME_idx_SIHj = 329	!SIH+
-  integer,parameter::KROME_idx_SIOj = 330	!SIO+
-  integer,parameter::KROME_idx_H2Oj = 331	!H2O+
-  integer,parameter::KROME_idx_HNSIj = 332	!HNSI+
-  integer,parameter::KROME_idx_S2Hj = 333	!S2H+
-  integer,parameter::KROME_idx_PH2j = 334	!PH2+
-  integer,parameter::KROME_idx_H2CSj = 335	!H2CS+
-  integer,parameter::KROME_idx_H2S2j = 336	!H2S2+
-  integer,parameter::KROME_idx_HSIOj = 337	!HSIO+
-  integer,parameter::KROME_idx_C4Pj = 338	!C4P+
-  integer,parameter::KROME_idx_HCO2j = 339	!HCO2+
-  integer,parameter::KROME_idx_PCH3j = 340	!PCH3+
-  integer,parameter::KROME_idx_CH4j = 341	!CH4+
-  integer,parameter::KROME_idx_C2NHj = 342	!C2NH+
-  integer,parameter::KROME_idx_SIH4j = 343	!SIH4+
-  integer,parameter::KROME_idx_NH4j = 344	!NH4+
-  integer,parameter::KROME_idx_H2NCj = 345	!H2NC+
-  integer,parameter::KROME_idx_C3H2Nj = 346	!C3H2N+
-  integer,parameter::KROME_idx_C7H2j = 347	!C7H2+
-  integer,parameter::KROME_idx_C5H4j = 348	!C5H4+
-  integer,parameter::KROME_idx_C7HNj = 349	!C7HN+
-  integer,parameter::KROME_idx_C9H2j = 350	!C9H2+
-  integer,parameter::KROME_idx_C7H4j = 351	!C7H4+
-  integer,parameter::KROME_idx_C9HNj = 352	!C9HN+
-  integer,parameter::KROME_idx_N2j = 353	!N2+
-  integer,parameter::KROME_idx_CO2j = 354	!CO2+
-  integer,parameter::KROME_idx_HEHj = 355	!HEH+
-  integer,parameter::KROME_idx_SO2j = 356	!SO2+
-  integer,parameter::KROME_idx_C6H5j = 357	!C6H5+
-  integer,parameter::KROME_idx_C5H5j = 358	!C5H5+
-  integer,parameter::KROME_idx_N2Hj = 359	!N2H+
-  integer,parameter::KROME_idx_NO2j = 360	!NO2+
-  integer,parameter::KROME_idx_PC2H2j = 361	!PC2H2+
-  integer,parameter::KROME_idx_PNH2j = 362	!PNH2+
-  integer,parameter::KROME_idx_PCH2j = 363	!PCH2+
-  integer,parameter::KROME_idx_HC2Sj = 364	!HC2S+
-  integer,parameter::KROME_idx_HC3Sj = 365	!HC3S+
-  integer,parameter::KROME_idx_H3CSj = 366	!H3CS+
-  integer,parameter::KROME_idx_HC4Sj = 367	!HC4S+
-  integer,parameter::KROME_idx_SIFj = 368	!SIF+
-  integer,parameter::KROME_idx_SINH2j = 369	!SINH2+
-  integer,parameter::KROME_idx_SIC2H3j = 370	!SIC2H3+
-  integer,parameter::KROME_idx_SIC3H2j = 371	!SIC3H2+
-  integer,parameter::KROME_idx_C2HOj = 372	!C2HO+
-  integer,parameter::KROME_idx_H3Oj = 373	!H3O+
-  integer,parameter::KROME_idx_H3Sj = 374	!H3S+
-  integer,parameter::KROME_idx_HOCSj = 375	!HOCS+
-  integer,parameter::KROME_idx_CH5Oj = 376	!CH5O+
-  integer,parameter::KROME_idx_NCOj = 377	!NCO+
-  integer,parameter::KROME_idx_HNCOj = 378	!HNCO+
-  integer,parameter::KROME_idx_C2N2j = 379	!C2N2+
-  integer,parameter::KROME_idx_O2Hj = 380	!O2H+
-  integer,parameter::KROME_idx_CH5j = 381	!CH5+
-  integer,parameter::KROME_idx_H2CLj = 382	!H2CL+
-  integer,parameter::KROME_idx_H2Fj = 383	!H2F+
-  integer,parameter::KROME_idx_CH3O2j = 384	!CH3O2+
-  integer,parameter::KROME_idx_H2POj = 385	!H2PO+
-  integer,parameter::KROME_idx_PNH3j = 386	!PNH3+
-  integer,parameter::KROME_idx_PCH4j = 387	!PCH4+
-  integer,parameter::KROME_idx_PC2H3j = 388	!PC2H3+
-  integer,parameter::KROME_idx_HSISj = 389	!HSIS+
-  integer,parameter::KROME_idx_HSOj = 390	!HSO+
-  integer,parameter::KROME_idx_HNSj = 391	!HNS+
-  integer,parameter::KROME_idx_HPNj = 392	!HPN+
-  integer,parameter::KROME_idx_H2NOj = 393	!H2NO+
-  integer,parameter::KROME_idx_NAH2Oj = 394	!NAH2O+
-  integer,parameter::KROME_idx_PH3j = 395	!PH3+
-  integer,parameter::KROME_idx_SINCHj = 396	!SINCH+
-  integer,parameter::KROME_idx_HSIO2j = 397	!HSIO2+
-  integer,parameter::KROME_idx_HSO2j = 398	!HSO2+
-  integer,parameter::KROME_idx_HC3Oj = 399	!HC3O+
-  integer,parameter::KROME_idx_PC3Hj = 400	!PC3H+
-  integer,parameter::KROME_idx_H3S2j = 401	!H3S2+
-  integer,parameter::KROME_idx_H3SIOj = 402	!H3SIO+
-  integer,parameter::KROME_idx_PC4Hj = 403	!PC4H+
-  integer,parameter::KROME_idx_NH2CNHj = 404	!NH2CNH+
-  integer,parameter::KROME_idx_SIC4Hj = 405	!SIC4H+
-  integer,parameter::KROME_idx_SICH4j = 406	!SICH4+
-  integer,parameter::KROME_idx_SIH5j = 407	!SIH5+
-  integer,parameter::KROME_idx_C2H4Nj = 408	!C2H4N+
-  integer,parameter::KROME_idx_NH2CH2Oj = 409	!NH2CH2O+
-  integer,parameter::KROME_idx_C2H6j = 410	!C2H6+
-  integer,parameter::KROME_idx_C3H4Nj = 411	!C3H4N+
-  integer,parameter::KROME_idx_C3H5j = 412	!C3H5+
-  integer,parameter::KROME_idx_C4H4j = 413	!C4H4+
-  integer,parameter::KROME_idx_CH6Nj = 414	!CH6N+
-  integer,parameter::KROME_idx_C5H2Nj = 415	!C5H2N+
-  integer,parameter::KROME_idx_C4H4Nj = 416	!C4H4N+
-  integer,parameter::KROME_idx_H5C2O2j = 417	!H5C2O2+
-  integer,parameter::KROME_idx_C2H5OH2j = 418	!C2H5OH2+
-  integer,parameter::KROME_idx_CH3OCH4j = 419	!CH3OCH4+
-  integer,parameter::KROME_idx_C7H2Nj = 420	!C7H2N+
-  integer,parameter::KROME_idx_C3H6OHj = 421	!C3H6OH+
-  integer,parameter::KROME_idx_C6H4Nj = 422	!C6H4N+
-  integer,parameter::KROME_idx_C9H3j = 423	!C9H3+
-  integer,parameter::KROME_idx_C7H5j = 424	!C7H5+
-  integer,parameter::KROME_idx_C8H4Nj = 425	!C8H4N+
-  integer,parameter::KROME_idx_C9H2Nj = 426	!C9H2N+
-  integer,parameter::KROME_idx_C6H7j = 427	!C6H7+
-  integer,parameter::KROME_idx_NAH2j = 428	!NAH2+
-  integer,parameter::KROME_idx_PC2H4j = 429	!PC2H4+
-  integer,parameter::KROME_idx_C4H5j = 430	!C4H5+
-  integer,parameter::KROME_idx_H2CCLj = 431	!H2CCL+
-  integer,parameter::KROME_idx_PC4H2j = 432	!PC4H2+
-  integer,parameter::KROME_idx_C6H4j = 433	!C6H4+
-  integer,parameter::KROME_idx_C8H4j = 434	!C8H4+
-  integer,parameter::KROME_idx_C9H4j = 435	!C9H4+
-  integer,parameter::KROME_idx_C4H7j = 436	!C4H7+
-  integer,parameter::KROME_idx_HC4Nj = 437	!HC4N+
-  integer,parameter::KROME_idx_HC4Oj = 438	!HC4O+
-  integer,parameter::KROME_idx_C5Nj = 439	!C5N+
-  integer,parameter::KROME_idx_H2C4Nj = 440	!H2C4N+
-  integer,parameter::KROME_idx_H3C4Nj = 441	!H3C4N+
-  integer,parameter::KROME_idx_C7Nj = 442	!C7N+
-  integer,parameter::KROME_idx_C5H3Nj = 443	!C5H3N+
-  integer,parameter::KROME_idx_C9Nj = 444	!C9N+
-  integer,parameter::KROME_idx_C7H3Nj = 445	!C7H3N+
-  integer,parameter::KROME_idx_C9H3Nj = 446	!C9H3N+
-  integer,parameter::KROME_idx_OCSjH2 = 447	!OCS+H2
-  integer,parameter::KROME_idx_H2C3Oj = 448	!H2C3O+
-  integer,parameter::KROME_idx_H3C3Oj = 449	!H3C3O+
-  integer,parameter::KROME_idx_C5H4Nj = 450	!C5H4N+
-  integer,parameter::KROME_idx_C8H5j = 451	!C8H5+
-  integer,parameter::KROME_idx_C9H5j = 452	!C9H5+
-  integer,parameter::KROME_idx_HEjj = 453	!HE++
-  integer,parameter::KROME_idx_dust_C_1 = 454	!dust_C_1
-  integer,parameter::KROME_idx_dust_C_2 = 455	!dust_C_2
-  integer,parameter::KROME_idx_dust_C_3 = 456	!dust_C_3
-  integer,parameter::KROME_idx_dust_C_4 = 457	!dust_C_4
-  integer,parameter::KROME_idx_dust_C_5 = 458	!dust_C_5
-  integer,parameter::KROME_idx_dust_C_6 = 459	!dust_C_6
-  integer,parameter::KROME_idx_dust_C_7 = 460	!dust_C_7
-  integer,parameter::KROME_idx_dust_C_8 = 461	!dust_C_8
-  integer,parameter::KROME_idx_dust_C_9 = 462	!dust_C_9
-  integer,parameter::KROME_idx_dust_C_10 = 463	!dust_C_10
-  integer,parameter::KROME_idx_dust_Si_1 = 464	!dust_Si_1
-  integer,parameter::KROME_idx_dust_Si_2 = 465	!dust_Si_2
-  integer,parameter::KROME_idx_dust_Si_3 = 466	!dust_Si_3
-  integer,parameter::KROME_idx_dust_Si_4 = 467	!dust_Si_4
-  integer,parameter::KROME_idx_dust_Si_5 = 468	!dust_Si_5
-  integer,parameter::KROME_idx_dust_Si_6 = 469	!dust_Si_6
-  integer,parameter::KROME_idx_dust_Si_7 = 470	!dust_Si_7
-  integer,parameter::KROME_idx_dust_Si_8 = 471	!dust_Si_8
-  integer,parameter::KROME_idx_dust_Si_9 = 472	!dust_Si_9
-  integer,parameter::KROME_idx_dust_Si_10 = 473	!dust_Si_10
-  integer,parameter::KROME_idx_CR = 474	!CR
-  integer,parameter::KROME_idx_g = 475	!g
-  integer,parameter::KROME_idx_Tgas = 476	!Tgas
-  integer,parameter::KROME_idx_dummy = 477	!dummy
+  integer,parameter::KROME_idx_H_DUST = 196	!H_DUST
+  integer,parameter::KROME_idx_H_DUSTH_DUST = 197	!H_DUSTH_DUST
+  integer,parameter::KROME_idx_O_DUST = 198	!O_DUST
+  integer,parameter::KROME_idx_O_DUSTH_DUST = 199	!O_DUSTH_DUST
+  integer,parameter::KROME_idx_H_DUSTH_DUSTO_DUST = 200	!H_DUSTH_DUSTO_DUST
+  integer,parameter::KROME_idx_O_DUSTO_DUST = 201	!O_DUSTO_DUST
+  integer,parameter::KROME_idx_Cj = 202	!C+
+  integer,parameter::KROME_idx_FEj = 203	!FE+
+  integer,parameter::KROME_idx_Hj = 204	!H+
+  integer,parameter::KROME_idx_HEj = 205	!HE+
+  integer,parameter::KROME_idx_MGj = 206	!MG+
+  integer,parameter::KROME_idx_Nj = 207	!N+
+  integer,parameter::KROME_idx_NAj = 208	!NA+
+  integer,parameter::KROME_idx_Oj = 209	!O+
+  integer,parameter::KROME_idx_Sj = 210	!S+
+  integer,parameter::KROME_idx_SIj = 211	!SI+
+  integer,parameter::KROME_idx_H3j = 212	!H3+
+  integer,parameter::KROME_idx_HCOj = 213	!HCO+
+  integer,parameter::KROME_idx_CLj = 214	!CL+
+  integer,parameter::KROME_idx_Pj = 215	!P+
+  integer,parameter::KROME_idx_COj = 216	!CO+
+  integer,parameter::KROME_idx_H2j = 217	!H2+
+  integer,parameter::KROME_idx_NOj = 218	!NO+
+  integer,parameter::KROME_idx_O2j = 219	!O2+
+  integer,parameter::KROME_idx_CH2j = 220	!CH2+
+  integer,parameter::KROME_idx_H2Sj = 221	!H2S+
+  integer,parameter::KROME_idx_HCSj = 222	!HCS+
+  integer,parameter::KROME_idx_HNOj = 223	!HNO+
+  integer,parameter::KROME_idx_NH2j = 224	!NH2+
+  integer,parameter::KROME_idx_OCSj = 225	!OCS+
+  integer,parameter::KROME_idx_C2H2j = 226	!C2H2+
+  integer,parameter::KROME_idx_CH3j = 227	!CH3+
+  integer,parameter::KROME_idx_NH3j = 228	!NH3+
+  integer,parameter::KROME_idx_C2H2Oj = 229	!C2H2O+
+  integer,parameter::KROME_idx_CH2O2j = 230	!CH2O2+
+  integer,parameter::KROME_idx_C2H3Nj = 231	!C2H3N+
+  integer,parameter::KROME_idx_C2H4j = 232	!C2H4+
+  integer,parameter::KROME_idx_C4H2j = 233	!C4H2+
+  integer,parameter::KROME_idx_H3COj = 234	!H3CO+
+  integer,parameter::KROME_idx_CH4Oj = 235	!CH4O+
+  integer,parameter::KROME_idx_C2H4Oj = 236	!C2H4O+
+  integer,parameter::KROME_idx_C3H4j = 237	!C3H4+
+  integer,parameter::KROME_idx_CH5Nj = 238	!CH5N+
+  integer,parameter::KROME_idx_C2H5OHj = 239	!C2H5OH+
+  integer,parameter::KROME_idx_CH3OCH3j = 240	!CH3OCH3+
+  integer,parameter::KROME_idx_CHj = 241	!CH+
+  integer,parameter::KROME_idx_CCLj = 242	!CCL+
+  integer,parameter::KROME_idx_C2j = 243	!C2+
+  integer,parameter::KROME_idx_CLOj = 244	!CLO+
+  integer,parameter::KROME_idx_CPj = 245	!CP+
+  integer,parameter::KROME_idx_CFj = 246	!CF+
+  integer,parameter::KROME_idx_CSj = 247	!CS+
+  integer,parameter::KROME_idx_CNj = 248	!CN+
+  integer,parameter::KROME_idx_NSj = 249	!NS+
+  integer,parameter::KROME_idx_PHj = 250	!PH+
+  integer,parameter::KROME_idx_POj = 251	!PO+
+  integer,parameter::KROME_idx_SICj = 252	!SIC+
+  integer,parameter::KROME_idx_SINj = 253	!SIN+
+  integer,parameter::KROME_idx_SISj = 254	!SIS+
+  integer,parameter::KROME_idx_SOj = 255	!SO+
+  integer,parameter::KROME_idx_C3j = 256	!C3+
+  integer,parameter::KROME_idx_C2Sj = 257	!C2S+
+  integer,parameter::KROME_idx_C2Oj = 258	!C2O+
+  integer,parameter::KROME_idx_CCPj = 259	!CCP+
+  integer,parameter::KROME_idx_C2Hj = 260	!C2H+
+  integer,parameter::KROME_idx_HOCj = 261	!HOC+
+  integer,parameter::KROME_idx_C2Nj = 262	!C2N+
+  integer,parameter::KROME_idx_CNCj = 263	!CNC+
+  integer,parameter::KROME_idx_HCPj = 264	!HCP+
+  integer,parameter::KROME_idx_SIC2j = 265	!SIC2+
+  integer,parameter::KROME_idx_SINCj = 266	!SINC+
+  integer,parameter::KROME_idx_HPOj = 267	!HPO+
+  integer,parameter::KROME_idx_HCNj = 268	!HCN+
+  integer,parameter::KROME_idx_CHSIj = 269	!CHSI+
+  integer,parameter::KROME_idx_SIH2j = 270	!SIH2+
+  integer,parameter::KROME_idx_C3Hj = 271	!C3H+
+  integer,parameter::KROME_idx_C4j = 272	!C4+
+  integer,parameter::KROME_idx_C3Oj = 273	!C3O+
+  integer,parameter::KROME_idx_C3Sj = 274	!C3S+
+  integer,parameter::KROME_idx_H2COj = 275	!H2CO+
+  integer,parameter::KROME_idx_H2SIOj = 276	!H2SIO+
+  integer,parameter::KROME_idx_HCNHj = 277	!HCNH+
+  integer,parameter::KROME_idx_SIC2Hj = 278	!SIC2H+
+  integer,parameter::KROME_idx_SIC3j = 279	!SIC3+
+  integer,parameter::KROME_idx_CH2SIj = 280	!CH2SI+
+  integer,parameter::KROME_idx_SIH3j = 281	!SIH3+
+  integer,parameter::KROME_idx_C2H2Nj = 282	!C2H2N+
+  integer,parameter::KROME_idx_C2H3j = 283	!C2H3+
+  integer,parameter::KROME_idx_C3H2j = 284	!C3H2+
+  integer,parameter::KROME_idx_H2C3j = 285	!H2C3+
+  integer,parameter::KROME_idx_C4Hj = 286	!C4H+
+  integer,parameter::KROME_idx_C5j = 287	!C5+
+  integer,parameter::KROME_idx_C4Sj = 288	!C4S+
+  integer,parameter::KROME_idx_PC2Hj = 289	!PC2H+
+  integer,parameter::KROME_idx_C3Nj = 290	!C3N+
+  integer,parameter::KROME_idx_C4Nj = 291	!C4N+
+  integer,parameter::KROME_idx_C3HNj = 292	!C3HN+
+  integer,parameter::KROME_idx_HNCj = 293	!HNC+
+  integer,parameter::KROME_idx_SIC3Hj = 294	!SIC3H+
+  integer,parameter::KROME_idx_SIC4j = 295	!SIC4+
+  integer,parameter::KROME_idx_SIC2H2j = 296	!SIC2H2+
+  integer,parameter::KROME_idx_SICH3j = 297	!SICH3+
+  integer,parameter::KROME_idx_HC2NCHj = 298	!HC2NCH+
+  integer,parameter::KROME_idx_C3H3j = 299	!C3H3+
+  integer,parameter::KROME_idx_H3C3j = 300	!H3C3+
+  integer,parameter::KROME_idx_C5Hj = 301	!C5H+
+  integer,parameter::KROME_idx_C6j = 302	!C6+
+  integer,parameter::KROME_idx_C2H3Oj = 303	!C2H3O+
+  integer,parameter::KROME_idx_C2H5j = 304	!C2H5+
+  integer,parameter::KROME_idx_C3H3Nj = 305	!C3H3N+
+  integer,parameter::KROME_idx_C5H2j = 306	!C5H2+
+  integer,parameter::KROME_idx_C4H3j = 307	!C4H3+
+  integer,parameter::KROME_idx_C6Hj = 308	!C6H+
+  integer,parameter::KROME_idx_C7j = 309	!C7+
+  integer,parameter::KROME_idx_CH4Nj = 310	!CH4N+
+  integer,parameter::KROME_idx_C5HNj = 311	!C5HN+
+  integer,parameter::KROME_idx_C7Hj = 312	!C7H+
+  integer,parameter::KROME_idx_C8j = 313	!C8+
+  integer,parameter::KROME_idx_COOCH4j = 314	!COOCH4+
+  integer,parameter::KROME_idx_C2H5Oj = 315	!C2H5O+
+  integer,parameter::KROME_idx_C8Hj = 316	!C8H+
+  integer,parameter::KROME_idx_C9j = 317	!C9+
+  integer,parameter::KROME_idx_C5H3j = 318	!C5H3+
+  integer,parameter::KROME_idx_C6H2j = 319	!C6H2+
+  integer,parameter::KROME_idx_C6H3j = 320	!C6H3+
+  integer,parameter::KROME_idx_C2H6COj = 321	!C2H6CO+
+  integer,parameter::KROME_idx_C9Hj = 322	!C9H+
+  integer,parameter::KROME_idx_C10j = 323	!C10+
+  integer,parameter::KROME_idx_C7H3j = 324	!C7H3+
+  integer,parameter::KROME_idx_C8H2j = 325	!C8H2+
+  integer,parameter::KROME_idx_C8H3j = 326	!C8H3+
+  integer,parameter::KROME_idx_HCLj = 327	!HCL+
+  integer,parameter::KROME_idx_Fj = 328	!F+
+  integer,parameter::KROME_idx_HFj = 329	!HF+
+  integer,parameter::KROME_idx_HSj = 330	!HS+
+  integer,parameter::KROME_idx_NHj = 331	!NH+
+  integer,parameter::KROME_idx_OHj = 332	!OH+
+  integer,parameter::KROME_idx_PNj = 333	!PN+
+  integer,parameter::KROME_idx_S2j = 334	!S2+
+  integer,parameter::KROME_idx_SIHj = 335	!SIH+
+  integer,parameter::KROME_idx_SIOj = 336	!SIO+
+  integer,parameter::KROME_idx_H2Oj = 337	!H2O+
+  integer,parameter::KROME_idx_HNSIj = 338	!HNSI+
+  integer,parameter::KROME_idx_S2Hj = 339	!S2H+
+  integer,parameter::KROME_idx_PH2j = 340	!PH2+
+  integer,parameter::KROME_idx_H2CSj = 341	!H2CS+
+  integer,parameter::KROME_idx_H2S2j = 342	!H2S2+
+  integer,parameter::KROME_idx_HSIOj = 343	!HSIO+
+  integer,parameter::KROME_idx_C4Pj = 344	!C4P+
+  integer,parameter::KROME_idx_HCO2j = 345	!HCO2+
+  integer,parameter::KROME_idx_PCH3j = 346	!PCH3+
+  integer,parameter::KROME_idx_CH4j = 347	!CH4+
+  integer,parameter::KROME_idx_C2NHj = 348	!C2NH+
+  integer,parameter::KROME_idx_SIH4j = 349	!SIH4+
+  integer,parameter::KROME_idx_NH4j = 350	!NH4+
+  integer,parameter::KROME_idx_H2NCj = 351	!H2NC+
+  integer,parameter::KROME_idx_C3H2Nj = 352	!C3H2N+
+  integer,parameter::KROME_idx_C7H2j = 353	!C7H2+
+  integer,parameter::KROME_idx_C5H4j = 354	!C5H4+
+  integer,parameter::KROME_idx_C7HNj = 355	!C7HN+
+  integer,parameter::KROME_idx_C9H2j = 356	!C9H2+
+  integer,parameter::KROME_idx_C7H4j = 357	!C7H4+
+  integer,parameter::KROME_idx_C9HNj = 358	!C9HN+
+  integer,parameter::KROME_idx_N2j = 359	!N2+
+  integer,parameter::KROME_idx_CO2j = 360	!CO2+
+  integer,parameter::KROME_idx_HEHj = 361	!HEH+
+  integer,parameter::KROME_idx_SO2j = 362	!SO2+
+  integer,parameter::KROME_idx_C6H5j = 363	!C6H5+
+  integer,parameter::KROME_idx_C5H5j = 364	!C5H5+
+  integer,parameter::KROME_idx_N2Hj = 365	!N2H+
+  integer,parameter::KROME_idx_NO2j = 366	!NO2+
+  integer,parameter::KROME_idx_PC2H2j = 367	!PC2H2+
+  integer,parameter::KROME_idx_PNH2j = 368	!PNH2+
+  integer,parameter::KROME_idx_PCH2j = 369	!PCH2+
+  integer,parameter::KROME_idx_HC2Sj = 370	!HC2S+
+  integer,parameter::KROME_idx_HC3Sj = 371	!HC3S+
+  integer,parameter::KROME_idx_H3CSj = 372	!H3CS+
+  integer,parameter::KROME_idx_HC4Sj = 373	!HC4S+
+  integer,parameter::KROME_idx_SIFj = 374	!SIF+
+  integer,parameter::KROME_idx_SINH2j = 375	!SINH2+
+  integer,parameter::KROME_idx_SIC2H3j = 376	!SIC2H3+
+  integer,parameter::KROME_idx_SIC3H2j = 377	!SIC3H2+
+  integer,parameter::KROME_idx_C2HOj = 378	!C2HO+
+  integer,parameter::KROME_idx_H3Oj = 379	!H3O+
+  integer,parameter::KROME_idx_H3Sj = 380	!H3S+
+  integer,parameter::KROME_idx_HOCSj = 381	!HOCS+
+  integer,parameter::KROME_idx_CH5Oj = 382	!CH5O+
+  integer,parameter::KROME_idx_NCOj = 383	!NCO+
+  integer,parameter::KROME_idx_HNCOj = 384	!HNCO+
+  integer,parameter::KROME_idx_C2N2j = 385	!C2N2+
+  integer,parameter::KROME_idx_O2Hj = 386	!O2H+
+  integer,parameter::KROME_idx_CH5j = 387	!CH5+
+  integer,parameter::KROME_idx_H2CLj = 388	!H2CL+
+  integer,parameter::KROME_idx_H2Fj = 389	!H2F+
+  integer,parameter::KROME_idx_CH3O2j = 390	!CH3O2+
+  integer,parameter::KROME_idx_H2POj = 391	!H2PO+
+  integer,parameter::KROME_idx_PNH3j = 392	!PNH3+
+  integer,parameter::KROME_idx_PCH4j = 393	!PCH4+
+  integer,parameter::KROME_idx_PC2H3j = 394	!PC2H3+
+  integer,parameter::KROME_idx_HSISj = 395	!HSIS+
+  integer,parameter::KROME_idx_HSOj = 396	!HSO+
+  integer,parameter::KROME_idx_HNSj = 397	!HNS+
+  integer,parameter::KROME_idx_HPNj = 398	!HPN+
+  integer,parameter::KROME_idx_H2NOj = 399	!H2NO+
+  integer,parameter::KROME_idx_NAH2Oj = 400	!NAH2O+
+  integer,parameter::KROME_idx_PH3j = 401	!PH3+
+  integer,parameter::KROME_idx_SINCHj = 402	!SINCH+
+  integer,parameter::KROME_idx_HSIO2j = 403	!HSIO2+
+  integer,parameter::KROME_idx_HSO2j = 404	!HSO2+
+  integer,parameter::KROME_idx_HC3Oj = 405	!HC3O+
+  integer,parameter::KROME_idx_PC3Hj = 406	!PC3H+
+  integer,parameter::KROME_idx_H3S2j = 407	!H3S2+
+  integer,parameter::KROME_idx_H3SIOj = 408	!H3SIO+
+  integer,parameter::KROME_idx_PC4Hj = 409	!PC4H+
+  integer,parameter::KROME_idx_NH2CNHj = 410	!NH2CNH+
+  integer,parameter::KROME_idx_SIC4Hj = 411	!SIC4H+
+  integer,parameter::KROME_idx_SICH4j = 412	!SICH4+
+  integer,parameter::KROME_idx_SIH5j = 413	!SIH5+
+  integer,parameter::KROME_idx_C2H4Nj = 414	!C2H4N+
+  integer,parameter::KROME_idx_NH2CH2Oj = 415	!NH2CH2O+
+  integer,parameter::KROME_idx_C2H6j = 416	!C2H6+
+  integer,parameter::KROME_idx_C3H4Nj = 417	!C3H4N+
+  integer,parameter::KROME_idx_C3H5j = 418	!C3H5+
+  integer,parameter::KROME_idx_C4H4j = 419	!C4H4+
+  integer,parameter::KROME_idx_CH6Nj = 420	!CH6N+
+  integer,parameter::KROME_idx_C5H2Nj = 421	!C5H2N+
+  integer,parameter::KROME_idx_C4H4Nj = 422	!C4H4N+
+  integer,parameter::KROME_idx_H5C2O2j = 423	!H5C2O2+
+  integer,parameter::KROME_idx_C2H5OH2j = 424	!C2H5OH2+
+  integer,parameter::KROME_idx_CH3OCH4j = 425	!CH3OCH4+
+  integer,parameter::KROME_idx_C7H2Nj = 426	!C7H2N+
+  integer,parameter::KROME_idx_C3H6OHj = 427	!C3H6OH+
+  integer,parameter::KROME_idx_C6H4Nj = 428	!C6H4N+
+  integer,parameter::KROME_idx_C9H3j = 429	!C9H3+
+  integer,parameter::KROME_idx_C7H5j = 430	!C7H5+
+  integer,parameter::KROME_idx_C8H4Nj = 431	!C8H4N+
+  integer,parameter::KROME_idx_C9H2Nj = 432	!C9H2N+
+  integer,parameter::KROME_idx_C6H7j = 433	!C6H7+
+  integer,parameter::KROME_idx_NAH2j = 434	!NAH2+
+  integer,parameter::KROME_idx_PC2H4j = 435	!PC2H4+
+  integer,parameter::KROME_idx_C4H5j = 436	!C4H5+
+  integer,parameter::KROME_idx_H2CCLj = 437	!H2CCL+
+  integer,parameter::KROME_idx_PC4H2j = 438	!PC4H2+
+  integer,parameter::KROME_idx_C6H4j = 439	!C6H4+
+  integer,parameter::KROME_idx_C8H4j = 440	!C8H4+
+  integer,parameter::KROME_idx_C9H4j = 441	!C9H4+
+  integer,parameter::KROME_idx_C4H7j = 442	!C4H7+
+  integer,parameter::KROME_idx_HC4Nj = 443	!HC4N+
+  integer,parameter::KROME_idx_HC4Oj = 444	!HC4O+
+  integer,parameter::KROME_idx_C5Nj = 445	!C5N+
+  integer,parameter::KROME_idx_H2C4Nj = 446	!H2C4N+
+  integer,parameter::KROME_idx_H3C4Nj = 447	!H3C4N+
+  integer,parameter::KROME_idx_C7Nj = 448	!C7N+
+  integer,parameter::KROME_idx_C5H3Nj = 449	!C5H3N+
+  integer,parameter::KROME_idx_C9Nj = 450	!C9N+
+  integer,parameter::KROME_idx_C7H3Nj = 451	!C7H3N+
+  integer,parameter::KROME_idx_C9H3Nj = 452	!C9H3N+
+  integer,parameter::KROME_idx_OCSjH2 = 453	!OCS+H2
+  integer,parameter::KROME_idx_H2C3Oj = 454	!H2C3O+
+  integer,parameter::KROME_idx_H3C3Oj = 455	!H3C3O+
+  integer,parameter::KROME_idx_C5H4Nj = 456	!C5H4N+
+  integer,parameter::KROME_idx_C8H5j = 457	!C8H5+
+  integer,parameter::KROME_idx_C9H5j = 458	!C9H5+
+  integer,parameter::KROME_idx_CR = 459	!CR
+  integer,parameter::KROME_idx_g = 460	!g
+  integer,parameter::KROME_idx_Tgas = 461	!Tgas
+  integer,parameter::KROME_idx_dummy = 462	!dummy
 
   integer,parameter::krome_idx_cool_h2 = 1
   integer,parameter::krome_idx_cool_h2gp = 2
@@ -520,7 +505,10 @@ module krome_user
   integer,parameter::krome_idx_cool_zcienouv = 16
   integer,parameter::krome_idx_cool_zextend = 17
   integer,parameter::krome_idx_cool_gh = 18
-  integer,parameter::krome_ncools = 18
+  integer,parameter::krome_idx_cool_oh = 19
+  integer,parameter::krome_idx_cool_h2o = 20
+  integer,parameter::krome_idx_cool_hcn = 21
+  integer,parameter::krome_ncools = 21
 
   integer,parameter::krome_idx_heat_chem = 1
   integer,parameter::krome_idx_heat_compress = 2
@@ -539,12 +527,12 @@ module krome_user
   integer,parameter::krome_idx_heat_zcie = 11
   integer,parameter::krome_nheats = 11
 
-  integer,parameter::krome_nrea=4453
-  integer,parameter::krome_nmols=453
-  integer,parameter::krome_nspec=477
+  integer,parameter::krome_nrea=4444
+  integer,parameter::krome_nmols=458
+  integer,parameter::krome_nspec=462
   integer,parameter::krome_natoms=16
-  integer,parameter::krome_ndust=20
-  integer,parameter::krome_ndustTypes=2
+  integer,parameter::krome_ndust=0
+  integer,parameter::krome_ndustTypes=0
   integer,parameter::krome_nPhotoBins=0
   integer,parameter::krome_nPhotoRates=0
 
@@ -713,7 +701,6 @@ contains
     x(idx_CLj) = xmoc(imap(17), 2)
     x(idx_Pj) = xmoc(imap(15), 2)
     x(idx_Fj) = xmoc(imap(9), 2)
-    x(idx_HEjj) = xmoc(imap(2), 3)
 
     n(1:nmols) = x(:)
     n(nmols+1:nspec) = 0d0
@@ -762,7 +749,6 @@ contains
     xmoc(imap(17), 2) = x(idx_CLj)
     xmoc(imap(15), 2) = x(idx_Pj)
     xmoc(imap(9), 2) = x(idx_Fj)
-    xmoc(imap(2), 3) = x(idx_HEjj)
 
   end subroutine krome_return_xmoc
 
@@ -898,210 +884,6 @@ contains
 
   end subroutine krome_set_J21xray
 
-  !*************************
-  !this subroutine sets the dust distribution in the range
-  ! alow_arg, aup_arg, using power law with exponent phi_arg.
-  ! All these arguments are optional, execept for x(:) of size
-  ! krome_nmols that represents the number densitites of the
-  ! chemical species, and dust_gas_ratio. Check the code below
-  ! for defaults
-  subroutine krome_init_dust_distribution(x,dust_gas_ratio,alow_arg,&
-        aup_arg,phi_arg)
-    use krome_dust
-    use krome_commons
-    real*8 , optional :: alow_arg,aup_arg,phi_arg
-    real*8 :: dust_gas_ratio
-    real*8 :: x(nmols)
-    real*8::alow,aup,phi
-
-    !default values
-    alow = 5d-7 !lower size (cm)
-    aup = 2.5d-5 !upper size (cm)
-    phi = -3.5d0 !MNR distribution exponent (with its sign)
-
-    if(present(alow_arg)) alow = alow_arg
-    if(present(aup_arg)) aup = aup_arg
-    if(present(phi_arg)) phi = phi_arg
-
-    call set_dust_distribution(x(:),dust_gas_ratio,alow,aup,phi)
-
-  end subroutine krome_init_dust_distribution
-
-  !*****************************
-  !this function returns an array of size krome_ndust
-  ! that contains the amount of dust per bin in 1/cm3.
-  function krome_get_dust_distribution()
-    use krome_commons
-    implicit none
-    real*8 :: krome_get_dust_distribution(ndust)
-
-    krome_get_dust_distribution(:) = xdust(:)
-
-  end function krome_get_dust_distribution
-
-  !*****************************
-  !this function sets the dust distribution with an array
-  ! that contains the amount of dust per bin in 1/cm3.
-  ! each array element represents a dust bin.
-  subroutine krome_set_dust_distribution(arg)
-    use krome_commons
-    implicit none
-    real*8 :: arg(ndust)
-
-    xdust(:) = arg(:)
-
-  end subroutine krome_set_dust_distribution
-
-  !******************************
-  !this function returns an array of size krome_ndust
-  ! that contains the size of the dust bins in cm
-  function krome_get_dust_size()
-    use krome_commons
-    implicit none
-    real*8 :: krome_get_dust_size(ndust)
-
-    krome_get_dust_size(:) = krome_dust_asize(:)
-
-  end function krome_get_dust_size
-
-  !******************************
-  !this function set the sizes of the dust with an array
-  ! of size krome_ndust that contains the size of the
-  ! dust bins in cm
-  subroutine krome_set_dust_size(arg)
-    use krome_commons
-    implicit none
-    real*8 :: arg(ndust)
-
-    krome_dust_asize(:) = arg(:)
-    krome_dust_asize2(:) = arg(:)**2
-    krome_dust_asize3(:) = arg(:)**3
-
-  end subroutine krome_set_dust_size
-
-  !************************
-  !this function sets the default temperature (arg)
-  ! for all the dust bins, K
-  subroutine krome_set_Tdust(arg)
-    use krome_commons
-    implicit none
-    real*8 :: arg
-
-    krome_dust_T(:) = arg
-
-  end subroutine krome_set_Tdust
-
-  !************************
-  !this function sets the temperature
-  ! for all the dust bins but using an array
-  ! of size krome_ndust, K
-  subroutine krome_set_Tdust_array(arr)
-    use krome_commons
-    implicit none
-    real*8 :: arr(ndust)
-
-    krome_dust_T(:) = arr(:)
-
-  end subroutine krome_set_Tdust_array
-
-  !*********************
-  !returns the Tdust averaged over the dust number density
-  function krome_get_averaged_Tdust()
-    use krome_commons
-    implicit none
-    real*8 :: krome_get_averaged_Tdust
-
-    krome_get_averaged_Tdust = sum(xdust(:)*krome_dust_T(:))/sum(xdust(:))
-
-  end function krome_get_averaged_Tdust
-
-  !****************************
-  ! scales the dust distribution by multiplying it by the
-  ! real*8 value xscale
-  subroutine krome_scale_dust_distribution(xscale)
-    use krome_commons
-    implicit none
-    real*8 :: xscale
-
-    xdust(:) = xdust(:) * xscale
-
-  end subroutine krome_scale_dust_distribution
-
-  !***********************
-  !returns an array of size krome_ndust containing the
-  ! dust temperatures, K. Each array element is a dust bin
-  function krome_get_Tdust()
-    use krome_commons
-    implicit none
-    real*8 :: krome_get_Tdust(ndust)
-
-    krome_get_Tdust(:) = krome_dust_T(:)
-
-  end function krome_get_Tdust
-
-  !***************************
-  !this subroutine sets as a scalar (xarg) all the
-  ! surface species for the given idx_base in the
-  ! species array x:
-  ! e.g. krome_set_surface(x(:),1d3,krome_idx_OH_dust)
-  subroutine krome_set_surface(x,xarg,idx_base)
-    use krome_commons
-    implicit none
-    integer :: idx_base
-    real*8 :: xarg
-    real*8 :: x(nmols)
-
-    x(idx_base:idx_base+ndust-1) = xarg
-
-  end subroutine krome_set_surface
-
-  !***************************
-  !this subroutine sets as a scalar (xarg) all the
-  ! surface species for the given idx_base in the
-  ! species array x, normalized by the amount of dust
-  ! in each bin:
-  ! e.g. krome_set_surface_norm(x(:),1d3,krome_idx_OH_dust)
-  subroutine krome_set_surface_norm(x,xarg,idx_base)
-    use krome_commons
-    implicit none
-    integer :: idx_base
-    real*8 :: xarg
-    real*8 :: x(nmols)
-
-    x(idx_base:idx_base+ndust-1) = xarg*xdust(:)/sum(xdust(:))
-
-  end subroutine krome_set_surface_norm
-
-  !***************************
-  !this subroutine sets as a vector (xarr) all the
-  ! surface species for the given idx_base in the
-  ! species array x. The size of the array xarr is ndust.
-  ! e.g. krome_set_surface_array(x(:),arr(:),krome_idx_OH_dust)
-  subroutine krome_set_surface_array(x,xarr,idx_base)
-    use krome_commons
-    implicit none
-    integer :: idx_base
-    real*8 :: xarr(ndust),x(nmols)
-
-    x(idx_base:idx_base+ndust-1) = xarr(:)
-
-  end subroutine krome_set_surface_array
-
-  !***************************
-  !this function gets the total amount of surface
-  ! species for the given idx_base in the
-  ! species array x.
-  ! e.g. xx = krome_get_surface(x(:),krome_idx_OH_dust)
-  function krome_get_surface(x,idx_base)
-    use krome_commons
-    implicit none
-    integer :: idx_base
-    real*8 :: x(nmols), krome_get_surface
-
-    krome_get_surface = sum(x(idx_base:idx_base+ndust-1))
-
-  end function krome_get_surface
-
   !*****************************
   !dump the data for restart (UNDER DEVELOPEMENT!)
   !arguments: the species array and the gas temperature
@@ -1121,10 +903,6 @@ contains
     !dump species
     do i=1,nmols
       write(nfile,*) x(i)
-    end do
-    !dump dust
-    do i=1,ndust
-      write(nfile,*) xdust(i)
     end do
     close(nfile)
 
@@ -1149,10 +927,6 @@ contains
     !restore species
     do i=1,nmols
       read(nfile,*) x(i)
-    end do
-    !restore dust
-    do i=1,ndust
-      read(nfile,*) xdust(i)
     end do
     close(nfile)
 
@@ -1569,7 +1343,7 @@ contains
     use krome_commons
     use krome_getphys
     implicit none
-    character*2533::krome_get_names_header
+    character*2408::krome_get_names_header
     character*16::tmp(nspec)
     integer::i
 
@@ -1588,7 +1362,7 @@ contains
     use krome_commons
     use krome_getphys
     implicit none
-    character*130::krome_get_cooling_names_header
+    character*141::krome_get_cooling_names_header
     character*16::tmp(ncools)
     integer::i
 
