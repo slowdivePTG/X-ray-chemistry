@@ -66,3 +66,11 @@ Species we are interested in are listed in the table `grain.csv`
 ## Evaporation
 
 - Only $\ce{H, H2, He}$ have meaningful evaporation times
+  $$
+  k_{\mathrm{eva}}(\mathrm{X})=\nu_{\mathrm{X}} \exp \left[-E_{\mathrm{bind}}(\mathrm{X}) / T\right]
+  $$
+  
+  $$
+  \begin{aligned} \nu_{\mathrm{X}} &=\left(2 \rho_{\mathrm{S}} E_{\mathrm{bind}} / \pi^{2} m_{\mathrm{X}}\right)^{1 / 2} \\ &=2.4 \times 10^{12} \mathrm{Hz}\left(\frac{\rho_{\mathrm{S}}}{10^{15} \mathrm{cm}^{-2}}\right)^{1 / 2}\left(\frac{E_{\mathrm{bind}}}{350 \mathrm{K}}\right)^{1 / 2}\left(\frac{m_{\mathrm{X}}}{m_{\mathrm{H}}}\right)^{-1 / 2} \end{aligned}
+  $$
+  
