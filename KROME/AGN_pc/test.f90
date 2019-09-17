@@ -24,7 +24,7 @@ program test_krome
   xH = 2d4 !Hydrogen density
 
   !user commons for opacity and CR rate
-  call krome_set_user_av(5.3d0) !opacity Av (#)
+  call krome_set_user_av(132.5d0) !opacity Av (#)
   call krome_set_user_crate(1.3d-17) !CR rate (1/s)
   call krome_set_user_gas_dust_ratio(1d2) !gas/dust
   call krome_init()
@@ -51,22 +51,21 @@ program test_krome
   !REMEMBER TO INITIAL X(:) FIRST
   call krome_init_dust_distribution(x(:), 1d0/1d2)
   call krome_set_Tdust(Tgas)
-  
+
   !NOTE: here myCoe array is employed to store the
   ! coefficient values, since the temperature is
   ! constant during the model evolution.
   ! myCoe(:) is defined in krome_user_commons
   !myCoe(:) = krome_get_coef(Tgas,x(:))
 
-  dt = 1d-1*spy !time-step (s)
-  t = 1d6*spy !initial time (s)
+  dt = 1d2*spy !time-step (s)
+  t = 0d0 !initial time (s)
 
-  call krome_set_J21xray(1d0)
+  call krome_set_J21xray(0d0)
   !output header
-  open(unit=77, file="./data/dis")
+  open(unit=77, file="./data/dis_inf")
   write(77,'(a)') "#time "//trim(krome_get_names_header())
   x1(:)=x(:)
-  call krome(x1(:),Tgas,1d6*spy)
   m(:)=get_mass()
   k = 0
   do
@@ -76,9 +75,8 @@ program test_krome
     k = k + 1
     t = t + dt !increase time
     !if (mod(k,10) == 0) call jex(nx,t,x1(:),"./data/Trace_inf")
-    call krome_set_J21xray(0d0)
-    dt = max(dt, (t-1d6*spy)/1d1) !increase time-step
-    write(77,'(999E18.8)') t/spy,x1(:)/xH
+    dt = max(dt,t/10d0) !increase time-step
+    write(77,'(999E15.5)') t/spy,x1(:)/xH
     if(t>1d8*spy) exit !exit when overshoot 1d8 years
   end do
 
