@@ -28,11 +28,6 @@ Species we are interested in are listed in the table `grain.csv`
 
 - Charge on the grain does not influence the chemistry
 
-## Desorption
-
-- The desorption rate depends on the binding energy $E_D\sim \mathcal{O}(1000)$ K $\sim \mathcal{O}(0.1)$ eV
-  - Dependent on the material making up the grains - time dependent - neglected
-
 ## Exothermal surface reactions
 
 - Mobility (in order to react) - hop time scale $t_\rm{hop}$ - time scale for absorbed species to migrate from one site (a potential well) to an adjacent site via thermal hopping
@@ -65,12 +60,17 @@ Species we are interested in are listed in the table `grain.csv`
 
 ## Evaporation
 
-- Only $\ce{H, H2, He}$ have meaningful evaporation times
+- The desorption rate depends on the binding energy $E_D\sim \mathcal{O}(1000)$ K $\sim \mathcal{O}(0.1)$ eV
+  
+  - Dependent on the material making up the grains - time dependent - neglected
+  
   $$
-  k_{\mathrm{eva}}(\mathrm{X})=\nu_{\mathrm{X}} \exp \left[-E_{\mathrm{bind}}(\mathrm{X}) / T\right]
+  k_{\mathrm{eva}}(i)=\nu_{i} \exp \left[-E_{D} / kT\right]
   $$
   
   $$
-  \begin{aligned} \nu_{\mathrm{X}} &=\left(2 \rho_{\mathrm{S}} E_{\mathrm{bind}} / \pi^{2} m_{\mathrm{X}}\right)^{1 / 2} \\ &=2.4 \times 10^{12} \mathrm{Hz}\left(\frac{\rho_{\mathrm{S}}}{10^{15} \mathrm{cm}^{-2}}\right)^{1 / 2}\left(\frac{E_{\mathrm{bind}}}{350 \mathrm{K}}\right)^{1 / 2}\left(\frac{m_{\mathrm{X}}}{m_{\mathrm{H}}}\right)^{-1 / 2} \end{aligned}
+  \begin{aligned} \nu_{i} &=\left(2 \rho_{s} E_{D} / \pi^{2} m_{i}\right)^{1 / 2} \\ &=2.4 \times 10^{12} \mathrm{Hz}\left(\frac{\rho_{s}}{10^{15} \mathrm{cm}^{-2}}\right)^{1 / 2}\left(\frac{E_{D}}{350 \mathrm{K}}\right)^{1 / 2}\left(\frac{m_{i}}{m_{\mathrm{H}}}\right)^{-1 / 2} \end{aligned}
   $$
   
+
+- Only $\ce{H, H2, He}$ have meaningful (thermal) evaporation times
