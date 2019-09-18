@@ -3,6 +3,10 @@ Reactants,Products,k_ij,Ea
 "H, O",OH,1.94E+12,0
 "H, OH",H2O,1.94E+12,0
 "H2,OH","H2O,H",2.20E-02,2600
+"C,H",CH,1.94E+12,0
+"C,O",CO,3.46E+3,0
+"C,OH",HOC,9.30E+2,0
+"C,OH","CO,H",9.30E+2,0
 "CH,H",CH2,1.94E+12,0
 "CH,OH",CHOH,1.31E+05,0
 "CH2,H",CH3,1.94E+12,0
