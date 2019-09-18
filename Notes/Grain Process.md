@@ -28,7 +28,7 @@ Species we are interested in are listed in the table `grain.csv`
 
 - Charge on the grain does not influence the chemistry
 
-## Exothermal surface reactions
+## Surface reactions
 
 - Mobility (in order to react) - hop time scale $t_\rm{hop}$ - time scale for absorbed species to migrate from one site (a potential well) to an adjacent site via thermal hopping
   $$
@@ -72,5 +72,4 @@ Species we are interested in are listed in the table `grain.csv`
   \begin{aligned} \nu_{i} &=\left(2 \rho_{s} E_{D} / \pi^{2} m_{i}\right)^{1 / 2} \\ &=2.4 \times 10^{12} \mathrm{Hz}\left(\frac{\rho_{s}}{10^{15} \mathrm{cm}^{-2}}\right)^{1 / 2}\left(\frac{E_{D}}{350 \mathrm{K}}\right)^{1 / 2}\left(\frac{m_{i}}{m_{\mathrm{H}}}\right)^{-1 / 2} \end{aligned}
   $$
   
-
 - Only $\ce{H, H2, He}$ have meaningful (thermal) evaporation times
