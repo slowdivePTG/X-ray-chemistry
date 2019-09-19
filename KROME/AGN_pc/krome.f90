@@ -9,7 +9,7 @@ contains
 
   ! *************************************************************
   !  This file has been generated with:
-  !  KROME 14.08.dev on 2019-09-17 14:46:01
+  !  KROME 14.08.dev on 2019-09-19 07:50:48
   !  Changeset xxxxxxx
   !  see http://kromepackage.org
   !
@@ -46,9 +46,9 @@ contains
     !DLSODES variables
     integer,parameter::meth=2 !1=adam, 2=BDF
     integer::neq(1),itol,itask,istate,iopt,lrw,liw,mf
-    integer::iwork(13041)
+    integer::iwork(13129)
     real*8::atol(nspec),rtol(nspec)
-    real*8::rwork(529912)
+    real*8::rwork(558106)
     logical::got_error,equil
 
     !****************************
@@ -169,9 +169,9 @@ contains
     real*8 :: rhogas
     real*8::tloc,n(nspec),mass(nspec),ni(nspec)
     real*8::dt,xin
-    integer::iwork(13041)
+    integer::iwork(13129)
     real*8::atol(nspec),rtol(nspec)
-    real*8::rwork(529912)
+    real*8::rwork(558106)
     real*8::ertol,eatol,max_time,t_tot,ntot_tol,err_species
     logical::converged
 

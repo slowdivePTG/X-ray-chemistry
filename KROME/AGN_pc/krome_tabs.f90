@@ -619,19 +619,19 @@ contains
     rateEvaluateOnce(159) = small + (1.00e+03&
         *user_crate)
 
-    !CH4O -> CH3 + OH
+    !CH3OH -> CH3 + OH
     rateEvaluateOnce(160) = small + (1.50e+03&
         *user_crate)
 
-    !CH4O -> H2CO + H2
+    !CH3OH -> H2CO + H2
     rateEvaluateOnce(161) = small + (3.17e+03&
         *user_crate)
 
-    !CH4O -> H3CO+ + H + E
+    !CH3OH -> H3CO+ + H + E
     rateEvaluateOnce(162) = small + (9.90e+01&
         *user_crate)
 
-    !CH4O -> CH4O+ + E
+    !CH3OH -> CH4O+ + E
     rateEvaluateOnce(163) = small + (1.44e+03&
         *user_crate)
 
@@ -1247,11 +1247,11 @@ contains
     rateEvaluateOnce(4365) = small + (5.00e-10&
         *exp(-1.70e+00*user_Av))
 
-    !CH4O -> H2CO + H2
+    !CH3OH -> H2CO + H2
     rateEvaluateOnce(4366) = small + (7.19e-10&
         *exp(-1.72e+00*user_Av))
 
-    !CH4O -> CH4O+ + E
+    !CH3OH -> CH4O+ + E
     rateEvaluateOnce(4367) = small + (4.80e-10&
         *exp(-2.57e+00*user_Av))
 

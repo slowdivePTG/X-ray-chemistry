@@ -157,10 +157,10 @@ C4H2 -> C4H2+ + E
 C5H -> C5 + H
 C5N -> C4 + CN
 C6 -> C5 + C
-CH4O -> CH3 + OH
-CH4O -> H2CO + H2
-CH4O -> H3CO+ + H + E
-CH4O -> CH4O+ + E
+CH3OH -> CH3 + OH
+CH3OH -> H2CO + H2
+CH3OH -> H3CO+ + H + E
+CH3OH -> CH4O+ + E
 C2H4O -> CH3 + HCO
 C2H4O -> CH4 + CO
 C2H4O -> C2H4O+ + E
@@ -358,9 +358,9 @@ C+ + C4H2 -> C5+ + H2
 C+ + C4H2 -> C4H2+ + C
 C+ + C4H2 -> C5H+ + H
 C+ + C5H -> C6+ + H
-C+ + CH4O -> CH3+ + HCO
-C+ + CH4O -> H3CO+ + CH
-C+ + CH4O -> CH4O+ + C
+C+ + CH3OH -> CH3+ + HCO
+C+ + CH3OH -> H3CO+ + CH
+C+ + CH3OH -> CH4O+ + C
 C+ + NH2CHO -> C2H3O+ + N
 C+ + NH2CHO -> H3CO+ + CN
 C+ + NH2CHO -> H2CO+ + HCN
@@ -570,8 +570,8 @@ H+ + C4H2 -> C4H2+ + H
 H+ + C5H -> C5+ + H2
 H+ + C5H -> C5H+ + H
 H+ + C6 -> C6+ + H
-H+ + CH4O -> H3CO+ + H2
-H+ + CH4O -> CH4O+ + H
+H+ + CH3OH -> H3CO+ + H2
+H+ + CH3OH -> CH4O+ + H
 H+ + NH2CHO -> NH4+ + CO
 H+ + NH2CHO -> HCO+ + NH3
 H+ + NH2CHO -> H2NC+ + H2O
@@ -865,8 +865,8 @@ HE+ + C5H -> C5+ + H + HE
 HE+ + C5N -> C4+ + CN + HE
 HE+ + C6 -> C4+ + C2 + HE
 HE+ + C6 -> C5+ + C + HE
-HE+ + CH4O -> OH+ + CH3 + HE
-HE+ + CH4O -> CH3+ + OH + HE
+HE+ + CH3OH -> OH+ + CH3 + HE
+HE+ + CH3OH -> CH3+ + OH + HE
 HE+ + NH2CHO -> HCO+ + NH2 + HE
 HE+ + NH2CHO -> H2CO+ + NH + HE
 HE+ + NH2CHO -> NH+ + H2CO + HE
@@ -995,11 +995,11 @@ N+ + CH4 -> CH3+ + NH
 N+ + CH4 -> HCNH+ + H + H
 N+ + CH4 -> HCNH+ + H2
 N+ + CH4 -> CH4+ + N
-N+ + CH4O -> NO+ + CH3 + H
-N+ + CH4O -> CH3+ + NO + H
-N+ + CH4O -> H2CO+ + NH + H
-N+ + CH4O -> H3CO+ + NH
-N+ + CH4O -> CH4O+ + N
+N+ + CH3OH -> NO+ + CH3 + H
+N+ + CH3OH -> CH3+ + NO + H
+N+ + CH3OH -> H2CO+ + NH + H
+N+ + CH3OH -> H3CO+ + NH
+N+ + CH3OH -> CH4O+ + N
 O+ + FE -> FE+ + O
 O+ + H -> H+ + O
 O+ + C2 -> C2+ + O
@@ -1039,9 +1039,9 @@ O+ + H2CO -> H2CO+ + O
 O+ + NH3 -> NH3+ + O
 O+ + CH4 -> CH3+ + OH
 O+ + CH4 -> CH4+ + O
-O+ + CH4O -> H2CO+ + H2O
-O+ + CH4O -> H3CO+ + OH
-O+ + CH4O -> CH4O+ + O
+O+ + CH3OH -> H2CO+ + H2O
+O+ + CH3OH -> H3CO+ + OH
+O+ + CH3OH -> CH4O+ + O
 P+ + SI -> P + SI+
 P+ + O2 -> PO+ + O
 P+ + OH -> PO+ + H
@@ -1199,9 +1199,9 @@ CH+ + NH3 -> NH4+ + C
 CH+ + CH4 -> C2H2+ + H2 + H
 CH+ + CH4 -> C2H3+ + H2
 CH+ + CH4 -> C2H4+ + H
-CH+ + CH4O -> CH3+ + H2CO
-CH+ + CH4O -> H3CO+ + CH2
-CH+ + CH4O -> CH5O+ + C
+CH+ + CH3OH -> CH3+ + H2CO
+CH+ + CH3OH -> H3CO+ + CH2
+CH+ + CH3OH -> CH5O+ + C
 CN+ + C -> C+ + CN
 CN+ + H -> H+ + CN
 CN+ + O -> O+ + CN
@@ -1463,8 +1463,8 @@ O2+ + H2CO -> HCO+ + O2 + H
 O2+ + H2CO -> H2CO+ + O2
 O2+ + NH3 -> NH3+ + O2
 O2+ + CH4 -> CH3O2+ + H
-O2+ + CH4O -> H3CO+ + O2 + H
-O2+ + CH4O -> CH4O+ + O2
+O2+ + CH3OH -> H3CO+ + O2 + H
+O2+ + CH3OH -> CH4O+ + O2
 OH+ + C -> CH+ + O
 OH+ + N -> NO+ + H
 OH+ + O -> O2+ + H
@@ -1829,9 +1829,9 @@ H3+ + C4H2 -> C4H3+ + H2
 H3+ + C5H -> C5H2+ + H2
 H3+ + C5N -> C5HN+ + H2
 H3+ + C6 -> C6H+ + H2
-H3+ + CH4O -> CH3+ + H2O + H2
-H3+ + CH4O -> H3CO+ + H2 + H2
-H3+ + CH4O -> CH5O+ + H2
+H3+ + CH3OH -> CH3+ + H2O + H2
+H3+ + CH3OH -> H3CO+ + H2 + H2
+H3+ + CH3OH -> CH5O+ + H2
 H3+ + NH2CHO -> NH2CH2O+ + H2
 H3+ + C2H4O -> C2H5O+ + H2
 H3+ + C2H5 -> C2H6+ + H2
@@ -1995,7 +1995,7 @@ HCO+ + C4H2 -> C4H3+ + CO
 HCO+ + C5H -> C5H2+ + CO
 HCO+ + C5N -> C5HN+ + CO
 HCO+ + C6 -> C6H+ + CO
-HCO+ + CH4O -> CH5O+ + CO
+HCO+ + CH3OH -> CH5O+ + CO
 HCO+ + NH2CHO -> NH2CH2O+ + CO
 HCO+ + C2H4O -> C2H5O+ + CO
 HCO+ + C2H5 -> C2H6+ + CO
@@ -2377,7 +2377,7 @@ CH3+ + C4H2 -> C3H3+ + C2H2
 CH3+ + C4H2 -> H3C3+ + C2H2
 CH3+ + C4H2 -> C5H3+ + H2
 CH3+ + C5H -> C6H2+ + H2
-CH3+ + CH4O -> H3CO+ + CH4
+CH3+ + CH3OH -> H3CO+ + CH4
 CH3+ + NH2CHO -> CH5N+ + HCO
 CH3+ + C5H2 -> C6H3+ + H2
 CH3+ + C6H -> C7H2+ + H2
@@ -2481,7 +2481,7 @@ H3O+ + SICH3 -> SICH4+ + H2O
 H3O+ + C2H3N -> C2H4N+ + H2O
 H3O+ + C3H3 -> C3H4+ + H2O
 H3O+ + C4H2 -> C4H3+ + H2O
-H3O+ + CH4O -> CH5O+ + H2O
+H3O+ + CH3OH -> CH5O+ + H2O
 H3O+ + NH2CHO -> NH2CH2O+ + H2O
 H3O+ + C2H4O -> C2H5O+ + H2O
 H3O+ + C3H4 -> C3H5+ + H2O
@@ -2736,8 +2736,8 @@ CH4+ + NH3 -> CH5+ + NH2
 CH4+ + CH4 -> CH5+ + CH3
 CH4+ + C2H4 -> C2H4+ + CH4
 CH4+ + C2H4 -> C2H5+ + CH3
-CH4+ + CH4O -> CH4O+ + CH4
-CH4+ + CH4O -> CH5O+ + CH3
+CH4+ + CH3OH -> CH4O+ + CH4
+CH4+ + CH3OH -> CH5O+ + CH3
 H3CO+ + NA -> NA+ + H2CO + H
 H3CO+ + CH -> CH2+ + H2CO
 H3CO+ + HNC -> HCNH+ + H2CO
@@ -3016,7 +3016,7 @@ C6H+ + O -> HCO+ + C5
 C6H+ + H2 -> C6H2+ + H
 C7+ + H2 -> C7H+ + H
 CH5O+ + H2CO -> H5C2O2+ + H2
-CH5O+ + CH4O -> CH3OCH4+ + H2O
+CH5O+ + CH3OH -> CH3OCH4+ + H2O
 H2C4N+ + H2 -> H3C4N+ + H
 C2H6+ + H -> C2H5+ + H2
 C3H5+ + C -> C4H3+ + H2
@@ -3171,7 +3171,7 @@ CH3+ + H2O -> CH5O+
 CH3+ + HCN -> C2H4N+
 CH3+ + NH3 -> CH6N+
 CH3+ + HC3N -> C4H4N+
-CH3+ + CH4O -> CH3OCH4+
+CH3+ + CH3OH -> CH3OCH4+
 CH3+ + C2H4O -> C3H6OH+
 CH3+ + HC5N -> C6H4N+
 CH3+ + HC7N -> C8H4N+
@@ -3250,7 +3250,7 @@ CN- + CH3 -> C2H3N + E
 OH- + C -> HCO + E
 OH- + H -> H2O + E
 OH- + CH -> H2CO + E
-OH- + CH3 -> CH4O + E
+OH- + CH3 -> CH3OH + E
 O + CH -> HCO+ + E
 C + CH -> C2 + H
 C + HS -> CS + H
@@ -4049,7 +4049,7 @@ CH5O+ + E -> H2CO + H2 + H
 CH5O+ + E -> CH3 + H2O
 CH5O+ + E -> CH3 + OH + H
 CH5O+ + E -> CH2 + H2O + H
-CH5O+ + E -> CH4O + H
+CH5O+ + E -> CH3OH + H
 H2C4N+ + E -> HC3N + CH
 H3C3O+ + E -> C3H + H2O
 H3C3O+ + E -> HC3 + H2O
@@ -4093,7 +4093,7 @@ C8+ + E -> C7 + C
 CH6N+ + E -> CH3N + H2 + H
 CH6N+ + E -> CH5N + H
 COOCH4+ + E -> CH3 + CO2 + H
-COOCH4+ + E -> CH4O + CO
+COOCH4+ + E -> CH3OH + CO
 H3C4N+ + E -> HC3N + CH2
 C2H5OH+ + E -> C2H2O + H2 + H2
 C2H5OH+ + E -> CH4 + H2CO
@@ -4123,8 +4123,8 @@ C9+ + E -> C7 + C2
 C9+ + E -> C8 + C
 CH3OCH3+ + E -> CH3 + CH3 + O
 CH3OCH3+ + E -> H2CO + CH4
-CH3OCH3+ + E -> CH4O + CH2
-H5C2O2+ + E -> CH4O + HCO
+CH3OCH3+ + E -> CH3OH + CH2
+H5C2O2+ + E -> CH3OH + HCO
 H5C2O2+ + E -> HCOOCH3 + H
 C10+ + E -> C8 + C2
 C10+ + E -> C9 + C
@@ -4149,7 +4149,7 @@ C9H+ + E -> C8H + C
 C9H+ + E -> C9 + H
 C9N+ + E -> C2 + C7N
 CH3OCH4+ + E -> CH3 + CH4 + O
-CH3OCH4+ + E -> CH4O + CH3
+CH3OCH4+ + E -> CH3OH + CH3
 CH3OCH4+ + E -> CH3OCH3 + H
 C3H6OH+ + E -> C2H4O + CH3
 C3H6OH+ + E -> C2H6CO + H
@@ -4363,8 +4363,8 @@ C5H -> C3H + C2
 C5H -> HC3 + C2
 C5H -> C5 + H
 C5N -> C4 + CN
-CH4O -> H2CO + H2
-CH4O -> CH4O+ + E
+CH3OH -> H2CO + H2
+CH3OH -> CH4O+ + E
 C2H4O -> CH3 + HCO
 C2H4O -> CH4 + CO
 C2H4O -> C2H4O+ + E
@@ -4429,16 +4429,47 @@ CN- -> CN + E
 OH- -> OH + E
 H -> H+ + E
 HE -> HE+ + E
+H -> H_DUST
+O -> O_DUST
+C -> C_DUST
+H2 -> H_DUSTH_DUST
+CH -> C_DUSTH_DUST
+OH -> O_DUSTH_DUST
+CO -> C_DUSTO_DUST
+H2O -> H_DUSTH_DUSTO_DUST
+CH2 -> C_DUSTH_DUSTH_DUST
+CH3 -> C_DUSTH_DUSTH_DUSTH_DUST
+HOC -> H_DUSTO_DUSTC_DUST
+CHOH -> C_DUSTH_DUSTO_DUSTH_DUST
+CH2OH -> C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
+CH3OH -> C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST
 H_DUST -> H
 H_DUSTH_DUST -> H2
+C_DUST -> C
 O_DUST -> O
+C_DUSTH_DUST -> CH
 O_DUSTH_DUST -> OH
-H -> H_DUST
-H2 -> H_DUSTH_DUST
-O -> O_DUST
-OH -> O_DUSTH_DUST
-H2O -> H_DUSTH_DUSTO_DUST
+C_DUSTO_DUST -> CO
+C_DUSTH_DUSTH_DUST -> CH2
+H_DUSTH_DUSTO_DUST -> H2O
+H_DUSTO_DUSTC_DUST -> HOC
+C_DUSTH_DUSTH_DUSTH_DUST -> CH3
+C_DUSTH_DUSTO_DUSTH_DUST -> CHOH
+C_DUSTH_DUSTH_DUSTO_DUSTH_DUST -> CH2OH
+C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST -> CH3OH
 H_DUST + H_DUST -> H_DUSTH_DUST
 H_DUST + O_DUST -> O_DUSTH_DUST
 H_DUST + O_DUSTH_DUST -> H_DUSTH_DUSTO_DUST
-O_DUST + O_DUST -> O_DUSTO_DUST
+H_DUSTH_DUST + O_DUSTH_DUST -> H_DUSTH_DUSTO_DUST + H_DUST
+C_DUST + H_DUST -> C_DUSTH_DUST
+C_DUST + O_DUST -> C_DUSTO_DUST
+C_DUST + O_DUSTH_DUST -> H_DUSTO_DUSTC_DUST
+C_DUST + O_DUSTH_DUST -> C_DUSTO_DUST + H_DUST
+C_DUSTH_DUST + H_DUST -> C_DUSTH_DUSTH_DUST
+C_DUSTH_DUST + O_DUSTH_DUST -> C_DUSTH_DUSTO_DUSTH_DUST
+C_DUSTH_DUSTH_DUST + H_DUST -> C_DUSTH_DUSTH_DUSTH_DUST
+C_DUSTH_DUSTH_DUST + O_DUSTH_DUST -> C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
+C_DUSTH_DUSTH_DUSTH_DUST + H_DUST -> C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
+C_DUSTO_DUST + H_DUST -> H_DUSTO_DUSTC_DUST
+H_DUSTO_DUSTC_DUST + H_DUST -> C_DUSTH_DUSTO_DUSTH_DUST
+C_DUSTH_DUSTH_DUSTO_DUSTH_DUST + H_DUST -> C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST

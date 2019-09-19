@@ -67,7 +67,7 @@ program test_krome
   do
     print '(a10,E18.8,a3)',"time:",t/spy,"yr"
     call krome(x1(:),Tgas,dt) !call KROME
-    x1(:)=max(1d-99*xH,x1(:))
+    x1(:)=max(1d-90*xH,x1(:))
     k = k + 1
     t = t + dt !increase time
     !if (mod(k,10) == 0) call jex(nx,t,x1(:),"./data/Trace_inf")
