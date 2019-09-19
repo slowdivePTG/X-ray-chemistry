@@ -892,9 +892,11 @@ $$
 
 
 
-## September 16, 2019
+## September 19, 2019
 
 1. More grain processes (details in notes)
 2. Fixed column densities for clouds ($N_\ce{H}=10^{22}, 5\times10^{22}, 2.5\times10^{23}$ cm$^{-2}$)
    - UV extinction - $A_V=5.3,\ 26.5,\ 132.5$
    - X-ray extinction calculated
+3. CO, OH, CN, HCN, HCO+, ...
+4. Total column density (of certain species) v.s. time
