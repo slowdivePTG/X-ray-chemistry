@@ -9,7 +9,7 @@ contains
     use krome_tabs
     implicit none
     integer::i
-    integer::r1,r2,r3
+    integer::r1,r2
     real*8::fex_check,n(nspec),k(nrea),rrmax,Tgas
 
     k(:) = coe_tab(n(:))
@@ -20,8 +20,7 @@ contains
     do i=1,nrea
       r1 = arr_r1(i)
       r2 = arr_r2(i)
-      r3 = arr_r3(i)
-      arr_flux(i) = k(i)*n(r1)*n(r2)*n(r3)
+      arr_flux(i) = k(i)*n(r1)*n(r2)
       rrmax = max(rrmax, arr_flux(i))
     end do
     fex_check = rrmax

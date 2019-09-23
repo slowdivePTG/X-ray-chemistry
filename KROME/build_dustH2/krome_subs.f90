@@ -5,8 +5,8 @@ contains
 
   ! *************************************************************
   !  This file has been generated with:
-  !  KROME 14.08.dev on 2018-12-17 22:20:38
-  !  Changeset 4b727c9
+  !  KROME 14.08.dev on 2019-09-23 15:22:45
+  !  Changeset xxxxxxx
   !  see http://kromepackage.org
   !
   !  Written and developed by Tommaso Grassi and Stefano Bovino
@@ -30,29 +30,24 @@ contains
     use krome_fit
     implicit none
     real*8::coe(nrea),k(nrea),Tgas,n(nspec),kmax
+    real*8::T32
     real*8::sqrT32
     real*8::small,nmax
     integer::i
     real*8::ratexH !preproc from coevar
     real*8::Trad !preproc from coevar
-    real*8::phiH !preproc from coevar
+    real*8::phiHe !preproc from coevar
     real*8::invsqrT32 !preproc from coevar
-    real*8::Te  !preproc from coevar
     real*8::ncolHe !preproc from coevar
     real*8::logHe !preproc from coevar
-    real*8::sqrTgas  !preproc from coevar
-    real*8::user_xray_H !preproc from coevar
-    real*8::invT  !preproc from coevar
-    real*8::sqrtT32 !preproc from coevar
-    real*8::lnTe  !preproc from coevar
-    real*8::logH !preproc from coevar
-    real*8::user_xray_He !preproc from coevar
-    real*8::T32  !preproc from coevar
-    real*8::phiHe !preproc from coevar
     real*8::xe !preproc from coevar
     real*8::ratexHe !preproc from coevar
+    real*8::sqrtT32 !preproc from coevar
+    real*8::user_xray_H !preproc from coevar
+    real*8::user_xray_He !preproc from coevar
+    real*8::phiH !preproc from coevar
     real*8::ncolH !preproc from coevar
-    real*8::invTe  !preproc from coevar
+    real*8::logH !preproc from coevar
     real*8:: T  !preproc from coevar
     !Tgas is in K
     Tgas = max(n(idx_Tgas), phys_Tcmb)
@@ -63,18 +58,13 @@ contains
     nmax = max(maxval(n(1:nmols)),1d0)
     small = 1d-40/(nmax*nmax*nmax*nmax)
 
+    T32 = Tgas*0.0033333333333333335 !Tgas/(300 K) (#)
     sqrT32 = sqrt(T32)
 
-    T = Tgas
-    Trad = 2d4
     sqrtT32 = sqrt(Tgas/3d2)
     invsqrT32 = 1d0/sqrt(Tgas/3d2)
-    Te = Tgas*8.617343d-5
-    lnTe = log(Te)
-    T32 = Tgas*0.0033333333333333335
-    invT = 1.d0/Tgas
-    invTe = 1.d0/Te
-    sqrTgas = sqrt(Tgas)
+    T = Tgas
+    Trad = 2d4
     ncolH = num2col(n(idx_H),n(:))
     ncolHe = num2col(n(idx_He),n(:))
     logHe = log10(ncolHe)
@@ -589,16 +579,16 @@ contains
     !C6 -> C5 + C
     k(159) = rateEvaluateOnce(159)
 
-    !CH4O -> CH3 + OH
+    !CH3OH -> CH3 + OH
     k(160) = rateEvaluateOnce(160)
 
-    !CH4O -> H2CO + H2
+    !CH3OH -> H2CO + H2
     k(161) = rateEvaluateOnce(161)
 
-    !CH4O -> H3CO+ + H + E
+    !CH3OH -> H3CO+ + H + E
     k(162) = rateEvaluateOnce(162)
 
-    !CH4O -> CH4O+ + E
+    !CH3OH -> CH4O+ + E
     k(163) = rateEvaluateOnce(163)
 
     !C2H4O -> CH3 + HCO
@@ -1254,15 +1244,15 @@ contains
     !C+ + C5H -> C6+ + H
     k(360) = small + (1.25e-08*invsqrT32)
 
-    !C+ + CH4O -> CH3+ + HCO
+    !C+ + CH3OH -> CH3+ + HCO
     k(361) = small + (6.90e-10&
         *invsqrT32)
 
-    !C+ + CH4O -> H3CO+ + CH
+    !C+ + CH3OH -> H3CO+ + CH
     k(362) = small + (6.90e-10&
         *invsqrT32)
 
-    !C+ + CH4O -> CH4O+ + C
+    !C+ + CH3OH -> CH4O+ + C
     k(363) = small + (8.10e-10&
         *invsqrT32)
 
@@ -2005,11 +1995,11 @@ contains
     !H+ + C6 -> C6+ + H
     k(572) = small + (4.00e-09)
 
-    !H+ + CH4O -> H3CO+ + H2
+    !H+ + CH3OH -> H3CO+ + H2
     k(573) = small + (3.30e-09&
         *invsqrT32)
 
-    !H+ + CH4O -> CH4O+ + H
+    !H+ + CH3OH -> CH4O+ + H
     k(574) = small + (3.30e-09&
         *invsqrT32)
 
@@ -3117,11 +3107,11 @@ contains
     !HE+ + C6 -> C5+ + C + HE
     k(867) = small + (1.40e-09)
 
-    !HE+ + CH4O -> OH+ + CH3 + HE
+    !HE+ + CH3OH -> OH+ + CH3 + HE
     k(868) = small + (1.70e-09&
         *invsqrT32)
 
-    !HE+ + CH4O -> CH3+ + OH + HE
+    !HE+ + CH3OH -> CH3+ + OH + HE
     k(869) = small + (1.70e-09&
         *invsqrT32)
 
@@ -3580,19 +3570,19 @@ contains
     !N+ + CH4 -> CH4+ + N
     k(997) = small + (2.80e-11)
 
-    !N+ + CH4O -> NO+ + CH3 + H
+    !N+ + CH3OH -> NO+ + CH3 + H
     k(998) = small + (3.10e-10)
 
-    !N+ + CH4O -> CH3+ + NO + H
+    !N+ + CH3OH -> CH3+ + NO + H
     k(999) = small + (1.24e-10)
 
-    !N+ + CH4O -> H2CO+ + NH + H
+    !N+ + CH3OH -> H2CO+ + NH + H
     k(1000) = small + (9.30e-10)
 
-    !N+ + CH4O -> H3CO+ + NH
+    !N+ + CH3OH -> H3CO+ + NH
     k(1001) = small + (4.96e-10)
 
-    !N+ + CH4O -> CH4O+ + N
+    !N+ + CH3OH -> CH4O+ + N
     k(1002) = small + (1.24e-09)
 
     !O+ + FE -> FE+ + O
@@ -3712,13 +3702,13 @@ contains
     !O+ + CH4 -> CH4+ + O
     k(1041) = small + (8.90e-10)
 
-    !O+ + CH4O -> H2CO+ + H2O
+    !O+ + CH3OH -> H2CO+ + H2O
     k(1042) = small + (9.50e-11)
 
-    !O+ + CH4O -> H3CO+ + OH
+    !O+ + CH3OH -> H3CO+ + OH
     k(1043) = small + (1.33e-09)
 
-    !O+ + CH4O -> CH4O+ + O
+    !O+ + CH3OH -> CH4O+ + O
     k(1044) = small + (4.75e-10)
 
     !P+ + SI -> P + SI+
@@ -4235,13 +4225,13 @@ contains
     !CH+ + CH4 -> C2H4+ + H
     k(1201) = small + (6.50e-11)
 
-    !CH+ + CH4O -> CH3+ + H2CO
+    !CH+ + CH3OH -> CH3+ + H2CO
     k(1202) = small + (1.45e-09)
 
-    !CH+ + CH4O -> H3CO+ + CH2
+    !CH+ + CH3OH -> H3CO+ + CH2
     k(1203) = small + (2.90e-10)
 
-    !CH+ + CH4O -> CH5O+ + C
+    !CH+ + CH3OH -> CH5O+ + C
     k(1204) = small + (1.16e-09)
 
     !CN+ + C -> C+ + CN
@@ -5028,10 +5018,10 @@ contains
     k(1465) = small + (3.80e-12&
         *T32**(-1.80e+00))
 
-    !O2+ + CH4O -> H3CO+ + O2 + H
+    !O2+ + CH3OH -> H3CO+ + O2 + H
     k(1466) = small + (5.00e-10)
 
-    !O2+ + CH4O -> CH4O+ + O2
+    !O2+ + CH3OH -> CH4O+ + O2
     k(1467) = small + (5.00e-10)
 
     !OH+ + C -> CH+ + O
@@ -6222,15 +6212,15 @@ contains
     !H3+ + C6 -> C6H+ + H2
     k(1831) = small + (2.00e-09)
 
-    !H3+ + CH4O -> CH3+ + H2O + H2
+    !H3+ + CH3OH -> CH3+ + H2O + H2
     k(1832) = small + (1.80e-09&
         *invsqrT32)
 
-    !H3+ + CH4O -> H3CO+ + H2 + H2
+    !H3+ + CH3OH -> H3CO+ + H2 + H2
     k(1833) = small + (1.12e-09&
         *invsqrT32)
 
-    !H3+ + CH4O -> CH5O+ + H2
+    !H3+ + CH3OH -> CH5O+ + H2
     k(1834) = small + (1.04e-09&
         *invsqrT32)
 
@@ -6834,7 +6824,7 @@ contains
     !HCO+ + C6 -> C6H+ + CO
     k(1997) = small + (1.40e-09)
 
-    !HCO+ + CH4O -> CH5O+ + CO
+    !HCO+ + CH3OH -> CH5O+ + CO
     k(1998) = small + (1.70e-09&
         *invsqrT32)
 
@@ -8155,7 +8145,7 @@ contains
     k(2379) = small + (1.14e-08&
         *invsqrT32)
 
-    !CH3+ + CH4O -> H3CO+ + CH4
+    !CH3+ + CH3OH -> H3CO+ + CH4
     k(2380) = small + (2.10e-09&
         *invsqrT32)
 
@@ -8530,7 +8520,7 @@ contains
     !H3O+ + C4H2 -> C4H3+ + H2O
     k(2483) = small + (1.10e-09)
 
-    !H3O+ + CH4O -> CH5O+ + H2O
+    !H3O+ + CH3OH -> CH5O+ + H2O
     k(2484) = small + (1.91e-09&
         *invsqrT32)
 
@@ -9423,10 +9413,10 @@ contains
     !CH4+ + C2H4 -> C2H5+ + CH3
     k(2738) = small + (4.23e-10)
 
-    !CH4+ + CH4O -> CH4O+ + CH4
+    !CH4+ + CH3OH -> CH4O+ + CH4
     k(2739) = small + (1.80e-09)
 
-    !CH4+ + CH4O -> CH5O+ + CH3
+    !CH4+ + CH3OH -> CH5O+ + CH3
     k(2740) = small + (1.20e-09)
 
     !H3CO+ + NA -> NA+ + H2CO + H
@@ -10399,7 +10389,7 @@ contains
     !CH5O+ + H2CO -> H5C2O2+ + H2
     k(3018) = small + (1.00e-09)
 
-    !CH5O+ + CH4O -> CH3OCH4+ + H2O
+    !CH5O+ + CH3OH -> CH3OCH4+ + H2O
     k(3019) = small + (1.00e-10&
         *T32**(-1.00e+00))
 
@@ -10912,7 +10902,7 @@ contains
     k(3173) = small + (8.60e-11&
         *T32**(-1.40e+00))
 
-    !CH3+ + CH4O -> CH3OCH4+
+    !CH3+ + CH3OH -> CH3OCH4+
     k(3174) = small + (7.80e-12&
         *T32**(-1.10e+00))
 
@@ -11075,4589 +11065,4909 @@ contains
     !H- + C -> CH + E
     k(3219) = small + (1.00e-09)
 
-    !H- + N -> NH + E
-    k(3220) = small + (1.00e-09)
+    !H- + H -> H2 + E
+    k(3220) = small + (1.30e-09)
 
-    !H- + O -> OH + E
+    !H- + N -> NH + E
     k(3221) = small + (1.00e-09)
 
-    !H- + C2 -> C2H + E
+    !H- + O -> OH + E
     k(3222) = small + (1.00e-09)
 
-    !H- + CH -> CH2 + E
-    k(3223) = small + (1.00e-10)
+    !H- + C2 -> C2H + E
+    k(3223) = small + (1.00e-09)
 
-    !H- + CN -> HCN + E
+    !H- + CH -> CH2 + E
     k(3224) = small + (1.00e-10)
 
+    !H- + CN -> HCN + E
+    k(3225) = small + (1.00e-10)
+
     !H- + CO -> HCO + E
-    k(3225) = small + (5.00e-11)
+    k(3226) = small + (5.00e-11)
 
     !H- + NH -> NH2 + E
-    k(3226) = small + (1.00e-10)
-
-    !H- + OH -> H2O + E
     k(3227) = small + (1.00e-10)
 
-    !H- + C2H -> C2H2 + E
-    k(3228) = small + (1.00e-09)
+    !H- + OH -> H2O + E
+    k(3228) = small + (1.00e-10)
 
-    !H- + CH2 -> CH3 + E
+    !H- + C2H -> C2H2 + E
     k(3229) = small + (1.00e-09)
 
-    !H- + HCO -> H2CO + E
+    !H- + CH2 -> CH3 + E
     k(3230) = small + (1.00e-09)
 
-    !H- + NH2 -> NH3 + E
+    !H- + HCO -> H2CO + E
     k(3231) = small + (1.00e-09)
 
-    !H- + CH3 -> CH4 + E
+    !H- + NH2 -> NH3 + E
     k(3232) = small + (1.00e-09)
 
-    !O- + C -> CO + E
-    k(3233) = small + (5.00e-10)
+    !H- + CH3 -> CH4 + E
+    k(3233) = small + (1.00e-09)
 
-    !O- + H -> OH + E
+    !O- + C -> CO + E
     k(3234) = small + (5.00e-10)
 
+    !O- + H -> OH + E
+    k(3235) = small + (5.00e-10)
+
     !O- + N -> NO + E
-    k(3235) = small + (2.20e-10)
+    k(3236) = small + (2.20e-10)
 
     !O- + O -> O2 + E
-    k(3236) = small + (1.90e-10)
+    k(3237) = small + (1.90e-10)
 
     !O- + CH -> HCO + E
-    k(3237) = small + (5.00e-10)
+    k(3238) = small + (5.00e-10)
 
     !O- + CO -> CO2 + E
-    k(3238) = small + (6.50e-10)
+    k(3239) = small + (6.50e-10)
 
     !O- + H2 -> H2O + E
-    k(3239) = small + (7.00e-10)
+    k(3240) = small + (7.00e-10)
 
     !O- + CH2 -> H2CO + E
-    k(3240) = small + (5.00e-10)
+    k(3241) = small + (5.00e-10)
 
     !S- + C -> CS + E
-    k(3241) = small + (1.00e-10)
-
-    !S- + H -> HS + E
     k(3242) = small + (1.00e-10)
 
-    !S- + N -> NS + E
+    !S- + H -> HS + E
     k(3243) = small + (1.00e-10)
 
-    !S- + O -> SO + E
+    !S- + N -> NS + E
     k(3244) = small + (1.00e-10)
 
+    !S- + O -> SO + E
+    k(3245) = small + (1.00e-10)
+
     !S- + CO -> OCS + E
-    k(3245) = small + (3.00e-10)
+    k(3246) = small + (3.00e-10)
 
     !S- + O2 -> SO2 + E
-    k(3246) = small + (3.00e-11)
+    k(3247) = small + (3.00e-11)
 
     !CN- + H -> HCN + E
-    k(3247) = small + (1.30e-09)
+    k(3248) = small + (1.30e-09)
 
     !CN- + CH3 -> C2H3N + E
-    k(3248) = small + (1.00e-09)
+    k(3249) = small + (1.00e-09)
 
     !OH- + C -> HCO + E
-    k(3249) = small + (5.00e-10)
+    k(3250) = small + (5.00e-10)
 
     !OH- + H -> H2O + E
-    k(3250) = small + (1.40e-09)
+    k(3251) = small + (1.40e-09)
 
     !OH- + CH -> H2CO + E
-    k(3251) = small + (5.00e-10)
+    k(3252) = small + (5.00e-10)
 
-    !OH- + CH3 -> CH4O + E
-    k(3252) = small + (1.00e-09)
+    !OH- + CH3 -> CH3OH + E
+    k(3253) = small + (1.00e-09)
 
     !O + CH -> HCO+ + E
-    k(3253) = small + (2.00e-11&
+    k(3254) = small + (2.00e-11&
         *T32**(4.40e-01))
 
     !C + CH -> C2 + H
-    k(3254) = small + (6.59e-11)
+    k(3255) = small + (6.59e-11)
 
     !C + HS -> CS + H
-    k(3255) = small + (1.00e-10)
+    k(3256) = small + (1.00e-10)
 
     !C + NH -> CN + H
-    k(3256) = small + (1.20e-10)
+    k(3257) = small + (1.20e-10)
 
     !C + NO -> CN + O
-    k(3257) = small + (6.00e-11&
+    k(3258) = small + (6.00e-11&
         *T32**(-1.60e-01))
 
     !C + NO -> CO + N
-    k(3258) = small + (9.00e-11&
+    k(3259) = small + (9.00e-11&
         *T32**(-1.60e-01))
 
     !C + NS -> CN + S
-    k(3259) = small + (1.50e-10&
+    k(3260) = small + (1.50e-10&
         *T32**(-1.60e-01))
 
     !C + O2 -> CO + O
-    k(3260) = small + (4.70e-11&
+    k(3261) = small + (4.70e-11&
         *T32**(-3.40e-01))
 
     !C + OH -> CO + H
-    k(3261) = small + (1.00e-10)
+    k(3262) = small + (1.00e-10)
 
     !C + PH -> CP + H
-    k(3262) = small + (7.50e-11)
+    k(3263) = small + (7.50e-11)
 
     !C + S2 -> S + CS
-    k(3263) = small + (7.00e-11)
+    k(3264) = small + (7.00e-11)
 
     !C + SIH -> SIC + H
-    k(3264) = small + (6.59e-11)
+    k(3265) = small + (6.59e-11)
 
     !C + SO -> CO + S
-    k(3265) = small + (3.50e-11)
-
-    !C + SO -> CS + O
     k(3266) = small + (3.50e-11)
 
-    !C + CH2 -> C2H + H
-    k(3267) = small + (1.00e-10)
+    !C + SO -> CS + O
+    k(3267) = small + (3.50e-11)
 
-    !C + HCO -> CH + CO
+    !C + CH2 -> C2H + H
     k(3268) = small + (1.00e-10)
 
-    !C + HCO -> CCO + H
+    !C + HCO -> CH + CO
     k(3269) = small + (1.00e-10)
 
-    !C + C2N -> C2 + CN
+    !C + HCO -> CCO + H
     k(3270) = small + (1.00e-10)
 
-    !C + C2H -> C3 + H
+    !C + C2N -> C2 + CN
     k(3271) = small + (1.00e-10)
 
+    !C + C2H -> C3 + H
+    k(3272) = small + (1.00e-10)
+
     !C + CCO -> C2 + CO
-    k(3272) = small + (2.00e-10)
+    k(3273) = small + (2.00e-10)
 
     !C + NH2 -> HNC + H
-    k(3273) = small + (3.40e-11&
-        *T32**(-3.60e-01))
-
-    !C + NH2 -> HCN + H
     k(3274) = small + (3.40e-11&
         *T32**(-3.60e-01))
 
-    !C + OCN -> CO + CN
-    k(3275) = small + (1.00e-10)
+    !C + NH2 -> HCN + H
+    k(3275) = small + (3.40e-11&
+        *T32**(-3.60e-01))
 
-    !C + SIH2 -> HCSI + H
+    !C + OCN -> CO + CN
     k(3276) = small + (1.00e-10)
 
+    !C + SIH2 -> HCSI + H
+    k(3277) = small + (1.00e-10)
+
     !C + SO2 -> CO + SO
-    k(3277) = small + (7.00e-11)
+    k(3278) = small + (7.00e-11)
 
     !C + CH3 -> C2H2 + H
-    k(3278) = small + (1.00e-10)
+    k(3279) = small + (1.00e-10)
 
     !C + C2H2 -> C3H + H
-    k(3279) = small + (7.25e-11&
-        *T32**(-1.20e-01))
-
-    !C + C2H2 -> HC3 + H
     k(3280) = small + (7.25e-11&
         *T32**(-1.20e-01))
 
+    !C + C2H2 -> HC3 + H
+    k(3281) = small + (7.25e-11&
+        *T32**(-1.20e-01))
+
     !C + C2H2 -> C3 + H2
-    k(3281) = small + (1.45e-10&
+    k(3282) = small + (1.45e-10&
         *T32**(-1.20e-01))
 
     !C + H2CN -> C2N + H2
-    k(3282) = small + (2.00e-10)
+    k(3283) = small + (2.00e-10)
 
     !C + SIH3 -> SICH2 + H
-    k(3283) = small + (1.00e-10)
+    k(3284) = small + (1.00e-10)
 
     !C + C2H4 -> C3H3 + H
-    k(3284) = small + (3.10e-10&
+    k(3285) = small + (3.10e-10&
         *T32**(-7.00e-02))
 
     !C + HCNC2 -> C3 + HCN
-    k(3285) = small + (2.00e-10)
-
-    !C + HNC3 -> C3 + HNC
     k(3286) = small + (2.00e-10)
 
+    !C + HNC3 -> C3 + HNC
+    k(3287) = small + (2.00e-10)
+
     !C + C2H2N -> HC3N + H
-    k(3287) = small + (1.00e-10)
+    k(3288) = small + (1.00e-10)
 
     !C + C2H3 -> C3H2 + H
-    k(3288) = small + (5.00e-11)
-
-    !C + C2H3 -> H2C3 + H
     k(3289) = small + (5.00e-11)
 
-    !C + C3H -> C4 + H
-    k(3290) = small + (1.00e-10)
+    !C + C2H3 -> H2C3 + H
+    k(3290) = small + (5.00e-11)
 
-    !C + HC3 -> C4 + H
+    !C + C3H -> C4 + H
     k(3291) = small + (1.00e-10)
 
-    !C + C3H2 -> C4H + H
+    !C + HC3 -> C4 + H
     k(3292) = small + (1.00e-10)
 
-    !C + H2C3 -> C4H + H
+    !C + C3H2 -> C4H + H
     k(3293) = small + (1.00e-10)
 
+    !C + H2C3 -> C4H + H
+    k(3294) = small + (1.00e-10)
+
     !C + C3N -> C3 + CN
-    k(3294) = small + (1.00e-13)
+    k(3295) = small + (1.00e-13)
 
     !C + C3O -> C3 + CO
-    k(3295) = small + (1.00e-10)
-
-    !C + C3H3 -> C4H2 + H
     k(3296) = small + (1.00e-10)
 
+    !C + C3H3 -> C4H2 + H
+    k(3297) = small + (1.00e-10)
+
     !C + C3H4 -> C4H3 + H
-    k(3297) = small + (2.70e-10&
+    k(3298) = small + (2.70e-10&
         *T32**(-1.10e-01))
 
     !C + C2H5 -> C3H4 + H
-    k(3298) = small + (2.00e-10)
+    k(3299) = small + (2.00e-10)
 
     !C + C4H -> C5 + H
-    k(3299) = small + (1.00e-10)
+    k(3300) = small + (1.00e-10)
 
     !C + C4H2 -> C5H + H
-    k(3300) = small + (6.50e-10)
+    k(3301) = small + (6.50e-10)
 
     !C + C4H3 -> C5H2 + H
-    k(3301) = small + (3.00e-10)
+    k(3302) = small + (3.00e-10)
 
     !C + C5H -> C6 + H
-    k(3302) = small + (1.00e-10)
+    k(3303) = small + (1.00e-10)
 
     !C + C5N -> C5 + CN
-    k(3303) = small + (1.00e-13)
+    k(3304) = small + (1.00e-13)
 
     !C + C5H2 -> C6H + H
-    k(3304) = small + (5.30e-10)
+    k(3305) = small + (5.30e-10)
 
     !C + C6H -> C7 + H
-    k(3305) = small + (2.00e-10)
+    k(3306) = small + (2.00e-10)
 
     !C + C6H2 -> C7H + H
-    k(3306) = small + (7.40e-10)
+    k(3307) = small + (7.40e-10)
 
     !C + C7H -> C8 + H
-    k(3307) = small + (2.00e-10)
+    k(3308) = small + (2.00e-10)
 
     !C + C7N -> C7 + CN
-    k(3308) = small + (1.00e-13)
+    k(3309) = small + (1.00e-13)
 
     !C + C7H2 -> C8H + H
-    k(3309) = small + (8.40e-10)
+    k(3310) = small + (8.40e-10)
 
     !C + C8H -> C9 + H
-    k(3310) = small + (2.00e-10)
+    k(3311) = small + (2.00e-10)
 
     !C + C8H2 -> C9H + H
-    k(3311) = small + (9.00e-10)
+    k(3312) = small + (9.00e-10)
 
     !C + C9H -> C10 + H
-    k(3312) = small + (2.00e-10)
+    k(3313) = small + (2.00e-10)
 
     !C + C9N -> C9 + CN
-    k(3313) = small + (1.00e-13)
+    k(3314) = small + (1.00e-13)
 
     !C + CH3C4H -> C6H2 + H2
-    k(3314) = small + (5.30e-10)
+    k(3315) = small + (5.30e-10)
 
     !C + CH3C6H -> C8H2 + H2
-    k(3315) = small + (7.40e-10)
+    k(3316) = small + (7.40e-10)
 
     !C + C4 -> C2 + C3
-    k(3316) = small + (1.00e-10)
+    k(3317) = small + (1.00e-10)
 
     !C + C5 -> C3 + C3
-    k(3317) = small + (3.00e-10)
+    k(3318) = small + (3.00e-10)
 
     !C + C6 -> C2 + C5
-    k(3318) = small + (5.00e-11)
-
-    !C + C6 -> C3 + C4
     k(3319) = small + (5.00e-11)
 
+    !C + C6 -> C3 + C4
+    k(3320) = small + (5.00e-11)
+
     !C + C7 -> C3 + C5
-    k(3320) = small + (3.00e-10)
+    k(3321) = small + (3.00e-10)
 
     !C + C8 -> C4 + C5
-    k(3321) = small + (3.00e-11)
-
-    !C + C8 -> C3 + C6
     k(3322) = small + (3.00e-11)
 
-    !C + C8 -> C2 + C7
+    !C + C8 -> C3 + C6
     k(3323) = small + (3.00e-11)
 
+    !C + C8 -> C2 + C7
+    k(3324) = small + (3.00e-11)
+
     !C + CH2 -> CH + CH
-    k(3324) = small + (2.69e-12&
+    k(3325) = small + (2.69e-12&
         *exp(-2.36e+04&
         /Tgas))
 
     !C + NH2 -> CH + NH
-    k(3325) = small + (9.61e-13&
+    k(3326) = small + (9.61e-13&
         *exp(-1.05e+04&
         /Tgas))
 
     !C + CN -> C2 + N
-    k(3326) = small + (4.98e-10&
+    k(3327) = small + (4.98e-10&
         *exp(-1.81e+04&
         /Tgas))
 
     !C + N2 -> CN + N
-    k(3327) = small + (8.70e-11&
+    k(3328) = small + (8.70e-11&
         *exp(-2.26e+04&
         /Tgas))
 
     !C + CO -> C2 + O
-    k(3328) = small + (1.00e-10&
+    k(3329) = small + (1.00e-10&
         *exp(-5.28e+04&
         /Tgas))
 
     !H + HS -> S + H2
-    k(3329) = small + (2.50e-11)
+    k(3330) = small + (2.50e-11)
 
     !H + HCO -> H2 + CO
-    k(3330) = small + (1.50e-10)
+    k(3331) = small + (1.50e-10)
 
     !H + HCO -> O + CH2
-    k(3331) = small + (6.61e-11&
+    k(3332) = small + (6.61e-11&
         *exp(-5.16e+04&
         /Tgas))
 
     !H + C2H3 -> C2H2 + H2
-    k(3332) = small + (2.00e-11)
+    k(3333) = small + (2.00e-11)
 
     !H + H2CN -> H2 + HCN
-    k(3333) = small + (1.00e-10)
+    k(3334) = small + (1.00e-10)
 
     !H + HCNC2 -> HC2NC + H
-    k(3334) = small + (1.00e-11)
-
-    !H + HNC3 -> HC3N + H
     k(3335) = small + (1.00e-11)
 
+    !H + HNC3 -> HC3N + H
+    k(3336) = small + (1.00e-11)
+
     !H + CH -> C + H2
-    k(3336) = small + (2.70e-11&
+    k(3337) = small + (2.70e-11&
         *T32**(3.80e-01))
 
     !H + CH2 -> CH + H2
-    k(3337) = small + (2.70e-10)
+    k(3338) = small + (2.70e-10)
 
     !H + CH3 -> CH2 + H2
-    k(3338) = small + (1.00e-10&
+    k(3339) = small + (1.00e-10&
         *exp(-7.60e+03&
         /Tgas))
 
     !H + CH4 -> CH3 + H2
-    k(3339) = small + (7.34e-12&
+    k(3340) = small + (7.34e-12&
         *exp(-4.41e+03&
         /Tgas))
 
     !H + OH -> O + H2
-    k(3340) = small + (6.86e-14&
+    k(3341) = small + (6.86e-14&
         *T32**(2.80e+00)*exp(-1.95e+03&
         /Tgas))
 
     !H + NH3 -> NH2 + H2
-    k(3341) = small + (6.54e-13&
+    k(3342) = small + (6.54e-13&
         *T32**(2.76e+00)*exp(-5.17e+03&
         /Tgas))
 
     !H + H2O -> OH + H2
-    k(3342) = small + (6.82e-12&
+    k(3343) = small + (6.82e-12&
         *T32**(1.60e+00)*exp(-9.72e+03&
         /Tgas))
 
     !H + HCN -> CN + H2
-    k(3343) = small + (6.19e-10&
+    k(3344) = small + (6.19e-10&
         *exp(-1.25e+04&
         /Tgas))
 
     !H + NO -> O + NH
-    k(3344) = small + (9.30e-10&
+    k(3345) = small + (9.30e-10&
         *T32**(-1.00e-01)*exp(-3.52e+04&
         /Tgas))
 
     !H + NO -> N + OH
-    k(3345) = small + (3.60e-10&
+    k(3346) = small + (3.60e-10&
         *exp(-2.49e+04&
         /Tgas))
 
     !H + H2CO -> HCO + H2
-    k(3346) = small + (2.14e-12&
+    k(3347) = small + (2.14e-12&
         *T32**(1.62e+00)*exp(-1.09e+03&
         /Tgas))
 
     !H + HNO -> NH2 + O
-    k(3347) = small + (1.05e-09&
+    k(3348) = small + (1.05e-09&
         *T32**(-3.00e-01)*exp(-1.47e+04&
         /Tgas))
 
     !H + HNO -> OH + NH
-    k(3348) = small + (2.41e-09*invsqrT32&
+    k(3349) = small + (2.41e-09*invsqrT32&
         *exp(-9.01e+03&
         /Tgas))
 
     !H + O2 -> OH + O
-    k(3349) = small + (2.94e-10&
+    k(3350) = small + (2.94e-10&
         *exp(-8.38e+03&
         /Tgas))
 
     !H + O2H -> O2 + H2
-    k(3350) = small + (5.60e-12)
+    k(3351) = small + (5.60e-12)
 
     !H + O2H -> OH + OH
-    k(3351) = small + (7.21e-11)
+    k(3352) = small + (7.21e-11)
 
     !H + O2H -> H2O + O
-    k(3352) = small + (2.42e-12)
+    k(3353) = small + (2.42e-12)
 
     !H + H2O2 -> H2O + OH
-    k(3353) = small + (1.69e-11&
+    k(3354) = small + (1.69e-11&
         *exp(-1.80e+03&
         /Tgas))
 
     !H + H2O2 -> O2H + H2
-    k(3354) = small + (2.81e-12&
+    k(3355) = small + (2.81e-12&
         *exp(-1.89e+03&
         /Tgas))
 
     !H + H2S -> HS + H2
-    k(3355) = small + (6.60e-11&
+    k(3356) = small + (6.60e-11&
         *exp(-1.35e+03&
         /Tgas))
 
     !H + CO2 -> CO + OH
-    k(3356) = small + (2.51e-10&
+    k(3357) = small + (2.51e-10&
         *exp(-1.33e+04&
         /Tgas))
 
     !H + N2O -> OH + N2
-    k(3357) = small + (9.22e-14&
+    k(3358) = small + (9.22e-14&
         *exp(-2.99e+03&
         /Tgas))
 
     !H + NO2 -> NO + OH
-    k(3358) = small + (4.00e-10&
+    k(3359) = small + (4.00e-10&
         *exp(-3.40e+02&
         /Tgas))
 
     !H + OCS -> CO + HS
-    k(3359) = small + (1.23e-11&
+    k(3360) = small + (1.23e-11&
         *exp(-1.95e+03&
         /Tgas))
 
     !H2 + C -> CH + H
-    k(3360) = small + (6.64e-10&
+    k(3361) = small + (6.64e-10&
         *exp(-1.17e+04&
         /Tgas))
 
     !H2 + CH -> CH2 + H
-    k(3361) = small + (3.75e-10&
+    k(3362) = small + (3.75e-10&
         *exp(-1.66e+03&
         /Tgas))
 
     !H2 + CH2 -> CH3 + H
-    k(3362) = small + (5.00e-11&
+    k(3363) = small + (5.00e-11&
         *exp(-4.87e+03&
         /Tgas))
 
     !H2 + CH3 -> CH4 + H
-    k(3363) = small + (2.51e-13&
+    k(3364) = small + (2.51e-13&
         *exp(-4.21e+03&
         /Tgas))
 
     !H2 + O -> OH + H
-    k(3364) = small + (3.44e-13&
+    k(3365) = small + (3.44e-13&
         *T32**(2.67e+00)*exp(-3.16e+03&
         /Tgas))
 
     !H2 + OH -> H2O + H
-    k(3365) = small + (8.40e-13&
+    k(3366) = small + (8.40e-13&
         *exp(-1.04e+03&
         /Tgas))
 
     !H2 + N -> NH + H
-    k(3366) = small + (4.65e-10&
+    k(3367) = small + (4.65e-10&
         *exp(-1.66e+04&
         /Tgas))
 
     !H2 + NH -> NH2 + H
-    k(3367) = small + (5.96e-11&
+    k(3368) = small + (5.96e-11&
         *exp(-7.78e+03&
         /Tgas))
 
     !H2 + NH2 -> NH3 + H
-    k(3368) = small + (1.76e-13&
+    k(3369) = small + (1.76e-13&
         *T32**(2.23e+00)*exp(-3.61e+03&
         /Tgas))
 
     !H2 + O2H -> H2O2 + H
-    k(3369) = small + (4.38e-12&
+    k(3370) = small + (4.38e-12&
         *exp(-1.08e+04&
         /Tgas))
 
     !N + C2 -> CN + C
-    k(3370) = small + (5.00e-11)
+    k(3371) = small + (5.00e-11)
 
     !N + CH -> CN + H
-    k(3371) = small + (1.66e-10&
+    k(3372) = small + (1.66e-10&
         *T32**(-9.00e-02))
 
     !N + CN -> C + N2
-    k(3372) = small + (3.00e-10)
+    k(3373) = small + (3.00e-10)
 
     !N + HS -> NS + H
-    k(3373) = small + (1.00e-10)
+    k(3374) = small + (1.00e-10)
 
     !N + NH -> N2 + H
-    k(3374) = small + (5.00e-11)
+    k(3375) = small + (5.00e-11)
 
     !N + NO -> N2 + O
-    k(3375) = small + (3.00e-11&
-        *T32**(-6.00e-01))
-
-    !N + NS -> N2 + S
     k(3376) = small + (3.00e-11&
         *T32**(-6.00e-01))
 
+    !N + NS -> N2 + S
+    k(3377) = small + (3.00e-11&
+        *T32**(-6.00e-01))
+
     !N + OH -> NO + H
-    k(3377) = small + (7.50e-11&
+    k(3378) = small + (7.50e-11&
         *T32**(-1.80e-01))
 
     !N + O2 -> NO + O
-    k(3378) = small + (1.50e-11&
+    k(3379) = small + (1.50e-11&
         *exp(-3.68e+03&
         /Tgas))
 
     !N + PH -> PN + H
-    k(3379) = small + (5.00e-11)
+    k(3380) = small + (5.00e-11)
 
     !N + PO -> PN + O
-    k(3380) = small + (3.00e-11&
+    k(3381) = small + (3.00e-11&
         *T32**(-6.00e-01))
 
     !N + SIC -> CN + SI
-    k(3381) = small + (5.00e-11)
-
-    !N + SIC -> SIN + C
     k(3382) = small + (5.00e-11)
 
+    !N + SIC -> SIN + C
+    k(3383) = small + (5.00e-11)
+
     !N + SIH -> SIN + H
-    k(3383) = small + (1.66e-10&
+    k(3384) = small + (1.66e-10&
         *T32**(-9.00e-02))
 
     !N + SO -> NO + S
-    k(3384) = small + (1.50e-11&
+    k(3385) = small + (1.50e-11&
         *exp(-3.68e+03&
         /Tgas))
 
     !N + CH2 -> HCN + H
-    k(3385) = small + (3.95e-11&
-        *T32**(1.67e-01))
-
-    !N + CH2 -> HNC + H
     k(3386) = small + (3.95e-11&
         *T32**(1.67e-01))
 
-    !N + HCO -> OCN + H
-    k(3387) = small + (1.00e-10)
+    !N + CH2 -> HNC + H
+    k(3387) = small + (3.95e-11&
+        *T32**(1.67e-01))
 
-    !N + HCS -> HCN + S
+    !N + HCO -> OCN + H
     k(3388) = small + (1.00e-10)
 
-    !N + NO2 -> N2 + O2
-    k(3389) = small + (1.00e-12)
+    !N + HCS -> HCN + S
+    k(3389) = small + (1.00e-10)
 
-    !N + NO2 -> NO + NO
+    !N + NO2 -> N2 + O2
     k(3390) = small + (1.00e-12)
 
+    !N + NO2 -> NO + NO
+    k(3391) = small + (1.00e-12)
+
     !N + NO2 -> N2O + O
-    k(3391) = small + (2.10e-11)
+    k(3392) = small + (2.10e-11)
 
     !N + O2H -> NH + O2
-    k(3392) = small + (1.70e-13)
+    k(3393) = small + (1.70e-13)
 
     !N + SIH2 -> HNSI + H
-    k(3393) = small + (8.00e-11&
+    k(3394) = small + (8.00e-11&
         *T32**(1.67e-01))
 
     !N + C2H -> C2N + H
-    k(3394) = small + (1.70e-11)
+    k(3395) = small + (1.70e-11)
 
     !N + C2N -> CN + CN
-    k(3395) = small + (1.00e-10)
+    k(3396) = small + (1.00e-10)
 
     !N + CCO -> CN + CO
-    k(3396) = small + (5.50e-10)
+    k(3397) = small + (5.50e-10)
 
     !N + C3 -> CN + C2
-    k(3397) = small + (1.00e-13)
-
-    !N + C3H -> C3N + H
     k(3398) = small + (1.00e-13)
 
+    !N + C3H -> C3N + H
+    k(3399) = small + (1.00e-13)
+
     !N + HC3 -> C3N + H
-    k(3399) = small + (1.70e-11)
+    k(3400) = small + (1.70e-11)
 
     !N + C3N -> CN + C2N
-    k(3400) = small + (1.00e-10)
+    k(3401) = small + (1.00e-10)
 
     !N + CH3 -> HCN + H + H
-    k(3401) = small + (3.32e-13)
+    k(3402) = small + (3.32e-13)
 
     !N + CH3 -> H2CN + H
-    k(3402) = small + (8.60e-11)
+    k(3403) = small + (8.60e-11)
 
     !N + H2CN -> NH + HCN
-    k(3403) = small + (3.70e-11)
+    k(3404) = small + (3.70e-11)
 
     !N + SIH3 -> HNSI + H2
-    k(3404) = small + (1.00e-10)
+    k(3405) = small + (1.00e-10)
 
     !N + C2H3 -> C2H2N + H
-    k(3405) = small + (6.20e-11)
+    k(3406) = small + (6.20e-11)
 
     !N + C2H3 -> C2H2 + NH
-    k(3406) = small + (1.20e-11)
+    k(3407) = small + (1.20e-11)
 
     !N + C3H2 -> HC3N + H
-    k(3407) = small + (1.70e-11)
+    k(3408) = small + (1.70e-11)
 
     !N + H2C3 -> HC3N + H
-    k(3408) = small + (1.00e-13)
+    k(3409) = small + (1.00e-13)
 
     !N + C3H3 -> HC3N + H2
-    k(3409) = small + (8.00e-11)
+    k(3410) = small + (8.00e-11)
 
     !N + C4 -> C3 + CN
-    k(3410) = small + (5.00e-11)
+    k(3411) = small + (5.00e-11)
 
     !N + C5 -> CN + C4
-    k(3411) = small + (1.00e-13)
+    k(3412) = small + (1.00e-13)
 
     !N + C4H -> C4N + H
-    k(3412) = small + (1.70e-11)
+    k(3413) = small + (1.70e-11)
 
     !N + C4N -> CN + C3N
-    k(3413) = small + (1.00e-10)
+    k(3414) = small + (1.00e-10)
 
     !N + C5H -> C5N + H
-    k(3414) = small + (1.70e-11)
+    k(3415) = small + (1.70e-11)
 
     !N + C5N -> CN + C4N
-    k(3415) = small + (1.00e-10)
+    k(3416) = small + (1.00e-10)
 
     !N + C2H5 -> H2CN + CH3
-    k(3416) = small + (3.85e-11)
+    k(3417) = small + (3.85e-11)
 
     !N + C2H5 -> C2H4 + NH
-    k(3417) = small + (7.15e-11)
+    k(3418) = small + (7.15e-11)
 
     !N + C5H2 -> HC5N + H
-    k(3418) = small + (1.00e-13)
+    k(3419) = small + (1.00e-13)
 
     !N + C6 -> CN + C5
-    k(3419) = small + (5.00e-11)
+    k(3420) = small + (5.00e-11)
 
     !N + C6H -> CN + C5H
-    k(3420) = small + (1.00e-13)
-
-    !N + C7 -> CN + C6
     k(3421) = small + (1.00e-13)
 
+    !N + C7 -> CN + C6
+    k(3422) = small + (1.00e-13)
+
     !N + C7H -> C7N + H
-    k(3422) = small + (1.70e-11)
+    k(3423) = small + (1.70e-11)
 
     !N + C7H2 -> HC7N + H
-    k(3423) = small + (1.00e-13)
+    k(3424) = small + (1.00e-13)
 
     !N + C7N -> C2N + C5N
-    k(3424) = small + (1.00e-10)
+    k(3425) = small + (1.00e-10)
 
     !N + C8 -> CN + C7
-    k(3425) = small + (5.00e-11)
+    k(3426) = small + (5.00e-11)
 
     !N + C8H -> CN + C7H
-    k(3426) = small + (1.00e-10)
+    k(3427) = small + (1.00e-10)
 
     !N + C9 -> CN + C8
-    k(3427) = small + (1.00e-13)
+    k(3428) = small + (1.00e-13)
 
     !N + C9H -> C9N + H
-    k(3428) = small + (1.70e-11)
+    k(3429) = small + (1.70e-11)
 
     !N + C9N -> C2N + C7N
-    k(3429) = small + (1.00e-10)
-
-    !O + C2 -> CO + C
     k(3430) = small + (1.00e-10)
 
+    !O + C2 -> CO + C
+    k(3431) = small + (1.00e-10)
+
     !O + CCL -> CLO + C
-    k(3431) = small + (1.38e-10&
+    k(3432) = small + (1.38e-10&
         *exp(-1.60e+04&
         /Tgas))
 
     !O + CCL -> CL + CO
-    k(3432) = small + (9.96e-11)
+    k(3433) = small + (9.96e-11)
 
     !O + CH -> CO + H
-    k(3433) = small + (6.60e-11)
+    k(3434) = small + (6.60e-11)
 
     !O + CLO -> CL + O2
-    k(3434) = small + (4.00e-11)
-
-    !O + CN -> CO + N
     k(3435) = small + (4.00e-11)
 
-    !O + CP -> P + CO
+    !O + CN -> CO + N
     k(3436) = small + (4.00e-11)
 
+    !O + CP -> P + CO
+    k(3437) = small + (4.00e-11)
+
     !O + CS -> CO + S
-    k(3437) = small + (1.94e-11&
+    k(3438) = small + (1.94e-11&
         *exp(-2.31e+02&
         /Tgas))
 
     !O + HS -> SO + H
-    k(3438) = small + (1.60e-10*sqrT32)
+    k(3439) = small + (1.60e-10*sqrT32)
 
     !O + NH -> NO + H
-    k(3439) = small + (1.16e-10)
+    k(3440) = small + (1.16e-10)
 
     !O + NH -> OH + N
-    k(3440) = small + (1.16e-11)
+    k(3441) = small + (1.16e-11)
 
     !O + NS -> NO + S
-    k(3441) = small + (1.00e-10)
+    k(3442) = small + (1.00e-10)
 
     !O + NS -> SO + N
-    k(3442) = small + (1.00e-11)
+    k(3443) = small + (1.00e-11)
 
     !O + OH -> O2 + H
-    k(3443) = small + (7.50e-11&
+    k(3444) = small + (7.50e-11&
         *T32**(-2.50e-01))
 
     !O + PH -> PO + H
-    k(3444) = small + (1.00e-10)
+    k(3445) = small + (1.00e-10)
 
     !O + S2 -> SO + S
-    k(3445) = small + (1.70e-11)
+    k(3446) = small + (1.70e-11)
 
     !O + SIC -> CO + SI
-    k(3446) = small + (5.00e-11)
-
-    !O + SIC -> SIO + C
     k(3447) = small + (5.00e-11)
 
+    !O + SIC -> SIO + C
+    k(3448) = small + (5.00e-11)
+
     !O + SIH -> SIO + H
-    k(3448) = small + (1.00e-10)
+    k(3449) = small + (1.00e-10)
 
     !O + SIN -> NO + SI
-    k(3449) = small + (5.00e-11)
-
-    !O + SIN -> SIO + N
     k(3450) = small + (5.00e-11)
 
+    !O + SIN -> SIO + N
+    k(3451) = small + (5.00e-11)
+
     !O + C2H -> CO + CH
-    k(3451) = small + (1.70e-11)
+    k(3452) = small + (1.70e-11)
 
     !O + C2N -> CO + CN
-    k(3452) = small + (6.00e-12)
+    k(3453) = small + (6.00e-12)
 
     !O + CCO -> CO + CO
-    k(3453) = small + (8.60e-11)
+    k(3454) = small + (8.60e-11)
 
     !O + CCP -> CP + CO
-    k(3454) = small + (6.00e-12)
+    k(3455) = small + (6.00e-12)
 
     !O + CH2 -> CO + H + H
-    k(3455) = small + (1.20e-10)
+    k(3456) = small + (1.20e-10)
 
     !O + CH2 -> CO + H2
-    k(3456) = small + (8.00e-11)
+    k(3457) = small + (8.00e-11)
 
     !O + HCO -> H + CO2
-    k(3457) = small + (5.00e-11)
-
-    !O + HCO -> OH + CO
     k(3458) = small + (5.00e-11)
 
-    !O + HCN -> OCN + H
-    k(3459) = small + (3.61e-13&
-        *T32**(2.10e+00)*exp(-3.08e+03&
-        /Tgas))
+    !O + HCO -> OH + CO
+    k(3459) = small + (5.00e-11)
 
-    !O + HCP -> CO + PH
+    !O + HCN -> OCN + H
     k(3460) = small + (3.61e-13&
         *T32**(2.10e+00)*exp(-3.08e+03&
         /Tgas))
 
-    !O + HCS -> OCS + H
-    k(3461) = small + (5.00e-11)
+    !O + HCP -> CO + PH
+    k(3461) = small + (3.61e-13&
+        *T32**(2.10e+00)*exp(-3.08e+03&
+        /Tgas))
 
-    !O + HCS -> OH + CS
+    !O + HCS -> OCS + H
     k(3462) = small + (5.00e-11)
 
+    !O + HCS -> OH + CS
+    k(3463) = small + (5.00e-11)
+
     !O + HCSI -> SIO + CH
-    k(3463) = small + (2.00e-11)
+    k(3464) = small + (2.00e-11)
 
     !O + H2S -> HS + OH
-    k(3464) = small + (9.22e-12&
+    k(3465) = small + (9.22e-12&
         *exp(-1.80e+03&
         /Tgas))
 
     !O + HNO -> OH + NO
-    k(3465) = small + (3.80e-11)
+    k(3466) = small + (3.80e-11)
 
     !O + HNO -> NO2 + H
-    k(3466) = small + (1.00e-12)
+    k(3467) = small + (1.00e-12)
 
     !O + HPO -> PO + OH
-    k(3467) = small + (3.80e-11)
+    k(3468) = small + (3.80e-11)
 
     !O + NH2 -> NH + OH
-    k(3468) = small + (2.00e-11)
+    k(3469) = small + (2.00e-11)
 
     !O + NH2 -> HNO + H
-    k(3469) = small + (8.00e-11)
+    k(3470) = small + (8.00e-11)
 
     !O + NH2 -> NO + H2
-    k(3470) = small + (1.00e-11)
-
-    !O + NO2 -> NO + O2
     k(3471) = small + (1.00e-11)
 
+    !O + NO2 -> NO + O2
+    k(3472) = small + (1.00e-11)
+
     !O + O2H -> OH + O2
-    k(3472) = small + (5.30e-11)
+    k(3473) = small + (5.30e-11)
 
     !O + OCN -> NO + CO
-    k(3473) = small + (1.50e-11&
+    k(3474) = small + (1.50e-11&
         *exp(-2.00e+02&
         /Tgas))
 
     !O + OCN -> CN + O2
-    k(3474) = small + (4.05e-10&
+    k(3475) = small + (4.05e-10&
         *T32**(-1.43e+00)*exp(-3.50e+03&
         /Tgas))
 
     !O + PH2 -> HPO + H
-    k(3475) = small + (8.00e-11)
+    k(3476) = small + (8.00e-11)
 
     !O + PH2 -> PH + OH
-    k(3476) = small + (2.00e-11)
+    k(3477) = small + (2.00e-11)
 
     !O + C3 -> CO + C2
-    k(3477) = small + (5.00e-12&
+    k(3478) = small + (5.00e-12&
         *exp(-9.00e+02&
         /Tgas))
 
     !O + SIC2 -> SIC + CO
-    k(3478) = small + (4.00e-11)
+    k(3479) = small + (4.00e-11)
 
     !O + SIH2 -> SIO + H + H
-    k(3479) = small + (1.20e-10)
+    k(3480) = small + (1.20e-10)
 
     !O + SIH2 -> SIO + H2
-    k(3480) = small + (8.00e-11)
+    k(3481) = small + (8.00e-11)
 
     !O + SINC -> SIN + CO
-    k(3481) = small + (1.00e-11)
+    k(3482) = small + (1.00e-11)
 
     !O + C2H3 -> C2H2O + H
-    k(3482) = small + (1.60e-10)
+    k(3483) = small + (1.60e-10)
 
     !O + C2H5 -> C2H4O + H
-    k(3483) = small + (1.33e-10)
+    k(3484) = small + (1.33e-10)
 
     !O + C2H5 -> H2CO + CH3
-    k(3484) = small + (2.65e-11)
+    k(3485) = small + (2.65e-11)
 
     !O + C3H -> C2H + CO
-    k(3485) = small + (1.70e-11)
-
-    !O + HC3 -> C2H + CO
     k(3486) = small + (1.70e-11)
 
+    !O + HC3 -> C2H + CO
+    k(3487) = small + (1.70e-11)
+
     !O + C3N -> CO + C2N
-    k(3487) = small + (4.00e-11)
+    k(3488) = small + (4.00e-11)
 
     !O + C3O -> CCO + CO
-    k(3488) = small + (5.00e-12&
+    k(3489) = small + (5.00e-12&
         *exp(-9.00e+02&
         /Tgas))
 
     !O + C3P -> CCP + CO
-    k(3489) = small + (4.00e-11)
+    k(3490) = small + (4.00e-11)
 
     !O + C4 -> CO + C3
-    k(3490) = small + (5.00e-11)
+    k(3491) = small + (5.00e-11)
 
     !O + CH3 -> H2CO + H
-    k(3491) = small + (1.40e-10)
+    k(3492) = small + (1.40e-10)
 
     !O + H2CN -> OCN + H2
-    k(3492) = small + (1.00e-10)
+    k(3493) = small + (1.00e-10)
 
     !O + HCCP -> HCP + CO
-    k(3493) = small + (4.00e-11)
-
-    !O + SIC3 -> SIC2 + CO
     k(3494) = small + (4.00e-11)
 
+    !O + SIC3 -> SIC2 + CO
+    k(3495) = small + (4.00e-11)
+
     !O + SIH3 -> H2SIO + H
-    k(3495) = small + (1.40e-10)
+    k(3496) = small + (1.40e-10)
 
     !O + H2C3 -> C2H2 + CO
-    k(3496) = small + (1.00e-10)
+    k(3497) = small + (1.00e-10)
 
     !O + C5 -> CO + C4
-    k(3497) = small + (5.00e-12&
+    k(3498) = small + (5.00e-12&
         *exp(-9.00e+02&
         /Tgas))
 
     !O + C4H -> C3H + CO
-    k(3498) = small + (8.50e-12)
-
-    !O + C4H -> HC3 + CO
     k(3499) = small + (8.50e-12)
 
+    !O + C4H -> HC3 + CO
+    k(3500) = small + (8.50e-12)
+
     !O + C4N -> C3N + CO
-    k(3500) = small + (6.00e-12)
+    k(3501) = small + (6.00e-12)
 
     !O + C4P -> C3P + CO
-    k(3501) = small + (1.00e-11)
+    k(3502) = small + (1.00e-11)
 
     !O + CH2PH -> PH2 + CO + H
-    k(3502) = small + (4.00e-11)
-
-    !O + SIC4 -> SIC3 + CO
     k(3503) = small + (4.00e-11)
 
+    !O + SIC4 -> SIC3 + CO
+    k(3504) = small + (4.00e-11)
+
     !O + C5H -> CO + C4H
-    k(3504) = small + (1.70e-11)
+    k(3505) = small + (1.70e-11)
 
     !O + C5N -> C4N + CO
-    k(3505) = small + (4.00e-11)
+    k(3506) = small + (4.00e-11)
 
     !O + C6 -> CO + C5
-    k(3506) = small + (5.00e-11)
+    k(3507) = small + (5.00e-11)
 
     !O + C6H -> CO + C5H
-    k(3507) = small + (1.70e-11)
+    k(3508) = small + (1.70e-11)
 
     !O + C7 -> CO + C6
-    k(3508) = small + (5.00e-12&
+    k(3509) = small + (5.00e-12&
         *exp(-9.00e+02&
         /Tgas))
 
     !O + C7H -> CO + C6H
-    k(3509) = small + (1.70e-11)
+    k(3510) = small + (1.70e-11)
 
     !O + C7N -> OCN + C6
-    k(3510) = small + (4.00e-11)
+    k(3511) = small + (4.00e-11)
 
     !O + C8 -> CO + C7
-    k(3511) = small + (5.00e-11)
+    k(3512) = small + (5.00e-11)
 
     !O + C8H -> CO + C7H
-    k(3512) = small + (1.70e-11)
+    k(3513) = small + (1.70e-11)
 
     !O + C9 -> CO + C8
-    k(3513) = small + (5.00e-12&
+    k(3514) = small + (5.00e-12&
         *exp(-9.00e+02&
         /Tgas))
 
     !O + C9H -> CO + C8H
-    k(3514) = small + (1.70e-11)
+    k(3515) = small + (1.70e-11)
 
     !O + C9N -> OCN + C8
-    k(3515) = small + (4.00e-11)
+    k(3516) = small + (4.00e-11)
 
     !O + C10 -> CO + C9
-    k(3516) = small + (5.00e-11)
-
-    !O + C11 -> CO + C10
     k(3517) = small + (5.00e-11)
 
+    !O + C11 -> CO + C10
+    k(3518) = small + (5.00e-11)
+
     !S + C2 -> CS + C
-    k(3518) = small + (1.00e-10)
+    k(3519) = small + (1.00e-10)
 
     !S + CH -> CS + H
-    k(3519) = small + (5.00e-11)
+    k(3520) = small + (5.00e-11)
 
     !S + NH -> NS + H
-    k(3520) = small + (1.00e-10)
+    k(3521) = small + (1.00e-10)
 
     !S + HS -> S2 + H
-    k(3521) = small + (4.50e-11)
+    k(3522) = small + (4.50e-11)
 
     !S + O2 -> SO + O
-    k(3522) = small + (2.30e-12)
+    k(3523) = small + (2.30e-12)
 
     !S + OH -> SO + H
-    k(3523) = small + (6.60e-11)
+    k(3524) = small + (6.60e-11)
 
     !S + CH2 -> HCS + H
-    k(3524) = small + (1.00e-10)
-
-    !S + CH2 -> CS + H2
     k(3525) = small + (1.00e-10)
 
+    !S + CH2 -> CS + H2
+    k(3526) = small + (1.00e-10)
+
     !S + CH3 -> H2CS + H
-    k(3526) = small + (1.40e-10)
+    k(3527) = small + (1.40e-10)
 
     !SI + O2 -> SIO + O
-    k(3527) = small + (1.72e-10&
+    k(3528) = small + (1.72e-10&
         *T32**(-5.30e-01)*exp(-1.70e+01&
         /Tgas))
 
     !SI + NO -> SIO + N
-    k(3528) = small + (9.00e-11&
+    k(3529) = small + (9.00e-11&
         *T32**(-9.60e-01)*exp(-2.80e+01&
         /Tgas))
 
     !SI + OH -> SIO + H
-    k(3529) = small + (1.00e-10)
-
-    !SI + CH2 -> HCSI + H
     k(3530) = small + (1.00e-10)
 
-    !SI + CH3 -> SICH2 + H
+    !SI + CH2 -> HCSI + H
     k(3531) = small + (1.00e-10)
 
-    !SI + C2H2 -> SIC2H + H
-    k(3532) = small + (2.70e-10&
-        *T32**(-1.10e-01))
+    !SI + CH3 -> SICH2 + H
+    k(3532) = small + (1.00e-10)
 
-    !SI + C3H4 -> SIC3H3 + H
+    !SI + C2H2 -> SIC2H + H
     k(3533) = small + (2.70e-10&
         *T32**(-1.10e-01))
 
-    !SI + C4H2 -> SIC4H + H
+    !SI + C3H4 -> SIC3H3 + H
     k(3534) = small + (2.70e-10&
         *T32**(-1.10e-01))
 
-    !SI + C6H2 -> SIC6H + H
+    !SI + C4H2 -> SIC4H + H
     k(3535) = small + (2.70e-10&
         *T32**(-1.10e-01))
 
-    !SI + C8H2 -> SIC8H + H
+    !SI + C6H2 -> SIC6H + H
     k(3536) = small + (2.70e-10&
         *T32**(-1.10e-01))
 
-    !SI + C2H4 -> SIC2H3 + H
-    k(3537) = small + (2.40e-10&
-        *T32**(-1.20e-01))
+    !SI + C8H2 -> SIC8H + H
+    k(3537) = small + (2.70e-10&
+        *T32**(-1.10e-01))
 
-    !SI + C3H6 -> SIC3H5 + H
+    !SI + C2H4 -> SIC2H3 + H
     k(3538) = small + (2.40e-10&
         *T32**(-1.20e-01))
 
+    !SI + C3H6 -> SIC3H5 + H
+    k(3539) = small + (2.40e-10&
+        *T32**(-1.20e-01))
+
     !F + H2 -> HF + H
-    k(3539) = small + (1.00e-10&
+    k(3540) = small + (1.00e-10&
         *T32**(2.26e-01)*exp(2.98e+01&
         /Tgas))
 
     !F + CH -> HF + C
-    k(3540) = small + (1.60e-10)
-
-    !F + OH -> HF + O
     k(3541) = small + (1.60e-10)
 
-    !F + H2O -> HF + OH
+    !F + OH -> HF + O
     k(3542) = small + (1.60e-10)
 
+    !F + H2O -> HF + OH
+    k(3543) = small + (1.60e-10)
+
     !CH + NO -> HCN + O
-    k(3543) = small + (1.20e-11&
+    k(3544) = small + (1.20e-11&
         *T32**(-1.30e-01))
 
     !CH + O2 -> CO + OH
-    k(3544) = small + (3.80e-11&
+    k(3545) = small + (3.80e-11&
         *T32**(-4.80e-01))
 
     !CH + HNO -> NO + CH2
-    k(3545) = small + (1.73e-11)
+    k(3546) = small + (1.73e-11)
 
     !CH + CH4 -> C2H4 + H
-    k(3546) = small + (2.23e-12)
+    k(3547) = small + (2.23e-12)
 
     !CH + C2H2 -> C3H2 + H
-    k(3547) = small + (4.20e-10&
-        *T32**(-2.30e-01)*exp(-1.60e+01&
-        /Tgas))
-
-    !CH + C3H4 -> C4H4 + H
     k(3548) = small + (4.20e-10&
         *T32**(-2.30e-01)*exp(-1.60e+01&
         /Tgas))
 
-    !CH + C4H2 -> C5H2 + H
+    !CH + C3H4 -> C4H4 + H
     k(3549) = small + (4.20e-10&
         *T32**(-2.30e-01)*exp(-1.60e+01&
         /Tgas))
 
-    !CH + C6H2 -> C7H2 + H
+    !CH + C4H2 -> C5H2 + H
     k(3550) = small + (4.20e-10&
         *T32**(-2.30e-01)*exp(-1.60e+01&
         /Tgas))
 
-    !CH + C2H4 -> C3H4 + H
-    k(3551) = small + (3.45e-10&
-        *T32**(-5.50e-01)*exp(-2.96e+01&
+    !CH + C6H2 -> C7H2 + H
+    k(3551) = small + (4.20e-10&
+        *T32**(-2.30e-01)*exp(-1.60e+01&
         /Tgas))
 
-    !CH + C3H6 -> C4H6 + H
+    !CH + C2H4 -> C3H4 + H
     k(3552) = small + (3.45e-10&
         *T32**(-5.50e-01)*exp(-2.96e+01&
         /Tgas))
 
-    !CH + C3 -> C4 + H
-    k(3553) = small + (4.00e-10)
-
-    !CH + C5 -> C6 + H
-    k(3554) = small + (4.00e-10)
-
-    !CH + C7 -> C8 + H
-    k(3555) = small + (4.00e-10)
-
-    !CH + C9 -> C10 + H
-    k(3556) = small + (4.00e-10)
-
-    !CH + C2 -> C3 + H
-    k(3557) = small + (1.00e-10)
-
-    !CH + C4 -> C5 + H
-    k(3558) = small + (1.00e-10)
-
-    !CH + C6 -> C7 + H
-    k(3559) = small + (1.00e-10)
-
-    !CH + C8 -> C9 + H
-    k(3560) = small + (1.00e-10)
-
-    !CH + HC3N -> HC4N + H
-    k(3561) = small + (3.45e-10&
+    !CH + C3H6 -> C4H6 + H
+    k(3553) = small + (3.45e-10&
         *T32**(-5.50e-01)*exp(-2.96e+01&
         /Tgas))
 
-    !CH + HC5N -> HC6N + H
+    !CH + C3 -> C4 + H
+    k(3554) = small + (4.00e-10)
+
+    !CH + C5 -> C6 + H
+    k(3555) = small + (4.00e-10)
+
+    !CH + C7 -> C8 + H
+    k(3556) = small + (4.00e-10)
+
+    !CH + C9 -> C10 + H
+    k(3557) = small + (4.00e-10)
+
+    !CH + C2 -> C3 + H
+    k(3558) = small + (1.00e-10)
+
+    !CH + C4 -> C5 + H
+    k(3559) = small + (1.00e-10)
+
+    !CH + C6 -> C7 + H
+    k(3560) = small + (1.00e-10)
+
+    !CH + C8 -> C9 + H
+    k(3561) = small + (1.00e-10)
+
+    !CH + HC3N -> HC4N + H
     k(3562) = small + (3.45e-10&
         *T32**(-5.50e-01)*exp(-2.96e+01&
         /Tgas))
 
-    !CH + HC7N -> HC8N + H
+    !CH + HC5N -> HC6N + H
     k(3563) = small + (3.45e-10&
         *T32**(-5.50e-01)*exp(-2.96e+01&
         /Tgas))
 
-    !CH + HC9N -> HC10N + H
+    !CH + HC7N -> HC8N + H
     k(3564) = small + (3.45e-10&
         *T32**(-5.50e-01)*exp(-2.96e+01&
         /Tgas))
 
-    !CH + HC11N -> HC12N + H
+    !CH + HC9N -> HC10N + H
     k(3565) = small + (3.45e-10&
         *T32**(-5.50e-01)*exp(-2.96e+01&
         /Tgas))
 
-    !C2 + C2H2 -> C4H + H
-    k(3566) = small + (1.00e-10)
+    !CH + HC11N -> HC12N + H
+    k(3566) = small + (3.45e-10&
+        *T32**(-5.50e-01)*exp(-2.96e+01&
+        /Tgas))
 
-    !C2 + C2H4 -> C4H3 + H
+    !C2 + C2H2 -> C4H + H
     k(3567) = small + (1.00e-10)
 
-    !C2 + C4H2 -> C6H + H
+    !C2 + C2H4 -> C4H3 + H
     k(3568) = small + (1.00e-10)
 
-    !C2 + C6H2 -> C8H + H
+    !C2 + C4H2 -> C6H + H
     k(3569) = small + (1.00e-10)
 
+    !C2 + C6H2 -> C8H + H
+    k(3570) = small + (1.00e-10)
+
     !CN + NO -> N2 + CO
-    k(3570) = small + (1.60e-13)
+    k(3571) = small + (1.60e-13)
 
     !CN + O2 -> O + OCN
-    k(3571) = small + (2.40e-11&
+    k(3572) = small + (2.40e-11&
         *T32**(-6.00e-01))
 
     !CN + HCO -> HCN + CO
-    k(3572) = small + (1.00e-10)
+    k(3573) = small + (1.00e-10)
 
     !CN + OH -> OCN + H
-    k(3573) = small + (7.01e-11)
+    k(3574) = small + (7.01e-11)
 
     !CN + OH -> HCN + O
-    k(3574) = small + (1.00e-11&
+    k(3575) = small + (1.00e-11&
         *exp(-1.00e+03&
         /Tgas))
 
     !CN + HNO -> NO + HCN
-    k(3575) = small + (3.00e-11)
+    k(3576) = small + (3.00e-11)
 
     !CN + C2H2 -> HC3N + H
-    k(3576) = small + (2.72e-10&
+    k(3577) = small + (2.72e-10&
         *T32**(-5.20e-01)*exp(-1.90e+01&
         /Tgas))
 
     !CN + NH3 -> NH2 + HCN
-    k(3577) = small + (1.38e-11&
+    k(3578) = small + (1.38e-11&
         *T32**(-1.14e+00))
 
     !CN + NH3 -> NH2CN + H
-    k(3578) = small + (1.30e-11&
+    k(3579) = small + (1.30e-11&
         *T32**(-1.11e+00))
 
     !CN + C2H4 -> C3H3N + H
-    k(3579) = small + (2.67e-10&
+    k(3580) = small + (2.67e-10&
         *T32**(-6.90e-01)*exp(-3.10e+01&
         /Tgas))
 
     !CN + C4H2 -> HC5N + H
-    k(3580) = small + (2.72e-10&
-        *T32**(-5.20e-01)*exp(-1.90e+01&
-        /Tgas))
-
-    !CN + C6H2 -> HC7N + H
     k(3581) = small + (2.72e-10&
         *T32**(-5.20e-01)*exp(-1.90e+01&
         /Tgas))
 
-    !CN + C8H2 -> HC9N + H
+    !CN + C6H2 -> HC7N + H
     k(3582) = small + (2.72e-10&
         *T32**(-5.20e-01)*exp(-1.90e+01&
         /Tgas))
 
-    !CN + HC3N -> NC4N + H
-    k(3583) = small + (2.70e-10&
+    !CN + C8H2 -> HC9N + H
+    k(3583) = small + (2.72e-10&
         *T32**(-5.20e-01)*exp(-1.90e+01&
         /Tgas))
 
-    !CN + HC5N -> NC6N + H
+    !CN + HC3N -> NC4N + H
     k(3584) = small + (2.70e-10&
         *T32**(-5.20e-01)*exp(-1.90e+01&
         /Tgas))
 
-    !CN + HC7N -> NC8N + H
+    !CN + HC5N -> NC6N + H
     k(3585) = small + (2.70e-10&
         *T32**(-5.20e-01)*exp(-1.90e+01&
         /Tgas))
 
-    !CN + HC9N -> NC10N + H
+    !CN + HC7N -> NC8N + H
     k(3586) = small + (2.70e-10&
         *T32**(-5.20e-01)*exp(-1.90e+01&
         /Tgas))
 
-    !CN + HC11N -> NC12N + H
+    !CN + HC9N -> NC10N + H
     k(3587) = small + (2.70e-10&
         *T32**(-5.20e-01)*exp(-1.90e+01&
         /Tgas))
 
+    !CN + HC11N -> NC12N + H
+    k(3588) = small + (2.70e-10&
+        *T32**(-5.20e-01)*exp(-1.90e+01&
+        /Tgas))
+
     !CO + OH -> CO2 + H
-    k(3588) = small + (2.81e-13&
+    k(3589) = small + (2.81e-13&
         *exp(-1.76e+02&
         /Tgas))
 
     !CO + HNO -> NH + CO2
-    k(3589) = small + (3.32e-12&
+    k(3590) = small + (3.32e-12&
         *exp(-6.17e+03&
         /Tgas))
 
     !HS + HS -> H2S + S
-    k(3590) = small + (3.00e-11)
+    k(3591) = small + (3.00e-11)
 
     !NH + NH -> N2 + H + H
-    k(3591) = small + (1.00e-10)
+    k(3592) = small + (1.00e-10)
 
     !NH + NO -> N2O + H
-    k(3592) = small + (3.12e-11)
+    k(3593) = small + (3.12e-11)
 
     !NO + NH2 -> N2 + H2O
-    k(3593) = small + (1.70e-11)
+    k(3594) = small + (1.70e-11)
 
     !OH + SIO -> SIO2 + H
-    k(3594) = small + (2.00e-12)
+    k(3595) = small + (2.00e-12)
 
     !OH + SO -> SO2 + H
-    k(3595) = small + (8.60e-11)
+    k(3596) = small + (8.60e-11)
 
     !OH + OH -> H2O + O
-    k(3596) = small + (1.65e-12&
+    k(3597) = small + (1.65e-12&
         *T32**(1.14e+00)*exp(-5.00e+01&
         /Tgas))
 
     !OH + CH2 -> H2CO + H
-    k(3597) = small + (3.00e-10)
+    k(3598) = small + (3.00e-10)
 
     !OH + H2S -> H2O + HS
-    k(3598) = small + (6.00e-12&
+    k(3599) = small + (6.00e-12&
         *exp(-7.50e+01&
         /Tgas))
 
     !OH + HCO -> H2O + CO
-    k(3599) = small + (1.69e-10)
+    k(3600) = small + (1.69e-10)
 
     !OH + HNO -> H2O + NO
-    k(3600) = small + (8.00e-11&
+    k(3601) = small + (8.00e-11&
         *exp(-5.00e+02&
         /Tgas))
 
     !OH + NH2 -> NH + H2O
-    k(3601) = small + (1.50e-12)
+    k(3602) = small + (1.50e-12)
 
     !OH + NH2 -> NH3 + O
-    k(3602) = small + (9.18e-14)
+    k(3603) = small + (9.18e-14)
 
     !OH + O2H -> H2O + O2
-    k(3603) = small + (1.20e-10)
+    k(3604) = small + (1.20e-10)
 
     !OH + H2CO -> HCO + H2O
-    k(3604) = small + (1.00e-11)
+    k(3605) = small + (1.00e-11)
 
     !OH + H2CO -> CH2O2 + H
-    k(3605) = small + (2.01e-13)
+    k(3606) = small + (2.01e-13)
 
     !OH + H2O2 -> H2O + O2H
-    k(3606) = small + (2.91e-12&
+    k(3607) = small + (2.91e-12&
         *exp(-1.60e+02&
         /Tgas))
 
     !OH + C2H3 -> C2H2 + H2O
-    k(3607) = small + (1.00e-10)
+    k(3608) = small + (1.00e-10)
 
     !OH + C2H5 -> C2H4 + H2O
-    k(3608) = small + (4.00e-11)
+    k(3609) = small + (4.00e-11)
 
     !C2H + S -> C2S + H
-    k(3609) = small + (1.70e-11)
-
-    !C2H + CS -> C3S + H
     k(3610) = small + (1.70e-11)
 
+    !C2H + CS -> C3S + H
+    k(3611) = small + (1.70e-11)
+
     !C2H + O2 -> HCO + CO
-    k(3611) = small + (4.20e-11&
+    k(3612) = small + (4.20e-11&
         *T32**(-3.20e-01))
 
     !C2H + HCN -> HC3N + H
-    k(3612) = small + (5.30e-12&
-        *exp(-7.70e+02&
-        /Tgas))
-
-    !C2H + HNC -> HC3N + H
     k(3613) = small + (5.30e-12&
         *exp(-7.70e+02&
         /Tgas))
 
-    !C2H + C2H2 -> C4H2 + H
-    k(3614) = small + (1.06e-10&
-        *T32**(-2.50e-01))
+    !C2H + HNC -> HC3N + H
+    k(3614) = small + (5.30e-12&
+        *exp(-7.70e+02&
+        /Tgas))
 
-    !C2H + C3H2 -> C5H2 + H
+    !C2H + C2H2 -> C4H2 + H
     k(3615) = small + (1.06e-10&
         *T32**(-2.50e-01))
 
-    !C2H + H2C3 -> C5H2 + H
+    !C2H + C3H2 -> C5H2 + H
     k(3616) = small + (1.06e-10&
         *T32**(-2.50e-01))
 
-    !C2H + C4H2 -> C6H2 + H
+    !C2H + H2C3 -> C5H2 + H
     k(3617) = small + (1.06e-10&
         *T32**(-2.50e-01))
 
-    !C2H + C5H2 -> C7H2 + H
+    !C2H + C4H2 -> C6H2 + H
     k(3618) = small + (1.06e-10&
         *T32**(-2.50e-01))
 
-    !C2H + C6H2 -> C8H2 + H
+    !C2H + C5H2 -> C7H2 + H
     k(3619) = small + (1.06e-10&
         *T32**(-2.50e-01))
 
-    !C2H + C7H2 -> C9H2 + H
+    !C2H + C6H2 -> C8H2 + H
     k(3620) = small + (1.06e-10&
         *T32**(-2.50e-01))
 
-    !C2H + C3 -> C5 + H
-    k(3621) = small + (2.00e-10&
+    !C2H + C7H2 -> C9H2 + H
+    k(3621) = small + (1.06e-10&
         *T32**(-2.50e-01))
 
-    !C2H + C5 -> C7 + H
+    !C2H + C3 -> C5 + H
     k(3622) = small + (2.00e-10&
         *T32**(-2.50e-01))
 
-    !C2H + C7 -> C9 + H
+    !C2H + C5 -> C7 + H
     k(3623) = small + (2.00e-10&
         *T32**(-2.50e-01))
 
-    !C2H + C9 -> C11 + H
+    !C2H + C7 -> C9 + H
     k(3624) = small + (2.00e-10&
         *T32**(-2.50e-01))
 
-    !C2H + C2 -> C4 + H
-    k(3625) = small + (1.00e-10)
-
-    !C2H + C4 -> C6 + H
-    k(3626) = small + (1.00e-10)
-
-    !C2H + C6 -> C8 + H
-    k(3627) = small + (1.00e-10)
-
-    !C2H + C8 -> C10 + H
-    k(3628) = small + (1.00e-10)
-
-    !C2H + HC3N -> HC5N + H
-    k(3629) = small + (1.06e-10&
+    !C2H + C9 -> C11 + H
+    k(3625) = small + (2.00e-10&
         *T32**(-2.50e-01))
 
-    !C2H + HC5N -> HC7N + H
+    !C2H + C2 -> C4 + H
+    k(3626) = small + (1.00e-10)
+
+    !C2H + C4 -> C6 + H
+    k(3627) = small + (1.00e-10)
+
+    !C2H + C6 -> C8 + H
+    k(3628) = small + (1.00e-10)
+
+    !C2H + C8 -> C10 + H
+    k(3629) = small + (1.00e-10)
+
+    !C2H + HC3N -> HC5N + H
     k(3630) = small + (1.06e-10&
         *T32**(-2.50e-01))
 
-    !C2H + HC7N -> HC9N + H
+    !C2H + HC5N -> HC7N + H
     k(3631) = small + (1.06e-10&
         *T32**(-2.50e-01))
 
-    !C2H + HC9N -> HC11N + H
+    !C2H + HC7N -> HC9N + H
     k(3632) = small + (1.06e-10&
         *T32**(-2.50e-01))
 
-    !C2H + HC11N -> HC13N + H
+    !C2H + HC9N -> HC11N + H
     k(3633) = small + (1.06e-10&
         *T32**(-2.50e-01))
 
+    !C2H + HC11N -> HC13N + H
+    k(3634) = small + (1.06e-10&
+        *T32**(-2.50e-01))
+
     !CH2 + HNO -> NO + CH3
-    k(3634) = small + (1.70e-11)
+    k(3635) = small + (1.70e-11)
 
     !HCO + HCO -> H2CO + CO
-    k(3635) = small + (5.00e-11)
+    k(3636) = small + (5.00e-11)
 
     !HCO + HNO -> H2CO + NO
-    k(3636) = small + (1.00e-12&
+    k(3637) = small + (1.00e-12&
         *exp(-9.76e+02&
         /Tgas))
 
     !HCO + CH3 -> CH4 + CO
-    k(3637) = small + (4.40e-11)
+    k(3638) = small + (4.40e-11)
 
     !HNO + CH3 -> CH4 + NO
-    k(3638) = small + (3.32e-12)
+    k(3639) = small + (3.32e-12)
 
     !NH2 + H2CO -> NH2CHO + H
-    k(3639) = small + (1.00e-10)
+    k(3640) = small + (1.00e-10)
 
     !C + C -> C2
-    k(3640) = small + (1.00e-17)
-
-    !C + H -> CH
     k(3641) = small + (1.00e-17)
 
-    !C + N -> CN
+    !C + H -> CH
     k(3642) = small + (1.00e-17)
 
+    !C + N -> CN
+    k(3643) = small + (1.00e-17)
+
     !C + O -> CO
-    k(3643) = small + (2.10e-19)
+    k(3644) = small + (2.10e-19)
 
     !C + H2 -> CH2
-    k(3644) = small + (1.00e-17)
+    k(3645) = small + (1.00e-17)
 
     !H + O -> OH
-    k(3645) = small + (9.90e-19*T32**(-3.80e-01))
+    k(3646) = small + (9.90e-19*T32**(-3.80e-01))
 
     !O + O -> O2
-    k(3646) = small + (4.90e-20*T32**(1.58e+00))
+    k(3647) = small + (4.90e-20*T32**(1.58e+00))
 
     !O + SO -> SO2
-    k(3647) = small + (3.20e-16&
+    k(3648) = small + (3.20e-16&
         *T32**(-1.60e+00))
 
     !S + CO -> OCS
-    k(3648) = small + (1.60e-17&
+    k(3649) = small + (1.60e-17&
         *T32**(-1.50e+00))
 
     !CH + H2 -> CH3
-    k(3649) = small + (3.25e-17&
+    k(3650) = small + (3.25e-17&
         *T32**(-6.00e-01))
 
     !CN + C2H -> HC3N
-    k(3650) = small + (1.00e-16)
-
-    !CN + CH3 -> C2H3N
     k(3651) = small + (1.00e-16)
 
+    !CN + CH3 -> C2H3N
+    k(3652) = small + (1.00e-16)
+
     !C + C2 -> C3
-    k(3652) = small + (3.30e-16*T32**(-1.00e+00))
+    k(3653) = small + (3.30e-16*T32**(-1.00e+00))
 
     !C + C3 -> C4
-    k(3653) = small + (3.30e-14*T32**(-1.00e+00))
+    k(3654) = small + (3.30e-14*T32**(-1.00e+00))
 
     !H + OH -> H2O
-    k(3654) = small + (4.00e-18&
+    k(3655) = small + (4.00e-18&
         *T32**(-2.00e+00))
 
     !OH + OH -> H2O2
-    k(3655) = small + (1.00e-18&
+    k(3656) = small + (1.00e-18&
         *T32**(-2.00e+00))
 
     !C2+ + E -> C + C
-    k(3656) = small + (8.84e-08*invsqrT32)
+    k(3657) = small + (8.84e-08*invsqrT32)
 
     !CCL+ + E -> C + CL
-    k(3657) = small + (3.00e-07*invsqrT32)
+    k(3658) = small + (3.00e-07*invsqrT32)
 
     !CF+ + E -> C + F
-    k(3658) = small + (2.00e-07*invsqrT32)
+    k(3659) = small + (2.00e-07*invsqrT32)
 
     !CH+ + E -> C + H
-    k(3659) = small + (7.00e-08*invsqrT32)
+    k(3660) = small + (7.00e-08*invsqrT32)
 
     !CLO+ + E -> CL + O
-    k(3660) = small + (2.00e-07*invsqrT32)
+    k(3661) = small + (2.00e-07*invsqrT32)
 
     !CN+ + E -> C + N
-    k(3661) = small + (3.38e-07&
+    k(3662) = small + (3.38e-07&
         *T32**(-5.50e-01))
 
     !CO+ + E -> O + C
-    k(3662) = small + (2.75e-07&
+    k(3663) = small + (2.75e-07&
         *T32**(-5.50e-01))
 
     !CP+ + E -> P + C
-    k(3663) = small + (1.00e-07*invsqrT32)
+    k(3664) = small + (1.00e-07*invsqrT32)
 
     !CS+ + E -> C + S
-    k(3664) = small + (2.00e-07*invsqrT32)
+    k(3665) = small + (2.00e-07*invsqrT32)
+
+    !H2+ + E -> H + H
+    k(3666) = small + (2.53e-07*invsqrT32)
 
     !HCL+ + E -> H + CL
-    k(3665) = small + (3.00e-07*invsqrT32)
+    k(3667) = small + (3.00e-07*invsqrT32)
 
     !HF+ + E -> H + F
-    k(3666) = small + (2.00e-07*invsqrT32)
-
-    !HEH+ + E -> H + HE
-    k(3667) = small + (3.00e-08*invsqrT32)
-
-    !HS+ + E -> S + H
     k(3668) = small + (2.00e-07*invsqrT32)
 
+    !HEH+ + E -> H + HE
+    k(3669) = small + (3.00e-08*invsqrT32)
+
+    !HS+ + E -> S + H
+    k(3670) = small + (2.00e-07*invsqrT32)
+
     !N2+ + E -> N + N
-    k(3669) = small + (1.80e-07&
+    k(3671) = small + (1.80e-07&
         *T32**(-3.90e-01))
 
     !NH+ + E -> N + H
-    k(3670) = small + (1.18e-07*invsqrT32)
+    k(3672) = small + (1.18e-07*invsqrT32)
 
     !NO+ + E -> N + O
-    k(3671) = small + (4.10e-07&
+    k(3673) = small + (4.10e-07&
         *T32**(-1.00e+00))
 
     !NS+ + E -> N + S
-    k(3672) = small + (2.00e-07*invsqrT32)
+    k(3674) = small + (2.00e-07*invsqrT32)
 
     !O2+ + E -> O + O
-    k(3673) = small + (1.95e-07&
+    k(3675) = small + (1.95e-07&
         *T32**(-7.00e-01))
 
     !OH+ + E -> O + H
-    k(3674) = small + (6.30e-09&
+    k(3676) = small + (6.30e-09&
         *T32**(-4.80e-01))
 
     !PH+ + E -> P + H
-    k(3675) = small + (1.00e-07*invsqrT32)
+    k(3677) = small + (1.00e-07*invsqrT32)
 
     !PN+ + E -> P + N
-    k(3676) = small + (1.80e-07*invsqrT32)
+    k(3678) = small + (1.80e-07*invsqrT32)
 
     !PO+ + E -> P + O
-    k(3677) = small + (1.80e-07*invsqrT32)
+    k(3679) = small + (1.80e-07*invsqrT32)
 
     !S2+ + E -> S + S
-    k(3678) = small + (2.00e-07*invsqrT32)
-
-    !SIC+ + E -> SI + C
-    k(3679) = small + (2.00e-07*invsqrT32)
-
-    !SIH+ + E -> SI + H
     k(3680) = small + (2.00e-07*invsqrT32)
 
-    !SIN+ + E -> SI + N
+    !SIC+ + E -> SI + C
     k(3681) = small + (2.00e-07*invsqrT32)
 
-    !SIO+ + E -> SI + O
+    !SIH+ + E -> SI + H
     k(3682) = small + (2.00e-07*invsqrT32)
 
-    !SIS+ + E -> SI + S
+    !SIN+ + E -> SI + N
     k(3683) = small + (2.00e-07*invsqrT32)
 
-    !SIF+ + E -> SI + F
+    !SIO+ + E -> SI + O
     k(3684) = small + (2.00e-07*invsqrT32)
 
-    !SO+ + E -> O + S
+    !SIS+ + E -> SI + S
     k(3685) = small + (2.00e-07*invsqrT32)
 
+    !SIF+ + E -> SI + F
+    k(3686) = small + (2.00e-07*invsqrT32)
+
+    !SO+ + E -> O + S
+    k(3687) = small + (2.00e-07*invsqrT32)
+
     !C2H+ + E -> C2 + H
-    k(3686) = small + (1.16e-07&
+    k(3688) = small + (1.16e-07&
         *T32**(-7.60e-01))
 
     !C2H+ + E -> CH + C
-    k(3687) = small + (1.05e-07&
+    k(3689) = small + (1.05e-07&
         *T32**(-7.60e-01))
 
     !C2H+ + E -> C + C + H
-    k(3688) = small + (4.80e-08&
+    k(3690) = small + (4.80e-08&
         *T32**(-7.60e-01))
 
     !C2N+ + E -> C + CN
-    k(3689) = small + (1.50e-07*invsqrT32)
+    k(3691) = small + (1.50e-07*invsqrT32)
 
     !C2N+ + E -> C2 + N
-    k(3690) = small + (1.50e-07*invsqrT32)
-
-    !C2O+ + E -> CO + C
-    k(3691) = small + (3.00e-07*invsqrT32)
-
-    !C2S+ + E -> C2 + S
     k(3692) = small + (1.50e-07*invsqrT32)
 
+    !C2O+ + E -> CO + C
+    k(3693) = small + (3.00e-07*invsqrT32)
+
+    !C2S+ + E -> C2 + S
+    k(3694) = small + (1.50e-07*invsqrT32)
+
     !C2S+ + E -> CS + C
-    k(3693) = small + (1.50e-07*invsqrT32)
-
-    !C3+ + E -> C2 + C
-    k(3694) = small + (3.00e-07*invsqrT32)
-
-    !CCP+ + E -> P + C2
     k(3695) = small + (1.50e-07*invsqrT32)
 
+    !C3+ + E -> C2 + C
+    k(3696) = small + (3.00e-07*invsqrT32)
+
+    !CCP+ + E -> P + C2
+    k(3697) = small + (1.50e-07*invsqrT32)
+
     !CCP+ + E -> CP + C
-    k(3696) = small + (1.50e-07*invsqrT32)
+    k(3698) = small + (1.50e-07*invsqrT32)
 
     !CH2+ + E -> C + H2
-    k(3697) = small + (7.70e-08&
+    k(3699) = small + (7.70e-08&
         *T32**(-6.00e-01))
 
     !CH2+ + E -> CH + H
-    k(3698) = small + (1.60e-07&
+    k(3700) = small + (1.60e-07&
         *T32**(-6.00e-01))
 
     !CH2+ + E -> C + H + H
-    k(3699) = small + (4.00e-07&
+    k(3701) = small + (4.00e-07&
         *T32**(-6.00e-01))
 
     !CHSI+ + E -> SI + CH
-    k(3700) = small + (1.50e-07&
+    k(3702) = small + (1.50e-07&
         *invsqrT32)
 
     !CHSI+ + E -> SIC + H
-    k(3701) = small + (1.50e-07&
+    k(3703) = small + (1.50e-07&
         *invsqrT32)
 
     !CNC+ + E -> CN + C
-    k(3702) = small + (3.00e-07*invsqrT32)
+    k(3704) = small + (3.00e-07*invsqrT32)
 
     !CO2+ + E -> O + CO
-    k(3703) = small + (4.20e-07&
+    k(3705) = small + (4.20e-07&
         *T32**(-7.50e-01))
 
     !H2CL+ + E -> CL + H + H
-    k(3704) = small + (2.70e-07&
+    k(3706) = small + (2.70e-07&
         *invsqrT32)
 
     !H2CL+ + E -> HCL + H
-    k(3705) = small + (3.00e-08&
+    k(3707) = small + (3.00e-08&
         *invsqrT32)
 
     !H2F+ + E -> F + H + H
-    k(3706) = small + (3.50e-07&
+    k(3708) = small + (3.50e-07&
         *invsqrT32)
 
     !H2F+ + E -> HF + H
-    k(3707) = small + (3.50e-07*invsqrT32)
+    k(3709) = small + (3.50e-07*invsqrT32)
 
     !H2O+ + E -> O + H2
-    k(3708) = small + (3.90e-08*invsqrT32)
+    k(3710) = small + (3.90e-08*invsqrT32)
 
     !H2O+ + E -> OH + H
-    k(3709) = small + (8.60e-08*invsqrT32)
+    k(3711) = small + (8.60e-08*invsqrT32)
 
     !H2O+ + E -> O + H + H
-    k(3710) = small + (3.05e-07&
+    k(3712) = small + (3.05e-07&
         *invsqrT32)
 
     !H2S+ + E -> S + H + H
-    k(3711) = small + (1.50e-07&
+    k(3713) = small + (1.50e-07&
         *invsqrT32)
 
     !H2S+ + E -> HS + H
-    k(3712) = small + (1.50e-07*invsqrT32)
+    k(3714) = small + (1.50e-07*invsqrT32)
 
     !H3+ + E -> H + H + H
-    k(3713) = small + (4.36e-08&
+    k(3715) = small + (4.36e-08&
         *T32**(-5.20e-01))
 
     !H3+ + E -> H2 + H
-    k(3714) = small + (2.34e-08&
+    k(3716) = small + (2.34e-08&
         *T32**(-5.20e-01))
 
     !HCN+ + E -> CN + H
-    k(3715) = small + (2.00e-07*invsqrT32)
+    k(3717) = small + (2.00e-07*invsqrT32)
 
     !HCO+ + E -> CO + H
-    k(3716) = small + (2.40e-07&
+    k(3718) = small + (2.40e-07&
         *T32**(-6.90e-01))
 
     !HCO+ + E -> OH + C
-    k(3717) = small + (1.00e-08&
+    k(3719) = small + (1.00e-08&
         *T32**(-6.90e-01))
 
     !HCO+ + E -> CH + O
-    k(3718) = small + (1.00e-08&
+    k(3720) = small + (1.00e-08&
         *T32**(-6.90e-01))
 
     !HCP+ + E -> P + CH
-    k(3719) = small + (1.50e-07*invsqrT32)
+    k(3721) = small + (1.50e-07*invsqrT32)
 
     !HCP+ + E -> CP + H
-    k(3720) = small + (1.50e-07*invsqrT32)
+    k(3722) = small + (1.50e-07*invsqrT32)
 
     !HCS+ + E -> CS + H
-    k(3721) = small + (1.84e-07&
+    k(3723) = small + (1.84e-07&
         *T32**(-5.70e-01))
 
     !HCS+ + E -> CH + S
-    k(3722) = small + (7.86e-07&
+    k(3724) = small + (7.86e-07&
         *T32**(-5.70e-01))
 
     !HNC+ + E -> CN + H
-    k(3723) = small + (2.00e-07*invsqrT32)
+    k(3725) = small + (2.00e-07*invsqrT32)
 
     !HNO+ + E -> NO + H
-    k(3724) = small + (3.00e-07*invsqrT32)
+    k(3726) = small + (3.00e-07*invsqrT32)
 
     !HNS+ + E -> NS + H
-    k(3725) = small + (3.00e-07*invsqrT32)
+    k(3727) = small + (3.00e-07*invsqrT32)
 
     !HNSI+ + E -> NH + SI
-    k(3726) = small + (1.50e-07&
+    k(3728) = small + (1.50e-07&
         *invsqrT32)
 
     !HNSI+ + E -> SIN + H
-    k(3727) = small + (1.50e-07&
+    k(3729) = small + (1.50e-07&
         *invsqrT32)
 
     !HOC+ + E -> CO + H
-    k(3728) = small + (2.00e-07&
+    k(3730) = small + (2.00e-07&
         *T32**(-7.50e-01))
 
     !HPN+ + E -> PH + N
-    k(3729) = small + (1.50e-07*invsqrT32)
-
-    !HPN+ + E -> PN + H
-    k(3730) = small + (1.50e-07*invsqrT32)
-
-    !HPO+ + E -> PH + O
     k(3731) = small + (1.50e-07*invsqrT32)
 
-    !HPO+ + E -> PO + H
+    !HPN+ + E -> PN + H
     k(3732) = small + (1.50e-07*invsqrT32)
 
+    !HPO+ + E -> PH + O
+    k(3733) = small + (1.50e-07*invsqrT32)
+
+    !HPO+ + E -> PO + H
+    k(3734) = small + (1.50e-07*invsqrT32)
+
     !HSIO+ + E -> SI + OH
-    k(3733) = small + (1.50e-07&
-        *invsqrT32)
-
-    !HSIO+ + E -> SIO + H
-    k(3734) = small + (1.50e-07&
-        *invsqrT32)
-
-    !HSIS+ + E -> SI + HS
     k(3735) = small + (1.50e-07&
         *invsqrT32)
 
-    !HSIS+ + E -> SIS + H
+    !HSIO+ + E -> SIO + H
     k(3736) = small + (1.50e-07&
         *invsqrT32)
 
+    !HSIS+ + E -> SI + HS
+    k(3737) = small + (1.50e-07&
+        *invsqrT32)
+
+    !HSIS+ + E -> SIS + H
+    k(3738) = small + (1.50e-07&
+        *invsqrT32)
+
     !HSO+ + E -> SO + H
-    k(3737) = small + (2.00e-07*invsqrT32)
+    k(3739) = small + (2.00e-07*invsqrT32)
 
     !N2H+ + E -> N2 + H
-    k(3738) = small + (3.60e-08&
+    k(3740) = small + (3.60e-08&
         *T32**(-5.10e-01))
 
     !N2H+ + E -> NH + N
-    k(3739) = small + (6.40e-08&
+    k(3741) = small + (6.40e-08&
         *T32**(-5.10e-01))
 
     !NAH2+ + E -> NA + H2
-    k(3740) = small + (1.50e-07&
+    k(3742) = small + (1.50e-07&
         *invsqrT32)
 
     !NAH2+ + E -> NAH + H
-    k(3741) = small + (1.50e-07&
+    k(3743) = small + (1.50e-07&
         *invsqrT32)
 
     !NCO+ + E -> CO + N
-    k(3742) = small + (3.00e-07*invsqrT32)
+    k(3744) = small + (3.00e-07*invsqrT32)
 
     !NH2+ + E -> N + H + H
-    k(3743) = small + (2.00e-07&
+    k(3745) = small + (2.00e-07&
         *invsqrT32)
 
     !NH2+ + E -> NH + H
-    k(3744) = small + (1.00e-07*invsqrT32)
+    k(3746) = small + (1.00e-07*invsqrT32)
 
     !NO2+ + E -> O + NO
-    k(3745) = small + (3.00e-07*invsqrT32)
+    k(3747) = small + (3.00e-07*invsqrT32)
 
     !O2H+ + E -> O2 + H
-    k(3746) = small + (3.00e-07*invsqrT32)
+    k(3748) = small + (3.00e-07*invsqrT32)
 
     !OCS+ + E -> CO + S
-    k(3747) = small + (2.90e-07&
+    k(3749) = small + (2.90e-07&
         *T32**(-6.20e-01))
 
     !OCS+ + E -> CS + O
-    k(3748) = small + (4.80e-08&
+    k(3750) = small + (4.80e-08&
         *T32**(-6.20e-01))
 
     !OCS+ + E -> C + SO
-    k(3749) = small + (1.05e-08&
+    k(3751) = small + (1.05e-08&
         *T32**(-6.20e-01))
 
     !PH2+ + E -> P + H2
-    k(3750) = small + (1.50e-07*invsqrT32)
-
-    !PH2+ + E -> PH + H
-    k(3751) = small + (1.50e-07*invsqrT32)
-
-    !S2H+ + E -> HS + S
     k(3752) = small + (1.50e-07*invsqrT32)
 
-    !S2H+ + E -> S2 + H
+    !PH2+ + E -> PH + H
     k(3753) = small + (1.50e-07*invsqrT32)
 
+    !S2H+ + E -> HS + S
+    k(3754) = small + (1.50e-07*invsqrT32)
+
+    !S2H+ + E -> S2 + H
+    k(3755) = small + (1.50e-07*invsqrT32)
+
     !SIC2+ + E -> SI + C2
-    k(3754) = small + (1.50e-07&
+    k(3756) = small + (1.50e-07&
         *invsqrT32)
 
     !SIC2+ + E -> SIC + C
-    k(3755) = small + (1.50e-07&
-        *invsqrT32)
-
-    !SIH2+ + E -> SI + H + H
-    k(3756) = small + (2.00e-07&
-        *invsqrT32)
-
-    !SIH2+ + E -> SI + H2
     k(3757) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIH2+ + E -> SIH + H
+    !SIH2+ + E -> SI + H + H
     k(3758) = small + (2.00e-07&
         *invsqrT32)
 
+    !SIH2+ + E -> SI + H2
+    k(3759) = small + (1.50e-07&
+        *invsqrT32)
+
+    !SIH2+ + E -> SIH + H
+    k(3760) = small + (2.00e-07&
+        *invsqrT32)
+
     !SINC+ + E -> SI + CN
-    k(3759) = small + (3.00e-07&
+    k(3761) = small + (3.00e-07&
         *invsqrT32)
 
     !SO2+ + E -> SO + O
-    k(3760) = small + (2.50e-07*invsqrT32)
+    k(3762) = small + (2.50e-07*invsqrT32)
 
     !C2H2+ + E -> C2H + H
-    k(3761) = small + (2.90e-07&
+    k(3763) = small + (2.90e-07&
         *invsqrT32)
 
     !C2H2+ + E -> C2 + H + H
-    k(3762) = small + (1.70e-07&
+    k(3764) = small + (1.70e-07&
         *invsqrT32)
 
     !C2H2+ + E -> CH + CH
-    k(3763) = small + (7.50e-08&
+    k(3765) = small + (7.50e-08&
         *invsqrT32)
 
     !C2H2+ + E -> CH2 + C
-    k(3764) = small + (2.89e-08&
+    k(3766) = small + (2.89e-08&
         *invsqrT32)
 
     !C2H2+ + E -> C2 + H2
-    k(3765) = small + (1.15e-08&
+    k(3767) = small + (1.15e-08&
         *invsqrT32)
 
     !C2HO+ + E -> CO + C + H
-    k(3766) = small + (1.50e-07&
-        *invsqrT32)
-
-    !C2HO+ + E -> CO + CH
-    k(3767) = small + (1.00e-07&
-        *invsqrT32)
-
-    !C2HO+ + E -> C2H + O
     k(3768) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2HO+ + E -> CCO + H
+    !C2HO+ + E -> CO + CH
     k(3769) = small + (1.00e-07&
         *invsqrT32)
 
-    !C2N2+ + E -> CN + CN
+    !C2HO+ + E -> C2H + O
     k(3770) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2N2+ + E -> C2N + N
-    k(3771) = small + (1.50e-07&
+    !C2HO+ + E -> CCO + H
+    k(3771) = small + (1.00e-07&
         *invsqrT32)
 
-    !C2NH+ + E -> CH + CN
+    !C2N2+ + E -> CN + CN
     k(3772) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2NH+ + E -> C2N + H
+    !C2N2+ + E -> C2N + N
     k(3773) = small + (1.50e-07&
         *invsqrT32)
 
+    !C2NH+ + E -> CH + CN
+    k(3774) = small + (1.50e-07&
+        *invsqrT32)
+
+    !C2NH+ + E -> C2N + H
+    k(3775) = small + (1.50e-07&
+        *invsqrT32)
+
     !C3H+ + E -> C2H + C
-    k(3774) = small + (1.50e-07*invsqrT32)
+    k(3776) = small + (1.50e-07*invsqrT32)
 
     !C3H+ + E -> C3 + H
-    k(3775) = small + (1.50e-07*invsqrT32)
+    k(3777) = small + (1.50e-07*invsqrT32)
 
     !C3N+ + E -> C2 + CN
-    k(3776) = small + (3.00e-07*invsqrT32)
+    k(3778) = small + (3.00e-07*invsqrT32)
 
     !C3O+ + E -> C2 + CO
-    k(3777) = small + (3.00e-07*invsqrT32)
+    k(3779) = small + (3.00e-07*invsqrT32)
 
     !C3S+ + E -> C2 + CS
-    k(3778) = small + (1.00e-07*invsqrT32)
-
-    !C3S+ + E -> C2S + C
-    k(3779) = small + (1.00e-07*invsqrT32)
-
-    !C3S+ + E -> C3 + S
     k(3780) = small + (1.00e-07*invsqrT32)
 
+    !C3S+ + E -> C2S + C
+    k(3781) = small + (1.00e-07*invsqrT32)
+
+    !C3S+ + E -> C3 + S
+    k(3782) = small + (1.00e-07*invsqrT32)
+
     !C4+ + E -> C2 + C2
-    k(3781) = small + (1.75e-07*invsqrT32)
+    k(3783) = small + (1.75e-07*invsqrT32)
 
     !C4+ + E -> C3 + C
-    k(3782) = small + (2.75e-07*invsqrT32)
+    k(3784) = small + (2.75e-07*invsqrT32)
 
     !CH2SI+ + E -> SI + CH2
-    k(3783) = small + (2.00e-07&
+    k(3785) = small + (2.00e-07&
         *invsqrT32)
 
     !CH2SI+ + E -> SIC + H2
-    k(3784) = small + (2.00e-07&
+    k(3786) = small + (2.00e-07&
         *invsqrT32)
 
     !CH2SI+ + E -> HCSI + H
-    k(3785) = small + (1.50e-07&
+    k(3787) = small + (1.50e-07&
         *invsqrT32)
 
     !CH3+ + E -> H2 + C + H
-    k(3786) = small + (3.00e-07&
+    k(3788) = small + (3.00e-07&
         *T32**(-3.00e-01))
 
     !CH3+ + E -> CH + H + H
-    k(3787) = small + (1.60e-07&
+    k(3789) = small + (1.60e-07&
         *T32**(-3.00e-01))
 
     !CH3+ + E -> CH + H2
-    k(3788) = small + (1.40e-07&
+    k(3790) = small + (1.40e-07&
         *T32**(-3.00e-01))
 
     !CH3+ + E -> CH2 + H
-    k(3789) = small + (4.00e-07&
+    k(3791) = small + (4.00e-07&
         *T32**(-3.00e-01))
 
     !H2CCL+ + E -> CCL + H + H
-    k(3790) = small + (3.00e-07&
+    k(3792) = small + (3.00e-07&
         *invsqrT32)
 
     !HCNH+ + E -> CN + H + H
-    k(3791) = small + (9.20e-08&
+    k(3793) = small + (9.20e-08&
         *T32**(-6.50e-01))
 
     !HCNH+ + E -> HCN + H
-    k(3792) = small + (1.85e-07&
+    k(3794) = small + (1.85e-07&
         *T32**(-6.50e-01))
 
     !HCNH+ + E -> HNC + H
-    k(3793) = small + (1.85e-07&
+    k(3795) = small + (1.85e-07&
         *T32**(-6.50e-01))
 
     !H2CO+ + E -> CO + H + H
-    k(3794) = small + (5.00e-07&
+    k(3796) = small + (5.00e-07&
         *invsqrT32)
 
     !H2CO+ + E -> HCO + H
-    k(3795) = small + (1.00e-07&
+    k(3797) = small + (1.00e-07&
         *invsqrT32)
 
     !H2CS+ + E -> CS + H + H
-    k(3796) = small + (3.00e-07&
+    k(3798) = small + (3.00e-07&
         *invsqrT32)
 
     !H2CS+ + E -> HCS + H
-    k(3797) = small + (3.00e-07&
+    k(3799) = small + (3.00e-07&
         *invsqrT32)
 
     !H2NC+ + E -> CN + H2
-    k(3798) = small + (1.80e-08&
+    k(3800) = small + (1.80e-08&
         *invsqrT32)
 
     !H2NC+ + E -> HNC + H
-    k(3799) = small + (1.80e-07&
+    k(3801) = small + (1.80e-07&
         *invsqrT32)
 
     !H2NO+ + E -> NO + H2
-    k(3800) = small + (1.50e-07&
-        *invsqrT32)
-
-    !H2NO+ + E -> HNO + H
-    k(3801) = small + (1.50e-07&
-        *invsqrT32)
-
-    !H2PO+ + E -> PH + OH
     k(3802) = small + (1.50e-07&
         *invsqrT32)
 
-    !H2PO+ + E -> HPO + H
+    !H2NO+ + E -> HNO + H
     k(3803) = small + (1.50e-07&
         *invsqrT32)
 
-    !H2S2+ + E -> HS + HS
+    !H2PO+ + E -> PH + OH
     k(3804) = small + (1.50e-07&
         *invsqrT32)
 
-    !H2S2+ + E -> HS2 + H
+    !H2PO+ + E -> HPO + H
     k(3805) = small + (1.50e-07&
         *invsqrT32)
 
-    !H2SIO+ + E -> SIH + OH
+    !H2S2+ + E -> HS + HS
     k(3806) = small + (1.50e-07&
         *invsqrT32)
 
-    !H2SIO+ + E -> SIO + H2
+    !H2S2+ + E -> HS2 + H
     k(3807) = small + (1.50e-07&
         *invsqrT32)
 
+    !H2SIO+ + E -> SIH + OH
+    k(3808) = small + (1.50e-07&
+        *invsqrT32)
+
+    !H2SIO+ + E -> SIO + H2
+    k(3809) = small + (1.50e-07&
+        *invsqrT32)
+
     !H3O+ + E -> OH + H + H
-    k(3808) = small + (2.60e-07&
+    k(3810) = small + (2.60e-07&
         *invsqrT32)
 
     !H3O+ + E -> H2O + H
-    k(3809) = small + (1.10e-07*invsqrT32)
+    k(3811) = small + (1.10e-07*invsqrT32)
 
     !H3O+ + E -> OH + H2
-    k(3810) = small + (6.00e-08*invsqrT32)
+    k(3812) = small + (6.00e-08*invsqrT32)
 
     !H3O+ + E -> H2 + H + O
-    k(3811) = small + (5.60e-09&
+    k(3813) = small + (5.60e-09&
         *invsqrT32)
 
     !H3S+ + E -> HS + H + H
-    k(3812) = small + (1.00e-07&
+    k(3814) = small + (1.00e-07&
         *invsqrT32)
 
     !H3S+ + E -> H2S + H
-    k(3813) = small + (3.00e-07*invsqrT32)
+    k(3815) = small + (3.00e-07*invsqrT32)
 
     !HC2S+ + E -> CS + CH
-    k(3814) = small + (1.50e-07&
+    k(3816) = small + (1.50e-07&
         *invsqrT32)
 
     !HC2S+ + E -> C2S + H
-    k(3815) = small + (1.50e-07&
+    k(3817) = small + (1.50e-07&
         *invsqrT32)
 
     !HCO2+ + E -> CO + H + O
-    k(3816) = small + (8.10e-07&
+    k(3818) = small + (8.10e-07&
         *T32**(-6.40e-01))
 
     !HCO2+ + E -> OH + CO
-    k(3817) = small + (3.20e-07&
+    k(3819) = small + (3.20e-07&
         *T32**(-6.40e-01))
 
     !HCO2+ + E -> CO2 + H
-    k(3818) = small + (6.00e-08&
+    k(3820) = small + (6.00e-08&
         *T32**(-6.40e-01))
 
     !HNCO+ + E -> CO + NH
-    k(3819) = small + (3.00e-07&
+    k(3821) = small + (3.00e-07&
         *invsqrT32)
 
     !HOCS+ + E -> OH + CS
-    k(3820) = small + (2.00e-07&
+    k(3822) = small + (2.00e-07&
         *invsqrT32)
 
     !HOCS+ + E -> OCS + H
-    k(3821) = small + (2.00e-07&
+    k(3823) = small + (2.00e-07&
         *invsqrT32)
 
     !HSIO2+ + E -> SIO + OH
-    k(3822) = small + (1.50e-07&
+    k(3824) = small + (1.50e-07&
         *invsqrT32)
 
     !HSIO2+ + E -> SIO2 + H
-    k(3823) = small + (1.50e-07&
+    k(3825) = small + (1.50e-07&
         *invsqrT32)
 
     !HSO2+ + E -> SO + H + O
-    k(3824) = small + (1.00e-07&
+    k(3826) = small + (1.00e-07&
         *invsqrT32)
 
     !HSO2+ + E -> SO + OH
-    k(3825) = small + (1.00e-07&
+    k(3827) = small + (1.00e-07&
         *invsqrT32)
 
     !HSO2+ + E -> SO2 + H
-    k(3826) = small + (2.00e-07&
+    k(3828) = small + (2.00e-07&
         *invsqrT32)
 
     !NAH2O+ + E -> NA + H2O
-    k(3827) = small + (1.50e-07&
+    k(3829) = small + (1.50e-07&
         *invsqrT32)
 
     !NAH2O+ + E -> NAOH + H
-    k(3828) = small + (1.50e-07&
+    k(3830) = small + (1.50e-07&
         *invsqrT32)
 
     !NH3+ + E -> NH + H + H
-    k(3829) = small + (1.55e-07&
+    k(3831) = small + (1.55e-07&
         *invsqrT32)
 
     !NH3+ + E -> NH2 + H
-    k(3830) = small + (1.55e-07*invsqrT32)
+    k(3832) = small + (1.55e-07*invsqrT32)
 
     !PC2H+ + E -> CP + CH
-    k(3831) = small + (1.50e-07&
-        *invsqrT32)
-
-    !PC2H+ + E -> CCP + H
-    k(3832) = small + (1.50e-07&
-        *invsqrT32)
-
-    !PCH2+ + E -> CP + H2
     k(3833) = small + (1.50e-07&
         *invsqrT32)
 
-    !PCH2+ + E -> HCP + H
+    !PC2H+ + E -> CCP + H
     k(3834) = small + (1.50e-07&
         *invsqrT32)
 
+    !PCH2+ + E -> CP + H2
+    k(3835) = small + (1.50e-07&
+        *invsqrT32)
+
+    !PCH2+ + E -> HCP + H
+    k(3836) = small + (1.50e-07&
+        *invsqrT32)
+
     !PH3+ + E -> PH + H2
-    k(3835) = small + (1.50e-07*invsqrT32)
+    k(3837) = small + (1.50e-07*invsqrT32)
 
     !PH3+ + E -> PH2 + H
-    k(3836) = small + (1.50e-07*invsqrT32)
+    k(3838) = small + (1.50e-07*invsqrT32)
 
     !PNH2+ + E -> NH2 + P
-    k(3837) = small + (3.00e-07&
+    k(3839) = small + (3.00e-07&
         *invsqrT32)
 
     !SIC2H+ + E -> C2H + SI
-    k(3838) = small + (1.50e-07&
-        *invsqrT32)
-
-    !SIC2H+ + E -> SIC2 + H
-    k(3839) = small + (1.50e-07&
-        *invsqrT32)
-
-    !SIC3+ + E -> SIC + C2
     k(3840) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIC3+ + E -> SIC2 + C
+    !SIC2H+ + E -> SIC2 + H
     k(3841) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIH3+ + E -> SIH + H2
+    !SIC3+ + E -> SIC + C2
     k(3842) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIH3+ + E -> SIH2 + H
+    !SIC3+ + E -> SIC2 + C
     k(3843) = small + (1.50e-07&
         *invsqrT32)
 
-    !SINCH+ + E -> SIN + CH
+    !SIH3+ + E -> SIH + H2
     k(3844) = small + (1.50e-07&
         *invsqrT32)
 
-    !SINCH+ + E -> SINC + H
+    !SIH3+ + E -> SIH2 + H
     k(3845) = small + (1.50e-07&
         *invsqrT32)
 
-    !SINH2+ + E -> SIN + H2
+    !SINCH+ + E -> SIN + CH
     k(3846) = small + (1.50e-07&
         *invsqrT32)
 
-    !SINH2+ + E -> HNSI + H
+    !SINCH+ + E -> SINC + H
     k(3847) = small + (1.50e-07&
         *invsqrT32)
 
+    !SINH2+ + E -> SIN + H2
+    k(3848) = small + (1.50e-07&
+        *invsqrT32)
+
+    !SINH2+ + E -> HNSI + H
+    k(3849) = small + (1.50e-07&
+        *invsqrT32)
+
     !C2H2N+ + E -> CH + HCN
-    k(3848) = small + (3.00e-07&
-        *invsqrT32)
-
-    !C2H2N+ + E -> CN + CH2
-    k(3849) = small + (3.00e-07&
-        *invsqrT32)
-
-    !C2H2N+ + E -> C2N + H2
     k(3850) = small + (3.00e-07&
         *invsqrT32)
 
+    !C2H2N+ + E -> CN + CH2
+    k(3851) = small + (3.00e-07&
+        *invsqrT32)
+
+    !C2H2N+ + E -> C2N + H2
+    k(3852) = small + (3.00e-07&
+        *invsqrT32)
+
     !C2H2O+ + E -> C2 + H2O
-    k(3851) = small + (2.00e-07&
-        *invsqrT32)
-
-    !C2H2O+ + E -> CH2 + CO
-    k(3852) = small + (2.00e-07&
-        *invsqrT32)
-
-    !C2H2O+ + E -> C2H2 + O
     k(3853) = small + (2.00e-07&
         *invsqrT32)
 
+    !C2H2O+ + E -> CH2 + CO
+    k(3854) = small + (2.00e-07&
+        *invsqrT32)
+
+    !C2H2O+ + E -> C2H2 + O
+    k(3855) = small + (2.00e-07&
+        *invsqrT32)
+
     !C2H3+ + E -> C2H + H + H
-    k(3854) = small + (2.95e-07&
+    k(3856) = small + (2.95e-07&
         *T32**(-8.40e-01))
 
     !C2H3+ + E -> C2H + H2
-    k(3855) = small + (3.00e-08&
+    k(3857) = small + (3.00e-08&
         *T32**(-8.40e-01))
 
     !C2H3+ + E -> C2H2 + H
-    k(3856) = small + (1.45e-07&
+    k(3858) = small + (1.45e-07&
         *T32**(-8.40e-01))
 
     !C2H3+ + E -> C2 + H + H2
-    k(3857) = small + (1.50e-08&
-        *T32**(-8.40e-01))
-
-    !C2H3+ + E -> CH3 + C
-    k(3858) = small + (3.00e-09&
-        *T32**(-8.40e-01))
-
-    !C2H3+ + E -> CH2 + CH
     k(3859) = small + (1.50e-08&
         *T32**(-8.40e-01))
 
+    !C2H3+ + E -> CH3 + C
+    k(3860) = small + (3.00e-09&
+        *T32**(-8.40e-01))
+
+    !C2H3+ + E -> CH2 + CH
+    k(3861) = small + (1.50e-08&
+        *T32**(-8.40e-01))
+
     !C3H2+ + E -> C2 + CH2
-    k(3860) = small + (3.00e-08&
+    k(3862) = small + (3.00e-08&
         *invsqrT32)
 
     !H2C3+ + E -> C2 + CH2
-    k(3861) = small + (3.00e-08&
+    k(3863) = small + (3.00e-08&
         *invsqrT32)
 
     !C3H2+ + E -> C3 + H + H
-    k(3862) = small + (6.00e-08&
+    k(3864) = small + (6.00e-08&
         *invsqrT32)
 
     !H2C3+ + E -> C3 + H + H
-    k(3863) = small + (6.00e-08&
+    k(3865) = small + (6.00e-08&
         *invsqrT32)
 
     !C3H2+ + E -> C3 + H2
-    k(3864) = small + (1.50e-07&
+    k(3866) = small + (1.50e-07&
         *invsqrT32)
 
     !H2C3+ + E -> C3 + H2
-    k(3865) = small + (1.50e-07&
+    k(3867) = small + (1.50e-07&
         *invsqrT32)
 
     !C3H2+ + E -> C2H2 + C
-    k(3866) = small + (3.00e-08&
+    k(3868) = small + (3.00e-08&
         *invsqrT32)
 
     !H2C3+ + E -> C2H2 + C
-    k(3867) = small + (3.00e-08&
+    k(3869) = small + (3.00e-08&
         *invsqrT32)
 
     !C3H2+ + E -> C3H + H
-    k(3868) = small + (1.50e-07&
+    k(3870) = small + (1.50e-07&
         *invsqrT32)
 
     !H2C3+ + E -> HC3 + H
-    k(3869) = small + (1.50e-07&
-        *invsqrT32)
-
-    !C3HN+ + E -> C2 + HCN
-    k(3870) = small + (3.00e-07&
-        *invsqrT32)
-
-    !C3HN+ + E -> C2H + CN
     k(3871) = small + (1.50e-07&
         *invsqrT32)
 
+    !C3HN+ + E -> C2 + HCN
+    k(3872) = small + (3.00e-07&
+        *invsqrT32)
+
+    !C3HN+ + E -> C2H + CN
+    k(3873) = small + (1.50e-07&
+        *invsqrT32)
+
     !C3HN+ + E -> C3N + H
-    k(3872) = small + (1.50e-07&
+    k(3874) = small + (1.50e-07&
         *invsqrT32)
 
     !C4H+ + E -> C2H + C2
-    k(3873) = small + (9.00e-08&
+    k(3875) = small + (9.00e-08&
         *invsqrT32)
 
     !C4H+ + E -> C3H + C
-    k(3874) = small + (4.50e-08*invsqrT32)
+    k(3876) = small + (4.50e-08*invsqrT32)
 
     !C4H+ + E -> C3 + CH
-    k(3875) = small + (4.50e-08*invsqrT32)
+    k(3877) = small + (4.50e-08*invsqrT32)
 
     !C4H+ + E -> C4 + H
-    k(3876) = small + (1.20e-07*invsqrT32)
+    k(3878) = small + (1.20e-07*invsqrT32)
 
     !C4N+ + E -> C2N + C2
-    k(3877) = small + (1.50e-07&
-        *invsqrT32)
-
-    !C4N+ + E -> C3N + C
-    k(3878) = small + (1.50e-07*invsqrT32)
-
-    !C4P+ + E -> CCP + C2
     k(3879) = small + (1.50e-07&
         *invsqrT32)
 
-    !C4P+ + E -> C3P + C
+    !C4N+ + E -> C3N + C
     k(3880) = small + (1.50e-07*invsqrT32)
 
+    !C4P+ + E -> CCP + C2
+    k(3881) = small + (1.50e-07&
+        *invsqrT32)
+
+    !C4P+ + E -> C3P + C
+    k(3882) = small + (1.50e-07*invsqrT32)
+
     !C4S+ + E -> C2S + C2
-    k(3881) = small + (1.00e-07&
+    k(3883) = small + (1.00e-07&
         *invsqrT32)
 
     !C4S+ + E -> C3 + CS
-    k(3882) = small + (1.00e-07*invsqrT32)
+    k(3884) = small + (1.00e-07*invsqrT32)
 
     !C4S+ + E -> C3S + C
-    k(3883) = small + (1.00e-07*invsqrT32)
+    k(3885) = small + (1.00e-07*invsqrT32)
 
     !C5+ + E -> C3 + C2
-    k(3884) = small + (1.50e-07*invsqrT32)
+    k(3886) = small + (1.50e-07*invsqrT32)
 
     !C5+ + E -> C4 + C
-    k(3885) = small + (1.50e-07*invsqrT32)
+    k(3887) = small + (1.50e-07*invsqrT32)
 
     !CH2O2+ + E -> CO2 + H + H
-    k(3886) = small + (3.00e-07&
+    k(3888) = small + (3.00e-07&
         *invsqrT32)
 
     !CH4+ + E -> CH2 + H + H
-    k(3887) = small + (3.00e-07&
+    k(3889) = small + (3.00e-07&
         *invsqrT32)
 
     !CH4+ + E -> CH3 + H
-    k(3888) = small + (3.00e-07*invsqrT32)
+    k(3890) = small + (3.00e-07*invsqrT32)
 
     !H3CO+ + E -> CO + H + H2
-    k(3889) = small + (2.00e-07&
-        *invsqrT32)
-
-    !H3CO+ + E -> HCO + H + H
-    k(3890) = small + (2.00e-07&
-        *invsqrT32)
-
-    !H3CO+ + E -> H2CO + H
     k(3891) = small + (2.00e-07&
         *invsqrT32)
 
+    !H3CO+ + E -> HCO + H + H
+    k(3892) = small + (2.00e-07&
+        *invsqrT32)
+
+    !H3CO+ + E -> H2CO + H
+    k(3893) = small + (2.00e-07&
+        *invsqrT32)
+
     !H3CS+ + E -> CS + H + H2
-    k(3892) = small + (3.00e-07&
+    k(3894) = small + (3.00e-07&
         *invsqrT32)
 
     !H3CS+ + E -> H2CS + H
-    k(3893) = small + (3.00e-07&
+    k(3895) = small + (3.00e-07&
         *invsqrT32)
 
     !H3S2+ + E -> HS2 + H2
-    k(3894) = small + (1.50e-07&
-        *invsqrT32)
-
-    !H3S2+ + E -> H2S2 + H
-    k(3895) = small + (1.50e-07&
-        *invsqrT32)
-
-    !H3SIO+ + E -> SIO + H2 + H
     k(3896) = small + (1.50e-07&
         *invsqrT32)
 
-    !H3SIO+ + E -> H2SIO + H
+    !H3S2+ + E -> H2S2 + H
     k(3897) = small + (1.50e-07&
         *invsqrT32)
 
-    !HC3O+ + E -> C3H + O
+    !H3SIO+ + E -> SIO + H2 + H
     k(3898) = small + (1.50e-07&
         *invsqrT32)
 
-    !HC3O+ + E -> HC3 + O
+    !H3SIO+ + E -> H2SIO + H
     k(3899) = small + (1.50e-07&
         *invsqrT32)
 
-    !HC3O+ + E -> C3O + H
+    !HC3O+ + E -> C3H + O
     k(3900) = small + (1.50e-07&
         *invsqrT32)
 
-    !HC3S+ + E -> C2S + CH
+    !HC3O+ + E -> HC3 + O
     k(3901) = small + (1.50e-07&
         *invsqrT32)
 
-    !HC3S+ + E -> C3S + H
+    !HC3O+ + E -> C3O + H
     k(3902) = small + (1.50e-07&
         *invsqrT32)
 
+    !HC3S+ + E -> C2S + CH
+    k(3903) = small + (1.50e-07&
+        *invsqrT32)
+
+    !HC3S+ + E -> C3S + H
+    k(3904) = small + (1.50e-07&
+        *invsqrT32)
+
     !NH4+ + E -> NH2 + H + H
-    k(3903) = small + (3.20e-07*invsqrT32)
+    k(3905) = small + (3.20e-07&
+        *invsqrT32)
 
     !NH4+ + E -> NH2 + H2
-    k(3904) = small + (1.50e-07*invsqrT32)
+    k(3906) = small + (1.50e-07&
+        *invsqrT32)
 
     !NH4+ + E -> NH3 + H
-    k(3905) = small + (1.05e-06*invsqrT32)
+    k(3907) = small + (1.05e-06*invsqrT32)
 
     !OCS+H2 + E -> OCS + H2
-    k(3906) = small + (3.00e-07)
+    k(3908) = small + (3.00e-07)
 
     !PC2H2+ + E -> P + C2H2
-    k(3907) = small + (1.00e-07&
-        *invsqrT32)
-
-    !PC2H2+ + E -> CCP + H2
-    k(3908) = small + (1.00e-07&
-        *invsqrT32)
-
-    !PC2H2+ + E -> HCCP + H
     k(3909) = small + (1.00e-07&
         *invsqrT32)
 
-    !PC3H+ + E -> CCP + CH
+    !PC2H2+ + E -> CCP + H2
     k(3910) = small + (1.00e-07&
         *invsqrT32)
 
-    !PC3H+ + E -> C3P + H
+    !PC2H2+ + E -> HCCP + H
     k(3911) = small + (1.00e-07&
         *invsqrT32)
 
-    !PC3H+ + E -> HCCP + C
+    !PC3H+ + E -> CCP + CH
     k(3912) = small + (1.00e-07&
         *invsqrT32)
 
+    !PC3H+ + E -> C3P + H
+    k(3913) = small + (1.00e-07&
+        *invsqrT32)
+
+    !PC3H+ + E -> HCCP + C
+    k(3914) = small + (1.00e-07&
+        *invsqrT32)
+
     !PCH3+ + E -> CP + H2 + H
-    k(3913) = small + (1.50e-07&
+    k(3915) = small + (1.50e-07&
         *invsqrT32)
 
     !PCH3+ + E -> HCP + H2
-    k(3914) = small + (1.50e-07&
+    k(3916) = small + (1.50e-07&
         *invsqrT32)
 
     !PCH3+ + E -> CH3 + P
-    k(3915) = small + (3.00e-07&
+    k(3917) = small + (3.00e-07&
         *invsqrT32)
 
     !PNH3+ + E -> NH3 + P
-    k(3916) = small + (3.00e-07&
+    k(3918) = small + (3.00e-07&
         *invsqrT32)
 
     !SIC2H2+ + E -> SIC2 + H2
-    k(3917) = small + (1.50e-07&
-        *invsqrT32)
-
-    !SIC2H2+ + E -> SIC2H + H
-    k(3918) = small + (1.50e-07&
-        *invsqrT32)
-
-    !SIC3H+ + E -> SI + C3H
     k(3919) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIC3H+ + E -> SI + HC3
+    !SIC2H2+ + E -> SIC2H + H
     k(3920) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIC3H+ + E -> SIC3 + H
+    !SIC3H+ + E -> SI + C3H
     k(3921) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIC4+ + E -> SIC2 + C2
+    !SIC3H+ + E -> SI + HC3
     k(3922) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIC4+ + E -> SIC3 + C
+    !SIC3H+ + E -> SIC3 + H
     k(3923) = small + (1.50e-07&
         *invsqrT32)
 
-    !SICH3+ + E -> HCSI + H2
+    !SIC4+ + E -> SIC2 + C2
     k(3924) = small + (1.50e-07&
         *invsqrT32)
 
-    !SICH3+ + E -> SICH2 + H
+    !SIC4+ + E -> SIC3 + C
     k(3925) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIH4+ + E -> SIH2 + H2
+    !SICH3+ + E -> HCSI + H2
     k(3926) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIH4+ + E -> SIH3 + H
+    !SICH3+ + E -> SICH2 + H
     k(3927) = small + (1.50e-07&
         *invsqrT32)
 
+    !SIH4+ + E -> SIH2 + H2
+    k(3928) = small + (1.50e-07&
+        *invsqrT32)
+
+    !SIH4+ + E -> SIH3 + H
+    k(3929) = small + (1.50e-07&
+        *invsqrT32)
+
     !C2H3N+ + E -> C2N + H2 + H
-    k(3928) = small + (2.00e-07&
-        *invsqrT32)
-
-    !C2H3N+ + E -> CH2 + HCN
-    k(3929) = small + (3.00e-07&
-        *invsqrT32)
-
-    !C2H3N+ + E -> CH3 + CN
     k(3930) = small + (2.00e-07&
         *invsqrT32)
 
+    !C2H3N+ + E -> CH2 + HCN
+    k(3931) = small + (3.00e-07&
+        *invsqrT32)
+
+    !C2H3N+ + E -> CH3 + CN
+    k(3932) = small + (2.00e-07&
+        *invsqrT32)
+
     !C2H3N+ + E -> C2H2N + H
-    k(3931) = small + (2.00e-07&
+    k(3933) = small + (2.00e-07&
         *invsqrT32)
 
     !C2H3O+ + E -> CH3 + CO
-    k(3932) = small + (1.50e-07&
+    k(3934) = small + (1.50e-07&
         *invsqrT32)
 
     !C2H3O+ + E -> C2H2O + H
-    k(3933) = small + (1.50e-07&
+    k(3935) = small + (1.50e-07&
         *invsqrT32)
 
     !C2H4+ + E -> C2H2 + H + H
-    k(3934) = small + (3.70e-07&
+    k(3936) = small + (3.70e-07&
         *T32**(-7.60e-01))
 
     !C2H4+ + E -> C2H2 + H2
-    k(3935) = small + (3.36e-08&
+    k(3937) = small + (3.36e-08&
         *T32**(-7.60e-01))
 
     !C2H4+ + E -> C2H3 + H
-    k(3936) = small + (6.16e-08&
+    k(3938) = small + (6.16e-08&
         *T32**(-7.60e-01))
 
     !C2H4+ + E -> C2H + H2 + H
-    k(3937) = small + (5.60e-08&
+    k(3939) = small + (5.60e-08&
         *T32**(-7.60e-01))
 
     !C2H4+ + E -> CH4 + C
-    k(3938) = small + (5.60e-09&
+    k(3940) = small + (5.60e-09&
         *T32**(-7.60e-01))
 
     !C2H4+ + E -> CH3 + CH
-    k(3939) = small + (1.12e-08&
+    k(3941) = small + (1.12e-08&
         *T32**(-7.60e-01))
 
     !C2H4+ + E -> CH2 + CH2
-    k(3940) = small + (2.24e-08&
+    k(3942) = small + (2.24e-08&
         *T32**(-7.60e-01))
 
     !C3H2N+ + E -> C2H + HNC
-    k(3941) = small + (7.50e-08&
+    k(3943) = small + (7.50e-08&
         *invsqrT32)
 
     !C3H2N+ + E -> HCNC2 + H
-    k(3942) = small + (1.20e-08&
+    k(3944) = small + (1.20e-08&
         *invsqrT32)
 
     !C3H2N+ + E -> HC2NC + H
-    k(3943) = small + (1.20e-08&
+    k(3945) = small + (1.20e-08&
         *invsqrT32)
 
     !C3H2N+ + E -> HC3N + H
-    k(3944) = small + (1.50e-07&
+    k(3946) = small + (1.50e-07&
         *invsqrT32)
 
     !C3H2N+ + E -> HNC3 + H
-    k(3945) = small + (7.50e-08&
+    k(3947) = small + (7.50e-08&
         *invsqrT32)
 
     !C3H3+ + E -> C2H2 + CH
-    k(3946) = small + (6.99e-08&
+    k(3948) = small + (6.99e-08&
         *invsqrT32)
 
     !H3C3+ + E -> C2H2 + CH
-    k(3947) = small + (6.99e-08&
+    k(3949) = small + (6.99e-08&
         *invsqrT32)
 
     !C3H3+ + E -> C3H + H2
-    k(3948) = small + (3.15e-07&
-        *invsqrT32)
-
-    !H3C3+ + E -> HC3 + H2
-    k(3949) = small + (3.15e-07&
-        *invsqrT32)
-
-    !C3H3+ + E -> C3H2 + H
     k(3950) = small + (3.15e-07&
         *invsqrT32)
 
-    !H3C3+ + E -> H2C3 + H
+    !H3C3+ + E -> HC3 + H2
     k(3951) = small + (3.15e-07&
         *invsqrT32)
 
+    !C3H3+ + E -> C3H2 + H
+    k(3952) = small + (3.15e-07&
+        *invsqrT32)
+
+    !H3C3+ + E -> H2C3 + H
+    k(3953) = small + (3.15e-07&
+        *invsqrT32)
+
     !C4H2+ + E -> C4 + H2
-    k(3952) = small + (1.50e-07&
+    k(3954) = small + (1.50e-07&
         *invsqrT32)
 
     !C4H2+ + E -> C4H + H
-    k(3953) = small + (1.50e-07&
+    k(3955) = small + (1.50e-07&
         *invsqrT32)
 
     !C5H+ + E -> C4H + C
-    k(3954) = small + (1.00e-06&
+    k(3956) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !C5H+ + E -> C5 + H
-    k(3955) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C5N+ + E -> C2 + C3N
-    k(3956) = small + (3.00e-07&
-        *invsqrT32)
-
-    !C6+ + E -> C4 + C2
     k(3957) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
+    !C5N+ + E -> C2 + C3N
+    k(3958) = small + (3.00e-07&
+        *invsqrT32)
+
+    !C6+ + E -> C4 + C2
+    k(3959) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
     !C6+ + E -> C5 + C
-    k(3958) = small + (1.00e-06&
+    k(3960) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !CH3O2+ + E -> CO2 + H2 + H
-    k(3959) = small + (1.50e-07&
+    k(3961) = small + (1.50e-07&
         *invsqrT32)
 
     !CH3O2+ + E -> CH2O2 + H
-    k(3960) = small + (1.50e-07&
-        *invsqrT32)
-
-    !CH4N+ + E -> CN + H2 + H2
-    k(3961) = small + (3.00e-08&
-        *invsqrT32)
-
-    !CH4N+ + E -> CH2 + NH2
     k(3962) = small + (1.50e-07&
         *invsqrT32)
 
-    !CH4N+ + E -> HCN + H + H2
-    k(3963) = small + (3.00e-07&
+    !CH4N+ + E -> CN + H2 + H2
+    k(3963) = small + (3.00e-08&
         *invsqrT32)
 
-    !CH4N+ + E -> CH3N + H
+    !CH4N+ + E -> CH2 + NH2
     k(3964) = small + (1.50e-07&
         *invsqrT32)
 
-    !CH4O+ + E -> CH3 + OH
+    !CH4N+ + E -> HCN + H + H2
     k(3965) = small + (3.00e-07&
         *invsqrT32)
 
+    !CH4N+ + E -> CH3N + H
+    k(3966) = small + (1.50e-07&
+        *invsqrT32)
+
+    !CH4O+ + E -> CH3 + OH
+    k(3967) = small + (3.00e-07&
+        *invsqrT32)
+
     !CH4O+ + E -> H2CO + H2
-    k(3966) = small + (3.00e-07&
+    k(3968) = small + (3.00e-07&
         *invsqrT32)
 
     !CH5+ + E -> CH3 + H2
-    k(3967) = small + (1.40e-08&
+    k(3969) = small + (1.40e-08&
         *T32**(-5.20e-01))
 
     !CH5+ + E -> CH4 + H
-    k(3968) = small + (1.40e-08&
+    k(3970) = small + (1.40e-08&
         *T32**(-5.20e-01))
 
     !CH5+ + E -> CH3 + H + H
-    k(3969) = small + (1.95e-07&
+    k(3971) = small + (1.95e-07&
         *T32**(-5.20e-01))
 
     !CH5+ + E -> CH2 + H2 + H
-    k(3970) = small + (4.80e-08&
+    k(3972) = small + (4.80e-08&
         *T32**(-5.20e-01))
 
     !CH5+ + E -> CH + H2 + H2
-    k(3971) = small + (3.00e-09&
+    k(3973) = small + (3.00e-09&
         *T32**(-5.20e-01))
 
     !H2C3O+ + E -> C2H2 + CO
-    k(3972) = small + (1.50e-07&
-        *invsqrT32)
-
-    !H2C3O+ + E -> C3H + OH
-    k(3973) = small + (1.50e-07&
-        *invsqrT32)
-
-    !H2C3O+ + E -> HC3 + OH
     k(3974) = small + (1.50e-07&
         *invsqrT32)
 
-    !H2C3O+ + E -> C3O + H + H
+    !H2C3O+ + E -> C3H + OH
     k(3975) = small + (1.50e-07&
         *invsqrT32)
 
-    !H2C3O+ + E -> C3O + H2
+    !H2C3O+ + E -> HC3 + OH
     k(3976) = small + (1.50e-07&
         *invsqrT32)
 
+    !H2C3O+ + E -> C3O + H + H
+    k(3977) = small + (1.50e-07&
+        *invsqrT32)
+
+    !H2C3O+ + E -> C3O + H2
+    k(3978) = small + (1.50e-07&
+        *invsqrT32)
+
     !HC2NCH+ + E -> C2H + HCN
-    k(3977) = small + (2.28e-07&
+    k(3979) = small + (2.28e-07&
         *invsqrT32)
 
     !HC2NCH+ + E -> C2H2 + CN
-    k(3978) = small + (2.28e-07&
+    k(3980) = small + (2.28e-07&
         *invsqrT32)
 
     !HC2NCH+ + E -> HCNC2 + H
-    k(3979) = small + (6.00e-08&
+    k(3981) = small + (6.00e-08&
         *invsqrT32)
 
     !HC2NCH+ + E -> HC2NC + H
-    k(3980) = small + (6.00e-08&
+    k(3982) = small + (6.00e-08&
         *invsqrT32)
 
     !HC2NCH+ + E -> HC3N + H
-    k(3981) = small + (1.20e-08&
+    k(3983) = small + (1.20e-08&
         *invsqrT32)
 
     !HC2NCH+ + E -> HNC3 + H
-    k(3982) = small + (1.20e-08&
+    k(3984) = small + (1.20e-08&
         *invsqrT32)
 
     !HC4N+ + E -> C3N + CH
-    k(3983) = small + (3.00e-07&
+    k(3985) = small + (3.00e-07&
         *invsqrT32)
 
     !HC4O+ + E -> C3H + CO
-    k(3984) = small + (1.50e-07&
-        *invsqrT32)
-
-    !HC4O+ + E -> HC3 + CO
-    k(3985) = small + (1.50e-07&
-        *invsqrT32)
-
-    !HC4O+ + E -> C3O + CH
     k(3986) = small + (1.50e-07&
         *invsqrT32)
 
+    !HC4O+ + E -> HC3 + CO
+    k(3987) = small + (1.50e-07&
+        *invsqrT32)
+
+    !HC4O+ + E -> C3O + CH
+    k(3988) = small + (1.50e-07&
+        *invsqrT32)
+
     !HC4S+ + E -> C2S + C2H
-    k(3987) = small + (1.00e-07&
-        *invsqrT32)
-
-    !HC4S+ + E -> C3S + CH
-    k(3988) = small + (1.00e-07&
-        *invsqrT32)
-
-    !HC4S+ + E -> C4S + H
     k(3989) = small + (1.00e-07&
         *invsqrT32)
 
+    !HC4S+ + E -> C3S + CH
+    k(3990) = small + (1.00e-07&
+        *invsqrT32)
+
+    !HC4S+ + E -> C4S + H
+    k(3991) = small + (1.00e-07&
+        *invsqrT32)
+
     !NH2CNH+ + E -> NH2 + HNC
-    k(3990) = small + (1.50e-07&
+    k(3992) = small + (1.50e-07&
         *invsqrT32)
 
     !NH2CNH+ + E -> NH2CN + H
-    k(3991) = small + (1.50e-07&
+    k(3993) = small + (1.50e-07&
         *invsqrT32)
 
     !PC2H3+ + E -> PH + C2H2
-    k(3992) = small + (1.00e-07&
-        *invsqrT32)
-
-    !PC2H3+ + E -> CCP + H2 + H
-    k(3993) = small + (1.00e-07&
-        *invsqrT32)
-
-    !PC2H3+ + E -> HCCP + H2
     k(3994) = small + (1.00e-07&
         *invsqrT32)
 
+    !PC2H3+ + E -> CCP + H2 + H
+    k(3995) = small + (1.00e-07&
+        *invsqrT32)
+
+    !PC2H3+ + E -> HCCP + H2
+    k(3996) = small + (1.00e-07&
+        *invsqrT32)
+
     !PC4H+ + E -> CP + C3H
-    k(3995) = small + (7.50e-08&
-        *invsqrT32)
-
-    !PC4H+ + E -> CP + HC3
-    k(3996) = small + (7.50e-08&
-        *invsqrT32)
-
-    !PC4H+ + E -> CCP + C2H
     k(3997) = small + (7.50e-08&
         *invsqrT32)
 
-    !PC4H+ + E -> C3P + CH
+    !PC4H+ + E -> CP + HC3
     k(3998) = small + (7.50e-08&
         *invsqrT32)
 
-    !PC4H+ + E -> C4P + H
+    !PC4H+ + E -> CCP + C2H
     k(3999) = small + (7.50e-08&
         *invsqrT32)
 
+    !PC4H+ + E -> C3P + CH
+    k(4000) = small + (7.50e-08&
+        *invsqrT32)
+
+    !PC4H+ + E -> C4P + H
+    k(4001) = small + (7.50e-08&
+        *invsqrT32)
+
     !PCH4+ + E -> HCP + H2 + H
-    k(4000) = small + (1.50e-07&
+    k(4002) = small + (1.50e-07&
         *invsqrT32)
 
     !PCH4+ + E -> CH2PH + H
-    k(4001) = small + (1.50e-07&
-        *invsqrT32)
-
-    !PCH4+ + E -> CH4 + P
-    k(4002) = small + (3.00e-07&
-        *invsqrT32)
-
-    !SIC2H3+ + E -> SIC2H + H2
     k(4003) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIC2H3+ + E -> SIC2H2 + H
-    k(4004) = small + (1.50e-07&
+    !PCH4+ + E -> CH4 + P
+    k(4004) = small + (3.00e-07&
         *invsqrT32)
 
-    !SIC3H2+ + E -> SIC3 + H2
+    !SIC2H3+ + E -> SIC2H + H2
     k(4005) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIC3H2+ + E -> SIC3H + H
+    !SIC2H3+ + E -> SIC2H2 + H
     k(4006) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIC4H+ + E -> SIC3 + CH
+    !SIC3H2+ + E -> SIC3 + H2
     k(4007) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIC4H+ + E -> SIC4 + H
+    !SIC3H2+ + E -> SIC3H + H
     k(4008) = small + (1.50e-07&
         *invsqrT32)
 
-    !SICH4+ + E -> SICH2 + H2
+    !SIC4H+ + E -> SIC3 + CH
     k(4009) = small + (1.50e-07&
         *invsqrT32)
 
-    !SICH4+ + E -> SICH3 + H
+    !SIC4H+ + E -> SIC4 + H
     k(4010) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIH5+ + E -> SIH3 + H2
+    !SICH4+ + E -> SICH2 + H2
     k(4011) = small + (1.50e-07&
         *invsqrT32)
 
-    !SIH5+ + E -> SIH4 + H
+    !SICH4+ + E -> SICH3 + H
     k(4012) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H4N+ + E -> C2H2N + H + H
+    !SIH5+ + E -> SIH3 + H2
     k(4013) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H4N+ + E -> C2H3N + H
+    !SIH5+ + E -> SIH4 + H
     k(4014) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H4O+ + E -> CH3 + HCO
+    !C2H4N+ + E -> C2H2N + H + H
     k(4015) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H4O+ + E -> C2H2O + H + H
+    !C2H4N+ + E -> C2H3N + H
     k(4016) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H4O+ + E -> C2H2O + H2
+    !C2H4O+ + E -> CH3 + HCO
     k(4017) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H5+ + E -> C2H + H2 + H2
+    !C2H4O+ + E -> C2H2O + H + H
     k(4018) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H5+ + E -> C2H2 + H2 + H
-    k(4019) = small + (3.00e-07&
+    !C2H4O+ + E -> C2H2O + H2
+    k(4019) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H5+ + E -> C2H3 + H2
+    !C2H5+ + E -> C2H + H2 + H2
     k(4020) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H5+ + E -> C2H4 + H
-    k(4021) = small + (1.50e-07&
+    !C2H5+ + E -> C2H2 + H2 + H
+    k(4021) = small + (3.00e-07&
         *invsqrT32)
 
-    !C3H3N+ + E -> C3N + H2 + H
+    !C2H5+ + E -> C2H3 + H2
     k(4022) = small + (1.50e-07&
         *invsqrT32)
 
-    !C3H3N+ + E -> HC3N + H2
+    !C2H5+ + E -> C2H4 + H
     k(4023) = small + (1.50e-07&
         *invsqrT32)
 
+    !C3H3N+ + E -> C3N + H2 + H
+    k(4024) = small + (1.50e-07&
+        *invsqrT32)
+
+    !C3H3N+ + E -> HC3N + H2
+    k(4025) = small + (1.50e-07&
+        *invsqrT32)
+
     !C3H4+ + E -> C3H2 + H2
-    k(4024) = small + (2.95e-08&
+    k(4026) = small + (2.95e-08&
         *T32**(-6.70e-01))
 
     !C3H4+ + E -> H2C3 + H2
-    k(4025) = small + (2.95e-08&
-        *T32**(-6.70e-01))
-
-    !C3H4+ + E -> C3H3 + H
-    k(4026) = small + (2.57e-06&
-        *T32**(-6.70e-01))
-
-    !C3H4+ + E -> C2H3 + CH
     k(4027) = small + (2.95e-08&
         *T32**(-6.70e-01))
 
-    !C3H4+ + E -> C2H2 + CH2
-    k(4028) = small + (1.77e-07&
+    !C3H4+ + E -> C3H3 + H
+    k(4028) = small + (2.57e-06&
         *T32**(-6.70e-01))
 
-    !C3H4+ + E -> C2H + CH3
+    !C3H4+ + E -> C2H3 + CH
     k(4029) = small + (2.95e-08&
         *T32**(-6.70e-01))
 
+    !C3H4+ + E -> C2H2 + CH2
+    k(4030) = small + (1.77e-07&
+        *T32**(-6.70e-01))
+
+    !C3H4+ + E -> C2H + CH3
+    k(4031) = small + (2.95e-08&
+        *T32**(-6.70e-01))
+
     !C3H4+ + E -> C3H2 + H + H
-    k(4030) = small + (1.18e-07&
+    k(4032) = small + (1.18e-07&
         *T32**(-6.70e-01))
 
     !C3H4+ + E -> H2C3 + H + H
-    k(4031) = small + (1.18e-07&
+    k(4033) = small + (1.18e-07&
         *T32**(-6.70e-01))
 
     !C4H3+ + E -> C4H + H2
-    k(4032) = small + (1.50e-07&
+    k(4034) = small + (1.50e-07&
         *invsqrT32)
 
     !C4H3+ + E -> C4H2 + H
-    k(4033) = small + (1.50e-07&
+    k(4035) = small + (1.50e-07&
         *invsqrT32)
 
     !C5H2+ + E -> C5 + H2
-    k(4034) = small + (1.00e-06&
+    k(4036) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !C5H2+ + E -> C5H + H
-    k(4035) = small + (1.00e-06&
+    k(4037) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !C5HN+ + E -> CN + C4H
-    k(4036) = small + (1.50e-07&
-        *invsqrT32)
-
-    !C5HN+ + E -> C3N + C2H
-    k(4037) = small + (1.50e-07&
-        *invsqrT32)
-
-    !C5HN+ + E -> C5N + H
     k(4038) = small + (1.50e-07&
         *invsqrT32)
 
+    !C5HN+ + E -> C3N + C2H
+    k(4039) = small + (1.50e-07&
+        *invsqrT32)
+
+    !C5HN+ + E -> C5N + H
+    k(4040) = small + (1.50e-07&
+        *invsqrT32)
+
     !C6H+ + E -> C5H + C
-    k(4039) = small + (1.00e-06&
+    k(4041) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !C6H+ + E -> C6 + H
-    k(4040) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C7+ + E -> C4 + C3
-    k(4041) = small + (3.00e-07*invsqrT32)
-
-    !C7+ + E -> C5 + C2
     k(4042) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
+    !C7+ + E -> C4 + C3
+    k(4043) = small + (3.00e-07*invsqrT32)
+
+    !C7+ + E -> C5 + C2
+    k(4044) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
     !C7+ + E -> C6 + C
-    k(4043) = small + (1.00e-06&
+    k(4045) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !CH5N+ + E -> CH3 + NH2
-    k(4044) = small + (1.50e-07&
+    k(4046) = small + (1.50e-07&
         *invsqrT32)
 
     !CH5N+ + E -> CH3N + H2
-    k(4045) = small + (1.50e-07&
+    k(4047) = small + (1.50e-07&
         *invsqrT32)
 
     !CH5O+ + E -> H2CO + H2 + H
-    k(4046) = small + (9.10e-08&
+    k(4048) = small + (9.10e-08&
         *T32**(-6.70e-01))
 
     !CH5O+ + E -> CH3 + H2O
-    k(4047) = small + (8.19e-08&
+    k(4049) = small + (8.19e-08&
         *T32**(-6.70e-01))
 
     !CH5O+ + E -> CH3 + OH + H
-    k(4048) = small + (4.64e-07&
+    k(4050) = small + (4.64e-07&
         *T32**(-6.70e-01))
 
     !CH5O+ + E -> CH2 + H2O + H
-    k(4049) = small + (1.91e-07&
+    k(4051) = small + (1.91e-07&
         *T32**(-6.70e-01))
 
-    !CH5O+ + E -> CH4O + H
-    k(4050) = small + (2.73e-08&
+    !CH5O+ + E -> CH3OH + H
+    k(4052) = small + (2.73e-08&
         *T32**(-6.70e-01))
 
     !H2C4N+ + E -> HC3N + CH
-    k(4051) = small + (3.00e-07&
+    k(4053) = small + (3.00e-07&
         *invsqrT32)
 
     !H3C3O+ + E -> C3H + H2O
-    k(4052) = small + (1.50e-07&
-        *invsqrT32)
-
-    !H3C3O+ + E -> HC3 + H2O
-    k(4053) = small + (1.50e-07&
-        *invsqrT32)
-
-    !H3C3O+ + E -> C3O + H2 + H
     k(4054) = small + (1.50e-07&
         *invsqrT32)
 
-    !NH2CH2O+ + E -> NH2CHO + H
+    !H3C3O+ + E -> HC3 + H2O
     k(4055) = small + (1.50e-07&
         *invsqrT32)
 
-    !NH2CH2O+ + E -> NH3 + CO + H
+    !H3C3O+ + E -> C3O + H2 + H
     k(4056) = small + (1.50e-07&
         *invsqrT32)
 
-    !NH2CH2O+ + E -> H2CN + H2O
+    !NH2CH2O+ + E -> NH2CHO + H
     k(4057) = small + (1.50e-07&
         *invsqrT32)
 
-    !NH2CH2O+ + E -> OCN + H2 + H2
+    !NH2CH2O+ + E -> NH3 + CO + H
     k(4058) = small + (1.50e-07&
         *invsqrT32)
 
-    !NH2CH2O+ + E -> NH2 + H2CO
+    !NH2CH2O+ + E -> H2CN + H2O
     k(4059) = small + (1.50e-07&
         *invsqrT32)
 
+    !NH2CH2O+ + E -> OCN + H2 + H2
+    k(4060) = small + (1.50e-07&
+        *invsqrT32)
+
+    !NH2CH2O+ + E -> NH2 + H2CO
+    k(4061) = small + (1.50e-07&
+        *invsqrT32)
+
     !PC2H4+ + E -> P + C2H4
-    k(4060) = small + (1.00e-07&
-        *invsqrT32)
-
-    !PC2H4+ + E -> CCP + H2 + H2
-    k(4061) = small + (1.00e-07&
-        *invsqrT32)
-
-    !PC2H4+ + E -> HCCP + H2 + H
     k(4062) = small + (1.00e-07&
         *invsqrT32)
 
+    !PC2H4+ + E -> CCP + H2 + H2
+    k(4063) = small + (1.00e-07&
+        *invsqrT32)
+
+    !PC2H4+ + E -> HCCP + H2 + H
+    k(4064) = small + (1.00e-07&
+        *invsqrT32)
+
     !PC4H2+ + E -> CCP + C2H2
-    k(4063) = small + (1.50e-07&
-        *invsqrT32)
-
-    !PC4H2+ + E -> C4P + H2
-    k(4064) = small + (1.50e-07&
-        *invsqrT32)
-
-    !C2H5O+ + E -> H2CO + CH3
     k(4065) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H5O+ + E -> C2H2O + H2 + H
+    !PC4H2+ + E -> C4P + H2
     k(4066) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H5O+ + E -> CH4 + CO + H
-    k(4067) = small + (3.00e-07&
+    !C2H5O+ + E -> H2CO + CH3
+    k(4067) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H5O+ + E -> C2H4O + H
+    !C2H5O+ + E -> C2H2O + H2 + H
     k(4068) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H6+ + E -> C2H4 + H2
-    k(4069) = small + (1.50e-07&
+    !C2H5O+ + E -> CH4 + CO + H
+    k(4069) = small + (3.00e-07&
         *invsqrT32)
 
-    !C2H6+ + E -> C2H5 + H
+    !C2H5O+ + E -> C2H4O + H
     k(4070) = small + (1.50e-07&
         *invsqrT32)
 
-    !C3H4N+ + E -> C3N + H2 + H2
+    !C2H6+ + E -> C2H4 + H2
     k(4071) = small + (1.50e-07&
         *invsqrT32)
 
+    !C2H6+ + E -> C2H5 + H
+    k(4072) = small + (1.50e-07&
+        *invsqrT32)
+
+    !C3H4N+ + E -> C3N + H2 + H2
+    k(4073) = small + (1.50e-07&
+        *invsqrT32)
+
     !C3H4N+ + E -> HC3N + H2 + H
-    k(4072) = small + (1.00e-06&
+    k(4074) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !C3H4N+ + E -> C3H3N + H
-    k(4073) = small + (1.00e-06&
+    k(4075) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !C3H5+ + E -> C3H3 + H2
-    k(4074) = small + (1.50e-07&
+    k(4076) = small + (1.50e-07&
         *invsqrT32)
 
     !C3H5+ + E -> C3H4 + H
-    k(4075) = small + (1.50e-07&
+    k(4077) = small + (1.50e-07&
         *invsqrT32)
 
     !C4H4+ + E -> C4H + H2 + H
-    k(4076) = small + (3.30e-07&
-        *invsqrT32)
-
-    !C4H4+ + E -> C4H2 + H2
-    k(4077) = small + (3.30e-07&
-        *invsqrT32)
-
-    !C4H4+ + E -> C4H3 + H
     k(4078) = small + (3.30e-07&
         *invsqrT32)
 
+    !C4H4+ + E -> C4H2 + H2
+    k(4079) = small + (3.30e-07&
+        *invsqrT32)
+
+    !C4H4+ + E -> C4H3 + H
+    k(4080) = small + (3.30e-07&
+        *invsqrT32)
+
     !C5H2N+ + E -> C5N + H2
-    k(4079) = small + (1.50e-07&
+    k(4081) = small + (1.50e-07&
         *invsqrT32)
 
     !C5H2N+ + E -> HC5N + H
-    k(4080) = small + (1.50e-07&
+    k(4082) = small + (1.50e-07&
         *invsqrT32)
 
     !C5H3+ + E -> C5H + H2
-    k(4081) = small + (4.50e-07&
+    k(4083) = small + (4.50e-07&
         *invsqrT32)
 
     !C5H3+ + E -> C5H2 + H
-    k(4082) = small + (4.50e-07&
+    k(4084) = small + (4.50e-07&
         *invsqrT32)
 
     !C6H2+ + E -> C6 + H + H
-    k(4083) = small + (1.50e-07&
+    k(4085) = small + (1.50e-07&
         *invsqrT32)
 
     !C6H2+ + E -> C6 + H2
-    k(4084) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C6H2+ + E -> C6H + H
-    k(4085) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C7H+ + E -> C6H + C
     k(4086) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C7H+ + E -> C7 + H
+    !C6H2+ + E -> C6H + H
     k(4087) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C7N+ + E -> C2 + C5N
-    k(4088) = small + (3.00e-07&
-        *invsqrT32)
+    !C7H+ + E -> C6H + C
+    k(4088) = small + (1.00e-06&
+        *T32**(-3.00e-01))
 
-    !C8+ + E -> C6 + C2
+    !C7H+ + E -> C7 + H
     k(4089) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
+    !C7N+ + E -> C2 + C5N
+    k(4090) = small + (3.00e-07&
+        *invsqrT32)
+
+    !C8+ + E -> C6 + C2
+    k(4091) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
     !C8+ + E -> C7 + C
-    k(4090) = small + (1.00e-06&
+    k(4092) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !CH6N+ + E -> CH3N + H2 + H
-    k(4091) = small + (1.50e-07&
-        *invsqrT32)
-
-    !CH6N+ + E -> CH5N + H
-    k(4092) = small + (1.50e-07&
-        *invsqrT32)
-
-    !COOCH4+ + E -> CH3 + CO2 + H
     k(4093) = small + (1.50e-07&
         *invsqrT32)
 
-    !COOCH4+ + E -> CH4O + CO
+    !CH6N+ + E -> CH5N + H
     k(4094) = small + (1.50e-07&
         *invsqrT32)
 
-    !H3C4N+ + E -> HC3N + CH2
-    k(4095) = small + (3.00e-07&
+    !COOCH4+ + E -> CH3 + CO2 + H
+    k(4095) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H5OH+ + E -> C2H2O + H2 + H2
+    !COOCH4+ + E -> CH3OH + CO
     k(4096) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H5OH+ + E -> CH4 + H2CO
-    k(4097) = small + (1.50e-07&
+    !H3C4N+ + E -> HC3N + CH2
+    k(4097) = small + (3.00e-07&
         *invsqrT32)
 
-    !C2H5OH+ + E -> C2H4O + H2
+    !C2H5OH+ + E -> C2H2O + H2 + H2
     k(4098) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H5OH+ + E -> C2H5 + OH
+    !C2H5OH+ + E -> CH4 + H2CO
     k(4099) = small + (1.50e-07&
         *invsqrT32)
 
+    !C2H5OH+ + E -> C2H4O + H2
+    k(4100) = small + (1.50e-07&
+        *invsqrT32)
+
+    !C2H5OH+ + E -> C2H5 + OH
+    k(4101) = small + (1.50e-07&
+        *invsqrT32)
+
     !C4H4N+ + E -> CH3 + HC3N
-    k(4100) = small + (1.00e-06&
+    k(4102) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !C4H4N+ + E -> CH3C3N + H
-    k(4101) = small + (1.00e-06&
+    k(4103) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !C4H5+ + E -> C4H + H2 + H2
-    k(4102) = small + (1.01e-07&
+    k(4104) = small + (1.01e-07&
         *invsqrT32)
 
     !C4H5+ + E -> C4H2 + H + H2
-    k(4103) = small + (1.01e-07&
-        *invsqrT32)
-
-    !C4H5+ + E -> C3H4 + CH
-    k(4104) = small + (4.50e-08&
-        *invsqrT32)
-
-    !C4H5+ + E -> C2H2 + C2H3
     k(4105) = small + (1.01e-07&
         *invsqrT32)
 
+    !C4H5+ + E -> C3H4 + CH
+    k(4106) = small + (4.50e-08&
+        *invsqrT32)
+
+    !C4H5+ + E -> C2H2 + C2H3
+    k(4107) = small + (1.01e-07&
+        *invsqrT32)
+
     !C4H5+ + E -> C2H + C2H4
-    k(4106) = small + (1.01e-07&
+    k(4108) = small + (1.01e-07&
         *invsqrT32)
 
     !C5H3N+ + E -> C5N + H2 + H
-    k(4107) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C5H3N+ + E -> HC5N + H2
-    k(4108) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C5H4+ + E -> C5H + H + H2
     k(4109) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C5H4+ + E -> C5H2 + H2
+    !C5H3N+ + E -> HC5N + H2
     k(4110) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C6H3+ + E -> C6H + H + H
-    k(4111) = small + (3.00e-07&
-        *invsqrT32)
+    !C5H4+ + E -> C5H + H + H2
+    k(4111) = small + (1.00e-06&
+        *T32**(-3.00e-01))
 
-    !C6H3+ + E -> C6H + H2
+    !C5H4+ + E -> C5H2 + H2
     k(4112) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C6H3+ + E -> C6H2 + H
-    k(4113) = small + (1.00e-06&
-        *T32**(-3.00e-01))
+    !C6H3+ + E -> C6H + H + H
+    k(4113) = small + (3.00e-07&
+        *invsqrT32)
 
-    !C7H2+ + E -> C7 + H2
+    !C6H3+ + E -> C6H + H2
     k(4114) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C7H2+ + E -> C7H + H
+    !C6H3+ + E -> C6H2 + H
     k(4115) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C7HN+ + E -> CN + C6H
+    !C7H2+ + E -> C7 + H2
     k(4116) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C7HN+ + E -> C7N + H
+    !C7H2+ + E -> C7H + H
     k(4117) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C8H+ + E -> C7H + C
+    !C7HN+ + E -> CN + C6H
     k(4118) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C8H+ + E -> C8 + H
+    !C7HN+ + E -> C7N + H
     k(4119) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C9+ + E -> C7 + C2
+    !C8H+ + E -> C7H + C
     k(4120) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C9+ + E -> C8 + C
+    !C8H+ + E -> C8 + H
     k(4121) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
+    !C9+ + E -> C7 + C2
+    k(4122) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
+    !C9+ + E -> C8 + C
+    k(4123) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
     !CH3OCH3+ + E -> CH3 + CH3 + O
-    k(4122) = small + (1.50e-07&
-        *invsqrT32)
-
-    !CH3OCH3+ + E -> H2CO + CH4
-    k(4123) = small + (3.00e-07&
-        *invsqrT32)
-
-    !CH3OCH3+ + E -> CH4O + CH2
     k(4124) = small + (1.50e-07&
         *invsqrT32)
 
-    !H5C2O2+ + E -> CH4O + HCO
-    k(4125) = small + (1.50e-07&
+    !CH3OCH3+ + E -> H2CO + CH4
+    k(4125) = small + (3.00e-07&
         *invsqrT32)
 
-    !H5C2O2+ + E -> HCOOCH3 + H
+    !CH3OCH3+ + E -> CH3OH + CH2
     k(4126) = small + (1.50e-07&
         *invsqrT32)
 
+    !H5C2O2+ + E -> CH3OH + HCO
+    k(4127) = small + (1.50e-07&
+        *invsqrT32)
+
+    !H5C2O2+ + E -> HCOOCH3 + H
+    k(4128) = small + (1.50e-07&
+        *invsqrT32)
+
     !C10+ + E -> C8 + C2
-    k(4127) = small + (1.00e-06&
+    k(4129) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !C10+ + E -> C9 + C
-    k(4128) = small + (1.00e-06&
+    k(4130) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !C2H5OH2+ + E -> C2H4 + H2O + H
-    k(4129) = small + (1.50e-07&
-        *invsqrT32)
-
-    !C2H5OH2+ + E -> C2H4O + H2 + H
-    k(4130) = small + (1.50e-07&
-        *invsqrT32)
-
-    !C2H5OH2+ + E -> C2H5OH + H
     k(4131) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H6CO+ + E -> CH3 + CH3 + CO
+    !C2H5OH2+ + E -> C2H4O + H2 + H
     k(4132) = small + (1.50e-07&
         *invsqrT32)
 
-    !C2H6CO+ + E -> C2H4O + CH2
+    !C2H5OH2+ + E -> C2H5OH + H
     k(4133) = small + (1.50e-07&
         *invsqrT32)
 
-    !C5H4N+ + E -> C5N + H2 + H2
+    !C2H6CO+ + E -> CH3 + CH3 + CO
     k(4134) = small + (1.50e-07&
         *invsqrT32)
 
-    !C5H4N+ + E -> HC5N + H2 + H
+    !C2H6CO+ + E -> C2H4O + CH2
     k(4135) = small + (1.50e-07&
         *invsqrT32)
 
+    !C5H4N+ + E -> C5N + H2 + H2
+    k(4136) = small + (1.50e-07&
+        *invsqrT32)
+
+    !C5H4N+ + E -> HC5N + H2 + H
+    k(4137) = small + (1.50e-07&
+        *invsqrT32)
+
     !C5H5+ + E -> C5H2 + H2 + H
-    k(4136) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C5H5+ + E -> CH3C4H + H
-    k(4137) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C6H4+ + E -> C6H + H2 + H
     k(4138) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C6H4+ + E -> C6H2 + H2
+    !C5H5+ + E -> CH3C4H + H
     k(4139) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
+    !C6H4+ + E -> C6H + H2 + H
+    k(4140) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
+    !C6H4+ + E -> C6H2 + H2
+    k(4141) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
     !C7H2N+ + E -> C7N + H2
-    k(4140) = small + (1.50e-07&
+    k(4142) = small + (1.50e-07&
         *invsqrT32)
 
     !C7H2N+ + E -> HC7N + H
-    k(4141) = small + (1.50e-07&
+    k(4143) = small + (1.50e-07&
         *invsqrT32)
 
     !C7H3+ + E -> C7H + H2
-    k(4142) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C7H3+ + E -> C7H2 + H
-    k(4143) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C8H2+ + E -> C8 + H2
     k(4144) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C8H2+ + E -> C8H + H
+    !C7H3+ + E -> C7H2 + H
     k(4145) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C9H+ + E -> C8H + C
+    !C8H2+ + E -> C8 + H2
     k(4146) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C9H+ + E -> C9 + H
+    !C8H2+ + E -> C8H + H
     k(4147) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
+    !C9H+ + E -> C8H + C
+    k(4148) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
+    !C9H+ + E -> C9 + H
+    k(4149) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
     !C9N+ + E -> C2 + C7N
-    k(4148) = small + (3.00e-07&
+    k(4150) = small + (3.00e-07&
         *invsqrT32)
 
     !CH3OCH4+ + E -> CH3 + CH4 + O
-    k(4149) = small + (1.50e-07&
-        *invsqrT32)
-
-    !CH3OCH4+ + E -> CH4O + CH3
-    k(4150) = small + (1.50e-07&
-        *invsqrT32)
-
-    !CH3OCH4+ + E -> CH3OCH3 + H
     k(4151) = small + (1.50e-07&
         *invsqrT32)
 
-    !C3H6OH+ + E -> C2H4O + CH3
+    !CH3OCH4+ + E -> CH3OH + CH3
     k(4152) = small + (1.50e-07&
         *invsqrT32)
 
-    !C3H6OH+ + E -> C2H6CO + H
+    !CH3OCH4+ + E -> CH3OCH3 + H
     k(4153) = small + (1.50e-07&
         *invsqrT32)
 
+    !C3H6OH+ + E -> C2H4O + CH3
+    k(4154) = small + (1.50e-07&
+        *invsqrT32)
+
+    !C3H6OH+ + E -> C2H6CO + H
+    k(4155) = small + (1.50e-07&
+        *invsqrT32)
+
     !C4H7+ + E -> C4H + H2 + H2 + H2
-    k(4154) = small + (6.00e-08&
+    k(4156) = small + (6.00e-08&
         *invsqrT32)
 
     !C4H7+ + E -> C3H3 + CH4
-    k(4155) = small + (1.95e-07&
+    k(4157) = small + (1.95e-07&
         *invsqrT32)
 
     !C4H7+ + E -> C2H3 + C2H4
-    k(4156) = small + (2.25e-08&
+    k(4158) = small + (2.25e-08&
         *invsqrT32)
 
     !C4H7+ + E -> C2H2 + C2H5
-    k(4157) = small + (2.25e-08&
+    k(4159) = small + (2.25e-08&
         *invsqrT32)
 
     !C6H4N+ + E -> CH3 + HC5N
-    k(4158) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C6H4N+ + E -> CH3C5N + H
-    k(4159) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C6H5+ + E -> C6H + H2 + H2
     k(4160) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C6H5+ + E -> C6H2 + H2 + H
+    !C6H4N+ + E -> CH3C5N + H
     k(4161) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C7H3N+ + E -> C7N + H2 + H
+    !C6H5+ + E -> C6H + H2 + H2
     k(4162) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C7H3N+ + E -> HC7N + H2
+    !C6H5+ + E -> C6H2 + H2 + H
     k(4163) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C7H4+ + E -> C7H + H2 + H
+    !C7H3N+ + E -> C7N + H2 + H
     k(4164) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C7H4+ + E -> C7H2 + H2
+    !C7H3N+ + E -> HC7N + H2
     k(4165) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C8H3+ + E -> C8H + H2
+    !C7H4+ + E -> C7H + H2 + H
     k(4166) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C8H3+ + E -> C8H2 + H
+    !C7H4+ + E -> C7H2 + H2
     k(4167) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C9H2+ + E -> C9 + H2
+    !C8H3+ + E -> C8H + H2
     k(4168) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C9H2+ + E -> C9H + H
+    !C8H3+ + E -> C8H2 + H
     k(4169) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C9HN+ + E -> CN + C8H
+    !C9H2+ + E -> C9 + H2
     k(4170) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C9HN+ + E -> C9N + H
+    !C9H2+ + E -> C9H + H
     k(4171) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
+    !C9HN+ + E -> CN + C8H
+    k(4172) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
+    !C9HN+ + E -> C9N + H
+    k(4173) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
     !C7H5+ + E -> C7H2 + H2 + H
-    k(4172) = small + (3.50e-07&
+    k(4174) = small + (3.50e-07&
         *invsqrT32)
 
     !C7H5+ + E -> CH3C6H + H
-    k(4173) = small + (3.50e-07&
+    k(4175) = small + (3.50e-07&
         *invsqrT32)
 
     !C8H4+ + E -> C8H + H2 + H
-    k(4174) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C8H4+ + E -> C8H2 + H2
-    k(4175) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C9H2N+ + E -> C9N + H2
     k(4176) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C9H2N+ + E -> HC9N + H
+    !C8H4+ + E -> C8H2 + H2
     k(4177) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C9H3+ + E -> C9H + H2
+    !C9H2N+ + E -> C9N + H2
     k(4178) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C9H3+ + E -> C9H2 + H
+    !C9H2N+ + E -> HC9N + H
     k(4179) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
+    !C9H3+ + E -> C9H + H2
+    k(4180) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
+    !C9H3+ + E -> C9H2 + H
+    k(4181) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
     !C6H7+ + E -> C6H6 + H
-    k(4180) = small + (5.00e-07&
+    k(4182) = small + (5.00e-07&
         *invsqrT32)
 
     !C6H7+ + E -> C6H2 + H2 + H2 + H
-    k(4181) = small + (5.00e-07&
+    k(4183) = small + (5.00e-07&
         *invsqrT32)
 
     !C8H4N+ + E -> CH3 + HC7N
-    k(4182) = small + (1.00e-06&
+    k(4184) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !C8H4N+ + E -> CH3C7N + H
-    k(4183) = small + (1.00e-06&
+    k(4185) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
     !C8H5+ + E -> C8H + H2 + H2
-    k(4184) = small + (1.50e-07&
+    k(4186) = small + (1.50e-07&
         *invsqrT32)
 
     !C8H5+ + E -> C8H2 + H + H2
-    k(4185) = small + (1.50e-07&
+    k(4187) = small + (1.50e-07&
         *invsqrT32)
 
     !C9H3N+ + E -> C9N + H2 + H
-    k(4186) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C9H3N+ + E -> HC9N + H2
-    k(4187) = small + (1.00e-06&
-        *T32**(-3.00e-01))
-
-    !C9H4+ + E -> C9H + H2 + H
     k(4188) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
-    !C9H4+ + E -> C9H2 + H2
+    !C9H3N+ + E -> HC9N + H2
     k(4189) = small + (1.00e-06&
         *T32**(-3.00e-01))
 
+    !C9H4+ + E -> C9H + H2 + H
+    k(4190) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
+    !C9H4+ + E -> C9H2 + H2
+    k(4191) = small + (1.00e-06&
+        *T32**(-3.00e-01))
+
     !C9H5+ + E -> C9H + H2 + H2
-    k(4190) = small + (1.50e-07&
+    k(4192) = small + (1.50e-07&
         *invsqrT32)
 
     !C9H5+ + E -> C9H2 + H2 + H
-    k(4191) = small + (1.50e-07&
+    k(4193) = small + (1.50e-07&
         *invsqrT32)
 
     !C+ + E -> C
-    k(4192) = small + (4.40e-12*T32**(-6.10e-01))
+    k(4194) = small + (4.40e-12*T32**(-6.10e-01))
 
     !CL+ + E -> CL
-    k(4193) = small + (1.13e-10&
+    k(4195) = small + (1.13e-10&
         *T32**(-7.00e-01))
 
     !FE+ + E -> FE
-    k(4194) = small + (3.70e-12&
+    k(4196) = small + (3.70e-12&
         *T32**(-6.50e-01))
 
+    !H+ + E -> H
+    k(4197) = small + (3.50e-12*T32**(-7.00e-01))
+
+    !HE+ + E -> HE
+    k(4198) = small + (4.50e-12&
+        *T32**(-6.70e-01))
+
     !MG+ + E -> MG
-    k(4195) = small + (2.80e-12&
+    k(4199) = small + (2.80e-12&
         *T32**(-8.60e-01))
 
     !N+ + E -> N
-    k(4196) = small + (3.80e-12*T32**(-6.20e-01))
+    k(4200) = small + (3.80e-12*T32**(-6.20e-01))
 
     !NA+ + E -> NA
-    k(4197) = small + (2.70e-12&
+    k(4201) = small + (2.70e-12&
         *T32**(-6.90e-01))
 
     !O+ + E -> O
-    k(4198) = small + (3.40e-12*T32**(-6.30e-01))
+    k(4202) = small + (3.40e-12*T32**(-6.30e-01))
 
     !S+ + E -> S
-    k(4199) = small + (3.90e-12*T32**(-6.30e-01))
+    k(4203) = small + (3.90e-12*T32**(-6.30e-01))
 
     !SI+ + E -> SI
-    k(4200) = small + (4.90e-12&
+    k(4204) = small + (4.90e-12&
         *T32**(-6.00e-01))
 
     !H2+ + E -> H2
-    k(4201) = small + (2.25e-07&
+    k(4205) = small + (2.25e-07&
         *T32**(-4.00e-01))
 
     !H2S+ + E -> H2S
-    k(4202) = small + (1.10e-10&
+    k(4206) = small + (1.10e-10&
         *T32**(-7.00e-01))
 
     !CH3+ + E -> CH3
-    k(4203) = small + (1.10e-10&
+    k(4207) = small + (1.10e-10&
         *T32**(-7.00e-01))
 
     !H2CO+ + E -> H2CO
-    k(4204) = small + (1.10e-10&
+    k(4208) = small + (1.10e-10&
         *T32**(-7.00e-01))
 
     !H2CS+ + E -> H2CS
-    k(4205) = small + (1.10e-10&
+    k(4209) = small + (1.10e-10&
         *T32**(-7.00e-01))
 
     !C+ + C- -> C + C
-    k(4206) = small + (2.30e-07*invsqrT32)
-
-    !C+ + H- -> H + C
-    k(4207) = small + (2.30e-07*invsqrT32)
-
-    !C+ + S- -> C + S
-    k(4208) = small + (2.30e-07*invsqrT32)
-
-    !FE+ + C- -> FE + C
-    k(4209) = small + (2.30e-07*invsqrT32)
-
-    !FE+ + H- -> FE + H
     k(4210) = small + (2.30e-07*invsqrT32)
 
-    !FE+ + S- -> FE + S
+    !C+ + H- -> H + C
     k(4211) = small + (2.30e-07*invsqrT32)
 
-    !H+ + C- -> H + C
+    !C+ + S- -> C + S
     k(4212) = small + (2.30e-07*invsqrT32)
 
-    !H+ + H- -> H + H
+    !FE+ + C- -> FE + C
     k(4213) = small + (2.30e-07*invsqrT32)
 
-    !H+ + S- -> H + S
+    !FE+ + H- -> FE + H
     k(4214) = small + (2.30e-07*invsqrT32)
 
-    !HE+ + C- -> HE + C
+    !FE+ + S- -> FE + S
     k(4215) = small + (2.30e-07*invsqrT32)
 
-    !HE+ + H- -> H + HE
+    !H+ + C- -> H + C
     k(4216) = small + (2.30e-07*invsqrT32)
 
-    !HE+ + S- -> HE + S
+    !H+ + H- -> H + H
     k(4217) = small + (2.30e-07*invsqrT32)
 
-    !MG+ + C- -> MG + C
+    !H+ + S- -> H + S
     k(4218) = small + (2.30e-07*invsqrT32)
 
-    !MG+ + H- -> MG + H
+    !HE+ + C- -> HE + C
     k(4219) = small + (2.30e-07*invsqrT32)
 
-    !MG+ + S- -> MG + S
+    !HE+ + H- -> H + HE
     k(4220) = small + (2.30e-07*invsqrT32)
 
-    !N+ + C- -> N + C
+    !HE+ + S- -> HE + S
     k(4221) = small + (2.30e-07*invsqrT32)
 
-    !N+ + H- -> H + N
+    !MG+ + C- -> MG + C
     k(4222) = small + (2.30e-07*invsqrT32)
 
-    !N+ + S- -> N + S
+    !MG+ + H- -> MG + H
     k(4223) = small + (2.30e-07*invsqrT32)
 
-    !NA+ + C- -> NA + C
+    !MG+ + S- -> MG + S
     k(4224) = small + (2.30e-07*invsqrT32)
 
-    !NA+ + H- -> NA + H
+    !N+ + C- -> N + C
     k(4225) = small + (2.30e-07*invsqrT32)
 
-    !NA+ + S- -> NA + S
+    !N+ + H- -> H + N
     k(4226) = small + (2.30e-07*invsqrT32)
 
-    !O+ + C- -> O + C
+    !N+ + S- -> N + S
     k(4227) = small + (2.30e-07*invsqrT32)
 
-    !O+ + H- -> H + O
+    !NA+ + C- -> NA + C
     k(4228) = small + (2.30e-07*invsqrT32)
 
-    !O+ + S- -> O + S
+    !NA+ + H- -> NA + H
     k(4229) = small + (2.30e-07*invsqrT32)
 
-    !S+ + C- -> S + C
+    !NA+ + S- -> NA + S
     k(4230) = small + (2.30e-07*invsqrT32)
 
-    !S+ + H- -> S + H
+    !O+ + C- -> O + C
     k(4231) = small + (2.30e-07*invsqrT32)
 
-    !S+ + S- -> S + S
+    !O+ + H- -> H + O
     k(4232) = small + (2.30e-07*invsqrT32)
 
-    !SI+ + C- -> SI + C
+    !O+ + S- -> O + S
     k(4233) = small + (2.30e-07*invsqrT32)
 
-    !SI+ + H- -> SI + H
+    !S+ + C- -> S + C
     k(4234) = small + (2.30e-07*invsqrT32)
 
-    !SI+ + S- -> SI + S
+    !S+ + H- -> S + H
     k(4235) = small + (2.30e-07*invsqrT32)
 
-    !H3+ + H- -> H2 + H2
+    !S+ + S- -> S + S
     k(4236) = small + (2.30e-07*invsqrT32)
 
+    !SI+ + C- -> SI + C
+    k(4237) = small + (2.30e-07*invsqrT32)
+
+    !SI+ + H- -> SI + H
+    k(4238) = small + (2.30e-07*invsqrT32)
+
+    !SI+ + S- -> SI + S
+    k(4239) = small + (2.30e-07*invsqrT32)
+
+    !H2+ + H- -> H + H2
+    k(4240) = small + (2.30e-07*invsqrT32)
+
+    !H3+ + H- -> H2 + H2
+    k(4241) = small + (2.30e-07*invsqrT32)
+
     !HCO+ + H- -> CO + H2
-    k(4237) = small + (2.30e-07&
+    k(4242) = small + (2.30e-07&
         *invsqrT32)
 
     !H3O+ + H- -> OH + H2 + H
-    k(4238) = small + (2.30e-07&
+    k(4243) = small + (2.30e-07&
         *invsqrT32)
 
     !H3O+ + H- -> H2O + H2
-    k(4239) = small + (2.30e-07&
+    k(4244) = small + (2.30e-07&
         *invsqrT32)
 
     !NH4+ + H- -> NH3 + H2
-    k(4240) = small + (2.30e-07&
+    k(4245) = small + (2.30e-07&
         *invsqrT32)
 
     !C + E -> C-
-    k(4241) = small + (3.00e-15)
+    k(4246) = small + (3.00e-15)
 
     !H + E -> H-
-    k(4242) = small + (3.00e-16*T32**(1.00e+00))
+    k(4247) = small + (3.00e-16*T32**(1.00e+00))
 
     !O + E -> O-
-    k(4243) = small + (1.50e-15)
+    k(4248) = small + (1.50e-15)
 
     !S + E -> S-
-    k(4244) = small + (5.00e-15)
+    k(4249) = small + (5.00e-15)
 
     !C -> C+ + E
-    k(4245) = rateEvaluateOnce(4245)
-
-    !CL -> CL+ + E
-    k(4246) = rateEvaluateOnce(4246)
-
-    !FE -> FE+ + E
-    k(4247) = rateEvaluateOnce(4247)
-
-    !MG -> MG+ + E
-    k(4248) = rateEvaluateOnce(4248)
-
-    !NA -> NA+ + E
-    k(4249) = rateEvaluateOnce(4249)
-
-    !S -> S+ + E
     k(4250) = rateEvaluateOnce(4250)
 
-    !SI -> SI+ + E
+    !CL -> CL+ + E
     k(4251) = rateEvaluateOnce(4251)
 
-    !C2 -> C + C
+    !FE -> FE+ + E
     k(4252) = rateEvaluateOnce(4252)
 
-    !C2 -> C2+ + E
+    !MG -> MG+ + E
     k(4253) = rateEvaluateOnce(4253)
 
-    !CCL -> CL + C
+    !NA -> NA+ + E
     k(4254) = rateEvaluateOnce(4254)
 
-    !CH -> C + H
+    !S -> S+ + E
     k(4255) = rateEvaluateOnce(4255)
 
-    !CH -> CH+ + E
+    !SI -> SI+ + E
     k(4256) = rateEvaluateOnce(4256)
 
-    !CLO -> CL + O
+    !C2 -> C + C
     k(4257) = rateEvaluateOnce(4257)
 
-    !CN -> C + N
+    !C2 -> C2+ + E
     k(4258) = rateEvaluateOnce(4258)
 
-    !CO -> C + O
+    !CCL -> CL + C
     k(4259) = rateEvaluateOnce(4259)
 
-    !CS -> C + S
+    !CH -> C + H
     k(4260) = rateEvaluateOnce(4260)
 
-    !H2 -> H + H
+    !CH -> CH+ + E
     k(4261) = rateEvaluateOnce(4261)
 
-    !HCL -> CL + H
+    !CLO -> CL + O
     k(4262) = rateEvaluateOnce(4262)
 
-    !HF -> F + H
+    !CN -> C + N
     k(4263) = rateEvaluateOnce(4263)
 
-    !HS -> H + S
+    !CO -> C + O
     k(4264) = rateEvaluateOnce(4264)
 
-    !N2 -> N + N
+    !CS -> C + S
     k(4265) = rateEvaluateOnce(4265)
 
-    !NH -> H + N
+    !H2 -> H + H
     k(4266) = rateEvaluateOnce(4266)
 
-    !NH -> NH+ + E
+    !HCL -> CL + H
     k(4267) = rateEvaluateOnce(4267)
 
-    !NO -> N + O
+    !HF -> F + H
     k(4268) = rateEvaluateOnce(4268)
 
-    !NO -> NO+ + E
+    !HS -> H + S
     k(4269) = rateEvaluateOnce(4269)
 
-    !NS -> N + S
+    !N2 -> N + N
     k(4270) = rateEvaluateOnce(4270)
 
-    !O2 -> O + O
+    !NH -> H + N
     k(4271) = rateEvaluateOnce(4271)
 
-    !O2 -> O2+ + E
+    !NH -> NH+ + E
     k(4272) = rateEvaluateOnce(4272)
 
-    !OH -> O + H
+    !NO -> N + O
     k(4273) = rateEvaluateOnce(4273)
 
-    !OH -> OH+ + E
+    !NO -> NO+ + E
     k(4274) = rateEvaluateOnce(4274)
 
-    !SIC -> SI + C
+    !NS -> N + S
     k(4275) = rateEvaluateOnce(4275)
 
-    !SIH -> SI + H
+    !O2 -> O + O
     k(4276) = rateEvaluateOnce(4276)
 
-    !SIO -> SI + O
+    !O2 -> O2+ + E
     k(4277) = rateEvaluateOnce(4277)
 
-    !SIS -> SI + S
+    !OH -> O + H
     k(4278) = rateEvaluateOnce(4278)
 
-    !SO -> O + S
+    !OH -> OH+ + E
     k(4279) = rateEvaluateOnce(4279)
 
-    !C2H -> C2 + H
+    !SIC -> SI + C
     k(4280) = rateEvaluateOnce(4280)
 
-    !C2H -> C2H+ + E
+    !SIH -> SI + H
     k(4281) = rateEvaluateOnce(4281)
 
-    !C2N -> C2 + N
+    !SIO -> SI + O
     k(4282) = rateEvaluateOnce(4282)
 
-    !C2N -> CN + C
+    !SIS -> SI + S
     k(4283) = rateEvaluateOnce(4283)
 
-    !C2S -> C2 + S
+    !SO -> O + S
     k(4284) = rateEvaluateOnce(4284)
 
-    !C3 -> C2 + C
+    !C2H -> C2 + H
     k(4285) = rateEvaluateOnce(4285)
 
-    !CH2 -> CH + H
+    !C2H -> C2H+ + E
     k(4286) = rateEvaluateOnce(4286)
 
-    !CH2 -> CH2+ + E
+    !C2N -> C2 + N
     k(4287) = rateEvaluateOnce(4287)
 
-    !CO2 -> CO + O
+    !C2N -> CN + C
     k(4288) = rateEvaluateOnce(4288)
 
-    !H2O -> OH + H
+    !C2S -> C2 + S
     k(4289) = rateEvaluateOnce(4289)
 
-    !H2O -> H2O+ + E
+    !C3 -> C2 + C
     k(4290) = rateEvaluateOnce(4290)
 
-    !H2S -> HS + H
+    !CH2 -> CH + H
     k(4291) = rateEvaluateOnce(4291)
 
-    !HCN -> CN + H
+    !CH2 -> CH2+ + E
     k(4292) = rateEvaluateOnce(4292)
 
-    !HCO -> H + CO
+    !CO2 -> CO + O
     k(4293) = rateEvaluateOnce(4293)
 
-    !HCO -> HCO+ + E
+    !H2O -> OH + H
     k(4294) = rateEvaluateOnce(4294)
 
-    !HNC -> CN + H
+    !H2O -> H2O+ + E
     k(4295) = rateEvaluateOnce(4295)
 
-    !HNO -> NO + H
+    !H2S -> HS + H
     k(4296) = rateEvaluateOnce(4296)
 
-    !NAOH -> NA + OH
+    !HCN -> CN + H
     k(4297) = rateEvaluateOnce(4297)
 
-    !NH2 -> NH + H
+    !HCO -> H + CO
     k(4298) = rateEvaluateOnce(4298)
 
-    !NH2 -> NH2+ + E
+    !HCO -> HCO+ + E
     k(4299) = rateEvaluateOnce(4299)
 
-    !NO2 -> NO + O
+    !HNC -> CN + H
     k(4300) = rateEvaluateOnce(4300)
 
-    !OCN -> O + CN
+    !HNO -> NO + H
     k(4301) = rateEvaluateOnce(4301)
 
-    !OCS -> CO + S
+    !NAOH -> NA + OH
     k(4302) = rateEvaluateOnce(4302)
 
-    !OCS -> OCS+ + E
+    !NH2 -> NH + H
     k(4303) = rateEvaluateOnce(4303)
 
-    !SO2 -> SO + O
+    !NH2 -> NH2+ + E
     k(4304) = rateEvaluateOnce(4304)
 
-    !C2H2 -> C2H + H
+    !NO2 -> NO + O
     k(4305) = rateEvaluateOnce(4305)
 
-    !C2H2 -> C2H2+ + E
+    !OCN -> O + CN
     k(4306) = rateEvaluateOnce(4306)
 
-    !C3H -> C3 + H
+    !OCS -> CO + S
     k(4307) = rateEvaluateOnce(4307)
 
-    !HC3 -> C3 + H
+    !OCS -> OCS+ + E
     k(4308) = rateEvaluateOnce(4308)
 
-    !C3N -> C2 + CN
+    !SO2 -> SO + O
     k(4309) = rateEvaluateOnce(4309)
 
-    !C3O -> C2 + CO
+    !C2H2 -> C2H + H
     k(4310) = rateEvaluateOnce(4310)
 
-    !C3S -> C2 + CS
+    !C2H2 -> C2H2+ + E
     k(4311) = rateEvaluateOnce(4311)
 
-    !C4 -> C2 + C2
+    !C3H -> C3 + H
     k(4312) = rateEvaluateOnce(4312)
 
-    !C4 -> C3 + C
+    !HC3 -> C3 + H
     k(4313) = rateEvaluateOnce(4313)
 
-    !CH3 -> CH + H2
+    !C3N -> C2 + CN
     k(4314) = rateEvaluateOnce(4314)
 
-    !CH3 -> CH2 + H
+    !C3O -> C2 + CO
     k(4315) = rateEvaluateOnce(4315)
 
-    !CH3 -> CH3+ + E
+    !C3S -> C2 + CS
     k(4316) = rateEvaluateOnce(4316)
 
-    !H2CO -> CO + H + H
+    !C4 -> C2 + C2
     k(4317) = rateEvaluateOnce(4317)
 
-    !H2CO -> CO + H2
+    !C4 -> C3 + C
     k(4318) = rateEvaluateOnce(4318)
 
-    !H2CO -> HCO+ + H + E
+    !CH3 -> CH + H2
     k(4319) = rateEvaluateOnce(4319)
 
-    !H2CO -> H2CO+ + E
+    !CH3 -> CH2 + H
     k(4320) = rateEvaluateOnce(4320)
 
-    !H2CS -> CS + H2
+    !CH3 -> CH3+ + E
     k(4321) = rateEvaluateOnce(4321)
 
-    !NH3 -> NH + H2
+    !H2CO -> CO + H + H
     k(4322) = rateEvaluateOnce(4322)
 
-    !NH3 -> NH2 + H
+    !H2CO -> CO + H2
     k(4323) = rateEvaluateOnce(4323)
 
-    !NH3 -> NH3+ + E
+    !H2CO -> HCO+ + H + E
     k(4324) = rateEvaluateOnce(4324)
 
-    !C2H2O -> CH2 + CO
+    !H2CO -> H2CO+ + E
     k(4325) = rateEvaluateOnce(4325)
 
-    !C2H2O -> C2H2O+ + E
+    !H2CS -> CS + H2
     k(4326) = rateEvaluateOnce(4326)
 
-    !C2H3 -> C2H2 + H
+    !NH3 -> NH + H2
     k(4327) = rateEvaluateOnce(4327)
 
-    !C2H3 -> C2H3+ + E
+    !NH3 -> NH2 + H
     k(4328) = rateEvaluateOnce(4328)
 
-    !C3H2 -> C3 + H2
+    !NH3 -> NH3+ + E
     k(4329) = rateEvaluateOnce(4329)
 
-    !H2C3 -> C3 + H2
+    !C2H2O -> CH2 + CO
     k(4330) = rateEvaluateOnce(4330)
 
-    !C3H2 -> C3H + H
+    !C2H2O -> C2H2O+ + E
     k(4331) = rateEvaluateOnce(4331)
 
-    !H2C3 -> HC3 + H
+    !C2H3 -> C2H2 + H
     k(4332) = rateEvaluateOnce(4332)
 
-    !C4H -> C2H + C2
+    !C2H3 -> C2H3+ + E
     k(4333) = rateEvaluateOnce(4333)
 
-    !C4H -> C4 + H
+    !C3H2 -> C3 + H2
     k(4334) = rateEvaluateOnce(4334)
 
-    !C4N -> C3 + CN
+    !H2C3 -> C3 + H2
     k(4335) = rateEvaluateOnce(4335)
 
-    !C4S -> C3 + CS
+    !C3H2 -> C3H + H
     k(4336) = rateEvaluateOnce(4336)
 
-    !C5 -> C3 + C2
+    !H2C3 -> HC3 + H
     k(4337) = rateEvaluateOnce(4337)
 
-    !CH2O2 -> HCO + OH
+    !C4H -> C2H + C2
     k(4338) = rateEvaluateOnce(4338)
 
-    !CH2O2 -> CH2O2+ + E
+    !C4H -> C4 + H
     k(4339) = rateEvaluateOnce(4339)
 
-    !CH3N -> HCN + H2
+    !C4N -> C3 + CN
     k(4340) = rateEvaluateOnce(4340)
 
-    !CH4 -> CH + H + H2
+    !C4S -> C3 + CS
     k(4341) = rateEvaluateOnce(4341)
 
-    !CH4 -> CH2 + H2
+    !C5 -> C3 + C2
     k(4342) = rateEvaluateOnce(4342)
 
-    !CH4 -> CH3 + H
+    !CH2O2 -> HCO + OH
     k(4343) = rateEvaluateOnce(4343)
 
-    !HC3N -> C2H + CN
+    !CH2O2 -> CH2O2+ + E
     k(4344) = rateEvaluateOnce(4344)
 
-    !C2H3N -> CH3 + CN
+    !CH3N -> HCN + H2
     k(4345) = rateEvaluateOnce(4345)
 
-    !C2H3N -> C2H3N+ + E
+    !CH4 -> CH + H + H2
     k(4346) = rateEvaluateOnce(4346)
 
-    !C2H4 -> C2H2 + H2
+    !CH4 -> CH2 + H2
     k(4347) = rateEvaluateOnce(4347)
 
-    !C2H4 -> C2H4+ + E
+    !CH4 -> CH3 + H
     k(4348) = rateEvaluateOnce(4348)
 
-    !C3H3 -> C3H + H2
+    !HC3N -> C2H + CN
     k(4349) = rateEvaluateOnce(4349)
 
-    !C3H3 -> HC3 + H2
+    !C2H3N -> CH3 + CN
     k(4350) = rateEvaluateOnce(4350)
 
-    !C3H3 -> C3H2 + H
+    !C2H3N -> C2H3N+ + E
     k(4351) = rateEvaluateOnce(4351)
 
-    !C3H3 -> H2C3 + H
+    !C2H4 -> C2H2 + H2
     k(4352) = rateEvaluateOnce(4352)
 
-    !C4H2 -> C2H + C2H
+    !C2H4 -> C2H4+ + E
     k(4353) = rateEvaluateOnce(4353)
 
-    !C4H2 -> C4H + H
+    !C3H3 -> C3H + H2
     k(4354) = rateEvaluateOnce(4354)
 
-    !C4H2 -> C4H2+ + E
+    !C3H3 -> HC3 + H2
     k(4355) = rateEvaluateOnce(4355)
 
-    !C5H -> C2H + C3
+    !C3H3 -> C3H2 + H
     k(4356) = rateEvaluateOnce(4356)
 
-    !C5H -> C3H + C2
+    !C3H3 -> H2C3 + H
     k(4357) = rateEvaluateOnce(4357)
 
-    !C5H -> HC3 + C2
+    !C4H2 -> C2H + C2H
     k(4358) = rateEvaluateOnce(4358)
 
-    !C5H -> C5 + H
+    !C4H2 -> C4H + H
     k(4359) = rateEvaluateOnce(4359)
 
-    !C5N -> C4 + CN
+    !C4H2 -> C4H2+ + E
     k(4360) = rateEvaluateOnce(4360)
 
-    !CH4O -> H2CO + H2
+    !C5H -> C2H + C3
     k(4361) = rateEvaluateOnce(4361)
 
-    !CH4O -> CH4O+ + E
+    !C5H -> C3H + C2
     k(4362) = rateEvaluateOnce(4362)
 
-    !C2H4O -> CH3 + HCO
+    !C5H -> HC3 + C2
     k(4363) = rateEvaluateOnce(4363)
 
-    !C2H4O -> CH4 + CO
+    !C5H -> C5 + H
     k(4364) = rateEvaluateOnce(4364)
 
-    !C2H4O -> C2H4O+ + E
+    !C5N -> C4 + CN
     k(4365) = rateEvaluateOnce(4365)
 
-    !C3H4 -> C3H2 + H2
+    !CH3OH -> H2CO + H2
     k(4366) = rateEvaluateOnce(4366)
 
-    !C3H4 -> H2C3 + H2
+    !CH3OH -> CH4O+ + E
     k(4367) = rateEvaluateOnce(4367)
 
-    !C3H4 -> C3H3 + H
+    !C2H4O -> CH3 + HCO
     k(4368) = rateEvaluateOnce(4368)
 
-    !C3H4 -> C3H4+ + E
+    !C2H4O -> CH4 + CO
     k(4369) = rateEvaluateOnce(4369)
 
-    !C4H4 -> C3H4 + C
+    !C2H4O -> C2H4O+ + E
     k(4370) = rateEvaluateOnce(4370)
 
-    !C4H6 -> C3H6 + C
+    !C3H4 -> C3H2 + H2
     k(4371) = rateEvaluateOnce(4371)
 
-    !C5H2 -> C3H + C2H
+    !C3H4 -> H2C3 + H2
     k(4372) = rateEvaluateOnce(4372)
 
-    !C5H2 -> HC3 + C2H
+    !C3H4 -> C3H3 + H
     k(4373) = rateEvaluateOnce(4373)
 
-    !C5H2 -> C5H + H
+    !C3H4 -> C3H4+ + E
     k(4374) = rateEvaluateOnce(4374)
 
-    !C6H -> C2H + C4
+    !C4H4 -> C3H4 + C
     k(4375) = rateEvaluateOnce(4375)
 
-    !C6H -> C3H + C3
+    !C4H6 -> C3H6 + C
     k(4376) = rateEvaluateOnce(4376)
 
-    !C6H -> HC3 + C3
+    !C5H2 -> C3H + C2H
     k(4377) = rateEvaluateOnce(4377)
 
-    !CH5N -> CN + H2 + H2 + H
+    !C5H2 -> HC3 + C2H
     k(4378) = rateEvaluateOnce(4378)
 
-    !CH5N -> HCN + H2 + H + H
+    !C5H2 -> C5H + H
     k(4379) = rateEvaluateOnce(4379)
 
-    !CH5N -> CH3 + NH2
+    !C6H -> C2H + C4
     k(4380) = rateEvaluateOnce(4380)
 
-    !CH5N -> CH3N + H + H
+    !C6H -> C3H + C3
     k(4381) = rateEvaluateOnce(4381)
 
-    !CH5N -> CH5N+ + E
+    !C6H -> HC3 + C3
     k(4382) = rateEvaluateOnce(4382)
 
-    !HC5N -> H + C5N
+    !CH5N -> CN + H2 + H2 + H
     k(4383) = rateEvaluateOnce(4383)
 
-    !HC5N -> C4H + CN
+    !CH5N -> HCN + H2 + H + H
     k(4384) = rateEvaluateOnce(4384)
 
-    !CH3C3N -> C3N + CH3
+    !CH5N -> CH3 + NH2
     k(4385) = rateEvaluateOnce(4385)
 
-    !NC4N -> CN + CN + C2
+    !CH5N -> CH3N + H + H
     k(4386) = rateEvaluateOnce(4386)
 
-    !NC6N -> CN + CN + C4
+    !CH5N -> CH5N+ + E
     k(4387) = rateEvaluateOnce(4387)
 
-    !NC8N -> CN + CN + C6
+    !HC5N -> H + C5N
     k(4388) = rateEvaluateOnce(4388)
 
-    !NC10N -> CN + CN + C8
+    !HC5N -> C4H + CN
     k(4389) = rateEvaluateOnce(4389)
 
-    !NC12N -> CN + CN + C10
+    !CH3C3N -> C3N + CH3
     k(4390) = rateEvaluateOnce(4390)
 
-    !HC4N -> CH + C2 + CN
+    !NC4N -> CN + CN + C2
     k(4391) = rateEvaluateOnce(4391)
 
-    !HC6N -> CH + C4 + CN
+    !NC6N -> CN + CN + C4
     k(4392) = rateEvaluateOnce(4392)
 
-    !HC8N -> CH + C6 + CN
+    !NC8N -> CN + CN + C6
     k(4393) = rateEvaluateOnce(4393)
 
-    !HC10N -> CH + C8 + CN
+    !NC10N -> CN + CN + C8
     k(4394) = rateEvaluateOnce(4394)
 
-    !HC12N -> CH + C10 + CN
+    !NC12N -> CN + CN + C10
     k(4395) = rateEvaluateOnce(4395)
 
-    !HC13N -> CH + C11 + CN
+    !HC4N -> CH + C2 + CN
     k(4396) = rateEvaluateOnce(4396)
 
-    !SIC2H3 -> SIC2H2 + H
+    !HC6N -> CH + C4 + CN
     k(4397) = rateEvaluateOnce(4397)
 
-    !SIC3H3 -> SIC3H + H2
+    !HC8N -> CH + C6 + CN
     k(4398) = rateEvaluateOnce(4398)
 
-    !SIC3H5 -> SIC3H + H2 + H2
+    !HC10N -> CH + C8 + CN
     k(4399) = rateEvaluateOnce(4399)
 
-    !SIC4H -> SI + C4H
+    !HC12N -> CH + C10 + CN
     k(4400) = rateEvaluateOnce(4400)
 
-    !SIC6H -> SI + C6H
+    !HC13N -> CH + C11 + CN
     k(4401) = rateEvaluateOnce(4401)
 
-    !SIC8H -> SI + C8H
+    !SIC2H3 -> SIC2H2 + H
     k(4402) = rateEvaluateOnce(4402)
 
-    !C2H5OH -> C2H4 + H2O
+    !SIC3H3 -> SIC3H + H2
     k(4403) = rateEvaluateOnce(4403)
 
-    !C2H5OH -> C2H5OH+ + E
+    !SIC3H5 -> SIC3H + H2 + H2
     k(4404) = rateEvaluateOnce(4404)
 
-    !CH3C4H -> C4H + CH3
+    !SIC4H -> SI + C4H
     k(4405) = rateEvaluateOnce(4405)
 
-    !CH3OCH3 -> H2CO + CH4
+    !SIC6H -> SI + C6H
     k(4406) = rateEvaluateOnce(4406)
 
-    !CH3OCH3 -> CH3OCH3+ + E
+    !SIC8H -> SI + C8H
     k(4407) = rateEvaluateOnce(4407)
 
-    !C2+ -> C+ + C
+    !C2H5OH -> C2H4 + H2O
     k(4408) = rateEvaluateOnce(4408)
 
-    !CH+ -> C+ + H
+    !C2H5OH -> C2H5OH+ + E
     k(4409) = rateEvaluateOnce(4409)
 
-    !H2+ -> H+ + H
+    !CH3C4H -> C4H + CH3
     k(4410) = rateEvaluateOnce(4410)
 
-    !OH+ -> H+ + O
+    !CH3OCH3 -> H2CO + CH4
     k(4411) = rateEvaluateOnce(4411)
 
-    !SIH+ -> SI+ + H
+    !CH3OCH3 -> CH3OCH3+ + E
     k(4412) = rateEvaluateOnce(4412)
 
-    !C2H+ -> C2+ + H
+    !C2+ -> C+ + C
     k(4413) = rateEvaluateOnce(4413)
 
-    !CH2+ -> CH+ + H
+    !CH+ -> C+ + H
     k(4414) = rateEvaluateOnce(4414)
 
-    !H3+ -> H+ + H2
+    !H2+ -> H+ + H
     k(4415) = rateEvaluateOnce(4415)
 
-    !H3+ -> H2+ + H
+    !OH+ -> H+ + O
     k(4416) = rateEvaluateOnce(4416)
 
-    !CH3+ -> CH+ + H2
+    !SIH+ -> SI+ + H
     k(4417) = rateEvaluateOnce(4417)
 
-    !CH3+ -> CH2+ + H
+    !C2H+ -> C2+ + H
     k(4418) = rateEvaluateOnce(4418)
 
-    !C- -> C + E
+    !CH2+ -> CH+ + H
     k(4419) = rateEvaluateOnce(4419)
 
-    !H- -> H + E
+    !H3+ -> H+ + H2
     k(4420) = rateEvaluateOnce(4420)
 
-    !O- -> O + E
+    !H3+ -> H2+ + H
     k(4421) = rateEvaluateOnce(4421)
 
-    !S- -> S + E
+    !CH3+ -> CH+ + H2
     k(4422) = rateEvaluateOnce(4422)
 
-    !CN- -> CN + E
+    !CH3+ -> CH2+ + H
     k(4423) = rateEvaluateOnce(4423)
 
-    !OH- -> OH + E
+    !C- -> C + E
     k(4424) = rateEvaluateOnce(4424)
 
-    !H+ + E -> H
-    if(Tgas.LE.5.5d3) then
-      k(4425) = small + (3.92d-13&
-          *invTe**0.6353d0)
-    end if
+    !H- -> H + E
+    k(4425) = rateEvaluateOnce(4425)
 
-    !H+ + E -> H
-    if(Tgas.GT.5.5d3) then
-      k(4426) = small + (exp(-28.61303380689232d0-0.7241125657826851d0&
-          *lnTe-0.02026044731984691d0*lnTe**2-0.002380861877349834d0&
-          *lnTe**3-0.0003212605213188796d0&
-          *lnTe**4-0.00001421502914054107d0&
-          *lnTe**5+4.989108920299513d-6*lnTe**6+5.755614137575758d-7&
-          *lnTe**7-1.856767039775261d-8*lnTe**8-3.071135243196595d-9&
-          *lnTe**9))
-    end if
+    !O- -> O + E
+    k(4426) = rateEvaluateOnce(4426)
 
-    !HE + E -> HE+ + E + E
-    k(4427) = small + (dexp(-44.09864886d0+23.91596563d0&
-        *lnTe-10.7532302d0*(lnTe**2)+3.05803875d0&
-        *(lnTe**3)-0.56851189d0*(lnTe**4)+6.79539123d-2&
-        *(lnTe**5)-5.00905610d-3*(lnTe**6)+2.06723616d-4&
-        *(lnTe**7)-3.64916141d-6*(lnTe**8)))
+    !S- -> S + E
+    k(4427) = rateEvaluateOnce(4427)
 
-    !HE+ + E -> HE
-    if(Tgas.LE.9.28d3) then
-      k(4428) = small + (3.92d-13&
-          *invTe**0.6353d0)
-    end if
+    !CN- -> CN + E
+    k(4428) = rateEvaluateOnce(4428)
 
-    !HE+ + E -> HE
-    if(Tgas.GT.9.28d3) then
-      k(4429) = small + (1.54d-9&
-          *(1.d0+0.3d0&
-          /exp(8.099328789667d0&
-          *invTe))&
-          /(exp(40.49664394833662d0*invTe)&
-          *Te**1.5d0)+3.92d-13&
-          /Te**0.6353d0)
-    end if
-
-    !HE+ + E -> HE++ + E + E
-    k(4430) = small + (exp(-68.71040990212001d0+43.93347632635d0&
-        *lnTe-18.48066993568d0*lnTe**2+4.701626486759002d0&
-        *lnTe**3-0.7692466334492d0*lnTe**4+0.08113042097303d0&
-        *lnTe**5-0.005324020628287001d0*lnTe**6+0.0001975705312221d0&
-        *lnTe**7-3.165581065665d-6*lnTe**8))
-
-    !HE++ + E -> HE+
-    k(4431) = small + (3.36d-10/sqrTgas/(Tgas&
-        /1.d3)**0.2d0/(1+(Tgas/1.d6)**0.7d0))
-
-    !H- + H -> H2 + E
-    if(Tgas.LT.1160d0) then
-      k(4432) = small + (1.43d-9)
-    end if
-
-    !H- + H -> H2 + E
-    if(Tgas.GT.1160d0) then
-      k(4433) = small + (exp(-20.06913897587003d0+0.2289800603272916d0&
-          *lnTe+0.03599837721023835d0*lnTe**2-0.004555120027032095d0&
-          *lnTe**3-0.0003105115447124016d0&
-          *lnTe**4+0.0001073294010367247d0*lnTe**5-8.36671960467864d-6&
-          *lnTe**6+2.238306228891639d-7*lnTe**7))
-    end if
-
-    !H + H+ -> H2+
-    if(Tgas.LE.6.7d3) then
-      k(4434) = small + (1.85d-23&
-          *Tgas**1.8d0)
-    end if
-
-    !H + H+ -> H2+
-    if(Tgas.GT.6.7d3) then
-      k(4435) = small + (5.81d-16&
-          *(Tgas&
-          /5.62d4)**(-0.6657d0*log10(Tgas/5.62d4)))
-    end if
-
-    !H2+ + H -> H2 + H+
-    k(4436) = small + (6.0d-10)
-
-    !H2 + H+ -> H2+ + H
-    if(Tgas.GT.3.48d3) then
-      k(4437) = small + (exp(-24.24914687731536d0+3.400824447095291d0&
-          *lnTe-3.898003964650152d0*lnTe**2+2.045587822403071d0&
-          *lnTe**3-0.5416182856220388d0*lnTe**4+0.0841077503763412d0&
-          *lnTe**5-0.007879026154483455d0&
-          *lnTe**6+0.0004138398421504563d0*lnTe**7-9.36345888928611d-6&
-          *lnTe**8))
-    end if
-
-    !H2 + E -> H + H + E
-    k(4438) = small + (5.6d-11&
-        *exp(-102124.d0*invT)*Tgas**0.5d0)
-
-    !H2 + H -> H + H + H
-    k(4439) = small + (1.0670825d-10&
-        *Te**2.012d0*exp(-4.463d0*invTe)&
-        /(1.d0+0.2472d0*Te)**3.512d0)
-
-    !H- + E -> H + E + E
-    k(4440) = small + (exp(-18.01849334273d0+2.360852208681d0&
-        *lnTe-0.2827443061704d0*lnTe**2+0.01623316639567d0&
-        *lnTe**3-0.03365012031362999d0*lnTe**4+0.01178329782711d0&
-        *lnTe**5-0.001656194699504d0*lnTe**6+0.0001068275202678d0&
-        *lnTe**7-2.631285809207d-6*lnTe**8))
-
-    !H- + H -> H + H + E
-    if(Tgas.LE.1.16d3) then
-      k(4441) = small + (2.56d-9&
-          *Te**1.78186d0)
-    end if
-
-    !H- + H -> H + H + E
-    if(Tgas.GT.1.16d3) then
-      k(4442) = small + (exp(-20.37260896533324d0+1.139449335841631d0&
-          *lnTe-0.1421013521554148d0*lnTe**2+0.00846445538663d0&
-          *lnTe**3-0.0014327641212992d0*lnTe**4+0.0002012250284791d0&
-          *lnTe**5+0.0000866396324309d0*lnTe**6-0.00002585009680264d0&
-          *lnTe**7+2.4555011970392d-6*lnTe**8-8.06838246118d-8&
-          *lnTe**9))
-    end if
-
-    !H- + H+ -> H + H
-    k(4443) = small + (6.5d-9/sqrt(Te))
-
-    !H- + H+ -> H2+ + E
-    k(4444) = small + (1.d-8&
-        *Tgas**(-0.4d0))
-
-    !H2+ + E -> H + H
-    if(Tgas.LE.6.17d2) then
-      k(4445) = small + (1.d-8)
-    end if
-
-    !H2+ + E -> H + H
-    if(Tgas.GT.6.17d2) then
-      k(4446) = small + (1.32d-6&
-          *Tgas**(-0.76d0))
-    end if
-
-    !H2+ + H- -> H + H2
-    k(4447) = small + (5.d-7*sqrt(1.d2&
-        *invT))
-
-    !H + H + H -> H2 + H
-    if(Tgas.LE.3d2) then
-      k(4448) = small + (1.3d-32&
-          *(T32)**(-0.38d0))
-    end if
-
-    !H + H + H -> H2 + H
-    if(Tgas.GT.3d2) then
-      k(4449) = small + (1.3d-32&
-          *(T32)**(-1.00d0))
-    end if
-
-    !H2 + H + H -> H2 + H2
-    if(Tgas.LE.3d2) then
-      k(4450) = small + (1.3d-32&
-          *(T32)**(-0.38d0) &
-          / 8.d0)
-    end if
-
-    !H2 + H + H -> H2 + H2
-    if(Tgas.GT.3d2) then
-      k(4451) = small + (1.3d-32&
-          *(T32)**(-1.00d0) &
-          / 8.d0)
-    end if
+    !OH- -> OH + E
+    k(4429) = rateEvaluateOnce(4429)
 
     !H -> H+ + E
-    k(4452) = (small + (ratexH &
-        * (1d0+phiH) + n(idx_He)&
-        /(n(idx_H)+2*n(idx_H2)+1d-40) * ratexHe * phiH)&
-        )* J21xray
-
-        k(14) = k(14) + 3.1136*k(4452) !C
-        k(22) = k(22) + 1.5957*k(4452) !O
-        k(20) = k(20) + 2.0029*k(4452) !N
-        k(19) = k(19) + 13.1726*k(4452) !Mg 50eV cross section ratio
-        k(36) = k(36) + 2*k(4452)*0.05 !H2 -> H + H+ + E
-        k(38) = k(38) + 2*k(4452)*0.95 !H2 -> H2+ + E
-
-        !C2 -> C + C
-        k(26) = k(26) + 3.1136*2*k(4452)
-
-        !CH -> C + H
-        k(28) = k(28) + (1+3.1136)*k(4452)
-
-        !CN -> C + N
-        k(30) = k(30) + (2.0029+3.1136)*k(4452)
-
-        !CO -> C + O
-        k(31) = k(31) + (3.1136+1.5957)*k(4452)*0.8
-
-        !CO -> CO+ + E
-        k(32) = k(32) + (3.1136+1.5957)*k(4452)*0.2
-
-        !MGH -> MG + H
-        k(42) = k(42) + (13.1726+1)*k(4452)
-
-        !N2 -> N + N
-        k(43) = k(43) + 2*2.0029*k(4452)
-
-        !NH -> N + H
-        k(45) = k(45) + (1+2.0029)*k(4452)
-
-        !NO -> N + O
-        k(46) = k(46) + (2.0029+1.5957)*k(4452)*0.8
-
-        !NO -> NO+ + E
-        k(47) = k(47) + (2.0029+1.5957)*k(4452)*0.2
-
-        !O2 -> O + O
-        k(49) = k(49) + 1.5957*2*k(4452)*0.8
-
-        !O2 -> O2+ + E
-        k(50) =k(50) + 1.5957*2*k(4452)*0.2
-
-        !OH -> O + H
-        k(51) = k(51) + (1.5957+1)*k(4452)
-
-        !C2H -> C2 + H
-        k(62) = k(62) + (2*3.1136+1)*k(4452)*0.5
-
-        !C2N -> C + CN
-        k(63) = k(63) + (2*3.1136+1)*k(4452)*0.5
-
-        !C3 -> C2 + C
-        k(65) = k(65) + (3*3.1136)*k(4452)
-
-        !CCO -> C2 + O
-        k(66) = k(66) + (2*3.1136+1.5957)*k(4452)*0.5
-
-        !CCO -> CO + C
-        k(67) = k(67) + (2*3.1136+1.5957)*k(4452)*0.5
-
-        !CH2 -> CH2+ + E
-        k(70) = k(70) + (3.1136+2*1)*k(4452)
-
-        !CO2 -> CO + O
-        k(71) = k(71) + (3.1136+2*1.5957)*k(4452)
-
-        !H2O -> OH + H
-        k(72) = k(72) + (1.5957+2)*k(4452)
-
-        !HCN -> CN + H
-        k(75) = k(75) + (1+3.1136+2.0029)*k(4452)
-
-        !HCO -> CO + H
-        k(76) = k(76) + (1+3.1136+1.5957)*k(4452)*0.8
-
-        !HCO -> HCO+ + E
-        k(77) = k(77) + (1+3.1136+1.5957)*k(4452)*0.2
-
-        !HNC -> CN + H
-        k(81) = k(81) + (1+2.0029+3.1136)*k(4452)
-
-        !HNO -> HNO+ + E
-        k(82) = k(82) + (1+2.0029+1.5957)*k(4452)
-
-        !N2O -> NO + N
-        k(86) = k(86) + (2*2.0029+1.5957)*k(4452)
-
-        !NH2 -> NH + H
-        k(88) = k(88) + (2*1+2.0029)*k(4452)*0.8
-
-        !NH2 -> NH2+ + E
-        k(89) = k(88) + (2*1+2.0029)*k(4452)*0.2
-
-        !NH3 -> NH3+ + E
-        k(121) = k(121) + (3*1+2.0029)*k(4452)
-
+    k(4430) = small + ratexH * J21xray
 
     !HE -> HE+ + E
-    k(4453) = (small + (ratexHe &
-        * (1d0+phiHe) + (n(idx_H)+2*n(idx_H2))&
-        /(n(idx_He)+1d-40) * ratexH * phiHe)&
-        )* J21xray
-    !print '(E11.3)',k(4452)/k(36)
+    k(4431) = small + ratexHe * J21xray
+
+        !C -> C+ + E
+        k(14) = k(14) + 3.11361486414008 * k(4430)
+
+        !CL -> CL+ + E
+        k(15) = k(15) + 4.803406385704663 * k(4430)
+
+        !FE -> FE+ + E
+        k(16) = k(16) + 5.606452630363866 * k(4430)
+
+        !H -> H+ + E
+        k(17) = k(17) + 1.0 * k(4430)
+
+        !MG -> MG+ + E
+        k(19) = k(19) + 13.172565985638398 * k(4430)
+
+        !N -> N+ + E
+        k(20) = k(20) + 2.0028570095656733 * k(4430)
+
+        !NA -> NA+ + E
+        k(21) = k(21) + 6.40905424645587 * k(4430)
+
+        !O -> O+ + E
+        k(22) = k(22) + 1.5956962140327202 * k(4430)
+
+        !P -> P+ + E
+        k(23) = k(23) + 7.645255352429739 * k(4430)
+
+        !S -> S+ + E
+        k(24) = k(24) + 4.865322856655347 * k(4430)
+
+        !SI -> SI+ + E
+        k(25) = k(25) + 9.045711843382838 * k(4430)
+
+        !C2 -> C + C
+        k(26) = k(26) + 6.22722972828016 * k(4430)
+
+        !CCL -> C + CL
+        k(27) = k(27) + 7.917021249844742 * k(4430)
+
+        !CH -> C + H
+        k(28) = k(28) + 4.1136148641400805 * k(4430)
+
+        !CLO -> CL + O
+        k(29) = k(29) + 6.3991025997373825 * k(4430)
+
+        !CN -> C + N
+        k(30) = k(30) + 5.116471873705754 * k(4430)
+
+        !CO -> C + O
+        k(31) = k(31) + 4.7093110781728 * k(4430)*0.8
+
+        !CO -> CO+ + E
+        k(32) = k(32) + 4.7093110781728 * k(4430)*0.2
+
+        !CP -> C + P
+        k(33) = k(33) + 10.75887021656982 * k(4430)
+
+        !CS -> C + S
+        k(34) = k(34) + 7.978937720795427 * k(4430)
+
+        !H2 -> H + H
+        k(35) = k(35) + 2.0 * k(4430)
+
+        !H2 -> H+ + H + E
+        k(36) = k(36) + 2.0 * k(4430)*0.05
+
+        !H2 -> H2+ + E
+        k(38) = k(38) + 2.0 * k(4430)*0.95
+
+        !HCL -> H + CL
+        k(39) = k(39) + 5.803406385704663 * k(4430)
+
+        !HF -> F + H
+        k(40) = k(40) + 5.205895677811162 * k(4430)
+
+        !HS -> H + S
+        k(41) = k(41) + 5.865322856655347 * k(4430)
+
+        !MGH -> MG + H
+        k(42) = k(42) + 14.172565985638398 * k(4430)
+
+        !N2 -> N + N
+        k(43) = k(43) + 4.0057140191313465 * k(4430)
+
+        !NAH -> NA + H
+        k(44) = k(44) + 7.40905424645587 * k(4430)
+
+        !NH -> N + H
+        k(45) = k(45) + 3.0028570095656733 * k(4430)
+
+        !NO -> N + O
+        k(46) = k(46) + 3.5985532235983935 * k(4430)*0.8
+
+        !NO -> NO+ + E
+        k(47) = k(47) + 3.5985532235983935 * k(4430)*0.2
+
+        !NS -> N + S
+        k(48) = k(48) + 6.86817986622102 * k(4430)*0.8
+
+        !O2 -> O + O
+        k(49) = k(49) + 3.1913924280654404 * k(4430)*0.2
+
+        !O2 -> O2+ + E
+        k(50) = k(50) + 3.1913924280654404 * k(4430)
+
+        !OH -> O + H
+        k(51) = k(51) + 2.59569621403272 * k(4430)
+
+        !PH -> P + H
+        k(52) = k(52) + 8.64525535242974 * k(4430)
+
+        !PN -> P + N
+        k(53) = k(53) + 9.648112361995413 * k(4430)
+
+        !PO -> P + O
+        k(54) = k(54) + 9.24095156646246 * k(4430)
+
+        !S2 -> S + S
+        k(55) = k(55) + 9.730645713310693 * k(4430)
+
+        !SIC -> SI + C
+        k(56) = k(56) + 12.159326707522919 * k(4430)
+
+        !SIH -> SI + H
+        k(57) = k(57) + 10.045711843382838 * k(4430)
+
+        !SIN -> SI + N
+        k(58) = k(58) + 11.048568852948511 * k(4430)
+
+        !SIO -> SI + O
+        k(59) = k(59) + 10.641408057415559 * k(4430)
+
+        !SIS -> SI + S
+        k(60) = k(60) + 13.911034700038185 * k(4430)
+
+        !SO -> S + O
+        k(61) = k(61) + 6.461019070688067 * k(4430)
+
+        !C2H -> C2 + H
+        k(62) = k(62) + 7.22722972828016 * k(4430)*0.5
+
+        !C2N -> C + CN
+        k(63) = k(63) + 8.230086737845834 * k(4430)*0.5
+
+        !C2S -> CS + C
+        k(64) = k(64) + 11.092552584935508 * k(4430)
+
+        !C3 -> C2 + C
+        k(65) = k(65) + 9.34084459242024 * k(4430)
+
+        !CCO -> C2 + O
+        k(66) = k(66) + 7.82292594231288 * k(4430)*0.5
+
+        !CCO -> CO + C
+        k(67) = k(67) + 7.82292594231288 * k(4430)*0.5
+
+        !CCP -> C2 + P
+        k(68) = k(68) + 13.8724850807099 * k(4430)
+
+        !CCP -> CP + C
+        k(69) = k(69) + 13.8724850807099 * k(4430)
+
+        !CH2 -> CH2+ + E
+        k(70) = k(70) + 5.1136148641400805 * k(4430)
+
+        !CO2 -> CO + O
+        k(71) = k(71) + 6.30500729220552 * k(4430)
+
+        !H2O -> OH + H
+        k(72) = k(72) + 3.59569621403272 * k(4430)
+
+        !H2S -> H2 + S
+        k(73) = k(73) + 6.865322856655347 * k(4430)
+
+        !H2S -> H2S+ + E
+        k(74) = k(74) + 6.865322856655347 * k(4430)
+
+        !HCN -> CN + H
+        k(75) = k(75) + 6.116471873705754 * k(4430)
+
+        !HCO -> CO + H
+        k(76) = k(76) + 5.7093110781728 * k(4430)
+
+        !HCO -> HCO+ + E
+        k(77) = k(77) + 5.7093110781728 * k(4430)*0.8
+
+        !HCP -> CP + H
+        k(78) = k(78) + 11.75887021656982 * k(4430)*0.2
+
+        !HCS -> HCS+ + E
+        k(79) = k(79) + 8.978937720795427 * k(4430)
+
+        !HCSI -> CH + SI
+        k(80) = k(80) + 13.159326707522919 * k(4430)
+
+        !HNC -> CN + H
+        k(81) = k(81) + 6.116471873705754 * k(4430)
+
+        !HNO -> HNO+ + E
+        k(82) = k(82) + 4.598553223598394 * k(4430)
+
+        !HNSI -> SIN + H
+        k(83) = k(83) + 12.048568852948511 * k(4430)
+
+        !HPO -> PO + H
+        k(84) = k(84) + 10.24095156646246 * k(4430)
+
+        !HS2 -> HS + S
+        k(85) = k(85) + 10.730645713310693 * k(4430)
+
+        !N2O -> NO + N
+        k(86) = k(86) + 5.601410233164067 * k(4430)
+
+        !NAOH -> NA + OH
+        k(87) = k(87) + 9.00475046048859 * k(4430)
+
+        !NH2 -> NH + H
+        k(88) = k(88) + 4.002857009565673 * k(4430)*0.8
+
+        !NH2 -> NH2+ + E
+        k(89) = k(89) + 4.002857009565673 * k(4430)*0.2
+
+        !NO2 -> NO + O
+        k(90) = k(90) + 5.194249437631114 * k(4430)
+
+        !O2H -> O + OH
+        k(91) = k(91) + 4.19139242806544 * k(4430)
+
+        !O2H -> O2 + H
+        k(92) = k(92) + 4.19139242806544 * k(4430)
+
+        !OCN -> CN + O
+        k(93) = k(93) + 6.7121680877384735 * k(4430)
+
+        !OCS -> CO + S
+        k(94) = k(94) + 9.574633934828148 * k(4430)
+
+        !OCS -> OCS+ + E
+        k(95) = k(95) + 9.574633934828148 * k(4430)
+
+        !PH2 -> PH + H
+        k(96) = k(96) + 9.64525535242974 * k(4430)
+
+        !SIC2 -> SIC + C
+        k(97) = k(97) + 15.272941571662997 * k(4430)
+
+        !SIH2 -> SIH + H
+        k(98) = k(98) + 11.045711843382838 * k(4430)
+
+        !SINC -> SI + CN
+        k(99) = k(99) + 14.162183717088592 * k(4430)
+
+        !SIO2 -> SIO + O
+        k(100) = k(100) + 12.237104271448278 * k(4430)
+
+        !SO2 -> SO + O
+        k(101) = k(101) + 8.056715284720788 * k(4430)
+
+        !C2H2 -> C2H + H
+        k(102) = k(102) + 8.227229728280161 * k(4430)
+
+        !C2H2 -> C2H2+ + E
+        k(103) = k(103) + 8.227229728280161 * k(4430)
+
+        !C3H -> C3 + H
+        k(104) = k(104) + 10.34084459242024 * k(4430)
+
+        !HC3 -> C3 + H
+        k(105) = k(105) + 10.34084459242024 * k(4430)
+
+        !C3N -> C2 + CN
+        k(106) = k(106) + 11.343701601985913 * k(4430)
+
+        !C3O -> C2 + CO
+        k(107) = k(107) + 10.93654080645296 * k(4430)
+
+        !C3P -> CCP + C
+        k(108) = k(108) + 16.98609994484998 * k(4430)
+
+        !C3S -> C2 + CS
+        k(109) = k(109) + 14.206167449075586 * k(4430)
+
+        !C4 -> C3 + C
+        k(110) = k(110) + 12.45445945656032 * k(4430)
+
+        !CH3 -> CH2 + H
+        k(111) = k(111) + 6.1136148641400805 * k(4430)
+
+        !CH3 -> CH3+ + E
+        k(112) = k(112) + 6.1136148641400805 * k(4430)
+
+        !H2CO -> CO + H2
+        k(113) = k(113) + 6.7093110781728 * k(4430)
+
+        !H2CS -> H2 + CS
+        k(114) = k(114) + 9.978937720795427 * k(4430)
+
+        !H2O2 -> OH + OH
+        k(115) = k(115) + 5.19139242806544 * k(4430)
+
+        !H2S2 -> HS + HS
+        k(116) = k(116) + 11.730645713310693 * k(4430)
+
+        !H2SIO -> SIO + H2
+        k(117) = k(117) + 12.641408057415559 * k(4430)
+
+        !HCCP -> CCP + H
+        k(118) = k(118) + 14.8724850807099 * k(4430)
+
+        !NH3 -> NH + H2
+        k(119) = k(119) + 5.002857009565673 * k(4430)
+
+        !NH3 -> NH2 + H
+        k(120) = k(120) + 5.002857009565673 * k(4430)
+
+        !NH3 -> NH3+ + E
+        k(121) = k(121) + 5.002857009565673 * k(4430)
+
+        !SIC2H -> SIC2 + H
+        k(122) = k(122) + 16.272941571662997 * k(4430)
+
+        !SIC3 -> SIC2 + C
+        k(123) = k(123) + 18.38655643580308 * k(4430)
+
+        !SICH2 -> SIC + H2
+        k(124) = k(124) + 14.159326707522919 * k(4430)
+
+        !SIH3 -> SIH2 + H
+        k(125) = k(125) + 12.045711843382838 * k(4430)
+
+        !C2H2N -> CH2 + CN
+        k(126) = k(126) + 10.230086737845834 * k(4430)
+
+        !C2H2O -> CH2 + CO
+        k(127) = k(127) + 9.82292594231288 * k(4430)
+
+        !C2H2O -> C2H2O+ + E
+        k(128) = k(128) + 9.82292594231288 * k(4430)
+
+        !C2H3 -> C2H2 + H
+        k(129) = k(129) + 9.227229728280161 * k(4430)
+
+        !C3H2 -> C3H + H
+        k(130) = k(130) + 11.34084459242024 * k(4430)
+
+        !H2C3 -> HC3 + H
+        k(131) = k(131) + 11.34084459242024 * k(4430)
+
+        !C4H -> C4 + H
+        k(132) = k(132) + 13.45445945656032 * k(4430)
+
+        !C4N -> C3 + CN
+        k(133) = k(133) + 14.457316466125993 * k(4430)
+
+        !C4P -> C3P + C
+        k(134) = k(134) + 20.099714808990058 * k(4430)
+
+        !C4S -> C3 + CS
+        k(135) = k(135) + 17.31978231321567 * k(4430)
+
+        !C5 -> C4 + C
+        k(136) = k(136) + 15.5680743207004 * k(4430)
+
+        !CH2O2 -> HCO + OH
+        k(137) = k(137) + 8.30500729220552 * k(4430)
+
+        !CH2O2 -> CH2O2+ + E
+        k(138) = k(138) + 8.30500729220552 * k(4430)
+
+        !CH2PH -> HCP + H2
+        k(139) = k(139) + 13.75887021656982 * k(4430)
+
+        !CH3N -> HCN + H2
+        k(140) = k(140) + 8.116471873705754 * k(4430)
+
+        !CH4 -> CH2 + H2
+        k(141) = k(141) + 7.1136148641400805 * k(4430)
+
+        !HC3N -> C2H + CN
+        k(142) = k(142) + 12.343701601985913 * k(4430)
+
+        !SIC2H2 -> SIC2 + H2
+        k(143) = k(143) + 17.272941571662997 * k(4430)
+
+        !SIC3H -> SIC3 + H
+        k(144) = k(144) + 19.38655643580308 * k(4430)
+
+        !SIC4 -> SIC2 + C2
+        k(145) = k(145) + 21.50017129994316 * k(4430)
+
+        !SICH3 -> SICH2 + H
+        k(146) = k(146) + 15.159326707522919 * k(4430)
+
+        !SIH4 -> SIH2 + H2
+        k(147) = k(147) + 13.045711843382838 * k(4430)
+
+        !C2H3N -> CH3 + CN
+        k(148) = k(148) + 11.230086737845834 * k(4430)
+
+        !C2H3N -> C2H3N+ + E
+        k(149) = k(149) + 11.230086737845834 * k(4430)
+
+        !C2H4 -> C2H2 + H2
+        k(150) = k(150) + 10.227229728280161 * k(4430)
+
+        !C2H4 -> C2H4+ + E
+        k(151) = k(151) + 10.227229728280161 * k(4430)
+
+        !C3H3 -> C3H2 + H
+        k(152) = k(152) + 12.34084459242024 * k(4430)
+
+        !C3H3 -> H2C3 + H
+        k(153) = k(153) + 12.34084459242024 * k(4430)
+
+        !C4H2 -> C2H + C2H
+        k(154) = k(154) + 14.45445945656032 * k(4430)
+
+        !C4H2 -> C4H + H
+        k(155) = k(155) + 14.45445945656032 * k(4430)
+
+        !C4H2 -> C4H2+ + E
+        k(156) = k(156) + 14.45445945656032 * k(4430)
+
+        !C5H -> C5 + H
+        k(157) = k(157) + 16.5680743207004 * k(4430)
+
+        !C5N -> C4 + CN
+        k(158) = k(158) + 17.570931330266074 * k(4430)
+
+        !C6 -> C5 + C
+        k(159) = k(159) + 18.68168918484048 * k(4430)
+
+        !CH4O -> CH3 + OH
+        k(160) = k(160) + 8.7093110781728 * k(4430)
+
+        !CH4O -> H2CO + H2
+        k(161) = k(161) + 8.7093110781728 * k(4430)
+
+        !CH4O -> H3CO+ + H + E
+        k(162) = k(162) + 8.7093110781728 * k(4430)
+
+        !CH4O -> CH4O+ + E
+        k(163) = k(163) + 8.7093110781728 * k(4430)
+
+        !C2H4O -> CH3 + HCO
+        k(164) = k(164) + 11.82292594231288 * k(4430)
+
+        !C2H4O -> CH4 + CO
+        k(165) = k(165) + 11.82292594231288 * k(4430)
+
+        !C2H4O -> C2H4O+ + E
+        k(166) = k(166) + 11.82292594231288 * k(4430)
+
+        !C2H5 -> C2H4 + H
+        k(167) = k(167) + 11.227229728280161 * k(4430)
+
+        !C3H3N -> C2H3 + CN
+        k(168) = k(168) + 14.343701601985913 * k(4430)
+
+        !C3H4 -> C3H3 + H
+        k(169) = k(169) + 13.34084459242024 * k(4430)
+
+        !C3H4 -> C3H4+ + E
+        k(170) = k(170) + 13.34084459242024 * k(4430)
+
+        !C5H2 -> C5H + H
+        k(171) = k(171) + 17.5680743207004 * k(4430)
+
+        !C6H -> C6 + H
+        k(172) = k(172) + 19.68168918484048 * k(4430)
+
+        !C7 -> C6 + C
+        k(173) = k(173) + 21.79530404898056 * k(4430)
+
+        !CH5N -> HCN + H2 + H + H
+        k(174) = k(174) + 10.116471873705754 * k(4430)
+
+        !CH5N -> CH5N+ + E
+        k(175) = k(175) + 10.116471873705754 * k(4430)
+
+        !HC5N -> C4H + CN
+        k(176) = k(176) + 18.570931330266074 * k(4430)
+
+        !C6H2 -> C6H + H
+        k(177) = k(177) + 20.68168918484048 * k(4430)
+
+        !C7H -> C7 + H
+        k(178) = k(178) + 22.79530404898056 * k(4430)
+
+        !C7N -> C6 + CN
+        k(179) = k(179) + 23.798161058546235 * k(4430)
+
+        !C8 -> C7 + C
+        k(180) = k(180) + 24.90891891312064 * k(4430)
+
+        !CH3C3N -> CH3 + C3N
+        k(181) = k(181) + 17.457316466125995 * k(4430)
+
+        !HCOOCH3 -> H2CO + H2CO
+        k(182) = k(182) + 13.4186221563456 * k(4430)
+
+        !C2H5OH -> C2H5OH+ + E
+        k(183) = k(183) + 13.82292594231288 * k(4430)
+
+        !C7H2 -> C7H + H
+        k(184) = k(184) + 23.79530404898056 * k(4430)
+
+        !C8H -> C8 + H
+        k(185) = k(185) + 25.90891891312064 * k(4430)
+
+        !C9 -> C8 + C
+        k(186) = k(186) + 28.02253377726072 * k(4430)
+
+        !CH3C4H -> CH3 + C4H
+        k(187) = k(187) + 19.5680743207004 * k(4430)
+
+        !CH3OCH3 -> H2CO + CH4
+        k(188) = k(188) + 13.82292594231288 * k(4430)
+
+        !CH3OCH3 -> CH3OCH3+ + E
+        k(189) = k(189) + 13.82292594231288 * k(4430)
+
+        !HC7N -> C6H + CN
+        k(190) = k(190) + 24.798161058546235 * k(4430)
+
+        !C2H6CO -> C2H2O + CH4
+        k(191) = k(191) + 16.93654080645296 * k(4430)
+
+        !C8H2 -> C8H + H
+        k(192) = k(192) + 26.90891891312064 * k(4430)
+
+        !C9H -> C9 + H
+        k(193) = k(193) + 29.02253377726072 * k(4430)
+
+        !C9N -> C8 + CN
+        k(194) = k(194) + 30.025390786826392 * k(4430)
+
+        !CH3C5N -> CH3 + C5N
+        k(195) = k(195) + 23.684546194406153 * k(4430)
+
+        !C9H2 -> C9H + H
+        k(196) = k(196) + 30.02253377726072 * k(4430)
+
+        !CH3C6H -> CH3 + C6H
+        k(197) = k(197) + 25.795304048980558 * k(4430)
+
+        !CH3C7N -> CH3 + C7N
+        k(198) = k(198) + 29.911775922686317 * k(4430)
+
+        !HC9N -> C8H + CN
+        k(199) = k(199) + 31.025390786826392 * k(4430)
+
+        !CH+ -> C + H+
+        k(200) = k(200) + 4.1136148641400805 * k(4430)
+
+    !H -> H_DUST
+    k(4432) = small + (6.0557e-14&
+        *sqrt(Tgas&
+        /1.007900))
+
+    !H2 -> H_DUSTH_DUST
+    k(4433) = small + (6.0557e-14&
+        *sqrt(Tgas&
+        /2.015800))
+
+    !H_DUST -> H
+    k(4434) = small + (2.140000e+12&
+        *exp(-350.000000&
+        /Tgas)+4.554852e-09)
+
+    !H_DUSTH_DUST -> H2
+    k(4435) = small + (1.715817e+12&
+        *exp(-450.000000&
+        /Tgas)+8.752071e-10)
+
+    !H_DUST + H_DUST -> H_DUSTH_DUST
+    k(4436) = small + (1.231708e+12+1.231708e+12)
+
     coe(:) = k(:) !set coefficients to return variable
 
     !!uncomment below to check coefficient values
@@ -16148,8 +16458,7 @@ contains
         + 1d0*x(idx_H3C3Oj) / m(idx_H3C3Oj) &
         + 1d0*x(idx_C5H4Nj) / m(idx_C5H4Nj) &
         + 1d0*x(idx_C8H5j) / m(idx_C8H5j) &
-        + 1d0*x(idx_C9H5j) / m(idx_C9H5j) &
-        + 2d0*x(idx_HEjj) / m(idx_HEjj))
+        + 1d0*x(idx_C9H5j) / m(idx_C9H5j))
     !check if charge conservation goes wrong
     if(x(idx_E)<0d0) then
       print *,"ERROR in conserveLin, electrons < 0"
@@ -16524,6 +16833,67 @@ contains
 
   end function cluster_growth_rate
 
+  function general_cluster_growth_rate(monomer_idx, cluster1_size, cluster2_size,&
+        temperature, stick) result(rate)
+    ! k_N = v_thermal * cross_section_N * stick_N
+    ! with N the cluster size of the reactant
+    use krome_constants
+    use krome_commons
+    use krome_getphys
+    implicit none
+    integer, parameter :: dp=kind(0.d0) ! double precision
+
+    integer, intent(in) :: monomer_idx
+    integer, intent(in) :: cluster1_size
+    integer, intent(in) :: cluster2_size
+    real(dp), intent(in) :: temperature
+    real(dp), intent(in), optional :: stick
+    real(dp) :: rate
+
+    real(dp) :: v_thermal
+    real(dp) :: cross_section
+    real(dp) :: stick_coefficient
+    real(dp) :: monomer_radius
+    real(dp) :: cluster1_radius
+    real(dp) :: cluster2_radius
+    real(dp) :: inverse_monomer_mass
+    real(dp) :: inverse_cluster1_mass
+    real(dp) :: inverse_cluster2_mass
+    real(dp) :: inverse_reduced_mass
+    real(dp) :: inverse_mass(nspec)
+
+    inverse_mass(:) = get_imass()
+
+    ! References in kromelib.py
+    monomer_radius = 7.5765e-09_dp ! SIO in cm
+
+    inverse_monomer_mass = inverse_mass(monomer_idx)
+    inverse_cluster1_mass = 1._dp/cluster1_size * inverse_monomer_mass
+    inverse_cluster2_mass = 1._dp/cluster2_size * inverse_monomer_mass
+    inverse_reduced_mass = inverse_cluster1_mass + inverse_cluster2_mass
+
+    v_thermal = sqrt(8._dp * boltzmann_erg * temperature &
+        * inverse_reduced_mass / pi )
+
+    ! Assuming cluster volume is proportional to monomer volume
+    ! V_N = N * V_1, and both are considered as a hypothetical sphere
+    cluster1_radius = monomer_radius * cluster1_size**(1._dp/3._dp)
+    cluster2_radius = monomer_radius * cluster2_size**(1._dp/3._dp)
+
+    ! Geometrical cross section
+    cross_section = pi * (cluster1_radius + cluster2_radius)**2._dp
+
+    ! Sticking coefficiet is set to one for simplicity
+    if(present(stick)) then
+      stick_coefficient = stick
+    else
+      stick_coefficient = 1._dp
+    end if
+
+    rate = v_thermal * cross_section * stick_coefficient
+
+  end function general_cluster_growth_rate
+
   !***********************************
   subroutine init_exp_table()
     use krome_commons
@@ -16616,8 +16986,8 @@ contains
     use krome_fit
     real*8::revHS,Tgas,Tgas2,Tgas3,Tgas4,invT,lnT,H,S
     real*8::Tnist,Tnist2,Tnist3,Tnist4,invTnist,invTnist2,lnTnist
-    real*8::p1_nasa(477,7), p2_nasa(477,7), Tlim_nasa(477,3), p(7)
-    real*8::p1_nist(477,7), p2_nist(477,7), Tlim_nist(477,3)
+    real*8::p1_nasa(458,7), p2_nasa(458,7), Tlim_nasa(458,3), p(7)
+    real*8::p1_nist(458,7), p2_nist(458,7), Tlim_nist(458,3)
     integer::idx
 
     p(:) = 0.d0
@@ -17488,7 +17858,6 @@ contains
       found = .false.
       if(arr_r1(i) == idx_found) found = .true.
       if(arr_r2(i) == idx_found) found = .true.
-      if(arr_r3(i) == idx_found) found = .true.
       if(arr_p1(i) == idx_found) found = .true.
       if(arr_p2(i) == idx_found) found = .true.
       if(arr_p3(i) == idx_found) found = .true.
@@ -17556,7 +17925,7 @@ contains
     use krome_commons
     implicit none
     integer::i
-    integer::r1,r2,r3
+    integer::r1,r2
     real*8::get_flux(nrea),n(nspec),k(nrea),rrmax,Tgas
 
     k(:) = coe(n(:))
@@ -17567,8 +17936,7 @@ contains
     do i=1,nrea
       r1 = arr_r1(i)
       r2 = arr_r2(i)
-      r3 = arr_r3(i)
-      arr_flux(i) = k(i)*n(r1)*n(r2)*n(r3)
+      arr_flux(i) = k(i)*n(r1)*n(r2)
     end do
     get_flux(:) = arr_flux(:)
 
@@ -17580,8 +17948,8 @@ contains
     ! and product index
     use krome_commons
 
-    arr_r1(1:4453) = (/1,196,197,198,199,200,201,202,203,204,205&
-        ,206,207,10,22,11,12,13,14,15,16,17,23,18,19,24,25,26,27,28&
+    arr_r1(1:4436) = (/1,198,199,200,201,202,203,204,205,206,207&
+        ,208,209,10,22,11,12,13,14,15,16,17,23,18,19,24,25,26,27,28&
         ,21,21,29,30,20,20,20,20,31,32,34,35,36,37,38,39,39,40,41,41&
         ,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,57,58,58,59&
         ,60,61,62,62,63,64,64,65,66,67,68,69,70,71,72,73,74,75,75,76&
@@ -17591,22 +17959,7 @@ contains
         ,121,122,123,124,125,126,126,127,127,128,128,129,129,129,130&
         ,131,132,133,133,133,133,134,134,134,135,136,137,137,138,139&
         ,140,141,141,142,143,144,145,146,147,148,149,150,151,152,153&
-        ,154,154,155,156,157,158,159,160,161,162,163,164,235,196,196&
-        ,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196&
-        ,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196&
-        ,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196&
-        ,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196&
-        ,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196&
-        ,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196&
-        ,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196&
-        ,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196&
-        ,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196&
-        ,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196&
-        ,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196&
-        ,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196&
-        ,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196&
-        ,196,196,196,196,196,196,196,196,196,196,196,196,196,196,196&
-        ,196,196,196,196,196,196,196,196,208,208,197,322,198,198,198&
+        ,154,154,155,156,157,158,159,160,161,162,163,164,237,198,198&
         ,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198&
         ,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198&
         ,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198&
@@ -17620,283 +17973,297 @@ contains
         ,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198&
         ,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198&
         ,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198&
-        ,198,198,198,198,198,198,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,199&
-        ,199,199,199,199,199,199,199,199,199,199,199,199,199,199,200&
-        ,200,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,198,198,198,198,198,198,198,198,198,198,198,198,198,198,198&
+        ,198,198,198,198,198,198,198,198,210,210,199,324,200,200,200&
+        ,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200&
+        ,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200&
+        ,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200&
+        ,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200&
+        ,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200&
+        ,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200&
+        ,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200&
+        ,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200&
+        ,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200&
+        ,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200&
+        ,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200&
+        ,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200&
+        ,200,200,200,200,200,200,200,200,200,200,200,200,200,200,200&
+        ,200,200,200,200,200,200,201,201,201,201,201,201,201,201,201&
         ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
         ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
-        ,201,201,201,201,201,203,203,203,203,203,203,203,203,203,203&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,201&
+        ,201,201,201,201,201,201,201,201,201,201,201,201,201,201,202&
+        ,202,203,203,203,203,203,203,203,203,203,203,203,203,203,203&
         ,203,203,203,203,203,203,203,203,203,203,203,203,203,203,203&
         ,203,203,203,203,203,203,203,203,203,203,203,203,203,203,203&
-        ,203,203,209,209,209,209,209,209,209,209,209,209,209,204,204&
-        ,204,204,204,204,204,204,204,204,204,204,204,204,204,204,204&
-        ,204,204,204,204,204,204,204,204,204,204,204,204,204,204,204&
-        ,204,204,204,204,204,204,204,205,205,205,205,205,205,205,205&
+        ,203,203,203,203,203,205,205,205,205,205,205,205,205,205,205&
         ,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205&
-        ,205,205,205,237,237,237,237,237,237,237,237,237,237,237,237&
+        ,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205&
+        ,205,205,211,211,211,211,211,211,211,211,211,211,211,206,206&
+        ,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206&
+        ,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206&
+        ,206,206,206,206,206,206,206,207,207,207,207,207,207,207,207&
+        ,207,207,207,207,207,207,207,207,207,207,207,207,207,207,207&
+        ,207,207,207,239,239,239,239,239,239,239,239,239,239,239,239&
+        ,239,239,239,239,239,239,239,239,239,239,239,239,239,239,239&
+        ,239,239,239,239,237,237,237,237,237,237,237,237,237,237,237&
         ,237,237,237,237,237,237,237,237,237,237,237,237,237,237,237&
-        ,237,237,237,237,235,235,235,235,235,235,235,235,235,235,235&
-        ,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235&
-        ,235,235,235,235,235,235,235,235,235,235,235,235,235,235,235&
-        ,235,235,235,235,235,235,235,235,235,235,235,235,242,242,242&
-        ,242,242,242,242,242,242,242,242,242,242,242,242,242,242,242&
-        ,242,242,242,242,242,242,242,242,242,242,242,242,242,210,210&
-        ,210,210,210,210,210,210,210,210,210,210,210,210,210,210,210&
-        ,210,210,210,210,210,210,210,210,210,210,210,210,210,210,210&
-        ,210,210,210,210,239,239,241,241,241,241,241,241,241,241,241&
-        ,211,211,211,211,211,211,211,211,211,211,211,211,211,211,211&
-        ,211,211,211,211,211,211,211,211,211,211,211,211,211,211,211&
-        ,211,211,211,211,211,211,211,211,211,211,211,211,211,211,211&
-        ,211,211,211,211,321,323,355,355,324,324,324,324,324,324,324&
-        ,324,324,324,324,324,324,324,324,324,324,324,324,324,353,353&
-        ,353,353,353,353,353,353,353,353,353,353,353,353,353,353,353&
-        ,353,353,353,353,353,353,353,353,353,353,353,353,353,353,353&
-        ,353,353,353,353,353,325,325,325,325,325,325,325,325,325,325&
-        ,325,325,325,325,325,325,325,325,325,325,325,325,325,325,325&
-        ,325,325,325,325,325,325,325,325,325,325,325,325,325,325,325&
-        ,325,325,212,212,212,212,243,213,213,213,213,213,213,213,213&
+        ,237,237,237,237,237,237,237,237,237,237,237,237,237,237,237&
+        ,237,237,237,237,237,237,237,237,237,237,237,237,244,244,244&
+        ,244,244,244,244,244,244,244,244,244,244,244,244,244,244,244&
+        ,244,244,244,244,244,244,244,244,244,244,244,244,244,212,212&
+        ,212,212,212,212,212,212,212,212,212,212,212,212,212,212,212&
+        ,212,212,212,212,212,212,212,212,212,212,212,212,212,212,212&
+        ,212,212,212,212,241,241,243,243,243,243,243,243,243,243,243&
         ,213,213,213,213,213,213,213,213,213,213,213,213,213,213,213&
-        ,213,213,213,213,213,326,326,326,326,326,326,326,326,326,326&
-        ,326,326,326,326,326,326,326,326,326,326,326,326,326,326,326&
-        ,326,326,326,326,326,326,326,326,326,326,326,326,326,326,326&
-        ,326,326,326,326,326,244,244,244,244,244,244,244,244,244,244&
-        ,244,244,244,244,328,328,328,328,246,246,246,329,329,329,329&
-        ,329,247,330,330,330,330,330,330,330,330,330,330,330,330,330&
-        ,330,248,248,249,249,249,249,249,249,254,254,254,254,254,254&
-        ,254,254,254,254,254,254,254,254,254,254,254,254,254,254,254&
-        ,254,254,254,254,254,254,254,254,254,256,256,256,256,256,256&
-        ,256,256,256,256,250,250,214,214,214,214,214,214,214,214,214&
-        ,214,214,214,214,214,214,214,214,214,214,214,214,214,214,214&
-        ,214,214,214,214,214,214,214,214,263,257,257,257,257,354,354&
-        ,354,354,354,354,354,354,354,354,354,354,354,382,382,331,331&
-        ,331,331,331,331,331,331,331,331,331,331,331,331,331,331,331&
-        ,331,331,331,331,331,331,331,331,331,331,331,331,331,331,331&
-        ,331,331,331,331,331,331,331,331,215,215,215,215,215,215,215&
-        ,215,215,215,215,215,215,215,215,215,206,206,206,206,206,206&
-        ,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206&
-        ,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206&
-        ,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206&
-        ,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206&
-        ,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206&
-        ,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206&
-        ,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206&
-        ,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206&
-        ,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206&
-        ,206,206,206,206,206,206,206,206,206,206,206,206,206,206,206&
-        ,206,206,206,206,206,262,262,262,262,262,262,262,262,262,262&
-        ,262,262,262,262,262,262,262,262,262,262,262,262,262,262,262&
-        ,262,262,262,207,207,207,207,207,207,207,207,207,207,207,207&
-        ,207,207,207,207,207,207,207,207,207,207,207,207,207,207,207&
-        ,207,207,207,207,207,207,207,207,207,207,207,207,207,207,207&
-        ,207,207,207,207,207,207,207,207,207,207,207,207,207,207,207&
-        ,207,207,207,207,207,207,207,207,207,207,207,207,207,207,207&
-        ,207,207,207,207,207,207,207,207,207,207,207,207,207,207,207&
-        ,207,207,207,207,207,207,207,207,207,207,207,207,207,207,207&
-        ,207,207,207,207,207,207,207,207,207,207,207,207,207,207,207&
-        ,207,207,207,207,207,207,207,207,207,207,207,207,207,207,207&
-        ,207,258,258,258,216,216,216,287,287,287,287,287,287,287,287&
-        ,287,287,287,287,287,287,287,287,287,287,287,217,217,217,217&
-        ,217,217,217,217,217,217,217,217,217,217,217,217,217,217,217&
-        ,217,332,332,332,255,255,255,261,359,359,359,359,359,359,359&
-        ,359,359,359,359,359,359,359,359,359,359,359,359,359,359,359&
-        ,359,359,359,428,218,218,218,218,218,218,218,218,218,218,218&
-        ,218,218,218,218,218,218,218,218,218,218,218,218,218,218,218&
-        ,218,218,218,218,218,218,218,218,360,360,380,380,380,380,380&
-        ,380,380,380,380,380,380,380,380,380,380,380,380,380,380,380&
-        ,380,380,380,219,334,334,334,333,333,259,264,264,264,264,264&
-        ,260,356,356,356,220,220,220,220,220,220,220,220,220,220,220&
+        ,213,213,213,213,213,213,213,213,213,213,213,213,213,213,213&
+        ,213,213,213,213,213,213,213,213,213,213,213,213,213,213,213&
+        ,213,213,213,213,323,325,357,357,326,326,326,326,326,326,326&
+        ,326,326,326,326,326,326,326,326,326,326,326,326,326,355,355&
+        ,355,355,355,355,355,355,355,355,355,355,355,355,355,355,355&
+        ,355,355,355,355,355,355,355,355,355,355,355,355,355,355,355&
+        ,355,355,355,355,355,327,327,327,327,327,327,327,327,327,327&
+        ,327,327,327,327,327,327,327,327,327,327,327,327,327,327,327&
+        ,327,327,327,327,327,327,327,327,327,327,327,327,327,327,327&
+        ,327,327,214,214,214,214,245,215,215,215,215,215,215,215,215&
+        ,215,215,215,215,215,215,215,215,215,215,215,215,215,215,215&
+        ,215,215,215,215,215,328,328,328,328,328,328,328,328,328,328&
+        ,328,328,328,328,328,328,328,328,328,328,328,328,328,328,328&
+        ,328,328,328,328,328,328,328,328,328,328,328,328,328,328,328&
+        ,328,328,328,328,328,246,246,246,246,246,246,246,246,246,246&
+        ,246,246,246,246,330,330,330,330,248,248,248,331,331,331,331&
+        ,331,249,332,332,332,332,332,332,332,332,332,332,332,332,332&
+        ,332,250,250,251,251,251,251,251,251,256,256,256,256,256,256&
+        ,256,256,256,256,256,256,256,256,256,256,256,256,256,256,256&
+        ,256,256,256,256,256,256,256,256,256,258,258,258,258,258,258&
+        ,258,258,258,258,252,252,216,216,216,216,216,216,216,216,216&
+        ,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216&
+        ,216,216,216,216,216,216,216,216,265,259,259,259,259,356,356&
+        ,356,356,356,356,356,356,356,356,356,356,356,384,384,333,333&
+        ,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333&
+        ,333,333,333,333,333,333,333,333,333,333,333,333,333,333,333&
+        ,333,333,333,333,333,333,333,333,217,217,217,217,217,217,217&
+        ,217,217,217,217,217,217,217,217,217,208,208,208,208,208,208&
+        ,208,208,208,208,208,208,208,208,208,208,208,208,208,208,208&
+        ,208,208,208,208,208,208,208,208,208,208,208,208,208,208,208&
+        ,208,208,208,208,208,208,208,208,208,208,208,208,208,208,208&
+        ,208,208,208,208,208,208,208,208,208,208,208,208,208,208,208&
+        ,208,208,208,208,208,208,208,208,208,208,208,208,208,208,208&
+        ,208,208,208,208,208,208,208,208,208,208,208,208,208,208,208&
+        ,208,208,208,208,208,208,208,208,208,208,208,208,208,208,208&
+        ,208,208,208,208,208,208,208,208,208,208,208,208,208,208,208&
+        ,208,208,208,208,208,208,208,208,208,208,208,208,208,208,208&
+        ,208,208,208,208,208,208,208,208,208,208,208,208,208,208,208&
+        ,208,208,208,208,208,264,264,264,264,264,264,264,264,264,264&
+        ,264,264,264,264,264,264,264,264,264,264,264,264,264,264,264&
+        ,264,264,264,209,209,209,209,209,209,209,209,209,209,209,209&
+        ,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209&
+        ,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209&
+        ,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209&
+        ,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209&
+        ,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209&
+        ,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209&
+        ,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209&
+        ,209,209,209,209,209,209,209,209,209,209,209,209,209,209,209&
+        ,209,260,260,260,218,218,218,289,289,289,289,289,289,289,289&
+        ,289,289,289,289,289,289,289,289,289,289,289,219,219,219,219&
+        ,219,219,219,219,219,219,219,219,219,219,219,219,219,219,219&
+        ,219,334,334,334,257,257,257,263,361,361,361,361,361,361,361&
+        ,361,361,361,361,361,361,361,361,361,361,361,361,361,361,361&
+        ,361,361,361,430,220,220,220,220,220,220,220,220,220,220,220&
         ,220,220,220,220,220,220,220,220,220,220,220,220,220,220,220&
-        ,220,220,220,220,220,220,220,220,220,220,220,220,220,220,220&
-        ,220,220,220,220,220,220,220,220,220,220,220,220,220,220,220&
-        ,220,220,220,220,220,220,220,220,220,220,220,220,220,220,220&
-        ,220,220,220,220,220,220,220,220,220,220,220,220,220,220,265&
-        ,265,265,265,265,265,265,265,265,265,265,265,265,265,265,265&
-        ,265,265,265,265,265,265,265,265,265,265,265,265,265,265,284&
-        ,266,274,274,274,274,274,274,274,221,221,221,221,221,221,221&
-        ,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221&
-        ,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221&
-        ,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221&
-        ,221,221,221,221,221,221,221,221,221,221,221,221,221,221,221&
-        ,221,221,221,221,221,221,221,221,221,221,221,271,271,271,271&
-        ,271,271,271,271,271,271,271,269,269,269,269,269,269,269,269&
-        ,269,269,269,269,269,269,269,269,269,269,269,269,269,269,269&
-        ,269,269,269,345,373,373,373,373,373,373,373,373,373,373,373&
-        ,373,373,373,373,373,373,373,373,373,373,373,373,373,373,373&
-        ,373,373,373,373,373,373,373,373,373,373,373,373,373,373,373&
-        ,373,373,373,373,373,373,373,373,373,373,373,373,373,373,373&
-        ,373,373,373,373,373,373,373,373,373,373,373,374,374,374,374&
-        ,374,339,339,339,339,339,339,339,339,398,398,222,222,222,222&
+        ,220,220,220,220,220,220,220,220,362,362,382,382,382,382,382&
+        ,382,382,382,382,382,382,382,382,382,382,382,382,382,382,382&
+        ,382,382,382,221,336,336,336,335,335,261,266,266,266,266,266&
+        ,262,358,358,358,222,222,222,222,222,222,222,222,222,222,222&
         ,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222&
-        ,222,222,283,395,272,272,275,275,275,275,275,275,396,369,369&
-        ,277,277,277,277,277,277,277,277,277,277,277,277,277,277,277&
-        ,277,277,277,277,277,277,277,277,277,277,277,277,277,277,277&
-        ,277,277,277,277,277,277,277,277,277,277,277,277,277,277,277&
-        ,277,277,277,277,277,277,277,277,277,277,277,277,277,277,277&
-        ,277,277,277,277,277,277,277,278,279,278,279,278,279,278,279&
-        ,278,279,278,279,278,279,278,279,278,279,278,279,278,279,278&
-        ,279,278,279,278,279,278,279,278,279,278,279,278,279,278,279&
-        ,278,279,278,279,278,279,278,279,278,279,278,279,278,279,278&
-        ,279,278,279,279,278,278,279,278,279,278,279,278,279,278,279&
-        ,278,279,278,279,286,286,280,280,280,280,280,280,280,280,280&
-        ,280,280,280,280,280,280,280,280,280,280,280,280,280,280,280&
-        ,280,280,285,285,285,285,285,281,341,341,341,341,341,341,341&
-        ,341,341,341,341,341,341,341,341,341,341,341,341,341,341,341&
-        ,341,341,341,228,228,228,228,228,344,344,290,288,291,291,343&
-        ,343,343,343,225,226,226,226,226,226,226,226,226,226,226,226&
-        ,226,226,226,226,226,226,226,226,226,226,226,226,226,226,226&
-        ,226,226,226,226,226,226,226,226,226,226,226,226,226,226,226&
-        ,226,226,226,226,226,226,226,226,226,226,226,226,226,226,293&
-        ,294,293,294,293,294,293,294,293,294,293,294,293,294,293,294&
-        ,293,294,293,294,293,294,293,294,293,294,293,294,293,294,293&
-        ,294,293,294,293,294,293,294,293,294,293,294,293,294,293,294&
-        ,293,294,293,294,293,294,293,294,293,294,293,294,227,227,227&
-        ,227,227,227,227,227,227,227,227,227,227,227,227,227,227,227&
-        ,227,227,227,227,227,227,227,227,227,227,227,227,295,295,295&
-        ,295,439,296,381,381,381,381,381,381,381,381,381,381,381,381&
-        ,381,381,381,381,381,381,381,381,381,381,381,381,381,381,381&
-        ,437,370,371,406,407,407,407,298,298,298,298,298,298,298,298&
-        ,298,298,298,298,298,298,298,298,231,231,231,231,231,231,231&
-        ,231,231,301,301,301,301,301,301,301,301,301,301,301,301,301&
-        ,301,301,301,301,301,301,301,301,301,301,300,300,300,300,300&
-        ,300,300,300,300,300,300,300,300,300,300,300,300,300,300,300&
-        ,300,300,300,300,300,305,302,302,302,303,376,376,440,410,412&
-        ,412,412,412,412,413,413,413,312,312,312,312,313,313,313,313&
-        ,313,313,313,313,313,313,313,313,313,313,313,313,313,313,306&
-        ,306,306,306,442,307,441,416,430,348,314,314,314,347,347,347&
-        ,347,347,347,347,347,347,347,347,349,310,311,358,318,318,318&
-        ,318,319,319,319,319,316,316,316,316,444,422,357,357,357,357&
-        ,351,320,320,320,350,350,350,352,424,423,423,425,435,210,356&
-        ,242,379,379,4,4,4,3,3,6,6,6,6,7,7,196,196,196,196,196,196&
-        ,196,196,196,196,198,202,202,209,204,205,205,205,205,205,205&
-        ,324,212,244,329,250,207,207,219,220,220,220,220,220,220,265&
-        ,265,265,265,265,265,221,221,221,221,221,221,221,221,221,221&
-        ,271,373,373,272,275,277,278,279,280,228,346,293,294,227,227&
-        ,227,227,227,295,296,381,298,301,301,301,300,312,313,433,357&
-        ,4,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,6,6,6,6,6&
-        ,6,6,6,8,8,8,8,8,8,5,5,7,7,7,7,17,10,10,10,10,10,10,10,10,10&
+        ,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222&
+        ,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222&
+        ,222,222,222,222,222,222,222,222,222,222,222,222,222,222,222&
+        ,222,222,222,222,222,222,222,222,222,222,222,222,222,222,267&
+        ,267,267,267,267,267,267,267,267,267,267,267,267,267,267,267&
+        ,267,267,267,267,267,267,267,267,267,267,267,267,267,267,286&
+        ,268,276,276,276,276,276,276,276,223,223,223,223,223,223,223&
+        ,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223&
+        ,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223&
+        ,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223&
+        ,223,223,223,223,223,223,223,223,223,223,223,223,223,223,223&
+        ,223,223,223,223,223,223,223,223,223,223,223,273,273,273,273&
+        ,273,273,273,273,273,273,273,271,271,271,271,271,271,271,271&
+        ,271,271,271,271,271,271,271,271,271,271,271,271,271,271,271&
+        ,271,271,271,347,375,375,375,375,375,375,375,375,375,375,375&
+        ,375,375,375,375,375,375,375,375,375,375,375,375,375,375,375&
+        ,375,375,375,375,375,375,375,375,375,375,375,375,375,375,375&
+        ,375,375,375,375,375,375,375,375,375,375,375,375,375,375,375&
+        ,375,375,375,375,375,375,375,375,375,375,375,376,376,376,376&
+        ,376,341,341,341,341,341,341,341,341,400,400,224,224,224,224&
+        ,224,224,224,224,224,224,224,224,224,224,224,224,224,224,224&
+        ,224,224,285,397,274,274,277,277,277,277,277,277,398,371,371&
+        ,279,279,279,279,279,279,279,279,279,279,279,279,279,279,279&
+        ,279,279,279,279,279,279,279,279,279,279,279,279,279,279,279&
+        ,279,279,279,279,279,279,279,279,279,279,279,279,279,279,279&
+        ,279,279,279,279,279,279,279,279,279,279,279,279,279,279,279&
+        ,279,279,279,279,279,279,279,280,281,280,281,280,281,280,281&
+        ,280,281,280,281,280,281,280,281,280,281,280,281,280,281,280&
+        ,281,280,281,280,281,280,281,280,281,280,281,280,281,280,281&
+        ,280,281,280,281,280,281,280,281,280,281,280,281,280,281,280&
+        ,281,280,281,281,280,280,281,280,281,280,281,280,281,280,281&
+        ,280,281,280,281,288,288,282,282,282,282,282,282,282,282,282&
+        ,282,282,282,282,282,282,282,282,282,282,282,282,282,282,282&
+        ,282,282,287,287,287,287,287,283,343,343,343,343,343,343,343&
+        ,343,343,343,343,343,343,343,343,343,343,343,343,343,343,343&
+        ,343,343,343,230,230,230,230,230,346,346,292,290,293,293,345&
+        ,345,345,345,227,228,228,228,228,228,228,228,228,228,228,228&
+        ,228,228,228,228,228,228,228,228,228,228,228,228,228,228,228&
+        ,228,228,228,228,228,228,228,228,228,228,228,228,228,228,228&
+        ,228,228,228,228,228,228,228,228,228,228,228,228,228,228,295&
+        ,296,295,296,295,296,295,296,295,296,295,296,295,296,295,296&
+        ,295,296,295,296,295,296,295,296,295,296,295,296,295,296,295&
+        ,296,295,296,295,296,295,296,295,296,295,296,295,296,295,296&
+        ,295,296,295,296,295,296,295,296,295,296,295,296,229,229,229&
+        ,229,229,229,229,229,229,229,229,229,229,229,229,229,229,229&
+        ,229,229,229,229,229,229,229,229,229,229,229,229,297,297,297&
+        ,297,441,298,383,383,383,383,383,383,383,383,383,383,383,383&
+        ,383,383,383,383,383,383,383,383,383,383,383,383,383,383,383&
+        ,439,372,373,408,409,409,409,300,300,300,300,300,300,300,300&
+        ,300,300,300,300,300,300,300,300,233,233,233,233,233,233,233&
+        ,233,233,303,303,303,303,303,303,303,303,303,303,303,303,303&
+        ,303,303,303,303,303,303,303,303,303,303,302,302,302,302,302&
+        ,302,302,302,302,302,302,302,302,302,302,302,302,302,302,302&
+        ,302,302,302,302,302,307,304,304,304,305,378,378,442,412,414&
+        ,414,414,414,414,415,415,415,314,314,314,314,315,315,315,315&
+        ,315,315,315,315,315,315,315,315,315,315,315,315,315,315,308&
+        ,308,308,308,444,309,443,418,432,350,316,316,316,349,349,349&
+        ,349,349,349,349,349,349,349,349,351,312,313,360,320,320,320&
+        ,320,321,321,321,321,318,318,318,318,446,424,359,359,359,359&
+        ,353,322,322,322,352,352,352,354,426,425,425,427,437,212,358&
+        ,244,381,381,4,4,4,3,3,6,6,6,6,7,7,198,198,198,198,198,198&
+        ,198,198,198,198,200,204,204,211,206,207,207,207,207,207,207&
+        ,326,214,246,331,252,209,209,221,222,222,222,222,222,222,267&
+        ,267,267,267,267,267,223,223,223,223,223,223,223,223,223,223&
+        ,273,375,375,274,277,279,280,281,282,230,348,295,296,229,229&
+        ,229,229,229,297,298,383,300,303,303,303,302,314,315,435,359&
+        ,4,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,6,6,6,6&
+        ,6,6,6,6,8,8,8,8,8,8,5,5,7,7,7,7,17,10,10,10,10,10,10,10,10&
         ,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10&
         ,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10&
         ,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10&
-        ,10,10,10,10,10,10,12,12,12,12,12,12,12,12,12,12,12,12,12,12&
-        ,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,20,20,20&
-        ,20,20,20,20,20,20,20,15,15,15,15,15,15,15,15,15,15,15,15,15&
+        ,10,10,10,10,10,10,10,12,12,12,12,12,12,12,12,12,12,12,12,12&
+        ,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,20,20&
+        ,20,20,20,20,20,20,20,20,15,15,15,15,15,15,15,15,15,15,15,15&
         ,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15&
         ,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15&
-        ,15,15,15,15,15,15,15,17,17,17,17,17,17,17,17,17,17,17,17,17&
+        ,15,15,15,15,15,15,15,15,17,17,17,17,17,17,17,17,17,17,17,17&
         ,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17&
         ,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17&
         ,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17&
-        ,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,18,18,18,18,18&
-        ,18,18,18,18,19,19,19,19,19,19,19,19,19,19,19,19,33,33,33,33&
-        ,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26&
-        ,26,26,26,24,24,24,24,28,28,28,28,28,28,28,28,28,28,28,28,28&
-        ,28,28,28,28,28,21,21,34,38,38,39,42,42,42,42,42,42,42,42,42&
-        ,42,42,42,42,42,42,53,53,53,53,53,53,53,53,53,53,53,53,53,53&
-        ,53,53,53,53,53,53,53,53,53,53,53,59,64,64,64,69,75,10,10,10&
-        ,10,10,12,17,17,18,26,28,28,10,10,12,42,237,236,240,235,238&
-        ,242,210,239,241,321,323,355,324,353,325,212,243,213,326,244&
-        ,327,245,328,246,329,247,330,248,368,249,254,254,254,256,256&
-        ,252,251,251,250,253,253,214,214,214,263,263,257,354,382,382&
-        ,383,383,331,331,331,215,215,206,206,262,207,207,207,258,258&
-        ,216,216,287,217,391,332,332,255,392,392,261,261,337,337,389&
-        ,389,390,359,359,428,428,377,218,218,360,380,219,219,219,334&
-        ,334,333,333,259,259,264,264,264,260,356,220,220,220,220,220&
-        ,372,372,372,372,379,379,342,342,265,265,284,267,268,268,268&
-        ,266,266,274,274,274,221,221,221,221,431,271,271,271,269,269&
-        ,335,335,345,345,393,393,385,385,336,336,270,270,373,373,373&
-        ,373,374,374,364,364,339,339,339,378,375,375,397,397,398,398&
-        ,398,394,394,222,222,283,283,363,363,395,395,362,272,272,273&
-        ,273,275,275,396,396,369,369,276,276,276,223,223,223,277,277&
-        ,277,277,277,277,278,279,278,279,278,279,278,279,278,279,286&
-        ,286,286,280,280,280,280,285,285,338,338,282,282,282,281,281&
-        ,224,341,341,228,228,228,366,366,401,401,402,402,399,399,399&
-        ,365,365,344,344,344,447,361,361,361,400,400,400,340,340,340&
-        ,386,290,290,288,288,288,289,289,291,291,343,343,225,225,225&
-        ,225,297,297,226,226,226,226,226,226,226,346,346,346,346,346&
-        ,293,294,293,294,293,294,227,227,295,295,439,296,296,384,384&
-        ,304,304,304,304,229,229,381,381,381,381,381,448,448,448,448&
-        ,448,292,292,292,292,292,292,437,438,438,438,367,367,367,404&
-        ,404,388,388,388,403,403,403,403,403,387,387,387,370,370,371&
-        ,371,405,405,406,406,407,407,408,408,230,230,230,298,298,298&
-        ,298,299,299,231,231,231,231,231,231,231,231,301,301,300,300&
-        ,305,305,305,302,302,303,303,303,232,232,376,376,376,376,376&
-        ,440,449,449,449,409,409,409,409,409,429,429,429,432,432,309&
-        ,309,309,309,410,410,411,411,411,412,412,413,413,413,415,415&
-        ,312,312,313,313,313,306,306,442,307,307,414,414,308,308,441&
-        ,233,233,233,233,416,416,430,430,430,430,430,443,443,348,348&
-        ,314,314,314,347,347,349,349,310,310,311,311,234,234,234,417&
-        ,417,317,317,418,418,418,315,315,450,450,358,358,433,433,420&
-        ,420,318,318,319,319,316,316,444,419,419,419,421,421,436,436&
-        ,436,436,422,422,357,357,445,445,351,351,320,320,350,350,352&
-        ,352,424,424,434,434,426,426,423,423,427,427,425,425,451,451&
-        ,446,446,435,435,452,452,196,208,197,200,201,202,203,204,205&
-        ,211,215,221,269,335,196,196,196,197,197,197,198,198,198,199&
-        ,199,199,200,200,200,201,201,201,202,202,202,203,203,203,204&
-        ,204,204,205,205,205,206,207,373,373,344,10,12,17,18,10,22,11&
-        ,14,16,18,19,24,24,25,26,26,27,28,21,30,20,31,32,34,36,38,38&
-        ,39,39,40,41,41,42,42,47,48,50,51,52,53,53,54,54,55,56,59,59&
-        ,60,61,61,62,63,64,64,68,69,74,75,75,76,78,79,79,85,86,86,87&
-        ,88,89,90,92,93,93,94,94,94,95,95,95,95,96,101,101,101,107&
-        ,107,108,108,109,110,109,110,111,111,112,114,115,116,116,118&
-        ,119,119,119,120,126,126,127,127,128,128,128,128,129,129,129&
-        ,130,130,130,130,131,133,133,134,134,134,137,137,137,137,182&
-        ,183,138,138,138,139,139,139,141,141,141,141,141,142,142,147&
-        ,190,191,192,193,194,184,185,186,187,189,195,179,175,181,176&
-        ,177,178,149,149,153,154,154,237,235,211,326,329,254,214,206&
-        ,206,221,221,4,3,6,8,5,7,198,198,13,199,199,199,453,3,3,12,12&
-        ,211,20,20,20,3,3,3,3,3,211,211,211,12,12,20,20,12&
-        ,13/)
-    arr_r2(1:4453) = (/9,2,2,2,2,2,2,2,2,2,2,2,2,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,11,14,16,23,18,19,25,26,26,27,29,31,32&
-        ,34,35,37,38,39,40,40,41,41,42,43,45,47,47,48,49,49,50,51,51&
-        ,52,52,52,52,53,55,55,57,58,58,59,59,60,61,61,62,62,63,63,64&
-        ,64,65,65,67,68,70,71,74,75,78,79,79,81,82,82,82,85,86,87,88&
-        ,90,90,90,91,92,92,94,94,94,95,95,95,96,99,100,100,101,101&
-        ,101,102,102,103,104,104,104,105,105,105,106,107,108,108,108&
-        ,108,109,110,109,110,111,113,114,114,117,118,119,119,165,165&
-        ,165,165,165,166,166,166,166,166,120,120,120,167,167,167,167&
-        ,121,122,124,124,124,125,125,126,126,127,127,127,127,127,127&
-        ,128,128,128,128,129,129,129,129,130,133,133,133,168,168,168&
-        ,168,168,168,134,134,135,135,135,136,137,137,137,137,137,137&
-        ,169,169,169,169,169,138,138,139,141,141,142,142,143,143,144&
-        ,147,147,148,149,149,149,150,150,151,153,153,153,154,155,156&
-        ,157,157,158,160,161,162,162,163,164,20,41,16,20,11,14,16,17&
-        ,23,18,19,24,26,29,30,31,34,34,35,37,38,39,40,41,42,43,44,45&
-        ,46,47,48,48,49,50,51,52,53,53,54,55,56,57,58,59,59,60,61,62&
-        ,63,64,64,64,65,66,67,67,68,69,70,70,71,72,74,75,79,80,81,82&
-        ,82,83,86,86,87,88,87,88,90,92,93,94,95,95,96,98,99,99,100&
+        ,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,17,18,18,18,18&
+        ,18,18,18,18,18,19,19,19,19,19,19,19,19,19,19,19,19,33,33,33&
+        ,33,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26&
+        ,26,26,26,26,24,24,24,24,28,28,28,28,28,28,28,28,28,28,28,28&
+        ,28,28,28,28,28,28,21,21,34,38,38,39,42,42,42,42,42,42,42,42&
+        ,42,42,42,42,42,42,42,53,53,53,53,53,53,53,53,53,53,53,53,53&
+        ,53,53,53,53,53,53,53,53,53,53,53,53,59,64,64,64,69,75,10,10&
+        ,10,10,10,12,17,17,18,26,28,28,10,10,12,42,239,238,242,237&
+        ,240,244,212,241,243,213,323,325,357,326,355,327,214,245,215&
+        ,328,246,329,247,330,248,331,249,332,250,370,251,256,256,256&
+        ,258,258,254,253,253,252,255,255,216,216,216,265,265,259,356&
+        ,384,384,385,385,333,333,333,217,217,208,208,264,209,209,209&
+        ,260,260,218,218,289,219,393,334,334,257,394,394,263,263,339&
+        ,339,391,391,392,361,361,430,430,379,220,220,362,382,221,221&
+        ,221,336,336,335,335,261,261,266,266,266,262,358,222,222,222&
+        ,222,222,374,374,374,374,381,381,344,344,267,267,286,269,270&
+        ,270,270,268,268,276,276,276,223,223,223,223,433,273,273,273&
+        ,271,271,337,337,347,347,395,395,387,387,338,338,272,272,375&
+        ,375,375,375,376,376,366,366,341,341,341,380,377,377,399,399&
+        ,400,400,400,396,396,224,224,285,285,365,365,397,397,364,274&
+        ,274,275,275,277,277,398,398,371,371,278,278,278,225,225,225&
+        ,279,279,279,279,279,279,280,281,280,281,280,281,280,281,280&
+        ,281,288,288,288,282,282,282,282,287,287,340,340,284,284,284&
+        ,283,283,226,343,343,230,230,230,368,368,403,403,404,404,401&
+        ,401,401,367,367,346,346,346,449,363,363,363,402,402,402,342&
+        ,342,342,388,292,292,290,290,290,291,291,293,293,345,345,227&
+        ,227,227,227,299,299,228,228,228,228,228,228,228,348,348,348&
+        ,348,348,295,296,295,296,295,296,229,229,297,297,441,298,298&
+        ,386,386,306,306,306,306,231,231,383,383,383,383,383,450,450&
+        ,450,450,450,294,294,294,294,294,294,439,440,440,440,369,369&
+        ,369,406,406,390,390,390,405,405,405,405,405,389,389,389,372&
+        ,372,373,373,407,407,408,408,409,409,410,410,232,232,232,300&
+        ,300,300,300,301,301,233,233,233,233,233,233,233,233,303,303&
+        ,302,302,307,307,307,304,304,305,305,305,234,234,378,378,378&
+        ,378,378,442,451,451,451,411,411,411,411,411,431,431,431,434&
+        ,434,311,311,311,311,412,412,413,413,413,414,414,415,415,415&
+        ,417,417,314,314,315,315,315,308,308,444,309,309,416,416,310&
+        ,310,443,235,235,235,235,418,418,432,432,432,432,432,445,445&
+        ,350,350,316,316,316,349,349,351,351,312,312,313,313,236,236&
+        ,236,419,419,319,319,420,420,420,317,317,452,452,360,360,435&
+        ,435,422,422,320,320,321,321,318,318,446,421,421,421,423,423&
+        ,438,438,438,438,424,424,359,359,447,447,353,353,322,322,352&
+        ,352,354,354,426,426,436,436,428,428,425,425,429,429,427,427&
+        ,453,453,448,448,437,437,454,454,198,210,199,200,201,202,203&
+        ,204,205,206,207,213,217,223,271,337,198,198,198,199,199,199&
+        ,200,200,200,201,201,201,202,202,202,203,203,203,204,204,204&
+        ,205,205,205,206,206,206,207,207,207,213,208,209,375,375,346&
+        ,10,12,17,18,10,22,11,14,16,18,19,24,24,25,26,26,27,28,21,30&
+        ,20,31,32,34,36,38,38,39,39,40,41,41,42,42,47,48,50,51,52,53&
+        ,53,54,54,55,56,59,59,60,61,61,62,63,64,64,68,69,74,75,75,76&
+        ,78,79,79,85,86,86,87,88,89,90,92,93,93,94,94,94,95,95,95,95&
+        ,96,101,101,101,107,107,108,108,109,110,109,110,111,111,112&
+        ,114,115,116,116,118,119,119,119,120,126,126,127,127,128,128&
+        ,128,128,129,129,129,130,130,130,130,131,133,133,134,134,134&
+        ,137,137,137,137,182,183,138,138,138,139,139,139,141,141,141&
+        ,141,141,142,142,147,190,191,192,193,194,184,185,186,187,189&
+        ,195,179,175,181,176,177,178,149,149,153,154,154,239,237,213&
+        ,328,331,256,216,208,208,223,223,4,3,6,8,5,7,12,13,12,20,196&
+        ,197,196/)
+    arr_r2(1:4436) = (/9,2,2,2,2,2,2,2,2,2,2,2,2&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,11,14,16,23,18,19,25,26,26,27,29&
+        ,31,32,34,35,37,38,39,40,40,41,41,42,43,45,47,47,48,49,49,50&
+        ,51,51,52,52,52,52,53,55,55,57,58,58,59,59,60,61,61,62,62,63&
+        ,63,64,64,65,65,67,68,70,71,74,75,78,79,79,81,82,82,82,85,86&
+        ,87,88,90,90,90,91,92,92,94,94,94,95,95,95,96,99,100,100,101&
+        ,101,101,102,102,103,104,104,104,105,105,105,106,107,108,108&
+        ,108,108,109,110,109,110,111,113,114,114,117,118,119,119,165&
+        ,165,165,165,165,166,166,166,166,166,120,120,120,167,167,167&
+        ,167,121,122,124,124,124,125,125,126,126,127,127,127,127,127&
+        ,127,128,128,128,128,129,129,129,129,130,133,133,133,168,168&
+        ,168,168,168,168,134,134,135,135,135,136,137,137,137,137,137&
+        ,137,169,169,169,169,169,138,138,139,141,141,142,142,143,143&
+        ,144,147,147,148,149,149,149,150,150,151,153,153,153,154,155&
+        ,156,157,157,158,160,161,162,162,163,164,20,41,16,20,11,14,16&
+        ,17,23,18,19,24,26,29,30,31,34,34,35,37,38,39,40,41,42,43,44&
+        ,45,46,47,48,48,49,50,51,52,53,53,54,55,56,57,58,59,59,60,61&
+        ,62,63,64,64,64,65,66,67,67,68,69,70,70,71,72,74,75,79,80,81&
+        ,82,82,83,86,86,87,88,87,88,90,92,93,94,95,95,96,98,99,99,100&
         ,101,102,102,103,104,104,105,105,106,107,108,108,109,110,109&
         ,110,111,111,113,114,115,116,116,117,118,119,119,165,165,165&
         ,165,166,166,166,120,167,167,167,167,167,167,170,170,121,121&
@@ -18049,32 +18416,32 @@ contains
         ,119,20,12,21,20,120,142,155,12,12,21,20,20,86,21,20,61,63&
         ,101,120,133,134,142,155,86,86,127,20,20,21,12,12,12,119,86&
         ,129,129,12,86,120,129,142,129,20,21,61,12,86,129,129,129,86&
-        ,12,20,10,12,15,17,26,20,38,41,42,59,61,10,15,17,24,26,28,21&
-        ,38,42,53,59,64,75,94,10,12,15,17,26,21,20,59,10,12,15,17,21&
-        ,41,12,94,10,12,26,94,26,26,34,38,39,39,40,41,42,43,46,48,52&
-        ,52,59,64,64,54,53,57,75,75,78,82,85,94,86,86,86,172,105,127&
-        ,165,167,106,108,108,87,88,109,110,89,90,128,137,135,111,129&
-        ,169,130,131,138,139,143,144,145,150,151,157,158,159,153,162&
-        ,93,115,132,132,140,146,146,146,59,75,28,36,21,34,64,64,108&
-        ,172,165,167,26,59,94,119,42,101,61,63,39,39,95,69,69,41,77&
-        ,77,77,97,97,62,60,73,76,79,10,26,59,94,17,42,15,38,75,77,24&
-        ,26,28,34,38,39,40,42,41,43,45,47,47,48,52,59,59,64,66,76,76&
-        ,76,77,82,53,54,57,56,87,88,89,94,94,172,105,108,108,109,110&
-        ,128,93,115,111,112,130,131,135,135,138,132,139,140,144,150&
-        ,145,146,151,152,158,159,24,25,25,26,27,28,29,30,34,38,38,40&
-        ,40,42,43,46,47,47,48,49,49,53,54,57,58,59,59,64,64,63,65,66&
-        ,66,67,62,69,69,71,75,75,75,76,77,78,78,80,80,56,81,82,82,83&
-        ,108,135,135,87,88,89,90,91,93,94,172,100,103,105,110,115,111&
-        ,111,112,113,117,123,130,131,132,139,140,144,145,146,151,152&
-        ,158,159,173,174,24,26,38,34,41,42,59,59,94,41,39,42,59,94,86&
-        ,137,129,143,157,127,180,20,26,42,61,39,41,69,119,86,137,129&
-        ,143,127,180,56,115,140,152,24,93,132,146,120,142,155,164,188&
-        ,86,127,129,143,39,41,64,42,42,69,86,101,101,127,129,143,157&
-        ,120,142,155,164,188,42,69,34,38,39,75,50,52,42,59,62,64,69&
-        ,75,75,77,95,95,97,108,135,18,30,41,63,68,86,109,110,129,138&
-        ,143,150,56,115,140,152,24,93,132,146,120,142,155,164,188,69&
-        ,64,69,94,94,95,10,12,15,17,20,17,17,52,21,20,53,94,24,56,42&
-        ,42,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&
+        ,12,20,10,12,15,17,26,20,38,41,42,59,61,10,12,15,17,24,26,28&
+        ,21,38,42,53,59,64,75,94,10,12,15,17,26,21,20,59,10,12,15,17&
+        ,21,41,12,94,10,12,26,94,26,26,34,38,39,39,40,41,42,43,46,48&
+        ,52,52,59,64,64,54,53,57,75,75,78,82,85,94,86,86,86,172,105&
+        ,127,165,167,106,108,108,87,88,109,110,89,90,128,137,135,111&
+        ,129,169,130,131,138,139,143,144,145,150,151,157,158,159,153&
+        ,162,93,115,132,132,140,146,146,146,59,75,28,36,21,34,64,64&
+        ,108,172,165,167,26,59,94,119,42,101,61,63,39,39,95,69,69,41&
+        ,77,77,77,97,97,62,60,73,76,79,10,26,59,94,17,42,15,38,75,77&
+        ,24,26,28,34,38,39,40,42,41,43,45,47,47,48,52,59,59,64,66,76&
+        ,76,76,77,82,53,54,57,56,87,88,89,94,94,172,105,108,108,109&
+        ,110,128,93,115,111,112,130,131,135,135,138,132,139,140,144&
+        ,150,145,146,151,152,158,159,24,25,25,26,27,28,29,30,34,38,38&
+        ,40,40,42,43,46,47,47,48,49,49,53,54,57,58,59,59,64,64,63,65&
+        ,66,66,67,62,69,69,71,75,75,75,76,77,78,78,80,80,56,81,82,82&
+        ,83,108,135,135,87,88,89,90,91,93,94,172,100,103,105,110,115&
+        ,111,111,112,113,117,123,130,131,132,139,140,144,145,146,151&
+        ,152,158,159,173,174,24,26,38,34,41,42,59,59,94,41,39,42,59&
+        ,94,86,137,129,143,157,127,180,20,26,42,61,39,41,69,119,86&
+        ,137,129,143,127,180,56,115,140,152,24,93,132,146,120,142,155&
+        ,164,188,86,127,129,143,39,41,64,42,42,69,86,101,101,127,129&
+        ,143,157,120,142,155,164,188,42,69,34,38,39,75,50,52,42,59,62&
+        ,64,69,75,75,77,95,95,97,108,135,18,30,41,63,68,86,109,110&
+        ,129,138,143,150,56,115,140,152,24,93,132,146,120,142,155,164&
+        ,188,69,64,69,94,94,95,10,12,15,17,20,17,17,52,21,20,53,94,24&
+        ,56,42,42,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&
         ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&
         ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&
         ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&
@@ -18092,603 +18459,303 @@ contains
         ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&
         ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&
         ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&
-        ,1,1,1,1,1,1,1,1,1,1,1,4,3,8,4,3,8,4,3,8,4,3,8,4,3,8,4,3,8,4&
-        ,3,8,4,3,8,4,3,8,4,3,8,3,3,3,3,3,1,1,1,1,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,1,1,1,1,1,1,1,12,12&
-        ,198,198,12,198,1,12,1,12,12,198,198,1,1,3,12,12,12,12,477&
-        ,477/)
-    arr_r3(1:4453) = (/477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,12&
-        ,12,12,12,477,477/)
-    arr_p1(1:4453) = (/2,10,11,12,13,14,15&
-        ,16,17,18,19,20,12,196,208,197,198,199,200,201,202,203,209&
-        ,204,205,10,10,10,22,10,10,210,10,10,12,198,198,211,12,33,12&
-        ,14,15,16,15,15,212,15,17,213,17,23,23,23,18,19,19,19,19,19&
-        ,18,24,10,30,24,24,21,24,29,214,21,42,20,215,28,21,207,29,216&
-        ,26,28,217,49,45,34,39,16,38,218,39,17,41,28,21,219,43,47,48&
-        ,19,50,52,53,220,56,56,24,24,58,24,56,59,221,21,20,42,34,50&
-        ,58,38,75,222,81,81,47,82,59,59,223,86,87,88,93,56,91,56,93&
-        ,64,224,65,63,59,53,81,103,81,104,82,94,225,86,226,109,110,53&
-        ,111,227,115,93,115,94,95,228,229,94,119,230,127,108,128,231&
-        ,130,132,132,63,232,111,139,140,132,140,94,95,233,144,146,146&
-        ,94,95,234,139,107,151,152,146,94,158,94,94,151,10,197,200&
-        ,202,209,204,205,236,237,235,238,239,236,240,241,200,202,242&
-        ,212,241,243,203,210,210,244,245,205,246,246,246,247,205,246&
-        ,248,204,210,241,249,250,251,250,252,239,253,254,214,210,207&
-        ,255,215,216,256,257,235,207,253,258,259,256,260,261,207,262&
-        ,210,241,219,259,246,263,264,249,265,266,266,250,267,266,266&
-        ,268,266,254,220,221,214,207,269,214,270,239,253,262,271,222&
-        ,272,273,273,259,274,272,263,274,275,276,223,265,277,278,279&
-        ,266,266,280,280,281,281,282,281,283,276,220,277,284,254,262&
-        ,285,256,265,254,257,285,286,250,265,285,250,287,284,285,288&
-        ,289,272,290,291,274,291,277,292,265,277,278,279,226,293,280&
-        ,293,294,227,265,281,227,295,296,221,228,229,297,228,269,262&
-        ,276,225,297,230,293,294,298,299,220,277,293,294,227,231,300&
-        ,295,301,278,279,296,302,303,304,232,295,305,303,306,307,277&
-        ,301,308,228,309,233,307,310,311,312,313,314,234,306,315,311&
-        ,316,317,314,317,318,319,320,316,321,213,202,323,197,200,202&
-        ,203,209,204,205,237,235,239,241,321,204,324,200,202,325,212&
-        ,243,213,326,244,327,245,328,246,205,329,247,330,248,249,237&
-        ,254,256,251,250,252,253,235,214,207,331,215,262,210,211,207&
-        ,258,241,246,263,198,212,247,332,261,333,202,218,324,334,259&
-        ,329,264,260,254,220,250,250,265,265,267,268,266,221,207,269&
-        ,335,336,337,270,283,222,259,272,273,263,274,264,275,276,223&
-        ,220,277,265,265,278,279,266,280,338,282,281,339,224,340,271&
-        ,221,341,262,254,284,342,276,220,284,286,198,286,265,284,287&
-        ,254,287,218,272,290,273,288,289,274,291,275,343,276,225,277&
-        ,226,278,279,293,294,280,227,281,295,296,228,229,344,207,345&
-        ,218,297,230,226,298,346,299,293,294,231,301,227,295,300,296&
-        ,302,303,304,232,305,302,313,303,306,307,221,308,309,233,306&
-        ,347,307,310,311,312,348,309,234,349,315,310,319,311,316,221&
-        ,316,350,318,351,221,352,198,209,205,196,237,196,196,235,208&
-        ,196,201,196,196,209,196,204,198,211,208,322,204,200,201,353&
-        ,202,201,201,203,201,204,203,213,203,209,209,209,204,196,205&
-        ,205,205,203,205,204,205,203,204,196,237,235,196,196,204,237&
-        ,241,196,237,196,196,209,196,235,196,203,210,213,354,198,326&
-        ,331,204,324,215,196,201,235,242,235,210,355,196,209,198,241&
-        ,205,246,196,242,325,198,212,247,244,245,204,328,201,203,353&
-        ,212,202,201,325,203,242,203,204,210,241,209,205,205,329,242&
-        ,205,204,213,249,356,237,235,254,220,250,250,237,284,237,250&
-        ,209,250,237,241,196,237,250,235,214,210,207,204,241,214,324&
-        ,333,337,235,239,325,218,222,205,259,259,329,263,329,264,214&
-        ,210,214,254,220,250,250,265,265,254,266,237,253,241,250,250&
-        ,266,354,339,244,214,325,214,262,271,198,235,214,221,341,237&
-        ,256,284,262,242,254,284,257,237,242,254,256,250,265,284,237&
-        ,250,284,325,342,75,218,329,272,205,205,273,273,329,274,264&
-        ,275,242,221,254,214,220,277,226,250,265,278,279,254,266,280&
-        ,265,281,266,266,281,326,221,207,269,325,222,210,207,221,223&
-        ,297,277,226,298,277,250,265,278,279,293,294,227,293,294,278&
-        ,279,265,281,295,280,296,281,296,218,221,271,304,111,254,280&
-        ,280,296,302,295,303,296,296,303,221,339,223,297,230,298,309&
-        ,295,303,306,302,307,303,307,300,312,221,228,302,297,302,307&
-        ,310,306,311,307,221,306,311,316,347,318,221,310,357,358,202&
-        ,202,197,200,237,235,242,242,210,212,325,353,325,353,212,203&
-        ,212,213,212,326,254,214,210,354,331,324,215,262,325,207,218&
-        ,204,241,219,212,207,269,359,218,222,262,221,221,271,271,341&
-        ,212,221,269,228,229,197,198,237,210,235,210,212,326,212,325&
-        ,212,212,213,213,326,210,254,214,213,331,61,324,215,210,212&
-        ,207,326,207,212,218,360,204,219,213,207,269,222,221,341,269&
-        ,228,229,23,245,245,245,261,283,361,222,362,363,361,197,200&
-        ,202,205,241,241,243,212,249,249,246,329,248,248,251,216,328&
-        ,333,215,324,207,328,364,268,268,335,215,207,222,364,365,365&
-        ,282,366,278,279,280,227,367,197,200,202,246,247,330,368,263&
-        ,337,260,260,248,272,273,273,263,274,369,290,288,288,289,370&
-        ,371,280,371,196,196,210,204,241,250,235,250,254,254,256,212&
-        ,210,214,265,254,372,265,284,254,207,218,342,280,254,220,265&
-        ,278,279,293,294,237,197,196,200,242,202,210,204,241,324,205&
-        ,250,237,256,257,214,242,212,64,210,207,210,250,254,207,207&
-        ,269,373,216,374,256,342,271,214,207,271,262,216,375,278,279&
-        ,207,221,228,345,222,344,220,277,226,221,228,376,196,198,203&
-        ,204,237,235,210,262,325,212,377,212,213,377,326,254,214,252&
-        ,354,377,262,207,345,378,262,379,262,207,218,207,269,196,198&
-        ,212,203,204,237,235,207,207,325,207,212,213,326,207,254,207&
-        ,214,207,354,331,207,215,207,262,207,207,218,249,207,269,207&
-        ,222,207,341,297,209,258,196,197,200,202,210,205,216,219,216&
-        ,235,198,325,326,237,254,235,214,242,262,210,207,206,359,325&
-        ,218,212,217,213,380,326,331,254,220,214,221,210,354,339,331&
-        ,373,204,324,215,262,206,207,218,220,277,207,269,222,221,341&
-        ,381,220,277,226,382,383,211,206,241,197,204,200,243,202,204&
-        ,249,204,205,214,212,373,333,374,271,271,222,344,366,196,197&
-        ,198,200,201,202,203,212,204,237,235,242,210,359,325,212,213&
-        ,326,254,214,354,331,359,204,324,215,262,207,359,218,204,219&
-        ,207,269,222,214,221,235,353,326,204,324,243,254,256,262,214&
-        ,262,207,377,206,218,359,218,212,359,212,213,380,331,220,221&
-        ,212,217,339,331,217,218,373,222,271,269,271,222,207,269,228&
-        ,222,344,197,200,202,205,212,196,210,197,200,212,202,204,249&
-        ,205,210,235,207,217,360,212,214,269,215,207,380,218,360,207&
-        ,269,222,384,228,229,235,212,213,204,324,249,329,237,254,235&
-        ,214,262,207,331,359,218,212,217,213,331,263,264,337,254,220&
-        ,214,221,339,331,373,215,374,271,331,207,269,271,218,222,269&
-        ,228,222,344,373,381,245,245,261,385,373,271,361,362,344,386&
-        ,340,387,363,388,212,309,336,309,205,330,263,246,205,247,330&
-        ,344,330,205,197,200,205,212,205,205,246,207,205,337,212,205&
-        ,207,205,389,197,200,243,202,328,222,250,235,256,207,204,214&
-        ,265,284,220,212,221,278,279,372,223,220,271,286,220,271,222&
-        ,276,227,228,276,344,220,293,294,231,271,277,346,271,271,207&
-        ,271,265,271,216,265,295,254,262,207,216,265,220,221,271,212&
-        ,207,339,269,278,279,277,269,228,216,366,276,221,223,271,216&
-        ,335,207,223,297,344,304,226,298,274,271,207,265,271,198,207&
-        ,203,213,339,212,213,331,339,215,222,339,341,207,373,235,197&
-        ,200,217,202,213,204,324,390,205,237,254,235,214,207,373,373&
-        ,212,213,373,254,220,214,221,373,215,373,374,271,207,269,373&
-        ,271,218,222,269,228,222,344,373,216,197,324,200,243,202,324&
-        ,249,204,205,212,373,374,207,222,344,235,321,197,200,218,383&
-        ,202,326,244,324,329,254,214,262,207,255,258,216,382,383,215&
-        ,200,359,202,218,217,391,380,331,334,392,261,333,263,264,332&
-        ,337,389,390,220,342,364,265,372,283,221,339,373,374,271,269&
-        ,363,335,274,271,393,369,385,336,394,222,212,375,395,272,275&
-        ,396,397,398,277,278,279,286,399,400,365,280,341,228,366,401&
-        ,402,361,344,290,288,291,343,225,297,226,293,294,227,403,367&
-        ,295,207,373,387,304,381,292,292,346,346,404,370,371,405,406&
-        ,407,408,277,298,231,301,300,305,302,221,228,376,409,309,410&
-        ,411,293,294,412,413,312,313,306,414,415,314,347,349,310,416&
-        ,417,373,298,418,318,319,316,358,419,420,421,320,350,352,422&
-        ,423,424,425,426,427,235,198,203,204,324,254,214,207,271,218&
-        ,212,213,331,220,221,339,331,373,271,271,269,271,222,228,271&
-        ,222,271,277,235,197,200,202,244,324,329,254,214,258,216,215&
-        ,200,202,218,391,331,339,334,392,261,333,263,264,337,389,390&
-        ,220,364,265,372,283,221,373,374,271,269,363,274,271,393,369&
-        ,385,336,394,222,375,395,272,275,396,397,277,278,279,286,399&
-        ,400,365,280,228,366,401,402,361,344,290,288,291,297,226,293&
-        ,294,227,403,367,295,384,387,304,292,292,346,346,404,370,371&
-        ,405,406,407,408,298,231,301,300,305,302,376,409,309,410,411&
-        ,412,413,312,313,306,414,415,314,347,349,310,416,417,373,418&
-        ,318,319,316,358,419,420,421,320,350,352,422,423,424,425,426&
-        ,427,253,244,363,207,219,344,235,204,324,254,214,271,218,212&
-        ,212,331,220,221,373,271,271,269,222,228,222,235,360,324,254&
-        ,214,207,218,212,331,220,221,339,373,271,269,271,222,228,344&
-        ,381,207,369,373,207,207,359,373,235,324,254,214,207,218,331&
-        ,220,221,339,373,271,269,271,222,277,228,344,381,292,292,346&
-        ,346,409,427,394,359,217,204,324,391,254,235,214,271,345,222&
-        ,222,212,217,393,220,214,221,373,222,344,324,215,374,222,344&
-        ,271,207,271,222,222,228,222,344,212,212,235,360,326,324,254&
-        ,214,262,207,206,359,218,217,331,220,221,339,373,271,269,271&
-        ,222,228,344,222,361,363,429,401,374,272,263,332,337,389,337&
-        ,247,249,398,213,86,250,265,197,200,235,256,342,202,207,255&
-        ,372,283,205,259,272,278,279,286,276,212,223,207,227,293,294&
-        ,215,277,346,207,277,271,346,222,225,227,301,295,295,300,300&
-        ,269,222,344,277,293,294,301,300,300,312,312,302,313,231,412&
-        ,226,293,294,430,293,294,312,348,227,313,314,306,347,231,348&
-        ,358,300,347,318,310,319,313,319,320,316,350,347,350,423,273&
-        ,278,212,212,342,207,372,399,399,207,277,399,216,277,365,241&
-        ,399,365,300,345,222,222,344,277,301,293,294,312,295,300,286&
-        ,280,205,259,272,205,205,207,205,254,220,197,200,262,345,202&
-        ,255,207,269,363,216,205,263,274,265,220,276,431,335,271,212&
-        ,228,269,274,375,278,279,293,294,277,366,207,341,304,366,293&
-        ,265,265,227,227,207,344,304,277,293,294,231,301,301,300,298&
-        ,293,294,293,294,293,294,293,294,277,293,294,412,430,293,294&
-        ,312,313,228,232,314,347,318,319,320,350,423,202,202,260,214&
-        ,221,221,222,222,228,344,344,197,200,202,204,324,205,254,235&
-        ,214,228,212,207,220,214,221,373,271,207,228,271,222,228,222&
-        ,344,228,309,260,207,202,261,329,214,258,216,392,333,263,264&
-        ,337,364,265,372,283,221,374,271,363,274,271,369,336,222,272&
-        ,275,396,278,279,286,399,400,365,280,228,401,402,361,344,290&
-        ,297,226,293,294,227,403,367,387,292,292,346,346,406,408,231&
-        ,301,376,409,309,412,413,417,418,419,421,427,215,271,271,228&
-        ,344,235,207,207,373,277,344,381,408,373,344,197,200,202,217&
-        ,393,205,220,344,344,344,212,344,221,344,344,207,344,344,344&
-        ,344,344,432,388,273,405,274,332,369,337,270,402,207,260,396&
-        ,265,278,279,220,342,223,221,364,272,290,220,227,301,373,374&
-        ,271,271,301,278,279,300,300,312,312,344,293,294,430,293,294&
-        ,312,312,348,348,227,313,314,412,346,298,231,348,358,301,314&
-        ,433,300,347,318,412,358,312,318,351,313,319,320,314,320,434&
-        ,347,350,423,318,423,435,427,280,280,265,265,286,286,207,207&
-        ,400,400,365,365,273,273,288,288,300,300,312,312,313,313,312&
-        ,312,348,348,313,313,314,314,306,306,347,347,430,430,301,301&
-        ,358,358,433,433,347,347,318,318,310,310,319,319,227,227,301&
-        ,301,413,413,312,312,357,357,319,319,320,320,316,316,350,350&
-        ,350,350,423,423,220,346,281,197,200,202,207,227,296,302,313&
-        ,303,303,306,306,314,347,347,227,310,312,301,433,318,319,316&
-        ,351,350,265,207,346,295,415,295,221,221,207,381,213,339,373&
-        ,215,374,219,375,220,277,293,294,269,228,222,344,381,381,226&
-        ,298,229,376,202,214,271,222,344,271,345,288,289,290,373,274&
-        ,207,407,373,207,278,279,293,294,277,276,225,207,221,364,290&
-        ,370,293,294,301,293,294,430,227,227,348,348,222,344,277,298&
-        ,430,301,301,358,358,300,433,346,412,436,293,294,301,358,312&
-        ,433,313,351,430,314,424,347,434,318,434,319,435,320,435,280&
-        ,280,227,227,277,277,365,365,288,288,371,371,300,300,312,312&
-        ,312,312,313,313,314,314,348,348,314,314,433,433,347,347,318&
-        ,318,430,430,358,358,433,433,357,357,318,318,319,319,320,320&
-        ,357,357,320,320,434,434,350,350,423,423,423,423,281,295,437&
-        ,438,278,279,403,367,289,405,313,314,347,347,314,433,318,318&
-        ,319,348,358,433,357,318,351,313,319,350,424,423,296,439,207&
-        ,300,305,302,235,277,226,341,200,373,228,324,291,406,254,214&
-        ,207,218,331,220,221,373,271,269,271,222,277,228,344,346,427&
-        ,440,371,405,370,406,402,373,293,294,231,226,207,230,373,374&
-        ,271,271,293,294,430,228,344,412,227,301,293,294,346,299,207&
-        ,358,427,295,300,440,207,207,367,314,318,318,433,357,351,351&
-        ,320,358,351,424,314,434,423,358,423,435,296,302,305,207,347&
-        ,347,318,319,319,318,351,319,319,320,320,350,433,357,351,424&
-        ,320,434,318,423,434,415,303,207,313,306,417,419,441,298,301&
-        ,226,299,207,427,433,357,433,302,313,415,207,303,306,207,319&
-        ,350,350,320,434,350,350,423,423,351,424,434,423,435,435,307&
-        ,442,207,347,349,310,416,443,416,443,306,347,207,307,310,349&
-        ,207,350,350,423,423,435,434,435,420,319,316,443,310,319,420&
-        ,207,311,316,207,435,317,444,207,350,352,445,422,427,358,430&
-        ,445,316,350,207,317,352,207,426,445,426,207,446,446,255,249&
-        ,287,287,254,5,6,21,7,5,5,7,5,7,5,5,235,210,214,266,281,296&
-        ,303,307,311,317,211,428,394,334,215,329,330,264,396,290,406&
-        ,374,393,395,275,265,384,309,447,277,448,226,443,445,446,278&
-        ,279,438,294,293,312,297,381,376,408,414,416,419,421,422,425&
-        ,411,309,418,370,407,449,293,294,227,419,450,424,424,301,433&
-        ,445,434,446,423,313,309,418,413,357,451,435,452,434,357,427&
-        ,24,26,28,21,53,59,63,60,64,86,95,26,38,42,53,59,63,64,75,61&
-        ,86,94,95,101,119,21,42,39,41,64,60,61,95,30,34,40,52,79,85&
-        ,63,126,64,61,95,133,207,24,30,28,28,21,28,21,21,29,18,47,21&
-        ,30,53,26,57,24,56,24,68,63,21,67,21,86,87,88,56,54,104,128&
-        ,56,56,120,109,110,93,93,111,111,56,56,129,169,137,115,130&
-        ,138,132,115,139,140,144,146,140,151,152,158,173,152,143,157&
-        ,24,56,24,56,56,93,56,24,26,26,24,28,24,18,20,17,86,20,166&
-        ,120,10,26,59,94,17,75,42,28,17,15,64,75,42,42,41,42,61,61,77&
-        ,34,21,42,39,21,26,59,94,119,42,61,38,75,101,97,28,28,10,40&
-        ,36,36,36,39,39,44,44,28,49,49,39,63,68,78,63,36,39,73,38,70&
-        ,54,28,28,28,89,89,28,63,172,38,70,106,86,120,120,120,56,28&
-        ,112,28,131,28,172,127,142,28,28,28,145,155,54,28,28,28,159&
-        ,54,21,27,22,21,22,21,23,21,52,39,42,39,52,41,45,52,21,50,50&
-        ,39,50,21,21,21,29,21,21,12,42,78,21,79,42,50,34,42,76,45,38&
-        ,69,39,39,42,39,28,71,43,21,47,50,50,49,107,134,95,53,53,21&
-        ,57,58,21,95,78,65,81,99,86,21,87,88,89,91,80,103,21,112,21&
-        ,21,21,21,78,21,21,21,21,78,21,21,30,30,40,46,52,52,66,30,96&
-        ,50,50,50,67,104,102,175,176,177,178,179,181,32,32,32,32,63&
-        ,21,39,127,109,182,138,150,137,183,93,132,146,173,56,115,140&
-        ,152,184,185,186,187,189,111,169,139,151,36,17,63,78,63,39&
-        ,120,75,170,136,142,155,164,190,191,192,193,194,60,38,62,36&
-        ,73,36,84,85,61,95,61,61,61,38,101,61,64,116,61,86,127,55,92&
-        ,64,120,120,129,138,138,143,150,157,161,115,140,152,174,93&
-        ,132,146,173,142,155,164,188,195,39,95,95,119,119,168,24,26&
-        ,28,21,59,42,41,85,79,94,120,126,56,93,61,97,10,10,10,10,22&
-        ,10,17,23,10,12,12,12,18,15,15,15,15,17,17,23,23,23,18,19,19&
-        ,19,19,19,19,17,24,26,10,10,24,21,24,30,24,23,29,10,26,10,19&
-        ,47,28,17,22,31,33,32,17,42,17,18,34,12,20,28,21,42,26,23,29&
-        ,30,26,28,39,40,38,49,21,43,44,43,45,19,50,19,51,52,36,38,16&
-        ,37,21,15,38,17,41,21,30,10,23,43,34,46,19,47,19,19,48,19,52&
-        ,53,24,26,59,24,21,21,53,57,28,54,26,54,53,56,24,24,24,55,56&
-        ,24,56,19,47,67,20,26,26,59,25,28,63,68,21,64,30,66,28,68,39&
-        ,69,43,71,34,72,48,50,42,61,42,20,34,62,30,55,21,42,60,21,42&
-        ,79,50,84,52,52,85,16,74,38,75,29,58,29,65,43,80,75,53,81,47&
-        ,81,48,82,49,83,49,70,26,28,54,24,59,86,53,53,86,24,94,59,24&
-        ,24,56,56,56,56,86,86,87,88,24,53,89,53,87,56,93,54,89,58,91&
-        ,55,56,92,56,93,60,59,94,21,64,95,30,96,72,98,50,99,87,88,90&
-        ,55,92,75,75,101,79,23,58,100,58,91,100,29,65,94,101,81,102&
-        ,19,19,103,81,103,67,104,82,105,54,59,94,106,94,107,86,86,108&
-        ,53,119,94,59,53,165,166,120,167,86,86,87,88,109,110,93,111&
-        ,111,115,24,93,115,60,116,28,59,63,118,94,95,94,119,94,59,26&
-        ,86,87,88,90,90,53,86,165,166,120,167,89,87,88,90,55,92,114&
-        ,75,170,43,58,100,29,29,58,91,113,65,117,119,102,121,103,122&
-        ,103,123,104,124,105,125,106,126,94,107,107,53,86,108,127,89&
-        ,120,109,110,128,108,86,53,109,110,111,129,115,130,28,89,131&
-        ,130,132,93,115,132,94,118,95,94,94,59,133,120,87,88,90,168&
-        ,101,172,78,75,23,58,100,58,113,95,107,119,134,127,135,89,120&
-        ,136,128,137,111,129,169,131,142,130,138,132,132,139,139,140&
-        ,24,132,140,118,141,94,133,120,107,119,134,135,94,147,111,129&
-        ,137,86,53,131,142,130,138,139,139,143,140,144,28,145,144,146&
-        ,140,146,94,95,133,133,148,146,152,127,134,149,94,134,131,142&
-        ,138,153,139,143,145,155,144,150,146,151,151,152,24,94,133&
-        ,154,134,156,111,128,108,86,94,160,139,143,145,155,144,150&
-        ,151,157,152,158,28,159,150,162,151,157,159,164,158,161,171&
-        ,143,94,163,151,157,159,164,158,161,158,161,10,22,11,14,15,16&
-        ,17,18,19,20,62,94,95,96,10,12,10,11,11,11,12,12,12,13,12,13&
-        ,14,14,14,15,12,15,16,16,16,17,12,17,18,18,18,19,19,19,20,21&
-        ,42,61,101,4,3,6,8,196,208,197,200,202,204,205,10,237,22,10&
-        ,235,22,10,10,10,12,22,33,12,15,12,325,15,212,15,17,213,17&
-        ,326,19,19,19,19,17,24,254,24,28,24,24,26,214,21,42,331,34,28&
-        ,12,207,28,39,16,38,218,39,17,21,219,52,53,220,56,56,24,24,24&
-        ,24,56,26,59,221,21,21,207,269,30,38,75,222,59,223,86,277,56&
-        ,56,87,88,53,93,56,56,56,64,224,63,26,59,94,53,94,225,86,226&
-        ,87,88,109,110,53,111,227,53,87,88,115,93,95,229,94,119,230&
-        ,109,110,128,231,137,180,87,88,130,53,87,88,28,63,94,118,232&
-        ,12,111,89,28,28,28,28,28,26,26,26,26,26,26,121,122,122,19,19&
-        ,19,127,233,111,95,234,196,196,198,198,205,237,235,198,211&
-        ,235,214,10,12,17,18,28,42,12,12,199,13,13,453,199,20,20,211&
-        ,211,20,211,12,12,12,12,12,12,211,12,12,12,20,20,20,20,198&
-        ,199/)
-    arr_p2(1:4453) = (/477,9,9,9,9,9,9,9,9,9,9,12,21,1&
+        ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,3,8,4,3,8,4,3,8,4,3,8,4&
+        ,3,8,4,3,8,4,3,8,4,3,8,4,3,8,4,3,8,3,3,3,3,3,3,1,1,1,1,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,196/)
+    arr_p1(1:4436) = (/2,10,11,12&
+        ,13,14,15,16,17,18,19,20,12,198,210,199,200,201,202,203,204&
+        ,205,211,206,207,10,10,10,22,10,10,212,10,10,12,200,200,213&
+        ,12,33,12,14,15,16,15,15,214,15,17,215,17,23,23,23,18,19,19&
+        ,19,19,19,18,24,10,30,24,24,21,24,29,216,21,42,20,217,28,21&
+        ,209,29,218,26,28,219,49,45,34,39,16,38,220,39,17,41,28,21&
+        ,221,43,47,48,19,50,52,53,222,56,56,24,24,58,24,56,59,223,21&
+        ,20,42,34,50,58,38,75,224,81,81,47,82,59,59,225,86,87,88,93&
+        ,56,91,56,93,64,226,65,63,59,53,81,103,81,104,82,94,227,86&
+        ,228,109,110,53,111,229,115,93,115,94,95,230,231,94,119,232&
+        ,127,108,128,233,130,132,132,63,234,111,139,140,132,140,94,95&
+        ,235,144,146,146,94,95,236,139,107,151,152,146,94,158,94,94&
+        ,151,10,199,202,204,211,206,207,238,239,237,240,241,238,242&
+        ,243,202,204,244,214,243,245,205,212,212,246,247,207,248,248&
+        ,248,249,207,248,250,206,212,243,251,252,253,252,254,241,255&
+        ,256,216,212,209,257,217,218,258,259,237,209,255,260,261,258&
+        ,262,263,209,264,212,243,221,261,248,265,266,251,267,268,268&
+        ,252,269,268,268,270,268,256,222,223,216,209,271,216,272,241&
+        ,255,264,273,224,274,275,275,261,276,274,265,276,277,278,225&
+        ,267,279,280,281,268,268,282,282,283,283,284,283,285,278,222&
+        ,279,286,256,264,287,258,267,256,259,287,288,252,267,287,252&
+        ,289,286,287,290,291,274,292,293,276,293,279,294,267,279,280&
+        ,281,228,295,282,295,296,229,267,283,229,297,298,223,230,231&
+        ,299,230,271,264,278,227,299,232,295,296,300,301,222,279,295&
+        ,296,229,233,302,297,303,280,281,298,304,305,306,234,297,307&
+        ,305,308,309,279,303,310,230,311,235,309,312,313,314,315,316&
+        ,236,308,317,313,318,319,316,319,320,321,322,318,323,215,204&
+        ,325,199,202,204,205,211,206,207,239,237,241,243,323,206,326&
+        ,202,204,327,214,245,215,328,246,329,247,330,248,207,331,249&
+        ,332,250,251,239,256,258,253,252,254,255,237,216,209,333,217&
+        ,264,212,213,209,260,243,248,265,200,214,249,334,263,335,204&
+        ,220,326,336,261,331,266,262,256,222,252,252,267,267,269,270&
+        ,268,223,209,271,337,338,339,272,285,224,261,274,275,265,276&
+        ,266,277,278,225,222,279,267,267,280,281,268,282,340,284,283&
+        ,341,226,342,273,223,343,264,256,286,344,278,222,286,288,200&
+        ,288,267,286,289,256,289,220,274,292,275,290,291,276,293,277&
+        ,345,278,227,279,228,280,281,295,296,282,229,283,297,298,230&
+        ,231,346,209,347,220,299,232,228,300,348,301,295,296,233,303&
+        ,229,297,302,298,304,305,306,234,307,304,315,305,308,309,223&
+        ,310,311,235,308,349,309,312,313,314,350,311,236,351,317,312&
+        ,321,313,318,223,318,352,320,353,223,354,200,211,207,198,239&
+        ,198,198,237,210,198,203,198,198,211,198,206,200,213,210,324&
+        ,206,202,203,355,204,203,203,205,203,206,205,215,205,211,211&
+        ,211,206,198,207,207,207,205,207,206,207,205,206,198,239,237&
+        ,198,198,206,239,243,198,239,198,198,211,198,237,198,205,212&
+        ,215,356,200,328,333,206,326,217,198,203,237,244,237,212,357&
+        ,198,211,200,243,207,248,198,244,327,200,214,249,246,247,206&
+        ,330,203,205,355,214,204,203,327,205,244,205,206,212,243,211&
+        ,207,207,331,244,207,206,215,251,358,239,237,256,222,252,252&
+        ,239,286,239,252,211,252,239,243,198,239,252,237,216,212,209&
+        ,206,243,216,326,335,339,237,241,327,220,224,207,261,261,331&
+        ,265,331,266,216,212,216,256,222,252,252,267,267,256,268,239&
+        ,255,243,252,252,268,356,341,246,216,327,216,264,273,200,237&
+        ,216,223,343,239,258,286,264,244,256,286,259,239,244,256,258&
+        ,252,267,286,239,252,286,327,344,75,220,331,274,207,207,275&
+        ,275,331,276,266,277,244,223,256,216,222,279,228,252,267,280&
+        ,281,256,268,282,267,283,268,268,283,328,223,209,271,327,224&
+        ,212,209,223,225,299,279,228,300,279,252,267,280,281,295,296&
+        ,229,295,296,280,281,267,283,297,282,298,283,298,220,223,273&
+        ,306,111,256,282,282,298,304,297,305,298,298,305,223,341,225&
+        ,299,232,300,311,297,305,308,304,309,305,309,302,314,223,230&
+        ,304,299,304,309,312,308,313,309,223,308,313,318,349,320,223&
+        ,312,359,360,204,204,199,202,239,237,244,244,212,214,327,355&
+        ,327,355,214,205,214,215,214,328,256,216,212,356,333,326,217&
+        ,264,327,209,220,206,243,221,214,209,271,361,220,224,264,223&
+        ,223,273,273,343,214,223,271,230,231,199,200,239,212,237,212&
+        ,214,328,214,327,214,214,215,215,328,212,256,216,215,333,61&
+        ,326,217,212,214,209,328,209,214,220,362,206,221,215,209,271&
+        ,224,223,343,271,230,231,23,247,247,247,263,285,363,224,364&
+        ,365,363,199,202,204,207,243,243,245,214,251,251,248,331,250&
+        ,250,253,218,330,335,217,326,209,330,366,270,270,337,217,209&
+        ,224,366,367,367,284,368,280,281,282,229,369,199,202,204,248&
+        ,249,332,370,265,339,262,262,250,274,275,275,265,276,371,292&
+        ,290,290,291,372,373,282,373,198,198,212,206,243,252,237,252&
+        ,256,256,258,214,212,216,267,256,374,267,286,256,209,220,344&
+        ,282,256,222,267,280,281,295,296,239,199,198,202,244,204,212&
+        ,206,243,326,207,252,239,258,259,216,244,214,64,212,209,212&
+        ,252,256,209,209,271,375,218,376,258,344,273,216,209,273,264&
+        ,218,377,280,281,209,223,230,347,224,346,222,279,228,223,230&
+        ,378,198,200,205,206,239,237,212,264,327,214,379,214,215,379&
+        ,328,256,216,254,356,379,264,209,347,380,264,381,264,209,220&
+        ,209,271,198,200,214,205,206,239,237,209,209,327,209,214,215&
+        ,328,209,256,209,216,209,356,333,209,217,209,264,209,209,220&
+        ,251,209,271,209,224,209,343,299,211,260,198,199,202,204,212&
+        ,207,218,221,218,237,200,327,328,239,256,237,216,244,264,212&
+        ,209,208,361,327,220,214,219,215,382,328,333,256,222,216,223&
+        ,212,356,341,333,375,206,326,217,264,208,209,220,222,279,209&
+        ,271,224,223,343,383,222,279,228,384,385,213,208,243,199,206&
+        ,202,245,204,206,251,206,207,216,214,375,335,376,273,273,224&
+        ,346,368,198,199,200,202,203,204,205,214,206,239,237,244,212&
+        ,361,327,214,215,328,256,216,356,333,361,206,326,217,264,209&
+        ,361,220,206,221,209,271,224,216,223,237,355,328,206,326,245&
+        ,256,258,264,216,264,209,379,208,220,361,220,214,361,214,215&
+        ,382,333,222,223,214,219,341,333,219,220,375,224,273,271,273&
+        ,224,209,271,230,224,346,199,202,204,207,214,198,212,199,202&
+        ,214,204,206,251,207,212,237,209,219,362,214,216,271,217,209&
+        ,382,220,362,209,271,224,386,230,231,237,214,215,206,326,251&
+        ,331,239,256,237,216,264,209,333,361,220,214,219,215,333,265&
+        ,266,339,256,222,216,223,341,333,375,217,376,273,333,209,271&
+        ,273,220,224,271,230,224,346,375,383,247,247,263,387,375,273&
+        ,363,364,346,388,342,389,365,390,214,311,338,311,207,332,265&
+        ,248,207,249,332,346,332,207,199,202,207,214,207,207,248,209&
+        ,207,339,214,207,209,207,391,199,202,245,204,330,224,252,237&
+        ,258,209,206,216,267,286,222,214,223,280,281,374,225,222,273&
+        ,288,222,273,224,278,229,230,278,346,222,295,296,233,273,279&
+        ,348,273,273,209,273,267,273,218,267,297,256,264,209,218,267&
+        ,222,223,273,214,209,341,271,280,281,279,271,230,218,368,278&
+        ,223,225,273,218,337,209,225,299,346,306,228,300,276,273,209&
+        ,267,273,200,209,205,215,341,214,215,333,341,217,224,341,343&
+        ,209,375,237,199,202,219,204,215,206,326,392,207,239,256,237&
+        ,216,209,375,375,214,215,375,256,222,216,223,375,217,375,376&
+        ,273,209,271,375,273,220,224,271,230,224,346,375,218,199,326&
+        ,202,245,204,326,251,206,207,214,375,376,209,224,346,237,323&
+        ,199,202,220,385,204,328,246,326,331,256,216,264,209,257,260&
+        ,218,384,385,217,202,361,204,220,219,393,382,333,336,394,263&
+        ,335,265,266,334,339,391,392,222,344,366,267,374,285,223,341&
+        ,375,376,273,271,365,337,276,273,395,371,387,338,396,224,214&
+        ,377,397,274,277,398,399,400,279,280,281,288,401,402,367,282&
+        ,343,230,368,403,404,363,346,292,290,293,345,227,299,228,295&
+        ,296,229,405,369,297,209,375,389,306,383,294,294,348,348,406&
+        ,372,373,407,408,409,410,279,300,233,303,302,307,304,223,230&
+        ,378,411,311,412,413,295,296,414,415,314,315,308,416,417,316&
+        ,349,351,312,418,419,375,300,420,320,321,318,360,421,422,423&
+        ,322,352,354,424,425,426,427,428,429,237,200,205,206,326,256&
+        ,216,209,273,220,214,215,333,222,223,341,333,375,273,273,271&
+        ,273,224,230,273,224,273,279,237,199,202,204,246,326,331,256&
+        ,216,260,218,217,202,204,220,393,333,341,336,394,263,335,265&
+        ,266,339,391,392,222,366,267,374,285,223,375,376,273,271,365&
+        ,276,273,395,371,387,338,396,224,377,397,274,277,398,399,279&
+        ,280,281,288,401,402,367,282,230,368,403,404,363,346,292,290&
+        ,293,299,228,295,296,229,405,369,297,386,389,306,294,294,348&
+        ,348,406,372,373,407,408,409,410,300,233,303,302,307,304,378&
+        ,411,311,412,413,414,415,314,315,308,416,417,316,349,351,312&
+        ,418,419,375,420,320,321,318,360,421,422,423,322,352,354,424&
+        ,425,426,427,428,429,255,246,365,209,221,346,237,206,326,256&
+        ,216,273,220,214,214,333,222,223,375,273,273,271,224,230,224&
+        ,237,362,326,256,216,209,220,214,333,222,223,341,375,273,271&
+        ,273,224,230,346,383,209,371,375,209,209,361,375,237,326,256&
+        ,216,209,220,333,222,223,341,375,273,271,273,224,279,230,346&
+        ,383,294,294,348,348,411,429,396,361,219,206,326,393,256,237&
+        ,216,273,347,224,224,214,219,395,222,216,223,375,224,346,326&
+        ,217,376,224,346,273,209,273,224,224,230,224,346,214,214,237&
+        ,362,328,326,256,216,264,209,208,361,220,219,333,222,223,341&
+        ,375,273,271,273,224,230,346,224,363,365,431,403,376,274,265&
+        ,334,339,391,339,249,251,400,215,86,252,267,199,202,237,258&
+        ,344,204,209,257,374,285,207,261,274,280,281,288,278,214,225&
+        ,209,229,295,296,217,279,348,209,279,273,348,224,227,229,303&
+        ,297,297,302,302,271,224,346,279,295,296,303,302,302,314,314&
+        ,304,315,233,414,228,295,296,432,295,296,314,350,229,315,316&
+        ,308,349,233,350,360,302,349,320,312,321,315,321,322,318,352&
+        ,349,352,425,275,280,214,214,344,209,374,401,401,209,279,401&
+        ,218,279,367,243,401,367,302,347,224,224,346,279,303,295,296&
+        ,314,297,302,288,282,207,261,274,207,207,209,207,256,222,199&
+        ,202,264,347,204,257,209,271,365,218,207,265,276,267,222,278&
+        ,433,337,273,214,230,271,276,377,280,281,295,296,279,368,209&
+        ,343,306,368,295,267,267,229,229,209,346,306,279,295,296,233&
+        ,303,303,302,300,295,296,295,296,295,296,295,296,279,295,296&
+        ,414,432,295,296,314,315,230,234,316,349,320,321,322,352,425&
+        ,204,204,262,216,223,223,224,224,230,346,346,199,202,204,206&
+        ,326,207,256,237,216,230,214,209,222,216,223,375,273,209,230&
+        ,273,224,230,224,346,230,311,262,209,204,263,331,216,260,218&
+        ,394,335,265,266,339,366,267,374,285,223,376,273,365,276,273&
+        ,371,338,224,274,277,398,280,281,288,401,402,367,282,230,403&
+        ,404,363,346,292,299,228,295,296,229,405,369,389,294,294,348&
+        ,348,408,410,233,303,378,411,311,414,415,419,420,421,423,429&
+        ,217,273,273,230,346,237,209,209,375,279,346,383,410,375,346&
+        ,199,202,204,219,395,207,222,346,346,346,214,346,223,346,346&
+        ,209,346,346,346,346,346,434,390,275,407,276,334,371,339,272&
+        ,404,209,262,398,267,280,281,222,344,225,223,366,274,292,222&
+        ,229,303,375,376,273,273,303,280,281,302,302,314,314,346,295&
+        ,296,432,295,296,314,314,350,350,229,315,316,414,348,300,233&
+        ,350,360,303,316,435,302,349,320,414,360,314,320,353,315,321&
+        ,322,316,322,436,349,352,425,320,425,437,429,282,282,267,267&
+        ,288,288,209,209,402,402,367,367,275,275,290,290,302,302,314&
+        ,314,315,315,314,314,350,350,315,315,316,316,308,308,349,349&
+        ,432,432,303,303,360,360,435,435,349,349,320,320,312,312,321&
+        ,321,229,229,303,303,415,415,314,314,359,359,321,321,322,322&
+        ,318,318,352,352,352,352,425,425,222,348,283,199,202,204,209&
+        ,229,298,304,315,305,305,308,308,316,349,349,229,312,314,303&
+        ,435,320,321,318,353,352,267,209,348,297,417,297,223,223,209&
+        ,383,215,341,375,217,376,221,377,222,279,295,296,271,230,224&
+        ,346,383,383,228,300,231,378,204,216,273,224,346,273,347,290&
+        ,291,292,375,276,209,409,375,209,280,281,295,296,279,278,227&
+        ,209,223,366,292,372,295,296,303,295,296,432,229,229,350,350&
+        ,224,346,279,300,432,303,303,360,360,302,435,348,414,438,295&
+        ,296,303,360,314,435,315,353,432,316,426,349,436,320,436,321&
+        ,437,322,437,282,282,229,229,279,279,367,367,290,290,373,373&
+        ,302,302,314,314,314,314,315,315,316,316,350,350,316,316,435&
+        ,435,349,349,320,320,432,432,360,360,435,435,359,359,320,320&
+        ,321,321,322,322,359,359,322,322,436,436,352,352,425,425,425&
+        ,425,283,297,439,440,280,281,405,369,291,407,315,316,349,349&
+        ,316,435,320,320,321,350,360,435,359,320,353,315,321,352,426&
+        ,425,298,441,209,302,307,304,237,279,228,343,202,375,230,326&
+        ,293,408,256,216,209,220,333,222,223,375,273,271,273,224,279&
+        ,230,346,348,429,442,373,407,372,408,404,375,295,296,233,228&
+        ,209,232,375,376,273,273,295,296,432,230,346,414,229,303,295&
+        ,296,348,301,209,360,429,297,302,442,209,209,369,316,320,320&
+        ,435,359,353,353,322,360,353,426,316,436,425,360,425,437,298&
+        ,304,307,209,349,349,320,321,321,320,353,321,321,322,322,352&
+        ,435,359,353,426,322,436,320,425,436,417,305,209,315,308,419&
+        ,421,443,300,303,228,301,209,429,435,359,435,304,315,417,209&
+        ,305,308,209,321,352,352,322,436,352,352,425,425,353,426,436&
+        ,425,437,437,309,444,209,349,351,312,418,445,418,445,308,349&
+        ,209,309,312,351,209,352,352,425,425,437,436,437,422,321,318&
+        ,445,312,321,422,209,313,318,209,437,319,446,209,352,354,447&
+        ,424,429,360,432,447,318,352,209,319,354,209,428,447,428,209&
+        ,448,448,257,251,289,289,256,5,6,21,7,5,5,7,5,7,5,5,237,212&
+        ,216,268,283,298,305,309,313,319,213,430,396,336,217,331,332&
+        ,266,398,292,408,376,395,397,277,267,386,311,449,279,450,228&
+        ,445,447,448,280,281,440,296,295,314,299,383,378,410,416,418&
+        ,421,423,424,427,413,311,420,372,409,451,295,296,229,421,452&
+        ,426,426,303,435,447,436,448,425,315,311,420,415,359,453,437&
+        ,454,436,359,429,24,26,28,21,53,59,63,60,64,86,95,26,20,38,42&
+        ,53,59,63,64,75,61,86,94,95,101,119,21,42,39,41,64,60,61,95&
+        ,30,34,40,52,79,85,63,126,64,61,95,133,209,24,30,28,28,21,28&
+        ,21,21,29,18,47,21,30,53,26,57,24,56,24,68,63,21,67,21,86,87&
+        ,88,56,54,104,128,56,56,120,109,110,93,93,111,111,56,56,129&
+        ,169,137,115,130,138,132,115,139,140,144,146,140,151,152,158&
+        ,173,152,143,157,24,56,24,56,56,93,56,24,26,26,24,28,24,18,20&
+        ,17,86,20,166,120,10,26,59,94,17,75,42,28,17,15,64,75,42,42&
+        ,41,42,61,61,77,34,21,42,39,21,26,59,94,119,42,61,38,75,101&
+        ,97,28,28,10,40,36,36,36,39,39,44,44,28,49,49,39,63,68,78,63&
+        ,36,39,73,38,70,54,28,28,28,89,89,28,63,172,38,70,106,86,120&
+        ,120,120,56,28,112,28,131,28,172,127,142,28,28,28,145,155,54&
+        ,28,28,28,159,54,21,27,22,21,22,21,23,21,52,39,42,39,52,41,45&
+        ,52,21,50,50,39,50,21,21,21,29,21,21,12,42,78,21,79,42,50,34&
+        ,42,76,45,38,69,39,39,42,39,28,71,43,21,47,50,50,49,107,134&
+        ,95,53,53,21,57,58,21,95,78,65,81,99,86,21,87,88,89,91,80,103&
+        ,21,112,21,21,21,21,78,21,21,21,21,78,21,21,30,30,40,46,52,52&
+        ,66,30,96,50,50,50,67,104,102,175,176,177,178,179,181,32,32&
+        ,32,32,63,21,39,127,109,182,138,150,137,183,93,132,146,173,56&
+        ,115,140,152,184,185,186,187,189,111,169,139,151,36,17,63,78&
+        ,63,39,120,75,170,136,142,155,164,190,191,192,193,194,60,38&
+        ,62,36,73,36,84,85,61,95,61,61,61,38,101,61,64,116,61,86,127&
+        ,55,92,64,120,120,129,138,138,143,150,157,161,115,140,152,174&
+        ,93,132,146,173,142,155,164,188,195,39,95,95,119,119,168,24&
+        ,26,28,21,59,42,41,85,79,94,120,126,56,93,61,97,10,10,10,10&
+        ,22,10,17,23,10,12,12,12,12,18,15,15,15,15,17,17,23,23,23,18&
+        ,19,19,19,19,19,19,17,24,26,10,10,24,21,24,30,24,23,29,10,26&
+        ,10,19,47,28,17,22,31,33,32,17,42,17,18,34,12,20,28,21,42,26&
+        ,23,29,30,26,28,39,40,38,49,21,43,44,43,45,19,50,19,51,52,36&
+        ,38,16,37,21,15,38,17,41,21,30,10,23,43,34,46,19,47,19,19,48&
+        ,19,52,53,24,26,59,24,21,21,53,57,28,54,26,54,53,56,24,24,24&
+        ,55,56,24,56,19,47,67,20,26,26,59,25,28,63,68,21,64,30,66,28&
+        ,68,39,69,43,71,34,72,48,50,42,61,42,20,34,62,30,55,21,42,60&
+        ,21,42,79,50,84,52,52,85,16,74,38,75,29,58,29,65,43,80,75,53&
+        ,81,47,81,48,82,49,83,49,70,26,28,54,24,59,86,53,53,86,24,94&
+        ,59,24,24,56,56,56,56,86,86,87,88,24,53,89,53,87,56,93,54,89&
+        ,58,91,55,56,92,56,93,60,59,94,21,64,95,30,96,72,98,50,99,87&
+        ,88,90,55,92,75,75,101,79,23,58,100,58,91,100,29,65,94,101,81&
+        ,102,19,19,103,81,103,67,104,82,105,54,59,94,106,94,107,86,86&
+        ,108,53,119,94,59,53,165,166,120,167,86,86,87,88,109,110,93&
+        ,111,111,115,24,93,115,60,116,28,59,63,118,94,95,94,119,94,59&
+        ,26,86,87,88,90,90,53,86,165,166,120,167,89,87,88,90,55,92&
+        ,114,75,170,43,58,100,29,29,58,91,113,65,117,119,102,121,103&
+        ,122,103,123,104,124,105,125,106,126,94,107,107,53,86,108,127&
+        ,89,120,109,110,128,108,86,53,109,110,111,129,115,130,28,89&
+        ,131,130,132,93,115,132,94,118,95,94,94,59,133,120,87,88,90&
+        ,168,101,172,78,75,23,58,100,58,113,95,107,119,134,127,135,89&
+        ,120,136,128,137,111,129,169,131,142,130,138,132,132,139,139&
+        ,140,24,132,140,118,141,94,133,120,107,119,134,135,94,147,111&
+        ,129,137,86,53,131,142,130,138,139,139,143,140,144,28,145,144&
+        ,146,140,146,94,95,133,133,148,146,152,127,134,149,94,134,131&
+        ,142,138,153,139,143,145,155,144,150,146,151,151,152,24,94&
+        ,133,154,134,156,111,128,108,86,94,160,139,143,145,155,144&
+        ,150,151,157,152,158,28,159,150,162,151,157,159,164,158,161&
+        ,171,143,94,163,151,157,159,164,158,161,158,161,10,22,11,12&
+        ,13,14,15,16,17,18,19,20,62,94,95,96,10,12,10,11,11,11,12,12&
+        ,12,13,12,13,14,14,14,15,12,15,16,16,16,17,12,17,18,18,18,19&
+        ,19,19,12,20,21,42,61,101,4,3,6,8,198,210,199,202,204,206,207&
+        ,10,239,22,10,237,22,10,10,10,12,22,33,12,15,12,327,15,214,15&
+        ,17,215,17,328,19,19,19,19,17,24,256,24,28,24,24,26,216,21,42&
+        ,333,34,28,12,209,28,39,16,38,220,39,17,21,221,52,53,222,56&
+        ,56,24,24,24,24,56,26,59,223,21,21,209,271,30,38,75,224,59&
+        ,225,86,279,56,56,87,88,53,93,56,56,56,64,226,63,26,59,94,53&
+        ,94,227,86,228,87,88,109,110,53,111,229,53,87,88,115,93,95&
+        ,231,94,119,232,109,110,128,233,137,180,87,88,130,53,87,88,28&
+        ,63,94,118,234,12,111,89,28,28,28,28,28,26,26,26,26,26,26,121&
+        ,122,122,19,19,19,127,235,111,95,236,198,198,200,200,207,239&
+        ,237,200,213,237,216,10,12,17,18,28,42,200,201,196,197,12,20&
+        ,197/)
+    arr_p2(1:4436) = (/458,9,9,9,9,9,9,9,9,9,9,12,21,1&
         ,1,1,1,1,1,1,1,1,1,1,1,10,22,12,17,15,17,1,23,18,12,12,3,1,22&
         ,12,18,12,15,12,12,17,1,18,17,1,12,12,15,17,18,10,12,15,17,18&
         ,17,12,28,10,10,17,10,23,10,1,17,12,18,1,12,12,1,12,1,19,12,1&
@@ -18697,7 +18764,7 @@ contains
         ,12,28,21,1,12,12,12,12,28,10,30,10,42,1,20,20,20,28,20,12,24&
         ,12,20,28,1,20,1,12,12,53,12,1,12,28,10,42,20,12,1,64,21,1,12&
         ,28,12,1,12,12,10,20,1,28,12,12,28,10,89,95,1,12,12,10,111&
-        ,119,1,28,119,12,12,28,131,12,139,145,28,198,10,10,10,10,10&
+        ,119,1,28,119,12,12,28,131,12,139,145,28,200,10,10,10,10,10&
         ,10,10,12,10,10,10,12,12,12,26,26,12,10,15,10,21,17,12,10,10&
         ,24,10,12,15,10,21,18,10,21,18,17,10,12,10,18,10,24,10,12,10&
         ,21,12,12,10,12,12,12,21,10,12,10,12,12,12,10,16,12,28,21,10&
@@ -18729,24 +18796,24 @@ contains
         ,12,20,12,59,20,18,34,12,12,29,26,20,12,13,53,12,10,26,12,20&
         ,12,28,59,21,20,12,20,20,12,12,24,12,58,24,56,30,24,10,12,12&
         ,59,43,59,38,20,12,94,20,20,12,13,63,26,12,24,53,28,12,26,63&
-        ,53,28,26,38,15,12,68,38,12,56,10,242,28,53,12,87,88,12,10,59&
+        ,53,28,26,38,15,12,68,38,12,56,10,244,28,53,12,87,88,12,10,59&
         ,12,20,12,94,28,12,59,20,12,13,12,20,12,12,53,20,12,24,12,28&
         ,24,10,94,42,75,38,95,21,101,94,64,20,12,20,12,13,28,20,13,13&
-        ,13,13,13,13,13,13,26,26,53,20,12,24,12,24,10,94,75,12,12,242&
+        ,13,13,13,13,13,13,26,26,53,20,12,24,12,24,10,94,75,12,12,244&
         ,89,28,53,20,12,24,12,28,24,10,89,94,20,12,20,42,12,53,20,12&
         ,24,12,24,10,20,12,95,94,28,94,53,20,12,24,12,28,131,53,20,12&
         ,20,12,145,28,12,26,14,35,15,15,15,15,12,15,15,10,12,12,15,17&
         ,15,39,17,15,12,15,15,15,39,15,15,38,15,15,21,15,15,21,39,15&
         ,59,38,15,20,38,15,20,15,38,12,20,15,94,39,38,38,15,17,17,17&
-        ,10,17,12,10,12,15,17,12,17,17,12,17,26,17,17,21,17,204,42,17&
-        ,38,26,15,21,17,39,17,17,60,17,52,42,17,17,42,17,61,42,17,205&
-        ,17,12,20,12,12,477,23,12,20,20,18,18,18,18,10,12,12,18,17,12&
+        ,10,17,12,10,12,15,17,12,17,17,12,17,26,17,17,21,17,206,42,17&
+        ,38,26,15,21,17,39,17,17,60,17,52,42,17,17,42,17,61,42,17,207&
+        ,17,12,20,12,12,458,23,12,20,20,18,18,18,18,10,12,12,18,17,12&
         ,18,18,12,18,12,12,20,12,18,21,18,21,12,12,12,12,21,34,18,20&
         ,12,12,12,12,30,30,34,18,12,19,19,19,12,12,12,12,12,12,12,12&
         ,21,12,12,12,20,12,12,12,12,12,12,12,12,48,20,24,28,10,24,10&
         ,10,24,12,12,15,12,24,21,24,12,42,12,15,12,21,24,24,12,12,94&
         ,59,20,20,20,12,12,12,26,20,26,12,26,12,26,12,10,26,12,20,12&
-        ,12,12,20,26,203,42,17,20,20,20,21,20,12,10,20,10,20,12,10,21&
+        ,12,12,20,26,205,42,17,20,20,20,21,20,12,10,20,10,20,12,10,21&
         ,26,10,20,21,10,12,12,59,21,10,20,26,10,20,20,12,95,59,10,28&
         ,28,28,28,28,28,28,12,28,28,15,21,28,17,28,28,28,39,28,21,42&
         ,38,17,12,28,12,21,28,28,63,28,21,21,10,21,21,21,21,10,12,21&
@@ -18796,8 +18863,8 @@ contains
         ,36,36,36,36,36,20,12,12,75,38,12,38,75,38,15,15,12,15,75,42&
         ,17,38,75,38,38,42,17,101,75,38,34,18,38,75,38,38,64,38,75,38&
         ,42,61,41,12,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41&
-        ,41,41,41,41,41,79,20,119,20,477,46,12,12,12,12,12,42,21,60&
-        ,12,85,196,20,12,86,86,63,20,12,86,26,26,12,12,86,20,12,12,12&
+        ,41,41,41,41,41,79,20,119,20,458,46,12,12,12,12,12,42,21,60&
+        ,12,85,198,20,12,86,86,63,20,12,86,26,26,12,12,86,20,12,12,12&
         ,12,12,86,12,64,12,12,12,86,34,12,86,21,53,12,53,12,20,12,20&
         ,20,12,12,86,86,53,86,59,59,20,20,20,12,12,20,12,20,12,86,94&
         ,94,12,86,86,20,12,86,20,12,20,12,86,20,12,86,20,12,20,12,86&
@@ -18845,17 +18912,17 @@ contains
         ,12,12,12,20,12,138,20,12,12,139,12,20,12,20,12,20,20,12,12&
         ,12,20,20,12,12,143,20,12,144,20,12,12,146,12,12,12,12,86,21&
         ,21,12,20,12,150,20,12,151,12,20,12,157,12,12,12,42,12,28,36&
-        ,17,21,21,20,20,17,12,42,94,42,61,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,1,1&
+        ,17,21,21,20,20,17,12,42,94,42,61,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,1,1&
         ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1&
-        ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,12,12,12,17,15,18,17,12,12,30,12&
-        ,18,17,12,21,12,28,12,21,12,12,28,12,52,12,12,12,20,20,12,12&
-        ,63,68,12,12,12,12,12,12,12,28,21,12,12,12,12,12,12,12,28,12&
-        ,12,12,12,28,12,12,12,12,28,20,20,56,56,115,93,115,115,132&
+        ,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,12,12,12,17,15,18,17,12,12,30&
+        ,12,18,17,12,21,12,28,12,21,12,12,28,12,52,12,12,12,20,20,12&
+        ,12,63,68,12,12,12,12,12,12,12,28,21,12,12,12,12,12,12,12,28&
+        ,12,12,12,12,28,12,12,12,12,28,20,20,56,56,115,93,115,115,132&
         ,140,26,38,15,15,17,20,21,59,20,63,12,12,20,20,20,20,20,20,20&
         ,20,38,42,20,17,38,17,20,42,17,42,20,20,42,36,42,34,12,12,12&
         ,12,12,12,12,12,12,12,10,12,36,12,12,17,18,12,17,12,17,19,10&
@@ -18872,637 +18939,634 @@ contains
         ,63,12,63,12,12,12,12,12,12,12,12,12,12,12,60,18,12,12,61,12&
         ,12,17,12,34,21,39,61,17,41,61,12,77,61,61,12,12,21,12,12,12&
         ,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,94&
-        ,21,39,21,39,12,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,10,22,33,12,17,15,10,10,18,22,33,13,12&
-        ,15,12,17,18,17,12,12,15,17,18,10,12,15,17,18,33,18,12,10,10&
-        ,28,15,10,18,10,10,24,10,20,12,12,26,12,10,21,12,12,12,12,20&
-        ,12,12,12,12,12,12,12,12,10,17,26,12,12,18,12,12,12,19,12,12&
-        ,15,12,17,12,42,12,34,12,12,12,15,20,12,15,12,12,39,12,18,17&
-        ,52,20,12,18,12,24,10,12,20,12,28,17,12,12,26,10,20,10,26,17&
-        ,12,28,15,28,12,10,12,28,21,30,10,18,24,10,59,20,12,10,12,20&
-        ,12,12,12,12,12,12,12,12,12,20,12,20,12,42,12,34,12,42,20,12&
-        ,12,20,12,12,12,26,12,12,21,12,38,30,12,42,12,12,42,12,61,12&
-        ,12,12,26,12,20,12,20,12,23,19,12,24,10,20,12,26,12,20,12,63&
-        ,59,20,61,21,17,12,20,12,12,10,26,59,59,12,12,20,20,10,10,12&
-        ,12,63,28,12,24,10,26,12,24,10,24,10,24,30,10,24,10,12,12,12&
-        ,12,12,12,12,12,20,12,20,12,17,17,12,26,12,12,20,12,20,86,20&
-        ,12,26,12,10,20,20,23,23,20,12,87,88,12,24,10,20,12,20,12,20&
-        ,63,28,12,21,12,12,20,12,20,10,26,59,68,12,12,12,12,26,26,20&
-        ,20,12,12,20,12,10,12,89,24,10,20,12,20,75,12,12,42,20,20,12&
-        ,12,20,20,21,42,42,12,20,63,28,12,12,12,12,26,21,21,26,53,26&
-        ,12,68,12,86,20,20,87,88,53,26,12,20,12,23,20,12,20,12,26,12&
-        ,20,12,20,12,12,12,64,12,20,20,20,20,12,20,20,20,20,12,26,59&
-        ,94,12,12,20,12,20,12,111,53,12,10,12,56,24,10,75,20,20,61,42&
-        ,61,12,26,61,61,20,12,21,61,20,95,127,20,20,86,20,94,20,21,12&
-        ,20,12,20,20,12,20,12,20,20,12,20,12,20,12,12,20,12,10,12,131&
-        ,24,10,20,12,60,21,59,20,95,20,42,120,12,20,12,26,108,127,20&
-        ,20,12,20,12,20,12,20,12,139,12,10,12,24,10,94,119,59,64,12&
-        ,24,10,61,20,12,94,59,20,20,20,12,20,20,20,12,20,12,20,12,10&
-        ,12,145,119,94,12,94,12,20,119,127,135,142,12,20,20,20,20,20&
-        ,20,20,12,20,12,151,12,20,12,20,20,20,12,20,12,12,20,155,12&
-        ,20,12,20,20,20,20,20,20,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,10,10,18,10,12,18,10,12,18,10,13,18,10&
-        ,12,18,10,15,18,10,12,18,10,17,18,10,12,18,10,12,18,20,20,20&
-        ,20,20,477,477,477,477,1,1,1,1,1,1,1,10,1,10,12,1,17,15,17,18&
-        ,12,12,12,18,15,15,1,17,1,18,17,1,12,1,10,12,17,18,18,12,1,15&
-        ,10,18,10,12,1,17,12,1,12,12,21,1,12,12,42,12,1,17,28,18,1,17&
-        ,12,1,12,12,28,21,30,24,10,20,12,1,12,20,12,1,20,20,12,1,21,1&
-        ,12,1,20,20,12,12,24,12,28,30,24,42,1,20,12,20,12,28,28,1,20&
-        ,1,20,20,12,12,53,12,1,56,24,24,12,28,20,1,64,21,1,20,20,12,1&
-        ,10,10,53,53,12,93,56,56,20,20,75,12,1,131,28,94,28,28,28,28&
-        ,28,24,93,132,146,173,174,12,20,20,111,139,151,61,1,94,119,1&
-        ,10,12,12,17,12,12,12,20,12,20,12,1,1,1,1,1,1,477,477,1,477&
-        ,477,1,477,1,1,477,477,198,12,12,12,1,12,12,12,1,12,12,20,12&
-        ,12,20,20,1,1/)
-    arr_p3(1:4453) = (/477,477,477,477,477,477&
-        ,477,477,477,477,477,9,9,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,1,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,1,477,477,477,477,477,477,477,477,477,477&
-        ,477,12,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,12,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,13,477,13,13,477,13,13&
-        ,13,13,13,13,13,13,13,477,13,13,13,13,13,477,13,13,13,13,13&
-        ,13,13,477,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13&
-        ,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,477,13,13&
-        ,477,13,13,477,12,13,13,13,13,13,477,13,13,13,13,13,13,12,13&
+        ,21,39,21,39,12,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,10,22,33,12,17,15,10,10,18,12,22,33,13&
+        ,12,15,12,17,18,17,12,12,15,17,18,10,12,15,17,18,33,18,12,10&
+        ,10,28,15,10,18,10,10,24,10,20,12,12,26,12,10,21,12,12,12,12&
+        ,20,12,12,12,12,12,12,12,12,10,17,26,12,12,18,12,12,12,19,12&
+        ,12,15,12,17,12,42,12,34,12,12,12,15,20,12,15,12,12,39,12,18&
+        ,17,52,20,12,18,12,24,10,12,20,12,28,17,12,12,26,10,20,10,26&
+        ,17,12,28,15,28,12,10,12,28,21,30,10,18,24,10,59,20,12,10,12&
+        ,20,12,12,12,12,12,12,12,12,12,20,12,20,12,42,12,34,12,42,20&
+        ,12,12,20,12,12,12,26,12,12,21,12,38,30,12,42,12,12,42,12,61&
+        ,12,12,12,26,12,20,12,20,12,23,19,12,24,10,20,12,26,12,20,12&
+        ,63,59,20,61,21,17,12,20,12,12,10,26,59,59,12,12,20,20,10,10&
+        ,12,12,63,28,12,24,10,26,12,24,10,24,10,24,30,10,24,10,12,12&
+        ,12,12,12,12,12,12,20,12,20,12,17,17,12,26,12,12,20,12,20,86&
+        ,20,12,26,12,10,20,20,23,23,20,12,87,88,12,24,10,20,12,20,12&
+        ,20,63,28,12,21,12,12,20,12,20,10,26,59,68,12,12,12,12,26,26&
+        ,20,20,12,12,20,12,10,12,89,24,10,20,12,20,75,12,12,42,20,20&
+        ,12,12,20,20,21,42,42,12,20,63,28,12,12,12,12,26,21,21,26,53&
+        ,26,12,68,12,86,20,20,87,88,53,26,12,20,12,23,20,12,20,12,26&
+        ,12,20,12,20,12,12,12,64,12,20,20,20,20,12,20,20,20,20,12,26&
+        ,59,94,12,12,20,12,20,12,111,53,12,10,12,56,24,10,75,20,20,61&
+        ,42,61,12,26,61,61,20,12,21,61,20,95,127,20,20,86,20,94,20,21&
+        ,12,20,12,20,20,12,20,12,20,20,12,20,12,20,12,12,20,12,10,12&
+        ,131,24,10,20,12,60,21,59,20,95,20,42,120,12,20,12,26,108,127&
+        ,20,20,12,20,12,20,12,20,12,139,12,10,12,24,10,94,119,59,64&
+        ,12,24,10,61,20,12,94,59,20,20,20,12,20,20,20,12,20,12,20,12&
+        ,10,12,145,119,94,12,94,12,20,119,127,135,142,12,20,20,20,20&
+        ,20,20,20,12,20,12,151,12,20,12,20,20,20,12,20,12,12,20,155&
+        ,12,20,12,20,20,20,20,20,20,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,10,10,18,10,12,18,10,12,18&
+        ,10,13,18,10,12,18,10,15,18,10,12,18,10,17,18,10,12,18,10,12&
+        ,18,20,20,20,20,20,20,458,458,458,458,1,1,1,1,1,1,1,10,1,10&
+        ,12,1,17,15,17,18,12,12,12,18,15,15,1,17,1,18,17,1,12,1,10,12&
+        ,17,18,18,12,1,15,10,18,10,12,1,17,12,1,12,12,21,1,12,12,42&
+        ,12,1,17,28,18,1,17,12,1,12,12,28,21,30,24,10,20,12,1,12,20&
+        ,12,1,20,20,12,1,21,1,12,1,20,20,12,12,24,12,28,30,24,42,1,20&
+        ,12,20,12,28,28,1,20,1,20,20,12,12,53,12,1,56,24,24,12,28,20&
+        ,1,64,21,1,20,20,12,1,10,10,53,53,12,93,56,56,20,20,75,12,1&
+        ,131,28,94,28,28,28,28,28,24,93,132,146,173,174,12,20,20,111&
+        ,139,151,61,1,94,119,1,10,12,12,17,12,12,12,20,12,20,12,1,1,1&
+        ,1,1,1,1,1,458,458,458,458,458/)
+    arr_p3(1:4436) = (/458&
+        ,458,458,458,458,458,458,458,458,458,458,9,9,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,1,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,1,458,458,458,458,458&
+        ,458,458,458,458,458,458,12,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,12,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,13&
+        ,458,13,13,458,13,13,13,13,13,13,13,13,13,458,13,13,13,13,13&
+        ,458,13,13,13,13,13,13,13,458,13,13,13,13,13,13,13,13,13,13&
         ,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13&
-        ,13,13,13,13,13,13,13,13,13,13,477,13,13,13,477,13,13,13,477&
+        ,13,13,13,13,458,13,13,458,13,13,458,12,13,13,13,13,13,458,13&
+        ,13,13,13,13,13,12,13,13,13,13,13,13,13,13,13,13,13,13,13,13&
+        ,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,458,13,13&
+        ,13,458,13,13,13,458,13,13,13,13,13,13,13,13,13,13,13,13,13&
+        ,13,13,13,13,13,13,13,13,13,13,458,13,13,13,13,13,13,13,13,13&
+        ,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,12,13,13,13,13&
+        ,13,13,13,13,12,13,13,458,13,13,13,13,13,13,13,13,13,13,13,13&
         ,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13&
-        ,13,13,13,477,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13&
-        ,13,13,13,13,13,13,13,13,12,13,13,13,13,13,13,13,13,12,13,13&
-        ,477,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13&
-        ,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,20,13,13,13,477&
-        ,20,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13&
-        ,13,13,13,13,13,477,13,20,12,20,20,12,12,12,10,10,13,13,13,13&
-        ,13,13,13,13,13,13,13,20,13,13,13,13,13,13,13,13,13,13,13,13&
-        ,13,13,20,20,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13&
-        ,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,15,477&
-        ,477,477,477,477,477,477,477,12,12,477,12,477,477,12,12,12&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,12,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,12,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,20,20&
-        ,477,477,477,477,477,477,477,20,477,477,20,477,477,20,12,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,20,12,477,477,477,477,477,21,477,12,477,477,36,12&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,12,477,477,477,12,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,12,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,20,20,477,477,20,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,20,477,20,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,42,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,20,20,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,20,477,477,477&
-        ,477,477,477,20,20,477,477,477,477,477,20,20,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,20,20,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,20,20,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,21,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,12,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,12,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,20,20,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,20,20,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,12,12,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,12,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,12&
-        ,12,477,477,477,477,477,477,477,477,477,477,12,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,12,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,12,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,21,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,1,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,12,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,12,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,12&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,12,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,12,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,12,477&
-        ,477,477,477,477,477,477,477,477,477,12,477,477,477,477,12&
-        ,477,12,477,477,477,12,12,477,12,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,12,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,12,477,477,477,477,477,12,477,477,477,12&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,12,12,477,477,12,12,477,477,12,477,12,477&
-        ,477,477,477,477,477,477,477,477,477,477,12,477,477,17,12,477&
-        ,477,477,17,477,477,477,477,477,477,477,17,477,477,477,477,12&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,12,477,477,20,477,477&
-        ,477,477,12,12,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,12,12,477,20,12&
-        ,477,20,477,477,477,12,477,477,477,477,477,477,12,477,477,477&
-        ,477,477,477,477,477,477,12,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,12,477,477,477,477,477,12,477,477,12&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,12,477,20,477,20,477,477,477,477,477&
-        ,12,12,20,477,477,477,12,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,12,477,477,477,477,477,477&
-        ,12,477,477,477,477,477,477,477,477,477,477,477,477,12,477&
-        ,477,12,477,20,12,477,477,12,477,477,477,477,477,477,477,12&
-        ,12,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,12,477,12,12,477,477,477,477,12,477,12,477,20,477,477,20,12&
-        ,477,477,477,12,12,477,477,477,20,12,477,477,477,12,477,477&
-        ,477,477,477,477,12,477,477,477,477,477,477,477,12,477,12,477&
-        ,477,20,477,477,477,477,477,20,20,477,477,477,12,477,20,477&
-        ,12,477,477,477,477,477,477,477,477,477,477,17,477,477,477&
-        ,477,477,477,12,12,477,21,477,20,12,12,477,12,477,477,477,477&
-        ,477,477,477,477,477,477,17,477,477,477,477,20,477,477,477&
-        ,477,477,20,12,12,477,12,477,477,477,477,477,477,477,12,477&
-        ,12,477,477,477,477,477,477,20,477,477,20,20,12,477,12,477,20&
-        ,12,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,12,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,12,477,1,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,20&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,20,12,477,12,477,477,477,477,24,93&
-        ,132,146,173,28,28,28,28,28,28,477,477,20,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,1,477,477,1,477,477,477,477,477&
-        ,477,477,1,12,1,1,1,477,477,477,477,477,477,477,477,477,477&
-        ,477/)
-    arr_p4(1:4453) = (/477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,12,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,13,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,13,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,13,477,477,477,477,477,477,477,477,13,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,13,477,477,477,477,13,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,13,20,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,13,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,13,13,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,12,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,20,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,12,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,12,12,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477,477,477,477,477,477,477,477,477,477,477&
-        ,477,477,477,477,477/)
+        ,13,13,20,13,13,13,458,20,13,13,13,13,13,13,13,13,13,13,13,13&
+        ,13,13,13,13,13,13,13,13,13,13,13,13,458,13,20,12,20,20,12,12&
+        ,12,10,10,13,13,13,13,13,13,13,13,13,13,13,20,13,13,13,13,13&
+        ,13,13,13,13,13,13,13,13,13,20,20,13,13,13,13,13,13,13,13,13&
+        ,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13,13&
+        ,13,13,13,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,15,458,458,458,458,458,458,458,458,12,12,458,12&
+        ,458,458,12,12,12,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,12,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,12,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,20,20,458,458,458,458,458,458,458,20,458,458,20,458&
+        ,458,20,12,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,20,12,458,458,458,458,458,21,458,12&
+        ,458,458,36,12,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,12,458&
+        ,458,458,12,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,12,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,20,20,458,458,20,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,20,458&
+        ,20,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,42,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,20&
+        ,20,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,20,458,458,458,458,458,458,20,20,458,458,458,458,458,20,20&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,20,20&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,20,20,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,21,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,12,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,12,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,20,20,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,20,20,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,12,12,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,12,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,12,12,458,458,458,458,458,458,458,458,458,458,12&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,12,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,12,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,21,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,1,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,12,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,12,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,12,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,12,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,12,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,12,458,458,458,458,458,458,458,458,458,458,12&
+        ,458,458,458,458,12,458,12,458,458,458,12,12,458,12,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,12,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,12,458,458,458,458&
+        ,458,12,458,458,458,12,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,12,12,458,458,12,12&
+        ,458,458,12,458,12,458,458,458,458,458,458,458,458,458,458&
+        ,458,12,458,458,17,12,458,458,458,17,458,458,458,458,458,458&
+        ,458,17,458,458,458,458,12,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,12,458,458,20,458,458,458,458,12,12,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,12,12,458,20,12,458,20,458,458,458,12,458,458,458&
+        ,458,458,458,12,458,458,458,458,458,458,458,458,458,12,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,12,458&
+        ,458,458,458,458,12,458,458,12,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,12&
+        ,458,20,458,20,458,458,458,458,458,12,12,20,458,458,458,12&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,12,458,458,458,458,458,458,12,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,12,458,458,12,458,20,12,458,458&
+        ,12,458,458,458,458,458,458,458,12,12,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,12,458,12,12,458,458,458,458&
+        ,12,458,12,458,20,458,458,20,12,458,458,458,12,12,458,458,458&
+        ,20,12,458,458,458,12,458,458,458,458,458,458,12,458,458,458&
+        ,458,458,458,458,12,458,12,458,458,20,458,458,458,458,458,20&
+        ,20,458,458,458,12,458,20,458,12,458,458,458,458,458,458,458&
+        ,458,458,458,17,458,458,458,458,458,458,12,12,458,21,458,20&
+        ,12,12,458,12,458,458,458,458,458,458,458,458,458,458,17,458&
+        ,458,458,458,20,458,458,458,458,458,20,12,12,458,12,458,458&
+        ,458,458,458,458,458,12,458,12,458,458,458,458,458,458,20,458&
+        ,458,20,20,12,458,12,458,20,12,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,12,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,12,458,1,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,20,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,20,12,458,12,458,458,458,458,24,93,132,146,173,28,28,28&
+        ,28,28,28,458,458,20,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458/)
+    arr_p4(1:4436) = (/458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,12,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,13,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,13,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,13,458,458,458,458,458,458,458,458&
+        ,13,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,13,458,458,458,458,13,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,13,20,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,13,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,13,13,458,458,458,458,458,458,458,458,458,458,458,458,12,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,20,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,12,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,12&
+        ,12,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458,458,458,458,458,458,458,458&
+        ,458,458,458,458,458,458,458,458/)
 
   end subroutine load_arrays
 

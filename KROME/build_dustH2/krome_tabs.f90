@@ -619,19 +619,19 @@ contains
     rateEvaluateOnce(159) = small + (1.00e+03&
         *user_crate)
 
-    !CH4O -> CH3 + OH
+    !CH3OH -> CH3 + OH
     rateEvaluateOnce(160) = small + (1.50e+03&
         *user_crate)
 
-    !CH4O -> H2CO + H2
+    !CH3OH -> H2CO + H2
     rateEvaluateOnce(161) = small + (3.17e+03&
         *user_crate)
 
-    !CH4O -> H3CO+ + H + E
+    !CH3OH -> H3CO+ + H + E
     rateEvaluateOnce(162) = small + (9.90e+01&
         *user_crate)
 
-    !CH4O -> CH4O+ + E
+    !CH3OH -> CH4O+ + E
     rateEvaluateOnce(163) = small + (1.44e+03&
         *user_crate)
 
@@ -784,723 +784,723 @@ contains
         *user_crate)
 
     !C -> C+ + E
-    rateEvaluateOnce(4245) = small + (2.16e-10&
+    rateEvaluateOnce(4250) = small + (2.16e-10&
         *exp(-2.61e+00*user_Av))
 
     !CL -> CL+ + E
-    rateEvaluateOnce(4246) = small + (3.30e-11&
+    rateEvaluateOnce(4251) = small + (3.30e-11&
         *exp(-3.10e+00*user_Av))
 
     !FE -> FE+ + E
-    rateEvaluateOnce(4247) = small + (1.20e-10&
+    rateEvaluateOnce(4252) = small + (1.20e-10&
         *exp(-1.50e+00*user_Av))
 
     !MG -> MG+ + E
-    rateEvaluateOnce(4248) = small + (4.50e-11&
+    rateEvaluateOnce(4253) = small + (4.50e-11&
         *exp(-1.40e+00*user_Av))
 
     !NA -> NA+ + E
-    rateEvaluateOnce(4249) = small + (5.60e-12&
+    rateEvaluateOnce(4254) = small + (5.60e-12&
         *exp(-2.00e+00*user_Av))
 
     !S -> S+ + E
-    rateEvaluateOnce(4250) = small + (7.20e-10&
+    rateEvaluateOnce(4255) = small + (7.20e-10&
         *exp(-2.40e+00*user_Av))
 
     !SI -> SI+ + E
-    rateEvaluateOnce(4251) = small + (1.20e-09&
+    rateEvaluateOnce(4256) = small + (1.20e-09&
         *exp(-1.60e+00*user_Av))
 
     !C2 -> C + C
-    rateEvaluateOnce(4252) = small + (4.70e-11&
+    rateEvaluateOnce(4257) = small + (4.70e-11&
         *exp(-2.60e+00*user_Av))
 
     !C2 -> C2+ + E
-    rateEvaluateOnce(4253) = small + (1.00e-10&
+    rateEvaluateOnce(4258) = small + (1.00e-10&
         *exp(-2.00e+00*user_Av))
 
     !CCL -> CL + C
-    rateEvaluateOnce(4254) = small + (1.00e-10&
+    rateEvaluateOnce(4259) = small + (1.00e-10&
         *exp(-2.00e+00*user_Av))
 
     !CH -> C + H
-    rateEvaluateOnce(4255) = small + (1.40e-10&
+    rateEvaluateOnce(4260) = small + (1.40e-10&
         *exp(-1.50e+00*user_Av))
 
     !CH -> CH+ + E
-    rateEvaluateOnce(4256) = small + (2.90e-10&
+    rateEvaluateOnce(4261) = small + (2.90e-10&
         *exp(-2.80e+00*user_Av))
 
     !CLO -> CL + O
-    rateEvaluateOnce(4257) = small + (1.00e-10&
+    rateEvaluateOnce(4262) = small + (1.00e-10&
         *exp(-2.00e+00*user_Av))
 
     !CN -> C + N
-    rateEvaluateOnce(4258) = small + (1.00e-09&
+    rateEvaluateOnce(4263) = small + (1.00e-09&
         *exp(-2.80e+00*user_Av))
 
     !CO -> C + O
-    rateEvaluateOnce(4259) = small + (3.10e-11&
+    rateEvaluateOnce(4264) = small + (3.10e-11&
         *exp(-2.54e+00*user_Av))
 
     !CS -> C + S
-    rateEvaluateOnce(4260) = small + (9.70e-10&
+    rateEvaluateOnce(4265) = small + (9.70e-10&
         *exp(-2.00e+00*user_Av))
 
     !H2 -> H + H
-    rateEvaluateOnce(4261) = small + (3.40e-11&
+    rateEvaluateOnce(4266) = small + (3.40e-11&
         *exp(-2.50e+00*user_Av))
 
     !HCL -> CL + H
-    rateEvaluateOnce(4262) = small + (1.10e-10&
+    rateEvaluateOnce(4267) = small + (1.10e-10&
         *exp(-1.80e+00*user_Av))
 
     !HF -> F + H
-    rateEvaluateOnce(4263) = small + (1.17e-10&
+    rateEvaluateOnce(4268) = small + (1.17e-10&
         *exp(-2.21e+00*user_Av))
 
     !HS -> H + S
-    rateEvaluateOnce(4264) = small + (1.00e-11&
+    rateEvaluateOnce(4269) = small + (1.00e-11&
         *exp(-2.00e+00*user_Av))
 
     !N2 -> N + N
-    rateEvaluateOnce(4265) = small + (5.00e-12&
+    rateEvaluateOnce(4270) = small + (5.00e-12&
         *exp(-3.00e+00*user_Av))
 
     !NH -> H + N
-    rateEvaluateOnce(4266) = small + (4.00e-10&
+    rateEvaluateOnce(4271) = small + (4.00e-10&
         *exp(-1.50e+00*user_Av))
 
     !NH -> NH+ + E
-    rateEvaluateOnce(4267) = small + (1.00e-11&
+    rateEvaluateOnce(4272) = small + (1.00e-11&
         *exp(-2.00e+00*user_Av))
 
     !NO -> N + O
-    rateEvaluateOnce(4268) = small + (3.00e-10&
+    rateEvaluateOnce(4273) = small + (3.00e-10&
         *exp(-2.00e+00*user_Av))
 
     !NO -> NO+ + E
-    rateEvaluateOnce(4269) = small + (2.00e-10&
+    rateEvaluateOnce(4274) = small + (2.00e-10&
         *exp(-2.00e+00*user_Av))
 
     !NS -> N + S
-    rateEvaluateOnce(4270) = small + (1.00e-11&
+    rateEvaluateOnce(4275) = small + (1.00e-11&
         *exp(-2.00e+00*user_Av))
 
     !O2 -> O + O
-    rateEvaluateOnce(4271) = small + (3.30e-10&
+    rateEvaluateOnce(4276) = small + (3.30e-10&
         *exp(-1.40e+00*user_Av))
 
     !O2 -> O2+ + E
-    rateEvaluateOnce(4272) = small + (6.20e-12&
+    rateEvaluateOnce(4277) = small + (6.20e-12&
         *exp(-3.10e+00*user_Av))
 
     !OH -> O + H
-    rateEvaluateOnce(4273) = small + (1.68e-10&
+    rateEvaluateOnce(4278) = small + (1.68e-10&
         *exp(-1.66e+00*user_Av))
 
     !OH -> OH+ + E
-    rateEvaluateOnce(4274) = small + (1.60e-12&
+    rateEvaluateOnce(4279) = small + (1.60e-12&
         *exp(-3.10e+00*user_Av))
 
     !SIC -> SI + C
-    rateEvaluateOnce(4275) = small + (1.00e-10&
+    rateEvaluateOnce(4280) = small + (1.00e-10&
         *exp(-2.30e+00*user_Av))
 
     !SIH -> SI + H
-    rateEvaluateOnce(4276) = small + (1.00e-10&
+    rateEvaluateOnce(4281) = small + (1.00e-10&
         *exp(-2.30e+00*user_Av))
 
     !SIO -> SI + O
-    rateEvaluateOnce(4277) = small + (1.00e-10&
+    rateEvaluateOnce(4282) = small + (1.00e-10&
         *exp(-2.30e+00*user_Av))
 
     !SIS -> SI + S
-    rateEvaluateOnce(4278) = small + (1.00e-10&
+    rateEvaluateOnce(4283) = small + (1.00e-10&
         *exp(-2.30e+00*user_Av))
 
     !SO -> O + S
-    rateEvaluateOnce(4279) = small + (3.30e-10&
+    rateEvaluateOnce(4284) = small + (3.30e-10&
         *exp(-1.40e+00*user_Av))
 
     !C2H -> C2 + H
-    rateEvaluateOnce(4280) = small + (1.00e-09&
+    rateEvaluateOnce(4285) = small + (1.00e-09&
         *exp(-1.70e+00*user_Av))
 
     !C2H -> C2H+ + E
-    rateEvaluateOnce(4281) = small + (1.00e-11&
+    rateEvaluateOnce(4286) = small + (1.00e-11&
         *exp(-2.00e+00*user_Av))
 
     !C2N -> C2 + N
-    rateEvaluateOnce(4282) = small + (1.00e-10&
+    rateEvaluateOnce(4287) = small + (1.00e-10&
         *exp(-1.70e+00*user_Av))
 
     !C2N -> CN + C
-    rateEvaluateOnce(4283) = small + (1.00e-09&
+    rateEvaluateOnce(4288) = small + (1.00e-09&
         *exp(-1.70e+00*user_Av))
 
     !C2S -> C2 + S
-    rateEvaluateOnce(4284) = small + (1.00e-10&
+    rateEvaluateOnce(4289) = small + (1.00e-10&
         *exp(-2.00e+00*user_Av))
 
     !C3 -> C2 + C
-    rateEvaluateOnce(4285) = small + (2.60e-10&
+    rateEvaluateOnce(4290) = small + (2.60e-10&
         *exp(-2.28e+00*user_Av))
 
     !CH2 -> CH + H
-    rateEvaluateOnce(4286) = small + (5.00e-11&
+    rateEvaluateOnce(4291) = small + (5.00e-11&
         *exp(-1.70e+00*user_Av))
 
     !CH2 -> CH2+ + E
-    rateEvaluateOnce(4287) = small + (1.00e-09&
+    rateEvaluateOnce(4292) = small + (1.00e-09&
         *exp(-2.30e+00*user_Av))
 
     !CO2 -> CO + O
-    rateEvaluateOnce(4288) = small + (3.13e-10&
+    rateEvaluateOnce(4293) = small + (3.13e-10&
         *exp(-2.03e+00*user_Av))
 
     !H2O -> OH + H
-    rateEvaluateOnce(4289) = small + (3.28e-10&
+    rateEvaluateOnce(4294) = small + (3.28e-10&
         *exp(-1.63e+00*user_Av))
 
     !H2O -> H2O+ + E
-    rateEvaluateOnce(4290) = small + (2.10e-11&
+    rateEvaluateOnce(4295) = small + (2.10e-11&
         *exp(-3.10e+00*user_Av))
 
     !H2S -> HS + H
-    rateEvaluateOnce(4291) = small + (3.20e-10&
+    rateEvaluateOnce(4296) = small + (3.20e-10&
         *exp(-1.70e+00*user_Av))
 
     !HCN -> CN + H
-    rateEvaluateOnce(4292) = small + (5.48e-10&
+    rateEvaluateOnce(4297) = small + (5.48e-10&
         *exp(-2.00e+00*user_Av))
 
     !HCO -> H + CO
-    rateEvaluateOnce(4293) = small + (5.87e-10&
+    rateEvaluateOnce(4298) = small + (5.87e-10&
         *exp(-5.30e-01*user_Av))
 
     !HCO -> HCO+ + E
-    rateEvaluateOnce(4294) = small + (2.46e-10&
+    rateEvaluateOnce(4299) = small + (2.46e-10&
         *exp(-2.11e+00*user_Av))
 
     !HNC -> CN + H
-    rateEvaluateOnce(4295) = small + (5.48e-10&
+    rateEvaluateOnce(4300) = small + (5.48e-10&
         *exp(-2.00e+00*user_Av))
 
     !HNO -> NO + H
-    rateEvaluateOnce(4296) = small + (1.70e-10&
+    rateEvaluateOnce(4301) = small + (1.70e-10&
         *exp(-5.30e-01*user_Av))
 
     !NAOH -> NA + OH
-    rateEvaluateOnce(4297) = small + (1.00e-09&
+    rateEvaluateOnce(4302) = small + (1.00e-09&
         *exp(-1.70e+00*user_Av))
 
     !NH2 -> NH + H
-    rateEvaluateOnce(4298) = small + (2.11e-10&
+    rateEvaluateOnce(4303) = small + (2.11e-10&
         *exp(-1.52e+00*user_Av))
 
     !NH2 -> NH2+ + E
-    rateEvaluateOnce(4299) = small + (1.73e-10&
+    rateEvaluateOnce(4304) = small + (1.73e-10&
         *exp(-2.59e+00*user_Av))
 
     !NO2 -> NO + O
-    rateEvaluateOnce(4300) = small + (1.29e-09&
+    rateEvaluateOnce(4305) = small + (1.29e-09&
         *exp(-2.00e+00*user_Av))
 
     !OCN -> O + CN
-    rateEvaluateOnce(4301) = small + (1.00e-11&
+    rateEvaluateOnce(4306) = small + (1.00e-11&
         *exp(-2.00e+00*user_Av))
 
     !OCS -> CO + S
-    rateEvaluateOnce(4302) = small + (2.28e-09&
+    rateEvaluateOnce(4307) = small + (2.28e-09&
         *exp(-1.60e+00*user_Av))
 
     !OCS -> OCS+ + E
-    rateEvaluateOnce(4303) = small + (2.37e-10&
+    rateEvaluateOnce(4308) = small + (2.37e-10&
         *exp(-2.71e+00*user_Av))
 
     !SO2 -> SO + O
-    rateEvaluateOnce(4304) = small + (1.05e-09&
+    rateEvaluateOnce(4309) = small + (1.05e-09&
         *exp(-1.74e+00*user_Av))
 
     !C2H2 -> C2H + H
-    rateEvaluateOnce(4305) = small + (1.81e-09&
+    rateEvaluateOnce(4310) = small + (1.81e-09&
         *exp(-1.72e+00*user_Av))
 
     !C2H2 -> C2H2+ + E
-    rateEvaluateOnce(4306) = small + (2.07e-10&
+    rateEvaluateOnce(4311) = small + (2.07e-10&
         *exp(-2.67e+00*user_Av))
 
     !C3H -> C3 + H
-    rateEvaluateOnce(4307) = small + (1.00e-09&
+    rateEvaluateOnce(4312) = small + (1.00e-09&
         *exp(-1.70e+00*user_Av))
 
     !HC3 -> C3 + H
-    rateEvaluateOnce(4308) = small + (1.00e-09&
+    rateEvaluateOnce(4313) = small + (1.00e-09&
         *exp(-1.70e+00*user_Av))
 
     !C3N -> C2 + CN
-    rateEvaluateOnce(4309) = small + (5.00e-10&
+    rateEvaluateOnce(4314) = small + (5.00e-10&
         *exp(-1.80e+00*user_Av))
 
     !C3O -> C2 + CO
-    rateEvaluateOnce(4310) = small + (4.52e-09&
+    rateEvaluateOnce(4315) = small + (4.52e-09&
         *exp(-1.58e+00*user_Av))
 
     !C3S -> C2 + CS
-    rateEvaluateOnce(4311) = small + (1.00e-10&
+    rateEvaluateOnce(4316) = small + (1.00e-10&
         *exp(-2.00e+00*user_Av))
 
     !C4 -> C2 + C2
-    rateEvaluateOnce(4312) = small + (2.00e-10&
+    rateEvaluateOnce(4317) = small + (2.00e-10&
         *exp(-2.30e+00*user_Av))
 
     !C4 -> C3 + C
-    rateEvaluateOnce(4313) = small + (2.00e-10&
+    rateEvaluateOnce(4318) = small + (2.00e-10&
         *exp(-2.30e+00*user_Av))
 
     !CH3 -> CH + H2
-    rateEvaluateOnce(4314) = small + (3.00e-11&
+    rateEvaluateOnce(4319) = small + (3.00e-11&
         *exp(-1.70e+00*user_Av))
 
     !CH3 -> CH2 + H
-    rateEvaluateOnce(4315) = small + (3.00e-11&
+    rateEvaluateOnce(4320) = small + (3.00e-11&
         *exp(-1.70e+00*user_Av))
 
     !CH3 -> CH3+ + E
-    rateEvaluateOnce(4316) = small + (1.00e-10&
+    rateEvaluateOnce(4321) = small + (1.00e-10&
         *exp(-2.10e+00*user_Av))
 
     !H2CO -> CO + H + H
-    rateEvaluateOnce(4317) = small + (4.40e-10&
+    rateEvaluateOnce(4322) = small + (4.40e-10&
         *exp(-1.60e+00*user_Av))
 
     !H2CO -> CO + H2
-    rateEvaluateOnce(4318) = small + (4.40e-10&
+    rateEvaluateOnce(4323) = small + (4.40e-10&
         *exp(-1.60e+00*user_Av))
 
     !H2CO -> HCO+ + H + E
-    rateEvaluateOnce(4319) = small + (1.40e-11&
+    rateEvaluateOnce(4324) = small + (1.40e-11&
         *exp(-3.10e+00*user_Av))
 
     !H2CO -> H2CO+ + E
-    rateEvaluateOnce(4320) = small + (8.00e-11&
+    rateEvaluateOnce(4325) = small + (8.00e-11&
         *exp(-2.80e+00*user_Av))
 
     !H2CS -> CS + H2
-    rateEvaluateOnce(4321) = small + (1.00e-09&
+    rateEvaluateOnce(4326) = small + (1.00e-09&
         *exp(-1.70e+00*user_Av))
 
     !NH3 -> NH + H2
-    rateEvaluateOnce(4322) = small + (1.30e-10&
+    rateEvaluateOnce(4327) = small + (1.30e-10&
         *exp(-1.91e+00*user_Av))
 
     !NH3 -> NH2 + H
-    rateEvaluateOnce(4323) = small + (4.94e-10&
+    rateEvaluateOnce(4328) = small + (4.94e-10&
         *exp(-1.65e+00*user_Av))
 
     !NH3 -> NH3+ + E
-    rateEvaluateOnce(4324) = small + (1.24e-10&
+    rateEvaluateOnce(4329) = small + (1.24e-10&
         *exp(-2.47e+00*user_Av))
 
     !C2H2O -> CH2 + CO
-    rateEvaluateOnce(4325) = small + (9.04e-10&
+    rateEvaluateOnce(4330) = small + (9.04e-10&
         *exp(-1.58e+00*user_Av))
 
     !C2H2O -> C2H2O+ + E
-    rateEvaluateOnce(4326) = small + (3.44e-10&
+    rateEvaluateOnce(4331) = small + (3.44e-10&
         *exp(-2.01e+00*user_Av))
 
     !C2H3 -> C2H2 + H
-    rateEvaluateOnce(4327) = small + (1.00e-09&
-        *exp(-1.70e+00*user_Av))
-
-    !C2H3 -> C2H3+ + E
-    rateEvaluateOnce(4328) = small + (3.00e-10&
-        *exp(-2.30e+00*user_Av))
-
-    !C3H2 -> C3 + H2
-    rateEvaluateOnce(4329) = small + (1.00e-09&
-        *exp(-1.70e+00*user_Av))
-
-    !H2C3 -> C3 + H2
-    rateEvaluateOnce(4330) = small + (1.00e-09&
-        *exp(-1.70e+00*user_Av))
-
-    !C3H2 -> C3H + H
-    rateEvaluateOnce(4331) = small + (1.00e-09&
-        *exp(-1.70e+00*user_Av))
-
-    !H2C3 -> HC3 + H
     rateEvaluateOnce(4332) = small + (1.00e-09&
         *exp(-1.70e+00*user_Av))
 
-    !C4H -> C2H + C2
-    rateEvaluateOnce(4333) = small + (1.00e-09&
-        *exp(-1.70e+00*user_Av))
+    !C2H3 -> C2H3+ + E
+    rateEvaluateOnce(4333) = small + (3.00e-10&
+        *exp(-2.30e+00*user_Av))
 
-    !C4H -> C4 + H
+    !C3H2 -> C3 + H2
     rateEvaluateOnce(4334) = small + (1.00e-09&
         *exp(-1.70e+00*user_Av))
 
+    !H2C3 -> C3 + H2
+    rateEvaluateOnce(4335) = small + (1.00e-09&
+        *exp(-1.70e+00*user_Av))
+
+    !C3H2 -> C3H + H
+    rateEvaluateOnce(4336) = small + (1.00e-09&
+        *exp(-1.70e+00*user_Av))
+
+    !H2C3 -> HC3 + H
+    rateEvaluateOnce(4337) = small + (1.00e-09&
+        *exp(-1.70e+00*user_Av))
+
+    !C4H -> C2H + C2
+    rateEvaluateOnce(4338) = small + (1.00e-09&
+        *exp(-1.70e+00*user_Av))
+
+    !C4H -> C4 + H
+    rateEvaluateOnce(4339) = small + (1.00e-09&
+        *exp(-1.70e+00*user_Av))
+
     !C4N -> C3 + CN
-    rateEvaluateOnce(4335) = small + (5.00e-10&
+    rateEvaluateOnce(4340) = small + (5.00e-10&
         *exp(-1.70e+00*user_Av))
 
     !C4S -> C3 + CS
-    rateEvaluateOnce(4336) = small + (1.00e-10&
+    rateEvaluateOnce(4341) = small + (1.00e-10&
         *exp(-2.00e+00*user_Av))
 
     !C5 -> C3 + C2
-    rateEvaluateOnce(4337) = small + (1.00e-11&
+    rateEvaluateOnce(4342) = small + (1.00e-11&
         *exp(-1.70e+00*user_Av))
 
     !CH2O2 -> HCO + OH
-    rateEvaluateOnce(4338) = small + (2.75e-10&
+    rateEvaluateOnce(4343) = small + (2.75e-10&
         *exp(-1.80e+00*user_Av))
 
     !CH2O2 -> CH2O2+ + E
-    rateEvaluateOnce(4339) = small + (1.73e-10&
+    rateEvaluateOnce(4344) = small + (1.73e-10&
         *exp(-2.59e+00*user_Av))
 
     !CH3N -> HCN + H2
-    rateEvaluateOnce(4340) = small + (1.70e-09&
+    rateEvaluateOnce(4345) = small + (1.70e-09&
         *exp(-1.63e+00*user_Av))
 
     !CH4 -> CH + H + H2
-    rateEvaluateOnce(4341) = small + (1.60e-10&
+    rateEvaluateOnce(4346) = small + (1.60e-10&
         *exp(-2.20e+00*user_Av))
 
     !CH4 -> CH2 + H2
-    rateEvaluateOnce(4342) = small + (4.80e-10&
+    rateEvaluateOnce(4347) = small + (4.80e-10&
         *exp(-2.20e+00*user_Av))
 
     !CH4 -> CH3 + H
-    rateEvaluateOnce(4343) = small + (1.60e-10&
+    rateEvaluateOnce(4348) = small + (1.60e-10&
         *exp(-2.20e+00*user_Av))
 
     !HC3N -> C2H + CN
-    rateEvaluateOnce(4344) = small + (9.54e-10&
+    rateEvaluateOnce(4349) = small + (9.54e-10&
         *exp(-1.83e+00*user_Av))
 
     !C2H3N -> CH3 + CN
-    rateEvaluateOnce(4345) = small + (1.56e-09&
+    rateEvaluateOnce(4350) = small + (1.56e-09&
         *exp(-1.95e+00*user_Av))
 
     !C2H3N -> C2H3N+ + E
-    rateEvaluateOnce(4346) = small + (5.29e-10&
+    rateEvaluateOnce(4351) = small + (5.29e-10&
         *exp(-3.11e+00*user_Av))
 
     !C2H4 -> C2H2 + H2
-    rateEvaluateOnce(4347) = small + (1.62e-09&
+    rateEvaluateOnce(4352) = small + (1.62e-09&
         *exp(-1.61e+00*user_Av))
 
     !C2H4 -> C2H4+ + E
-    rateEvaluateOnce(4348) = small + (1.18e-10&
+    rateEvaluateOnce(4353) = small + (1.18e-10&
         *exp(-2.66e+00*user_Av))
 
     !C3H3 -> C3H + H2
-    rateEvaluateOnce(4349) = small + (5.00e-10&
+    rateEvaluateOnce(4354) = small + (5.00e-10&
         *exp(-1.70e+00*user_Av))
 
     !C3H3 -> HC3 + H2
-    rateEvaluateOnce(4350) = small + (5.00e-10&
+    rateEvaluateOnce(4355) = small + (5.00e-10&
         *exp(-1.70e+00*user_Av))
 
     !C3H3 -> C3H2 + H
-    rateEvaluateOnce(4351) = small + (5.00e-10&
+    rateEvaluateOnce(4356) = small + (5.00e-10&
         *exp(-1.70e+00*user_Av))
 
     !C3H3 -> H2C3 + H
-    rateEvaluateOnce(4352) = small + (5.00e-10&
+    rateEvaluateOnce(4357) = small + (5.00e-10&
         *exp(-1.70e+00*user_Av))
 
     !C4H2 -> C2H + C2H
-    rateEvaluateOnce(4353) = small + (1.13e-09&
+    rateEvaluateOnce(4358) = small + (1.13e-09&
         *exp(-1.64e+00*user_Av))
 
     !C4H2 -> C4H + H
-    rateEvaluateOnce(4354) = small + (1.13e-09&
+    rateEvaluateOnce(4359) = small + (1.13e-09&
         *exp(-1.64e+00*user_Av))
 
     !C4H2 -> C4H2+ + E
-    rateEvaluateOnce(4355) = small + (2.60e-10&
+    rateEvaluateOnce(4360) = small + (2.60e-10&
         *exp(-2.28e+00*user_Av))
 
     !C5H -> C2H + C3
-    rateEvaluateOnce(4356) = small + (1.00e-11&
+    rateEvaluateOnce(4361) = small + (1.00e-11&
         *exp(-1.70e+00*user_Av))
 
     !C5H -> C3H + C2
-    rateEvaluateOnce(4357) = small + (5.00e-12&
+    rateEvaluateOnce(4362) = small + (5.00e-12&
         *exp(-1.70e+00*user_Av))
 
     !C5H -> HC3 + C2
-    rateEvaluateOnce(4358) = small + (5.00e-12&
+    rateEvaluateOnce(4363) = small + (5.00e-12&
         *exp(-1.70e+00*user_Av))
 
     !C5H -> C5 + H
-    rateEvaluateOnce(4359) = small + (1.00e-11&
+    rateEvaluateOnce(4364) = small + (1.00e-11&
         *exp(-1.70e+00*user_Av))
 
     !C5N -> C4 + CN
-    rateEvaluateOnce(4360) = small + (5.00e-10&
+    rateEvaluateOnce(4365) = small + (5.00e-10&
         *exp(-1.70e+00*user_Av))
 
-    !CH4O -> H2CO + H2
-    rateEvaluateOnce(4361) = small + (7.19e-10&
+    !CH3OH -> H2CO + H2
+    rateEvaluateOnce(4366) = small + (7.19e-10&
         *exp(-1.72e+00*user_Av))
 
-    !CH4O -> CH4O+ + E
-    rateEvaluateOnce(4362) = small + (4.80e-10&
+    !CH3OH -> CH4O+ + E
+    rateEvaluateOnce(4367) = small + (4.80e-10&
         *exp(-2.57e+00*user_Av))
 
     !C2H4O -> CH3 + HCO
-    rateEvaluateOnce(4363) = small + (3.43e-10&
+    rateEvaluateOnce(4368) = small + (3.43e-10&
         *exp(-1.52e+00*user_Av))
 
     !C2H4O -> CH4 + CO
-    rateEvaluateOnce(4364) = small + (3.43e-10&
+    rateEvaluateOnce(4369) = small + (3.43e-10&
         *exp(-1.52e+00*user_Av))
 
     !C2H4O -> C2H4O+ + E
-    rateEvaluateOnce(4365) = small + (2.60e-10&
+    rateEvaluateOnce(4370) = small + (2.60e-10&
         *exp(-2.28e+00*user_Av))
 
     !C3H4 -> C3H2 + H2
-    rateEvaluateOnce(4366) = small + (1.13e-10&
+    rateEvaluateOnce(4371) = small + (1.13e-10&
         *exp(-1.69e+00*user_Av))
 
     !C3H4 -> H2C3 + H2
-    rateEvaluateOnce(4367) = small + (1.13e-10&
+    rateEvaluateOnce(4372) = small + (1.13e-10&
         *exp(-1.69e+00*user_Av))
 
     !C3H4 -> C3H3 + H
-    rateEvaluateOnce(4368) = small + (1.84e-09&
+    rateEvaluateOnce(4373) = small + (1.84e-09&
         *exp(-1.72e+00*user_Av))
 
     !C3H4 -> C3H4+ + E
-    rateEvaluateOnce(4369) = small + (9.88e-10&
+    rateEvaluateOnce(4374) = small + (9.88e-10&
         *exp(-2.37e+00*user_Av))
 
     !C4H4 -> C3H4 + C
-    rateEvaluateOnce(4370) = small + (1.13e-09&
+    rateEvaluateOnce(4375) = small + (1.13e-09&
         *exp(-1.64e+00*user_Av))
 
     !C4H6 -> C3H6 + C
-    rateEvaluateOnce(4371) = small + (1.13e-09&
+    rateEvaluateOnce(4376) = small + (1.13e-09&
         *exp(-1.64e+00*user_Av))
 
     !C5H2 -> C3H + C2H
-    rateEvaluateOnce(4372) = small + (5.00e-12&
+    rateEvaluateOnce(4377) = small + (5.00e-12&
         *exp(-1.70e+00*user_Av))
 
     !C5H2 -> HC3 + C2H
-    rateEvaluateOnce(4373) = small + (5.00e-12&
+    rateEvaluateOnce(4378) = small + (5.00e-12&
         *exp(-1.70e+00*user_Av))
 
     !C5H2 -> C5H + H
-    rateEvaluateOnce(4374) = small + (1.00e-11&
+    rateEvaluateOnce(4379) = small + (1.00e-11&
         *exp(-1.70e+00*user_Av))
 
     !C6H -> C2H + C4
-    rateEvaluateOnce(4375) = small + (5.00e-12&
+    rateEvaluateOnce(4380) = small + (5.00e-12&
         *exp(-1.70e+00*user_Av))
 
     !C6H -> C3H + C3
-    rateEvaluateOnce(4376) = small + (2.50e-12&
+    rateEvaluateOnce(4381) = small + (2.50e-12&
         *exp(-1.70e+00*user_Av))
 
     !C6H -> HC3 + C3
-    rateEvaluateOnce(4377) = small + (2.50e-12&
+    rateEvaluateOnce(4382) = small + (2.50e-12&
         *exp(-1.70e+00*user_Av))
 
     !CH5N -> CN + H2 + H2 + H
-    rateEvaluateOnce(4378) = small + (9.42e-11&
+    rateEvaluateOnce(4383) = small + (9.42e-11&
         *exp(-1.76e+00*user_Av))
 
     !CH5N -> HCN + H2 + H + H
-    rateEvaluateOnce(4379) = small + (3.50e-10&
+    rateEvaluateOnce(4384) = small + (3.50e-10&
         *exp(-1.73e+00*user_Av))
 
     !CH5N -> CH3 + NH2
-    rateEvaluateOnce(4380) = small + (1.55e-10&
+    rateEvaluateOnce(4385) = small + (1.55e-10&
         *exp(-1.74e+00*user_Av))
 
     !CH5N -> CH3N + H + H
-    rateEvaluateOnce(4381) = small + (6.63e-11&
+    rateEvaluateOnce(4386) = small + (6.63e-11&
         *exp(-1.51e+00*user_Av))
 
     !CH5N -> CH5N+ + E
-    rateEvaluateOnce(4382) = small + (2.60e-10&
+    rateEvaluateOnce(4387) = small + (2.60e-10&
         *exp(-2.28e+00*user_Av))
 
     !HC5N -> H + C5N
-    rateEvaluateOnce(4383) = small + (5.00e-10&
+    rateEvaluateOnce(4388) = small + (5.00e-10&
         *exp(-1.83e+00*user_Av))
 
     !HC5N -> C4H + CN
-    rateEvaluateOnce(4384) = small + (5.00e-10&
+    rateEvaluateOnce(4389) = small + (5.00e-10&
         *exp(-1.83e+00*user_Av))
 
     !CH3C3N -> C3N + CH3
-    rateEvaluateOnce(4385) = small + (2.00e-11&
-        *exp(-1.70e+00*user_Av))
-
-    !NC4N -> CN + CN + C2
-    rateEvaluateOnce(4386) = small + (2.00e-11&
-        *exp(-1.70e+00*user_Av))
-
-    !NC6N -> CN + CN + C4
-    rateEvaluateOnce(4387) = small + (2.00e-11&
-        *exp(-1.70e+00*user_Av))
-
-    !NC8N -> CN + CN + C6
-    rateEvaluateOnce(4388) = small + (2.00e-11&
-        *exp(-1.70e+00*user_Av))
-
-    !NC10N -> CN + CN + C8
-    rateEvaluateOnce(4389) = small + (2.00e-11&
-        *exp(-1.70e+00*user_Av))
-
-    !NC12N -> CN + CN + C10
     rateEvaluateOnce(4390) = small + (2.00e-11&
         *exp(-1.70e+00*user_Av))
 
-    !HC4N -> CH + C2 + CN
+    !NC4N -> CN + CN + C2
     rateEvaluateOnce(4391) = small + (2.00e-11&
         *exp(-1.70e+00*user_Av))
 
-    !HC6N -> CH + C4 + CN
+    !NC6N -> CN + CN + C4
     rateEvaluateOnce(4392) = small + (2.00e-11&
         *exp(-1.70e+00*user_Av))
 
-    !HC8N -> CH + C6 + CN
+    !NC8N -> CN + CN + C6
     rateEvaluateOnce(4393) = small + (2.00e-11&
         *exp(-1.70e+00*user_Av))
 
-    !HC10N -> CH + C8 + CN
+    !NC10N -> CN + CN + C8
     rateEvaluateOnce(4394) = small + (2.00e-11&
         *exp(-1.70e+00*user_Av))
 
-    !HC12N -> CH + C10 + CN
+    !NC12N -> CN + CN + C10
     rateEvaluateOnce(4395) = small + (2.00e-11&
         *exp(-1.70e+00*user_Av))
 
-    !HC13N -> CH + C11 + CN
+    !HC4N -> CH + C2 + CN
     rateEvaluateOnce(4396) = small + (2.00e-11&
         *exp(-1.70e+00*user_Av))
 
+    !HC6N -> CH + C4 + CN
+    rateEvaluateOnce(4397) = small + (2.00e-11&
+        *exp(-1.70e+00*user_Av))
+
+    !HC8N -> CH + C6 + CN
+    rateEvaluateOnce(4398) = small + (2.00e-11&
+        *exp(-1.70e+00*user_Av))
+
+    !HC10N -> CH + C8 + CN
+    rateEvaluateOnce(4399) = small + (2.00e-11&
+        *exp(-1.70e+00*user_Av))
+
+    !HC12N -> CH + C10 + CN
+    rateEvaluateOnce(4400) = small + (2.00e-11&
+        *exp(-1.70e+00*user_Av))
+
+    !HC13N -> CH + C11 + CN
+    rateEvaluateOnce(4401) = small + (2.00e-11&
+        *exp(-1.70e+00*user_Av))
+
     !SIC2H3 -> SIC2H2 + H
-    rateEvaluateOnce(4397) = small + (1.00e-10&
-        *exp(-2.30e+00*user_Av))
-
-    !SIC3H3 -> SIC3H + H2
-    rateEvaluateOnce(4398) = small + (1.00e-10&
-        *exp(-2.30e+00*user_Av))
-
-    !SIC3H5 -> SIC3H + H2 + H2
-    rateEvaluateOnce(4399) = small + (1.00e-10&
-        *exp(-2.30e+00*user_Av))
-
-    !SIC4H -> SI + C4H
-    rateEvaluateOnce(4400) = small + (1.00e-10&
-        *exp(-2.30e+00*user_Av))
-
-    !SIC6H -> SI + C6H
-    rateEvaluateOnce(4401) = small + (1.00e-10&
-        *exp(-2.30e+00*user_Av))
-
-    !SIC8H -> SI + C8H
     rateEvaluateOnce(4402) = small + (1.00e-10&
         *exp(-2.30e+00*user_Av))
 
+    !SIC3H3 -> SIC3H + H2
+    rateEvaluateOnce(4403) = small + (1.00e-10&
+        *exp(-2.30e+00*user_Av))
+
+    !SIC3H5 -> SIC3H + H2 + H2
+    rateEvaluateOnce(4404) = small + (1.00e-10&
+        *exp(-2.30e+00*user_Av))
+
+    !SIC4H -> SI + C4H
+    rateEvaluateOnce(4405) = small + (1.00e-10&
+        *exp(-2.30e+00*user_Av))
+
+    !SIC6H -> SI + C6H
+    rateEvaluateOnce(4406) = small + (1.00e-10&
+        *exp(-2.30e+00*user_Av))
+
+    !SIC8H -> SI + C8H
+    rateEvaluateOnce(4407) = small + (1.00e-10&
+        *exp(-2.30e+00*user_Av))
+
     !C2H5OH -> C2H4 + H2O
-    rateEvaluateOnce(4403) = small + (1.38e-09&
+    rateEvaluateOnce(4408) = small + (1.38e-09&
         *exp(-1.73e+00*user_Av))
 
     !C2H5OH -> C2H5OH+ + E
-    rateEvaluateOnce(4404) = small + (5.27e-10&
+    rateEvaluateOnce(4409) = small + (5.27e-10&
         *exp(-2.35e+00*user_Av))
 
     !CH3C4H -> C4H + CH3
-    rateEvaluateOnce(4405) = small + (2.00e-11&
+    rateEvaluateOnce(4410) = small + (2.00e-11&
         *exp(-1.70e+00*user_Av))
 
     !CH3OCH3 -> H2CO + CH4
-    rateEvaluateOnce(4406) = small + (8.21e-10&
+    rateEvaluateOnce(4411) = small + (8.21e-10&
         *exp(-1.60e+00*user_Av))
 
     !CH3OCH3 -> CH3OCH3+ + E
-    rateEvaluateOnce(4407) = small + (2.60e-10&
+    rateEvaluateOnce(4412) = small + (2.60e-10&
         *exp(-2.28e+00*user_Av))
 
     !C2+ -> C+ + C
-    rateEvaluateOnce(4408) = small + (1.00e-11&
+    rateEvaluateOnce(4413) = small + (1.00e-11&
         *exp(-1.70e+00*user_Av))
 
     !CH+ -> C+ + H
-    rateEvaluateOnce(4409) = small + (4.60e-12&
+    rateEvaluateOnce(4414) = small + (4.60e-12&
         *exp(-3.00e+00*user_Av))
 
     !H2+ -> H+ + H
-    rateEvaluateOnce(4410) = small + (2.60e-10&
+    rateEvaluateOnce(4415) = small + (2.60e-10&
         *exp(-1.80e+00*user_Av))
 
     !OH+ -> H+ + O
-    rateEvaluateOnce(4411) = small + (7.20e-12&
+    rateEvaluateOnce(4416) = small + (7.20e-12&
         *exp(-1.80e+00*user_Av))
 
     !SIH+ -> SI+ + H
-    rateEvaluateOnce(4412) = small + (2.20e-09&
+    rateEvaluateOnce(4417) = small + (2.20e-09&
         *exp(-2.00e+00*user_Av))
 
     !C2H+ -> C2+ + H
-    rateEvaluateOnce(4413) = small + (1.00e-11&
+    rateEvaluateOnce(4418) = small + (1.00e-11&
         *exp(-2.00e+00*user_Av))
 
     !CH2+ -> CH+ + H
-    rateEvaluateOnce(4414) = small + (1.70e-09&
+    rateEvaluateOnce(4419) = small + (1.70e-09&
         *exp(-1.70e+00*user_Av))
 
     !H3+ -> H+ + H2
-    rateEvaluateOnce(4415) = small + (2.00e-08&
+    rateEvaluateOnce(4420) = small + (2.00e-08&
         *exp(-1.80e+00*user_Av))
 
     !H3+ -> H2+ + H
-    rateEvaluateOnce(4416) = small + (7.90e-09&
+    rateEvaluateOnce(4421) = small + (7.90e-09&
         *exp(-2.30e+00*user_Av))
 
     !CH3+ -> CH+ + H2
-    rateEvaluateOnce(4417) = small + (1.00e-09&
+    rateEvaluateOnce(4422) = small + (1.00e-09&
         *exp(-1.70e+00*user_Av))
 
     !CH3+ -> CH2+ + H
-    rateEvaluateOnce(4418) = small + (1.00e-09&
+    rateEvaluateOnce(4423) = small + (1.00e-09&
         *exp(-1.70e+00*user_Av))
 
     !C- -> C + E
-    rateEvaluateOnce(4419) = small + (2.40e-07&
+    rateEvaluateOnce(4424) = small + (2.40e-07&
         *exp(-9.00e-01*user_Av))
 
     !H- -> H + E
-    rateEvaluateOnce(4420) = small + (2.40e-07&
+    rateEvaluateOnce(4425) = small + (2.40e-07&
         *exp(-9.00e-01*user_Av))
 
     !O- -> O + E
-    rateEvaluateOnce(4421) = small + (2.40e-07&
+    rateEvaluateOnce(4426) = small + (2.40e-07&
         *exp(-9.00e-01*user_Av))
 
     !S- -> S + E
-    rateEvaluateOnce(4422) = small + (2.40e-07&
+    rateEvaluateOnce(4427) = small + (2.40e-07&
         *exp(-9.00e-01*user_Av))
 
     !CN- -> CN + E
-    rateEvaluateOnce(4423) = small + (2.40e-07&
+    rateEvaluateOnce(4428) = small + (2.40e-07&
         *exp(-9.00e-01*user_Av))
 
     !OH- -> OH + E
-    rateEvaluateOnce(4424) = small + (2.40e-07&
+    rateEvaluateOnce(4429) = small + (2.40e-07&
         *exp(-9.00e-01*user_Av))
 
   end subroutine makeStoreOnceRates
