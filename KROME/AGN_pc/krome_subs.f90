@@ -15945,6 +15945,11 @@ contains
     !CH+ -> C + H+
     k(200) = k(200) + 4.1136148641400805 * k(4430)
 
+    !H -> H_DUST
+    k(4432) = small + (6.0557e-14&
+        *sqrt(Tgas&
+        /1.007900))
+
     !O -> O_DUST
     k(4433) = small + (6.0557e-14&
         *sqrt(Tgas&
@@ -16028,87 +16033,87 @@ contains
     !H_DUST -> H
     k(4449) = small + (2.140000e+12&
         *exp(-350.000000&
-        /Tgas)+4.554852e-09)
+        /Tgas)+4.554852e-09+7.59e-05*exp(-user_Av))
 
     !H_DUSTH_DUST -> H2
     k(4450) = small + (1.715817e+12&
         *exp(-450.000000&
-        /Tgas)+8.752071e-10)
+        /Tgas)+8.752071e-10+7.59e-05*exp(-user_Av))
 
     !C_DUST -> C
     k(4451) = small + (9.372367e+11&
         *exp(-800.000000&
-        /Tgas)+3.221193e-12)
+        /Tgas)+3.221193e-12+7.59e-05*exp(-user_Av))
 
     !O_DUST -> O
     k(4452) = small + (8.120478e+11&
         *exp(-800.000000&
-        /Tgas)+2.790931e-12)
+        /Tgas)+2.790931e-12+7.59e-05*exp(-user_Av))
 
     !C_DUSTH_DUST -> CH
     k(4453) = small + (8.143805e+11&
         *exp(-654.699659&
-        /Tgas)+2.230839e-11)
+        /Tgas)+2.230839e-11+7.59e-05*exp(-user_Av))
 
     !O_DUSTH_DUST -> OH
     k(4454) = small + (9.880756e+11&
         *exp(-1259.037806&
-        /Tgas)+4.819390e-15)
+        /Tgas)+4.819390e-15+7.59e-05*exp(-user_Av))
 
     !C_DUSTO_DUST -> CO
     k(4455) = small + (7.543730e+11&
         *exp(-1208.676294&
-        /Tgas)+7.555119e-15)
+        /Tgas)+7.555119e-15+7.59e-05*exp(-user_Av))
 
     !C_DUSTH_DUSTH_DUST -> CH2
     k(4456) = small + (9.485058e+11&
         *exp(-956.868733&
-        /Tgas)+3.467060e-13)
+        /Tgas)+3.467060e-13+7.59e-05*exp(-user_Av))
 
     !H_DUSTH_DUSTO_DUST -> H2O
     k(4457) = small + (1.033992e+12&
         *exp(-1460.483855&
-        /Tgas)+2.837306e-16)
+        /Tgas)+2.837306e-16+7.59e-05*exp(-user_Av))
 
     !H_DUSTO_DUSTC_DUST -> HOC
     k(4458) = small + (8.950311e+11&
         *exp(-1762.652929&
-        /Tgas)+3.277235e-18)
+        /Tgas)+3.277235e-18+7.59e-05*exp(-user_Av))
 
     !H_DUSTC_DUSTO_DUST -> HCO
     k(4459) = small + (8.284059e+11&
         *exp(-1510.000000&
-        /Tgas)+1.120531e-16)
+        /Tgas)+1.120531e-16+7.59e-05*exp(-user_Av))
 
     !C_DUSTH_DUSTH_DUSTH_DUST -> CH3
     k(4460) = small + (1.007996e+12&
         *exp(-1158.314782&
-        /Tgas)+2.072846e-14)
+        /Tgas)+2.072846e-14+7.59e-05*exp(-user_Av))
 
     !C_DUSTH_DUSTO_DUSTH_DUST -> CHOH
     k(4461) = small + (9.168148e+11&
         *exp(-1913.737466&
-        /Tgas)+3.877854e-19)
+        /Tgas)+3.877854e-19+7.59e-05*exp(-user_Av))
 
     !H_DUSTC_DUSTH_DUSTO_DUST -> HCHO
     k(4462) = small + (8.792184e+11&
         *exp(-1760.000000&
-        /Tgas)+3.343687e-18)
+        /Tgas)+3.343687e-18+7.59e-05*exp(-user_Av))
 
     !C_DUSTH_DUSTH_DUSTH_DUSTH_DUST -> CH4
     k(4463) = small + (1.057364e+12&
         *exp(-1360.000000&
-        /Tgas)+1.219091e-15)
+        /Tgas)+1.219091e-15+7.59e-05*exp(-user_Av))
 
     !C_DUSTH_DUSTH_DUSTO_DUSTH_DUST -> CH2OH
     k(4464) = small + (9.593004e+11&
         *exp(-2165.545027&
-        /Tgas)+1.111727e-20)
+        /Tgas)+1.111727e-20+7.59e-05*exp(-user_Av))
 
     !C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST -> CH3OH
     k(4465) = small + (9.218749e+11&
         *exp(-2064.822002&
-        /Tgas)+4.504245e-20)
+        /Tgas)+4.504245e-20+7.59e-05*exp(-user_Av))
 
     !H_DUST + H_DUST -> H_DUSTH_DUST
     k(4466) = small + (1.231708e+12+1.231708e+12)
