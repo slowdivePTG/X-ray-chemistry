@@ -5,7 +5,7 @@ module krome_user
 
   ! *************************************************************
   !  This file has been generated with:
-  !  KROME 14.08.dev on 2019-09-22 11:19:33
+  !  KROME 14.08.dev on 2019-09-22 21:54:30
   !  Changeset xxxxxxx
   !  see http://kromepackage.org
   !
@@ -230,10 +230,10 @@ module krome_user
   integer,parameter::KROME_idx_C_DUSTH_DUSTO_DUSTH_DUST = 210	!C_DUSTH_DUSTO_DUSTH_DUST
   integer,parameter::KROME_idx_HCHO = 211	!HCHO
   integer,parameter::KROME_idx_H_DUSTC_DUSTH_DUSTO_DUST = 212	!H_DUSTC_DUSTH_DUSTO_DUST
-  integer,parameter::KROME_idx_CH2OH = 213	!CH2OH
-  integer,parameter::KROME_idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST = 214	!C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
-  integer,parameter::KROME_idx_C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST = 215	!C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST
-  integer,parameter::KROME_idx_C_DUSTH_DUSTH_DUSTH_DUSTH_DUST = 216	!C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
+  integer,parameter::KROME_idx_C_DUSTH_DUSTH_DUSTH_DUSTH_DUST = 213	!C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
+  integer,parameter::KROME_idx_CH2OH = 214	!CH2OH
+  integer,parameter::KROME_idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST = 215	!C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
+  integer,parameter::KROME_idx_C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST = 216	!C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST
   integer,parameter::KROME_idx_Cj = 217	!C+
   integer,parameter::KROME_idx_FEj = 218	!FE+
   integer,parameter::KROME_idx_Hj = 219	!H+
@@ -542,7 +542,7 @@ module krome_user
   integer,parameter::krome_idx_heat_zcie = 11
   integer,parameter::krome_nheats = 11
 
-  integer,parameter::krome_nrea=4482
+  integer,parameter::krome_nrea=4484
   integer,parameter::krome_nmols=473
   integer,parameter::krome_nspec=477
   integer,parameter::krome_natoms=16

@@ -5,7 +5,7 @@ contains
 
   ! *************************************************************
   !  This file has been generated with:
-  !  KROME 14.08.dev on 2019-09-22 11:19:32
+  !  KROME 14.08.dev on 2019-09-22 21:54:29
   !  Changeset xxxxxxx
   !  see http://kromepackage.org
   !
@@ -1330,7 +1330,7 @@ contains
         +k(4413)*n(idx_C2j) &
         +k(4424)*n(idx_Ck) &
         -k(4434)*n(idx_C) &
-        +k(4450)*n(idx_C_DUST)
+        +k(4451)*n(idx_C_DUST)
 
     !FE
     !FE
@@ -2777,7 +2777,7 @@ contains
         +k(4425)*n(idx_Hk) &
         -k(4430)*n(idx_H) &
         -k(4432)*n(idx_H) &
-        +k(4448)*n(idx_H_DUST)
+        +k(4449)*n(idx_H_DUST)
 
     !HE
     !HE
@@ -3807,7 +3807,7 @@ contains
         +k(4416)*n(idx_OHj) &
         +k(4426)*n(idx_Ok) &
         -k(4433)*n(idx_O) &
-        +k(4451)*n(idx_O_DUST)
+        +k(4452)*n(idx_O_DUST)
 
     !S
     !S
@@ -5006,7 +5006,7 @@ contains
         +k(4420)*n(idx_H3j) &
         +k(4422)*n(idx_CH3j) &
         -k(4435)*n(idx_H2) &
-        +k(4449)*n(idx_H_DUSTH_DUST)
+        +k(4450)*n(idx_H_DUSTH_DUST)
 
     !CO
     !CO
@@ -5396,7 +5396,7 @@ contains
         +k(4330)*n(idx_C2H2O) &
         +k(4369)*n(idx_C2H4O) &
         -k(4438)*n(idx_CO) &
-        +k(4454)*n(idx_C_DUSTO_DUST)
+        +k(4455)*n(idx_C_DUSTO_DUST)
 
     !CL
     !CL
@@ -5819,7 +5819,7 @@ contains
         +k(4400)*n(idx_HC12N) &
         +k(4401)*n(idx_HC13N) &
         -k(4436)*n(idx_CH) &
-        +k(4452)*n(idx_C_DUSTH_DUST)
+        +k(4453)*n(idx_C_DUSTH_DUST)
 
     !CLO
     !CLO
@@ -6889,7 +6889,7 @@ contains
         +k(4343)*n(idx_CH2O2) &
         +k(4429)*n(idx_OHk) &
         -k(4437)*n(idx_OH) &
-        +k(4453)*n(idx_O_DUSTH_DUST)
+        +k(4454)*n(idx_O_DUSTH_DUST)
 
     !PH
     !PH
@@ -7569,7 +7569,7 @@ contains
         +k(4330)*n(idx_C2H2O) &
         +k(4347)*n(idx_CH4) &
         -k(4440)*n(idx_CH2) &
-        +k(4455)*n(idx_C_DUSTH_DUSTH_DUST)
+        +k(4456)*n(idx_C_DUSTH_DUSTH_DUST)
 
     !CO2
     !CO2
@@ -7853,7 +7853,7 @@ contains
         -k(4295)*n(idx_H2O) &
         +k(4408)*n(idx_C2H5OH) &
         -k(4439)*n(idx_H2O) &
-        +k(4456)*n(idx_H_DUSTH_DUSTO_DUST)
+        +k(4457)*n(idx_H_DUSTH_DUSTO_DUST)
 
     !H2S
     !H2S
@@ -8183,7 +8183,7 @@ contains
         +k(4343)*n(idx_CH2O2) &
         +k(4368)*n(idx_C2H4O) &
         -k(4443)*n(idx_HCO) &
-        +k(4458)*n(idx_H_DUSTC_DUSTO_DUST)
+        +k(4459)*n(idx_H_DUSTC_DUSTO_DUST)
 
     !HCP
     !HCP
@@ -9239,7 +9239,7 @@ contains
         +k(4390)*n(idx_CH3C3N) &
         +k(4410)*n(idx_CH3C4H) &
         -k(4441)*n(idx_CH3) &
-        +k(4459)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)
+        +k(4460)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)
 
     !H2CO
     !H2CO
@@ -10161,7 +10161,9 @@ contains
         -k(4347)*n(idx_CH4) &
         -k(4348)*n(idx_CH4) &
         +k(4369)*n(idx_C2H4O) &
-        +k(4411)*n(idx_CH3OCH3)
+        +k(4411)*n(idx_CH3OCH3) &
+        -k(4446)*n(idx_CH4) &
+        +k(4463)*n(idx_C_DUSTH_DUSTH_DUSTH_DUSTH_DUST)
 
     !HC3N
     !HC3N
@@ -10689,8 +10691,8 @@ contains
         +k(4152)*n(idx_CH3OCH4j)*n(idx_E) &
         -k(4366)*n(idx_CH3OH) &
         -k(4367)*n(idx_CH3OH) &
-        -k(4447)*n(idx_CH3OH) &
-        +k(4463)*n(idx_C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST)
+        -k(4448)*n(idx_CH3OH) &
+        +k(4465)*n(idx_C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST)
 
     !C2H4O
     !C2H4O
@@ -11781,184 +11783,186 @@ contains
     !H_DUST
     dn(idx_H_DUST) = &
         +k(4432)*n(idx_H) &
-        -k(4448)*n(idx_H_DUST) &
-        -2.d0*k(4464)*n(idx_H_DUST)*n(idx_H_DUST) &
-        -k(4465)*n(idx_H_DUST)*n(idx_O_DUST) &
-        -k(4466)*n(idx_H_DUST)*n(idx_O_DUSTH_DUST) &
-        +k(4467)*n(idx_H_DUSTH_DUST)*n(idx_O_DUSTH_DUST) &
-        -k(4468)*n(idx_C_DUST)*n(idx_H_DUST) &
-        +k(4472)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
-        -k(4473)*n(idx_C_DUSTH_DUST)*n(idx_H_DUST) &
-        -k(4475)*n(idx_C_DUSTH_DUSTH_DUST)*n(idx_H_DUST) &
-        -k(4477)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)*n(idx_H_DUST) &
-        -k(4478)*n(idx_C_DUSTO_DUST)*n(idx_H_DUST) &
-        -k(4479)*n(idx_H_DUSTO_DUSTC_DUST)*n(idx_H_DUST) &
-        -k(4480)*n(idx_H_DUSTC_DUSTO_DUST)*n(idx_H_DUST) &
-        -k(4481)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)*n(idx_H_DUST) &
-        -k(4482)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)*n(idx_H_DUST)
+        -k(4449)*n(idx_H_DUST) &
+        -2.d0*k(4466)*n(idx_H_DUST)*n(idx_H_DUST) &
+        -k(4467)*n(idx_H_DUST)*n(idx_O_DUST) &
+        -k(4468)*n(idx_H_DUST)*n(idx_O_DUSTH_DUST) &
+        +k(4469)*n(idx_H_DUSTH_DUST)*n(idx_O_DUSTH_DUST) &
+        -k(4470)*n(idx_C_DUST)*n(idx_H_DUST) &
+        +k(4474)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
+        -k(4475)*n(idx_C_DUSTH_DUST)*n(idx_H_DUST) &
+        -k(4477)*n(idx_C_DUSTH_DUSTH_DUST)*n(idx_H_DUST) &
+        -k(4479)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)*n(idx_H_DUST) &
+        -k(4480)*n(idx_C_DUSTO_DUST)*n(idx_H_DUST) &
+        -k(4481)*n(idx_H_DUSTO_DUSTC_DUST)*n(idx_H_DUST) &
+        -k(4482)*n(idx_H_DUSTC_DUSTO_DUST)*n(idx_H_DUST) &
+        -k(4483)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)*n(idx_H_DUST) &
+        -k(4484)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)*n(idx_H_DUST)
 
     !O_DUST
     !O_DUST
     dn(idx_O_DUST) = &
         +k(4433)*n(idx_O) &
-        -k(4451)*n(idx_O_DUST) &
-        -k(4465)*n(idx_H_DUST)*n(idx_O_DUST) &
-        -k(4469)*n(idx_C_DUST)*n(idx_O_DUST)
+        -k(4452)*n(idx_O_DUST) &
+        -k(4467)*n(idx_H_DUST)*n(idx_O_DUST) &
+        -k(4471)*n(idx_C_DUST)*n(idx_O_DUST)
 
     !C_DUST
     !C_DUST
     dn(idx_C_DUST) = &
         +k(4434)*n(idx_C) &
-        -k(4450)*n(idx_C_DUST) &
-        -k(4468)*n(idx_C_DUST)*n(idx_H_DUST) &
-        -k(4469)*n(idx_C_DUST)*n(idx_O_DUST) &
-        -k(4470)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
-        -k(4471)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
-        -k(4472)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST)
+        -k(4451)*n(idx_C_DUST) &
+        -k(4470)*n(idx_C_DUST)*n(idx_H_DUST) &
+        -k(4471)*n(idx_C_DUST)*n(idx_O_DUST) &
+        -k(4472)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
+        -k(4473)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
+        -k(4474)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST)
 
     !H_DUSTH_DUST
     !H_DUSTH_DUST
     dn(idx_H_DUSTH_DUST) = &
         +k(4435)*n(idx_H2) &
-        -k(4449)*n(idx_H_DUSTH_DUST) &
-        +k(4464)*n(idx_H_DUST)*n(idx_H_DUST) &
-        -k(4467)*n(idx_H_DUSTH_DUST)*n(idx_O_DUSTH_DUST) &
-        +k(4481)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)*n(idx_H_DUST)
+        -k(4450)*n(idx_H_DUSTH_DUST) &
+        +k(4466)*n(idx_H_DUST)*n(idx_H_DUST) &
+        -k(4469)*n(idx_H_DUSTH_DUST)*n(idx_O_DUSTH_DUST) &
+        +k(4483)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)*n(idx_H_DUST)
 
     !C_DUSTH_DUST
     !C_DUSTH_DUST
     dn(idx_C_DUSTH_DUST) = &
         +k(4436)*n(idx_CH) &
-        -k(4452)*n(idx_C_DUSTH_DUST) &
-        +k(4468)*n(idx_C_DUST)*n(idx_H_DUST) &
-        -k(4473)*n(idx_C_DUSTH_DUST)*n(idx_H_DUST) &
-        -k(4474)*n(idx_C_DUSTH_DUST)*n(idx_O_DUSTH_DUST)
+        -k(4453)*n(idx_C_DUSTH_DUST) &
+        +k(4470)*n(idx_C_DUST)*n(idx_H_DUST) &
+        -k(4475)*n(idx_C_DUSTH_DUST)*n(idx_H_DUST) &
+        -k(4476)*n(idx_C_DUSTH_DUST)*n(idx_O_DUSTH_DUST)
 
     !O_DUSTH_DUST
     !O_DUSTH_DUST
     dn(idx_O_DUSTH_DUST) = &
         +k(4437)*n(idx_OH) &
-        -k(4453)*n(idx_O_DUSTH_DUST) &
-        +k(4465)*n(idx_H_DUST)*n(idx_O_DUST) &
-        -k(4466)*n(idx_H_DUST)*n(idx_O_DUSTH_DUST) &
-        -k(4467)*n(idx_H_DUSTH_DUST)*n(idx_O_DUSTH_DUST) &
-        -k(4470)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
-        -k(4471)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
+        -k(4454)*n(idx_O_DUSTH_DUST) &
+        +k(4467)*n(idx_H_DUST)*n(idx_O_DUST) &
+        -k(4468)*n(idx_H_DUST)*n(idx_O_DUSTH_DUST) &
+        -k(4469)*n(idx_H_DUSTH_DUST)*n(idx_O_DUSTH_DUST) &
         -k(4472)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
-        -k(4474)*n(idx_C_DUSTH_DUST)*n(idx_O_DUSTH_DUST) &
-        -k(4476)*n(idx_C_DUSTH_DUSTH_DUST)*n(idx_O_DUSTH_DUST)
+        -k(4473)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
+        -k(4474)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
+        -k(4476)*n(idx_C_DUSTH_DUST)*n(idx_O_DUSTH_DUST) &
+        -k(4478)*n(idx_C_DUSTH_DUSTH_DUST)*n(idx_O_DUSTH_DUST)
 
     !C_DUSTO_DUST
     !C_DUSTO_DUST
     dn(idx_C_DUSTO_DUST) = &
         +k(4438)*n(idx_CO) &
-        -k(4454)*n(idx_C_DUSTO_DUST) &
-        +k(4469)*n(idx_C_DUST)*n(idx_O_DUST) &
-        +k(4472)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
-        -k(4478)*n(idx_C_DUSTO_DUST)*n(idx_H_DUST)
+        -k(4455)*n(idx_C_DUSTO_DUST) &
+        +k(4471)*n(idx_C_DUST)*n(idx_O_DUST) &
+        +k(4474)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
+        -k(4480)*n(idx_C_DUSTO_DUST)*n(idx_H_DUST)
 
     !H_DUSTH_DUSTO_DUST
     !H_DUSTH_DUSTO_DUST
     dn(idx_H_DUSTH_DUSTO_DUST) = &
         +k(4439)*n(idx_H2O) &
-        -k(4456)*n(idx_H_DUSTH_DUSTO_DUST) &
-        +k(4466)*n(idx_H_DUST)*n(idx_O_DUSTH_DUST) &
-        +k(4467)*n(idx_H_DUSTH_DUST)*n(idx_O_DUSTH_DUST)
+        -k(4457)*n(idx_H_DUSTH_DUSTO_DUST) &
+        +k(4468)*n(idx_H_DUST)*n(idx_O_DUSTH_DUST) &
+        +k(4469)*n(idx_H_DUSTH_DUST)*n(idx_O_DUSTH_DUST)
 
     !C_DUSTH_DUSTH_DUST
     !C_DUSTH_DUSTH_DUST
     dn(idx_C_DUSTH_DUSTH_DUST) = &
         +k(4440)*n(idx_CH2) &
-        -k(4455)*n(idx_C_DUSTH_DUSTH_DUST) &
-        +k(4473)*n(idx_C_DUSTH_DUST)*n(idx_H_DUST) &
-        -k(4475)*n(idx_C_DUSTH_DUSTH_DUST)*n(idx_H_DUST) &
-        -k(4476)*n(idx_C_DUSTH_DUSTH_DUST)*n(idx_O_DUSTH_DUST)
+        -k(4456)*n(idx_C_DUSTH_DUSTH_DUST) &
+        +k(4475)*n(idx_C_DUSTH_DUST)*n(idx_H_DUST) &
+        -k(4477)*n(idx_C_DUSTH_DUSTH_DUST)*n(idx_H_DUST) &
+        -k(4478)*n(idx_C_DUSTH_DUSTH_DUST)*n(idx_O_DUSTH_DUST)
 
     !C_DUSTH_DUSTH_DUSTH_DUST
     !C_DUSTH_DUSTH_DUSTH_DUST
     dn(idx_C_DUSTH_DUSTH_DUSTH_DUST) = &
         +k(4441)*n(idx_CH3) &
-        -k(4459)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST) &
-        +k(4475)*n(idx_C_DUSTH_DUSTH_DUST)*n(idx_H_DUST) &
-        -k(4477)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)*n(idx_H_DUST)
+        -k(4460)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST) &
+        +k(4477)*n(idx_C_DUSTH_DUSTH_DUST)*n(idx_H_DUST) &
+        -k(4479)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)*n(idx_H_DUST)
 
     !HOC
     !HOC
     dn(idx_HOC) = &
         -k(4442)*n(idx_HOC) &
-        +k(4457)*n(idx_H_DUSTO_DUSTC_DUST)
+        +k(4458)*n(idx_H_DUSTO_DUSTC_DUST)
 
     !H_DUSTO_DUSTC_DUST
     !H_DUSTO_DUSTC_DUST
     dn(idx_H_DUSTO_DUSTC_DUST) = &
         +k(4442)*n(idx_HOC) &
-        -k(4457)*n(idx_H_DUSTO_DUSTC_DUST) &
-        +k(4470)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
-        +k(4478)*n(idx_C_DUSTO_DUST)*n(idx_H_DUST) &
-        -k(4479)*n(idx_H_DUSTO_DUSTC_DUST)*n(idx_H_DUST)
+        -k(4458)*n(idx_H_DUSTO_DUSTC_DUST) &
+        +k(4472)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
+        +k(4480)*n(idx_C_DUSTO_DUST)*n(idx_H_DUST) &
+        -k(4481)*n(idx_H_DUSTO_DUSTC_DUST)*n(idx_H_DUST)
 
     !H_DUSTC_DUSTO_DUST
     !H_DUSTC_DUSTO_DUST
     dn(idx_H_DUSTC_DUSTO_DUST) = &
         +k(4443)*n(idx_HCO) &
-        -k(4458)*n(idx_H_DUSTC_DUSTO_DUST) &
-        +k(4471)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
-        -k(4480)*n(idx_H_DUSTC_DUSTO_DUST)*n(idx_H_DUST) &
-        +k(4481)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)*n(idx_H_DUST)
+        -k(4459)*n(idx_H_DUSTC_DUSTO_DUST) &
+        +k(4473)*n(idx_C_DUST)*n(idx_O_DUSTH_DUST) &
+        -k(4482)*n(idx_H_DUSTC_DUSTO_DUST)*n(idx_H_DUST) &
+        +k(4483)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)*n(idx_H_DUST)
 
     !CHOH
     !CHOH
     dn(idx_CHOH) = &
         -k(4444)*n(idx_CHOH) &
-        +k(4460)*n(idx_C_DUSTH_DUSTO_DUSTH_DUST)
+        +k(4461)*n(idx_C_DUSTH_DUSTO_DUSTH_DUST)
 
     !C_DUSTH_DUSTO_DUSTH_DUST
     !C_DUSTH_DUSTO_DUSTH_DUST
     dn(idx_C_DUSTH_DUSTO_DUSTH_DUST) = &
         +k(4444)*n(idx_CHOH) &
-        -k(4460)*n(idx_C_DUSTH_DUSTO_DUSTH_DUST) &
-        +k(4474)*n(idx_C_DUSTH_DUST)*n(idx_O_DUSTH_DUST) &
-        +k(4479)*n(idx_H_DUSTO_DUSTC_DUST)*n(idx_H_DUST)
+        -k(4461)*n(idx_C_DUSTH_DUSTO_DUSTH_DUST) &
+        +k(4476)*n(idx_C_DUSTH_DUST)*n(idx_O_DUSTH_DUST) &
+        +k(4481)*n(idx_H_DUSTO_DUSTC_DUST)*n(idx_H_DUST)
 
     !HCHO
     !HCHO
     dn(idx_HCHO) = &
         -k(4445)*n(idx_HCHO) &
-        +k(4461)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)
+        +k(4462)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)
 
     !H_DUSTC_DUSTH_DUSTO_DUST
     !H_DUSTC_DUSTH_DUSTO_DUST
     dn(idx_H_DUSTC_DUSTH_DUSTO_DUST) = &
         +k(4445)*n(idx_HCHO) &
-        -k(4461)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST) &
-        +k(4480)*n(idx_H_DUSTC_DUSTO_DUST)*n(idx_H_DUST) &
-        -k(4481)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)*n(idx_H_DUST)
-
-    !CH2OH
-    !CH2OH
-    dn(idx_CH2OH) = &
-        -k(4446)*n(idx_CH2OH) &
-        +k(4462)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)
-
-    !C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
-    !C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
-    dn(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST) = &
-        +k(4446)*n(idx_CH2OH) &
-        -k(4462)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST) &
-        +k(4476)*n(idx_C_DUSTH_DUSTH_DUST)*n(idx_O_DUSTH_DUST) &
-        -k(4482)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)*n(idx_H_DUST)
-
-    !C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST
-    !C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST
-    dn(idx_C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST) = &
-        +k(4447)*n(idx_CH3OH) &
-        -k(4463)*n(idx_C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST) &
-        +k(4482)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)*n(idx_H_DUST)
+        -k(4462)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST) &
+        +k(4482)*n(idx_H_DUSTC_DUSTO_DUST)*n(idx_H_DUST) &
+        -k(4483)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)*n(idx_H_DUST)
 
     !C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
     !C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
     dn(idx_C_DUSTH_DUSTH_DUSTH_DUSTH_DUST) = &
-        +k(4477)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)*n(idx_H_DUST)
+        +k(4446)*n(idx_CH4) &
+        -k(4463)*n(idx_C_DUSTH_DUSTH_DUSTH_DUSTH_DUST) &
+        +k(4479)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)*n(idx_H_DUST)
+
+    !CH2OH
+    !CH2OH
+    dn(idx_CH2OH) = &
+        -k(4447)*n(idx_CH2OH) &
+        +k(4464)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)
+
+    !C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
+    !C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
+    dn(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST) = &
+        +k(4447)*n(idx_CH2OH) &
+        -k(4464)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST) &
+        +k(4478)*n(idx_C_DUSTH_DUSTH_DUST)*n(idx_O_DUSTH_DUST) &
+        -k(4484)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)*n(idx_H_DUST)
+
+    !C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST
+    !C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST
+    dn(idx_C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST) = &
+        +k(4448)*n(idx_CH3OH) &
+        -k(4465)*n(idx_C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST) &
+        +k(4484)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)*n(idx_H_DUST)
 
     !C+
     !C+
@@ -40177,6 +40181,7 @@ contains
           -k(1591)*n(idx_C2Hj)  &
           -k(1523)*n(idx_PHj)  &
           -k(3087)*n(idx_C8H2j)  &
+          -k(4446)  &
           -k(2702)*n(idx_C4Hj)  &
           -k(3124)*n(idx_Ok)  &
           -k(814)*n(idx_HEj)  &
@@ -40197,6 +40202,8 @@ contains
           -k(319)*n(idx_Cj)
       pdj(127) =  &
           +k(3547)*n(idx_CH)
+      pdj(213) =  &
+          +k(4446)
       pdj(217) =  &
           -k(319)*n(idx_Cj)  &
           -k(318)*n(idx_Cj)
@@ -42271,7 +42278,7 @@ contains
           -k(1202)*n(idx_CHj)  &
           -k(1833)*n(idx_H3j)  &
           -k(1204)*n(idx_CHj)  &
-          -k(4447)  &
+          -k(4448)  &
           -k(573)*n(idx_Hj)  &
           -k(162)  &
           -k(363)*n(idx_Cj)  &
@@ -42294,8 +42301,8 @@ contains
           -k(163)  &
           -k(1044)*n(idx_Oj)  &
           -k(1000)*n(idx_Nj)
-      pdj(215) =  &
-          +k(4447)
+      pdj(216) =  &
+          +k(4448)
       pdj(217) =  &
           -k(361)*n(idx_Cj)  &
           -k(362)*n(idx_Cj)  &
@@ -46063,210 +46070,210 @@ contains
           -k(4401)
     elseif(j==196) then
       pdj(12) =  &
-          +k(4448)
-      pdj(196) =  &
-          -k(4468)*n(idx_C_DUST)  &
-          -k(4479)*n(idx_H_DUSTO_DUSTC_DUST)  &
-          -k(4473)*n(idx_C_DUSTH_DUST)  &
-          -k(4465)*n(idx_O_DUST)  &
-          -k(4478)*n(idx_C_DUSTO_DUST)  &
-          -k(4475)*n(idx_C_DUSTH_DUSTH_DUST)  &
-          -k(4448)  &
-          -k(4482)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)  &
-          -k(4477)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)  &
-          -k(4480)*n(idx_H_DUSTC_DUSTO_DUST)  &
-          -k(4481)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)  &
-          -k(4466)*n(idx_O_DUSTH_DUST)  &
-          -4.d0*k(4464)*n(idx_H_DUST)
-      pdj(197) =  &
-          -k(4465)*n(idx_O_DUST)
-      pdj(198) =  &
-          -k(4468)*n(idx_C_DUST)
-      pdj(199) =  &
-          +k(4481)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)  &
-          +2.d0*k(4464)*n(idx_H_DUST)
-      pdj(200) =  &
-          +k(4468)*n(idx_C_DUST)  &
-          -k(4473)*n(idx_C_DUSTH_DUST)
-      pdj(201) =  &
-          -k(4466)*n(idx_O_DUSTH_DUST)  &
-          +k(4465)*n(idx_O_DUST)
-      pdj(202) =  &
-          -k(4478)*n(idx_C_DUSTO_DUST)
-      pdj(203) =  &
-          +k(4466)*n(idx_O_DUSTH_DUST)
-      pdj(204) =  &
-          -k(4475)*n(idx_C_DUSTH_DUSTH_DUST)  &
-          +k(4473)*n(idx_C_DUSTH_DUST)
-      pdj(205) =  &
-          -k(4477)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)  &
-          +k(4475)*n(idx_C_DUSTH_DUSTH_DUST)
-      pdj(207) =  &
-          -k(4479)*n(idx_H_DUSTO_DUSTC_DUST)  &
-          +k(4478)*n(idx_C_DUSTO_DUST)
-      pdj(208) =  &
-          +k(4481)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)  &
-          -k(4480)*n(idx_H_DUSTC_DUSTO_DUST)
-      pdj(210) =  &
-          +k(4479)*n(idx_H_DUSTO_DUSTC_DUST)
-      pdj(212) =  &
-          +k(4480)*n(idx_H_DUSTC_DUSTO_DUST)  &
-          -k(4481)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)
-      pdj(214) =  &
-          -k(4482)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)
-      pdj(215) =  &
-          +k(4482)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)
-      pdj(216) =  &
-          +k(4477)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)
-    elseif(j==197) then
-      pdj(17) =  &
-          +k(4451)
-      pdj(196) =  &
-          -k(4465)*n(idx_H_DUST)
-      pdj(197) =  &
-          -k(4469)*n(idx_C_DUST)  &
-          -k(4465)*n(idx_H_DUST)  &
-          -k(4451)
-      pdj(198) =  &
-          -k(4469)*n(idx_C_DUST)
-      pdj(201) =  &
-          +k(4465)*n(idx_H_DUST)
-      pdj(202) =  &
-          +k(4469)*n(idx_C_DUST)
-    elseif(j==198) then
-      pdj(10) =  &
-          +k(4450)
-      pdj(196) =  &
-          +k(4472)*n(idx_O_DUSTH_DUST)  &
-          -k(4468)*n(idx_H_DUST)
-      pdj(197) =  &
-          -k(4469)*n(idx_O_DUST)
-      pdj(198) =  &
-          -k(4471)*n(idx_O_DUSTH_DUST)  &
-          -k(4468)*n(idx_H_DUST)  &
-          -k(4450)  &
-          -k(4470)*n(idx_O_DUSTH_DUST)  &
-          -k(4469)*n(idx_O_DUST)  &
-          -k(4472)*n(idx_O_DUSTH_DUST)
-      pdj(200) =  &
-          +k(4468)*n(idx_H_DUST)
-      pdj(201) =  &
-          -k(4470)*n(idx_O_DUSTH_DUST)  &
-          -k(4471)*n(idx_O_DUSTH_DUST)  &
-          -k(4472)*n(idx_O_DUSTH_DUST)
-      pdj(202) =  &
-          +k(4469)*n(idx_O_DUST)  &
-          +k(4472)*n(idx_O_DUSTH_DUST)
-      pdj(207) =  &
-          +k(4470)*n(idx_O_DUSTH_DUST)
-      pdj(208) =  &
-          +k(4471)*n(idx_O_DUSTH_DUST)
-    elseif(j==199) then
-      pdj(20) =  &
           +k(4449)
       pdj(196) =  &
-          +k(4467)*n(idx_O_DUSTH_DUST)
+          -k(4480)*n(idx_C_DUSTO_DUST)  &
+          -k(4483)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)  &
+          -4.d0*k(4466)*n(idx_H_DUST)  &
+          -k(4479)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)  &
+          -k(4481)*n(idx_H_DUSTO_DUSTC_DUST)  &
+          -k(4470)*n(idx_C_DUST)  &
+          -k(4477)*n(idx_C_DUSTH_DUSTH_DUST)  &
+          -k(4449)  &
+          -k(4475)*n(idx_C_DUSTH_DUST)  &
+          -k(4468)*n(idx_O_DUSTH_DUST)  &
+          -k(4482)*n(idx_H_DUSTC_DUSTO_DUST)  &
+          -k(4484)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)  &
+          -k(4467)*n(idx_O_DUST)
+      pdj(197) =  &
+          -k(4467)*n(idx_O_DUST)
+      pdj(198) =  &
+          -k(4470)*n(idx_C_DUST)
       pdj(199) =  &
-          -k(4467)*n(idx_O_DUSTH_DUST)  &
-          -k(4449)
+          +2.d0*k(4466)*n(idx_H_DUST)  &
+          +k(4483)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)
+      pdj(200) =  &
+          +k(4470)*n(idx_C_DUST)  &
+          -k(4475)*n(idx_C_DUSTH_DUST)
       pdj(201) =  &
-          -k(4467)*n(idx_O_DUSTH_DUST)
+          +k(4467)*n(idx_O_DUST)  &
+          -k(4468)*n(idx_O_DUSTH_DUST)
+      pdj(202) =  &
+          -k(4480)*n(idx_C_DUSTO_DUST)
       pdj(203) =  &
-          +k(4467)*n(idx_O_DUSTH_DUST)
-    elseif(j==200) then
-      pdj(26) =  &
+          +k(4468)*n(idx_O_DUSTH_DUST)
+      pdj(204) =  &
+          -k(4477)*n(idx_C_DUSTH_DUSTH_DUST)  &
+          +k(4475)*n(idx_C_DUSTH_DUST)
+      pdj(205) =  &
+          +k(4477)*n(idx_C_DUSTH_DUSTH_DUST)  &
+          -k(4479)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)
+      pdj(207) =  &
+          -k(4481)*n(idx_H_DUSTO_DUSTC_DUST)  &
+          +k(4480)*n(idx_C_DUSTO_DUST)
+      pdj(208) =  &
+          -k(4482)*n(idx_H_DUSTC_DUSTO_DUST)  &
+          +k(4483)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)
+      pdj(210) =  &
+          +k(4481)*n(idx_H_DUSTO_DUSTC_DUST)
+      pdj(212) =  &
+          -k(4483)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)  &
+          +k(4482)*n(idx_H_DUSTC_DUSTO_DUST)
+      pdj(213) =  &
+          +k(4479)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)
+      pdj(215) =  &
+          -k(4484)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)
+      pdj(216) =  &
+          +k(4484)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)
+    elseif(j==197) then
+      pdj(17) =  &
           +k(4452)
       pdj(196) =  &
-          -k(4473)*n(idx_H_DUST)
-      pdj(200) =  &
-          -k(4473)*n(idx_H_DUST)  &
+          -k(4467)*n(idx_H_DUST)
+      pdj(197) =  &
+          -k(4471)*n(idx_C_DUST)  &
           -k(4452)  &
-          -k(4474)*n(idx_O_DUSTH_DUST)
+          -k(4467)*n(idx_H_DUST)
+      pdj(198) =  &
+          -k(4471)*n(idx_C_DUST)
       pdj(201) =  &
-          -k(4474)*n(idx_O_DUSTH_DUST)
-      pdj(204) =  &
-          +k(4473)*n(idx_H_DUST)
-      pdj(210) =  &
+          +k(4467)*n(idx_H_DUST)
+      pdj(202) =  &
+          +k(4471)*n(idx_C_DUST)
+    elseif(j==198) then
+      pdj(10) =  &
+          +k(4451)
+      pdj(196) =  &
+          -k(4470)*n(idx_H_DUST)  &
           +k(4474)*n(idx_O_DUSTH_DUST)
-    elseif(j==201) then
-      pdj(42) =  &
+      pdj(197) =  &
+          -k(4471)*n(idx_O_DUST)
+      pdj(198) =  &
+          -k(4451)  &
+          -k(4471)*n(idx_O_DUST)  &
+          -k(4473)*n(idx_O_DUSTH_DUST)  &
+          -k(4470)*n(idx_H_DUST)  &
+          -k(4474)*n(idx_O_DUSTH_DUST)  &
+          -k(4472)*n(idx_O_DUSTH_DUST)
+      pdj(200) =  &
+          +k(4470)*n(idx_H_DUST)
+      pdj(201) =  &
+          -k(4473)*n(idx_O_DUSTH_DUST)  &
+          -k(4474)*n(idx_O_DUSTH_DUST)  &
+          -k(4472)*n(idx_O_DUSTH_DUST)
+      pdj(202) =  &
+          +k(4474)*n(idx_O_DUSTH_DUST)  &
+          +k(4471)*n(idx_O_DUST)
+      pdj(207) =  &
+          +k(4472)*n(idx_O_DUSTH_DUST)
+      pdj(208) =  &
+          +k(4473)*n(idx_O_DUSTH_DUST)
+    elseif(j==199) then
+      pdj(20) =  &
+          +k(4450)
+      pdj(196) =  &
+          +k(4469)*n(idx_O_DUSTH_DUST)
+      pdj(199) =  &
+          -k(4450)  &
+          -k(4469)*n(idx_O_DUSTH_DUST)
+      pdj(201) =  &
+          -k(4469)*n(idx_O_DUSTH_DUST)
+      pdj(203) =  &
+          +k(4469)*n(idx_O_DUSTH_DUST)
+    elseif(j==200) then
+      pdj(26) =  &
           +k(4453)
       pdj(196) =  &
-          +k(4467)*n(idx_H_DUSTH_DUST)  &
-          -k(4466)*n(idx_H_DUST)  &
-          +k(4472)*n(idx_C_DUST)
-      pdj(198) =  &
-          -k(4470)*n(idx_C_DUST)  &
-          -k(4471)*n(idx_C_DUST)  &
-          -k(4472)*n(idx_C_DUST)
-      pdj(199) =  &
-          -k(4467)*n(idx_H_DUSTH_DUST)
+          -k(4475)*n(idx_H_DUST)
       pdj(200) =  &
-          -k(4474)*n(idx_C_DUSTH_DUST)
-      pdj(201) =  &
-          -k(4476)*n(idx_C_DUSTH_DUSTH_DUST)  &
-          -k(4466)*n(idx_H_DUST)  &
-          -k(4471)*n(idx_C_DUST)  &
           -k(4453)  &
-          -k(4470)*n(idx_C_DUST)  &
-          -k(4472)*n(idx_C_DUST)  &
-          -k(4474)*n(idx_C_DUSTH_DUST)  &
-          -k(4467)*n(idx_H_DUSTH_DUST)
-      pdj(202) =  &
-          +k(4472)*n(idx_C_DUST)
-      pdj(203) =  &
-          +k(4466)*n(idx_H_DUST)  &
-          +k(4467)*n(idx_H_DUSTH_DUST)
-      pdj(204) =  &
-          -k(4476)*n(idx_C_DUSTH_DUSTH_DUST)
-      pdj(207) =  &
-          +k(4470)*n(idx_C_DUST)
-      pdj(208) =  &
-          +k(4471)*n(idx_C_DUST)
-      pdj(210) =  &
-          +k(4474)*n(idx_C_DUSTH_DUST)
-      pdj(214) =  &
-          +k(4476)*n(idx_C_DUSTH_DUSTH_DUST)
-    elseif(j==202) then
-      pdj(21) =  &
-          +k(4454)
-      pdj(196) =  &
-          -k(4478)*n(idx_H_DUST)
-      pdj(202) =  &
-          -k(4478)*n(idx_H_DUST)  &
-          -k(4454)
-      pdj(207) =  &
-          +k(4478)*n(idx_H_DUST)
-    elseif(j==203) then
-      pdj(61) =  &
-          +k(4456)
-      pdj(203) =  &
-          -k(4456)
-    elseif(j==204) then
-      pdj(59) =  &
-          +k(4455)
-      pdj(196) =  &
+          -k(4476)*n(idx_O_DUSTH_DUST)  &
           -k(4475)*n(idx_H_DUST)
       pdj(201) =  &
           -k(4476)*n(idx_O_DUSTH_DUST)
       pdj(204) =  &
-          -k(4476)*n(idx_O_DUSTH_DUST)  &
-          -k(4455)  &
-          -k(4475)*n(idx_H_DUST)
-      pdj(205) =  &
           +k(4475)*n(idx_H_DUST)
-      pdj(214) =  &
+      pdj(210) =  &
           +k(4476)*n(idx_O_DUSTH_DUST)
-    elseif(j==205) then
-      pdj(94) =  &
-          +k(4459)
+    elseif(j==201) then
+      pdj(42) =  &
+          +k(4454)
+      pdj(196) =  &
+          +k(4469)*n(idx_H_DUSTH_DUST)  &
+          -k(4468)*n(idx_H_DUST)  &
+          +k(4474)*n(idx_C_DUST)
+      pdj(198) =  &
+          -k(4472)*n(idx_C_DUST)  &
+          -k(4473)*n(idx_C_DUST)  &
+          -k(4474)*n(idx_C_DUST)
+      pdj(199) =  &
+          -k(4469)*n(idx_H_DUSTH_DUST)
+      pdj(200) =  &
+          -k(4476)*n(idx_C_DUSTH_DUST)
+      pdj(201) =  &
+          -k(4468)*n(idx_H_DUST)  &
+          -k(4473)*n(idx_C_DUST)  &
+          -k(4478)*n(idx_C_DUSTH_DUSTH_DUST)  &
+          -k(4472)*n(idx_C_DUST)  &
+          -k(4476)*n(idx_C_DUSTH_DUST)  &
+          -k(4474)*n(idx_C_DUST)  &
+          -k(4454)  &
+          -k(4469)*n(idx_H_DUSTH_DUST)
+      pdj(202) =  &
+          +k(4474)*n(idx_C_DUST)
+      pdj(203) =  &
+          +k(4469)*n(idx_H_DUSTH_DUST)  &
+          +k(4468)*n(idx_H_DUST)
+      pdj(204) =  &
+          -k(4478)*n(idx_C_DUSTH_DUSTH_DUST)
+      pdj(207) =  &
+          +k(4472)*n(idx_C_DUST)
+      pdj(208) =  &
+          +k(4473)*n(idx_C_DUST)
+      pdj(210) =  &
+          +k(4476)*n(idx_C_DUSTH_DUST)
+      pdj(215) =  &
+          +k(4478)*n(idx_C_DUSTH_DUSTH_DUST)
+    elseif(j==202) then
+      pdj(21) =  &
+          +k(4455)
+      pdj(196) =  &
+          -k(4480)*n(idx_H_DUST)
+      pdj(202) =  &
+          -k(4455)  &
+          -k(4480)*n(idx_H_DUST)
+      pdj(207) =  &
+          +k(4480)*n(idx_H_DUST)
+    elseif(j==203) then
+      pdj(61) =  &
+          +k(4457)
+      pdj(203) =  &
+          -k(4457)
+    elseif(j==204) then
+      pdj(59) =  &
+          +k(4456)
       pdj(196) =  &
           -k(4477)*n(idx_H_DUST)
-      pdj(205) =  &
+      pdj(201) =  &
+          -k(4478)*n(idx_O_DUSTH_DUST)
+      pdj(204) =  &
+          -k(4478)*n(idx_O_DUSTH_DUST)  &
           -k(4477)*n(idx_H_DUST)  &
-          -k(4459)
-      pdj(216) =  &
+          -k(4456)
+      pdj(205) =  &
           +k(4477)*n(idx_H_DUST)
+      pdj(215) =  &
+          +k(4478)*n(idx_O_DUSTH_DUST)
+    elseif(j==205) then
+      pdj(94) =  &
+          +k(4460)
+      pdj(196) =  &
+          -k(4479)*n(idx_H_DUST)
+      pdj(205) =  &
+          -k(4479)*n(idx_H_DUST)  &
+          -k(4460)
+      pdj(213) =  &
+          +k(4479)*n(idx_H_DUST)
     elseif(j==206) then
       pdj(206) =  &
           -k(4442)
@@ -46274,24 +46281,24 @@ contains
           +k(4442)
     elseif(j==207) then
       pdj(196) =  &
-          -k(4479)*n(idx_H_DUST)
+          -k(4481)*n(idx_H_DUST)
       pdj(206) =  &
-          +k(4457)
+          +k(4458)
       pdj(207) =  &
-          -k(4479)*n(idx_H_DUST)  &
-          -k(4457)
+          -k(4458)  &
+          -k(4481)*n(idx_H_DUST)
       pdj(210) =  &
-          +k(4479)*n(idx_H_DUST)
+          +k(4481)*n(idx_H_DUST)
     elseif(j==208) then
       pdj(64) =  &
-          +k(4458)
+          +k(4459)
       pdj(196) =  &
-          -k(4480)*n(idx_H_DUST)
+          -k(4482)*n(idx_H_DUST)
       pdj(208) =  &
-          -k(4458)  &
-          -k(4480)*n(idx_H_DUST)
+          -k(4482)*n(idx_H_DUST)  &
+          -k(4459)
       pdj(212) =  &
-          +k(4480)*n(idx_H_DUST)
+          +k(4482)*n(idx_H_DUST)
     elseif(j==209) then
       pdj(209) =  &
           -k(4444)
@@ -46299,9 +46306,9 @@ contains
           +k(4444)
     elseif(j==210) then
       pdj(209) =  &
-          +k(4460)
+          +k(4461)
       pdj(210) =  &
-          -k(4460)
+          -k(4461)
     elseif(j==211) then
       pdj(211) =  &
           -k(4445)
@@ -46309,37 +46316,41 @@ contains
           +k(4445)
     elseif(j==212) then
       pdj(196) =  &
-          -k(4481)*n(idx_H_DUST)
+          -k(4483)*n(idx_H_DUST)
       pdj(199) =  &
-          +k(4481)*n(idx_H_DUST)
+          +k(4483)*n(idx_H_DUST)
       pdj(208) =  &
-          +k(4481)*n(idx_H_DUST)
+          +k(4483)*n(idx_H_DUST)
       pdj(211) =  &
-          +k(4461)
-      pdj(212) =  &
-          -k(4481)*n(idx_H_DUST)  &
-          -k(4461)
-    elseif(j==213) then
-      pdj(213) =  &
-          -k(4446)
-      pdj(214) =  &
-          +k(4446)
-    elseif(j==214) then
-      pdj(196) =  &
-          -k(4482)*n(idx_H_DUST)
-      pdj(213) =  &
           +k(4462)
-      pdj(214) =  &
+      pdj(212) =  &
           -k(4462)  &
-          -k(4482)*n(idx_H_DUST)
-      pdj(215) =  &
-          +k(4482)*n(idx_H_DUST)
-    elseif(j==215) then
-      pdj(133) =  &
+          -k(4483)*n(idx_H_DUST)
+    elseif(j==213) then
+      pdj(119) =  &
           +k(4463)
-      pdj(215) =  &
+      pdj(213) =  &
           -k(4463)
+    elseif(j==214) then
+      pdj(214) =  &
+          -k(4447)
+      pdj(215) =  &
+          +k(4447)
+    elseif(j==215) then
+      pdj(196) =  &
+          -k(4484)*n(idx_H_DUST)
+      pdj(214) =  &
+          +k(4464)
+      pdj(215) =  &
+          -k(4484)*n(idx_H_DUST)  &
+          -k(4464)
+      pdj(216) =  &
+          +k(4484)*n(idx_H_DUST)
     elseif(j==216) then
+      pdj(133) =  &
+          +k(4465)
+      pdj(216) =  &
+          -k(4465)
     elseif(j==217) then
       pdj(1) =  &
           -k(4194)*n(idx_E)
@@ -97563,6 +97574,7 @@ contains
         -k(1591)*n(idx_C2Hj)  &
         -k(1523)*n(idx_PHj)  &
         -k(3087)*n(idx_C8H2j)  &
+        -k(4446)  &
         -k(2702)*n(idx_C4Hj)  &
         -k(3124)*n(idx_Ok)  &
         -k(814)*n(idx_HEj)  &
@@ -97585,6 +97597,10 @@ contains
     !d[C2H4_dot]/d[CH4]
     pd(127,119) =  &
         +k(3547)*n(idx_CH)
+
+    !d[C_DUSTH_DUSTH_DUSTH_DUSTH_DUST_dot]/d[CH4]
+    pd(213,119) =  &
+        +k(4446)
 
     !d[C+_dot]/d[CH4]
     pd(217,119) =  &
@@ -100729,7 +100745,7 @@ contains
         -k(1202)*n(idx_CHj)  &
         -k(1833)*n(idx_H3j)  &
         -k(1204)*n(idx_CHj)  &
-        -k(4447)  &
+        -k(4448)  &
         -k(573)*n(idx_Hj)  &
         -k(162)  &
         -k(363)*n(idx_Cj)  &
@@ -100754,8 +100770,8 @@ contains
         -k(1000)*n(idx_Nj)
 
     !d[C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[CH3OH]
-    pd(215,133) =  &
-        +k(4447)
+    pd(216,133) =  &
+        +k(4448)
 
     !d[C+_dot]/d[CH3OH]
     pd(217,133) =  &
@@ -106748,345 +106764,345 @@ contains
 
     !d[H_dot]/d[H_DUST]
     pd(12,196) =  &
-        +k(4448)
+        +k(4449)
 
     !d[H_DUST_dot]/d[H_DUST]
     pd(196,196) =  &
-        -k(4468)*n(idx_C_DUST)  &
-        -k(4479)*n(idx_H_DUSTO_DUSTC_DUST)  &
-        -k(4473)*n(idx_C_DUSTH_DUST)  &
-        -k(4465)*n(idx_O_DUST)  &
-        -k(4478)*n(idx_C_DUSTO_DUST)  &
-        -k(4475)*n(idx_C_DUSTH_DUSTH_DUST)  &
-        -k(4448)  &
-        -k(4482)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)  &
-        -k(4477)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)  &
-        -k(4480)*n(idx_H_DUSTC_DUSTO_DUST)  &
-        -k(4481)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)  &
-        -k(4466)*n(idx_O_DUSTH_DUST)  &
-        -4.d0*k(4464)*n(idx_H_DUST)
+        -k(4480)*n(idx_C_DUSTO_DUST)  &
+        -k(4483)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)  &
+        -4.d0*k(4466)*n(idx_H_DUST)  &
+        -k(4479)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)  &
+        -k(4481)*n(idx_H_DUSTO_DUSTC_DUST)  &
+        -k(4470)*n(idx_C_DUST)  &
+        -k(4477)*n(idx_C_DUSTH_DUSTH_DUST)  &
+        -k(4449)  &
+        -k(4475)*n(idx_C_DUSTH_DUST)  &
+        -k(4468)*n(idx_O_DUSTH_DUST)  &
+        -k(4482)*n(idx_H_DUSTC_DUSTO_DUST)  &
+        -k(4484)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)  &
+        -k(4467)*n(idx_O_DUST)
 
     !d[O_DUST_dot]/d[H_DUST]
     pd(197,196) =  &
-        -k(4465)*n(idx_O_DUST)
+        -k(4467)*n(idx_O_DUST)
 
     !d[C_DUST_dot]/d[H_DUST]
     pd(198,196) =  &
-        -k(4468)*n(idx_C_DUST)
+        -k(4470)*n(idx_C_DUST)
 
     !d[H_DUSTH_DUST_dot]/d[H_DUST]
     pd(199,196) =  &
-        +k(4481)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)  &
-        +2.d0*k(4464)*n(idx_H_DUST)
+        +2.d0*k(4466)*n(idx_H_DUST)  &
+        +k(4483)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)
 
     !d[C_DUSTH_DUST_dot]/d[H_DUST]
     pd(200,196) =  &
-        +k(4468)*n(idx_C_DUST)  &
-        -k(4473)*n(idx_C_DUSTH_DUST)
+        +k(4470)*n(idx_C_DUST)  &
+        -k(4475)*n(idx_C_DUSTH_DUST)
 
     !d[O_DUSTH_DUST_dot]/d[H_DUST]
     pd(201,196) =  &
-        -k(4466)*n(idx_O_DUSTH_DUST)  &
-        +k(4465)*n(idx_O_DUST)
+        +k(4467)*n(idx_O_DUST)  &
+        -k(4468)*n(idx_O_DUSTH_DUST)
 
     !d[C_DUSTO_DUST_dot]/d[H_DUST]
     pd(202,196) =  &
-        -k(4478)*n(idx_C_DUSTO_DUST)
+        -k(4480)*n(idx_C_DUSTO_DUST)
 
     !d[H_DUSTH_DUSTO_DUST_dot]/d[H_DUST]
     pd(203,196) =  &
-        +k(4466)*n(idx_O_DUSTH_DUST)
+        +k(4468)*n(idx_O_DUSTH_DUST)
 
     !d[C_DUSTH_DUSTH_DUST_dot]/d[H_DUST]
     pd(204,196) =  &
-        -k(4475)*n(idx_C_DUSTH_DUSTH_DUST)  &
-        +k(4473)*n(idx_C_DUSTH_DUST)
+        -k(4477)*n(idx_C_DUSTH_DUSTH_DUST)  &
+        +k(4475)*n(idx_C_DUSTH_DUST)
 
     !d[C_DUSTH_DUSTH_DUSTH_DUST_dot]/d[H_DUST]
     pd(205,196) =  &
-        -k(4477)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)  &
-        +k(4475)*n(idx_C_DUSTH_DUSTH_DUST)
+        +k(4477)*n(idx_C_DUSTH_DUSTH_DUST)  &
+        -k(4479)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)
 
     !d[H_DUSTO_DUSTC_DUST_dot]/d[H_DUST]
     pd(207,196) =  &
-        -k(4479)*n(idx_H_DUSTO_DUSTC_DUST)  &
-        +k(4478)*n(idx_C_DUSTO_DUST)
+        -k(4481)*n(idx_H_DUSTO_DUSTC_DUST)  &
+        +k(4480)*n(idx_C_DUSTO_DUST)
 
     !d[H_DUSTC_DUSTO_DUST_dot]/d[H_DUST]
     pd(208,196) =  &
-        +k(4481)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)  &
-        -k(4480)*n(idx_H_DUSTC_DUSTO_DUST)
+        -k(4482)*n(idx_H_DUSTC_DUSTO_DUST)  &
+        +k(4483)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)
 
     !d[C_DUSTH_DUSTO_DUSTH_DUST_dot]/d[H_DUST]
     pd(210,196) =  &
-        +k(4479)*n(idx_H_DUSTO_DUSTC_DUST)
+        +k(4481)*n(idx_H_DUSTO_DUSTC_DUST)
 
     !d[H_DUSTC_DUSTH_DUSTO_DUST_dot]/d[H_DUST]
     pd(212,196) =  &
-        +k(4480)*n(idx_H_DUSTC_DUSTO_DUST)  &
-        -k(4481)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)
-
-    !d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[H_DUST]
-    pd(214,196) =  &
-        -k(4482)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)
-
-    !d[C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[H_DUST]
-    pd(215,196) =  &
-        +k(4482)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)
+        -k(4483)*n(idx_H_DUSTC_DUSTH_DUSTO_DUST)  &
+        +k(4482)*n(idx_H_DUSTC_DUSTO_DUST)
 
     !d[C_DUSTH_DUSTH_DUSTH_DUSTH_DUST_dot]/d[H_DUST]
+    pd(213,196) =  &
+        +k(4479)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)
+
+    !d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[H_DUST]
+    pd(215,196) =  &
+        -k(4484)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)
+
+    !d[C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[H_DUST]
     pd(216,196) =  &
-        +k(4477)*n(idx_C_DUSTH_DUSTH_DUSTH_DUST)
+        +k(4484)*n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)
 
     !d[O_dot]/d[O_DUST]
     pd(17,197) =  &
-        +k(4451)
+        +k(4452)
 
     !d[H_DUST_dot]/d[O_DUST]
     pd(196,197) =  &
-        -k(4465)*n(idx_H_DUST)
+        -k(4467)*n(idx_H_DUST)
 
     !d[O_DUST_dot]/d[O_DUST]
     pd(197,197) =  &
-        -k(4469)*n(idx_C_DUST)  &
-        -k(4465)*n(idx_H_DUST)  &
-        -k(4451)
+        -k(4471)*n(idx_C_DUST)  &
+        -k(4452)  &
+        -k(4467)*n(idx_H_DUST)
 
     !d[C_DUST_dot]/d[O_DUST]
     pd(198,197) =  &
-        -k(4469)*n(idx_C_DUST)
+        -k(4471)*n(idx_C_DUST)
 
     !d[O_DUSTH_DUST_dot]/d[O_DUST]
     pd(201,197) =  &
-        +k(4465)*n(idx_H_DUST)
+        +k(4467)*n(idx_H_DUST)
 
     !d[C_DUSTO_DUST_dot]/d[O_DUST]
     pd(202,197) =  &
-        +k(4469)*n(idx_C_DUST)
+        +k(4471)*n(idx_C_DUST)
 
     !d[C_dot]/d[C_DUST]
     pd(10,198) =  &
-        +k(4450)
+        +k(4451)
 
     !d[H_DUST_dot]/d[C_DUST]
     pd(196,198) =  &
-        +k(4472)*n(idx_O_DUSTH_DUST)  &
-        -k(4468)*n(idx_H_DUST)
+        -k(4470)*n(idx_H_DUST)  &
+        +k(4474)*n(idx_O_DUSTH_DUST)
 
     !d[O_DUST_dot]/d[C_DUST]
     pd(197,198) =  &
-        -k(4469)*n(idx_O_DUST)
+        -k(4471)*n(idx_O_DUST)
 
     !d[C_DUST_dot]/d[C_DUST]
     pd(198,198) =  &
-        -k(4471)*n(idx_O_DUSTH_DUST)  &
-        -k(4468)*n(idx_H_DUST)  &
-        -k(4450)  &
-        -k(4470)*n(idx_O_DUSTH_DUST)  &
-        -k(4469)*n(idx_O_DUST)  &
+        -k(4451)  &
+        -k(4471)*n(idx_O_DUST)  &
+        -k(4473)*n(idx_O_DUSTH_DUST)  &
+        -k(4470)*n(idx_H_DUST)  &
+        -k(4474)*n(idx_O_DUSTH_DUST)  &
         -k(4472)*n(idx_O_DUSTH_DUST)
 
     !d[C_DUSTH_DUST_dot]/d[C_DUST]
     pd(200,198) =  &
-        +k(4468)*n(idx_H_DUST)
+        +k(4470)*n(idx_H_DUST)
 
     !d[O_DUSTH_DUST_dot]/d[C_DUST]
     pd(201,198) =  &
-        -k(4470)*n(idx_O_DUSTH_DUST)  &
-        -k(4471)*n(idx_O_DUSTH_DUST)  &
+        -k(4473)*n(idx_O_DUSTH_DUST)  &
+        -k(4474)*n(idx_O_DUSTH_DUST)  &
         -k(4472)*n(idx_O_DUSTH_DUST)
 
     !d[C_DUSTO_DUST_dot]/d[C_DUST]
     pd(202,198) =  &
-        +k(4469)*n(idx_O_DUST)  &
-        +k(4472)*n(idx_O_DUSTH_DUST)
+        +k(4474)*n(idx_O_DUSTH_DUST)  &
+        +k(4471)*n(idx_O_DUST)
 
     !d[H_DUSTO_DUSTC_DUST_dot]/d[C_DUST]
     pd(207,198) =  &
-        +k(4470)*n(idx_O_DUSTH_DUST)
+        +k(4472)*n(idx_O_DUSTH_DUST)
 
     !d[H_DUSTC_DUSTO_DUST_dot]/d[C_DUST]
     pd(208,198) =  &
-        +k(4471)*n(idx_O_DUSTH_DUST)
+        +k(4473)*n(idx_O_DUSTH_DUST)
 
     !d[H2_dot]/d[H_DUSTH_DUST]
     pd(20,199) =  &
-        +k(4449)
+        +k(4450)
 
     !d[H_DUST_dot]/d[H_DUSTH_DUST]
     pd(196,199) =  &
-        +k(4467)*n(idx_O_DUSTH_DUST)
+        +k(4469)*n(idx_O_DUSTH_DUST)
 
     !d[H_DUSTH_DUST_dot]/d[H_DUSTH_DUST]
     pd(199,199) =  &
-        -k(4467)*n(idx_O_DUSTH_DUST)  &
-        -k(4449)
+        -k(4450)  &
+        -k(4469)*n(idx_O_DUSTH_DUST)
 
     !d[O_DUSTH_DUST_dot]/d[H_DUSTH_DUST]
     pd(201,199) =  &
-        -k(4467)*n(idx_O_DUSTH_DUST)
+        -k(4469)*n(idx_O_DUSTH_DUST)
 
     !d[H_DUSTH_DUSTO_DUST_dot]/d[H_DUSTH_DUST]
     pd(203,199) =  &
-        +k(4467)*n(idx_O_DUSTH_DUST)
+        +k(4469)*n(idx_O_DUSTH_DUST)
 
     !d[CH_dot]/d[C_DUSTH_DUST]
     pd(26,200) =  &
-        +k(4452)
+        +k(4453)
 
     !d[H_DUST_dot]/d[C_DUSTH_DUST]
     pd(196,200) =  &
-        -k(4473)*n(idx_H_DUST)
+        -k(4475)*n(idx_H_DUST)
 
     !d[C_DUSTH_DUST_dot]/d[C_DUSTH_DUST]
     pd(200,200) =  &
-        -k(4473)*n(idx_H_DUST)  &
-        -k(4452)  &
-        -k(4474)*n(idx_O_DUSTH_DUST)
+        -k(4453)  &
+        -k(4476)*n(idx_O_DUSTH_DUST)  &
+        -k(4475)*n(idx_H_DUST)
 
     !d[O_DUSTH_DUST_dot]/d[C_DUSTH_DUST]
     pd(201,200) =  &
-        -k(4474)*n(idx_O_DUSTH_DUST)
+        -k(4476)*n(idx_O_DUSTH_DUST)
 
     !d[C_DUSTH_DUSTH_DUST_dot]/d[C_DUSTH_DUST]
     pd(204,200) =  &
-        +k(4473)*n(idx_H_DUST)
+        +k(4475)*n(idx_H_DUST)
 
     !d[C_DUSTH_DUSTO_DUSTH_DUST_dot]/d[C_DUSTH_DUST]
     pd(210,200) =  &
-        +k(4474)*n(idx_O_DUSTH_DUST)
+        +k(4476)*n(idx_O_DUSTH_DUST)
 
     !d[OH_dot]/d[O_DUSTH_DUST]
     pd(42,201) =  &
-        +k(4453)
+        +k(4454)
 
     !d[H_DUST_dot]/d[O_DUSTH_DUST]
     pd(196,201) =  &
-        +k(4467)*n(idx_H_DUSTH_DUST)  &
-        -k(4466)*n(idx_H_DUST)  &
-        +k(4472)*n(idx_C_DUST)
+        +k(4469)*n(idx_H_DUSTH_DUST)  &
+        -k(4468)*n(idx_H_DUST)  &
+        +k(4474)*n(idx_C_DUST)
 
     !d[C_DUST_dot]/d[O_DUSTH_DUST]
     pd(198,201) =  &
-        -k(4470)*n(idx_C_DUST)  &
-        -k(4471)*n(idx_C_DUST)  &
-        -k(4472)*n(idx_C_DUST)
+        -k(4472)*n(idx_C_DUST)  &
+        -k(4473)*n(idx_C_DUST)  &
+        -k(4474)*n(idx_C_DUST)
 
     !d[H_DUSTH_DUST_dot]/d[O_DUSTH_DUST]
     pd(199,201) =  &
-        -k(4467)*n(idx_H_DUSTH_DUST)
+        -k(4469)*n(idx_H_DUSTH_DUST)
 
     !d[C_DUSTH_DUST_dot]/d[O_DUSTH_DUST]
     pd(200,201) =  &
-        -k(4474)*n(idx_C_DUSTH_DUST)
+        -k(4476)*n(idx_C_DUSTH_DUST)
 
     !d[O_DUSTH_DUST_dot]/d[O_DUSTH_DUST]
     pd(201,201) =  &
-        -k(4476)*n(idx_C_DUSTH_DUSTH_DUST)  &
-        -k(4466)*n(idx_H_DUST)  &
-        -k(4471)*n(idx_C_DUST)  &
-        -k(4453)  &
-        -k(4470)*n(idx_C_DUST)  &
+        -k(4468)*n(idx_H_DUST)  &
+        -k(4473)*n(idx_C_DUST)  &
+        -k(4478)*n(idx_C_DUSTH_DUSTH_DUST)  &
         -k(4472)*n(idx_C_DUST)  &
-        -k(4474)*n(idx_C_DUSTH_DUST)  &
-        -k(4467)*n(idx_H_DUSTH_DUST)
+        -k(4476)*n(idx_C_DUSTH_DUST)  &
+        -k(4474)*n(idx_C_DUST)  &
+        -k(4454)  &
+        -k(4469)*n(idx_H_DUSTH_DUST)
 
     !d[C_DUSTO_DUST_dot]/d[O_DUSTH_DUST]
     pd(202,201) =  &
-        +k(4472)*n(idx_C_DUST)
+        +k(4474)*n(idx_C_DUST)
 
     !d[H_DUSTH_DUSTO_DUST_dot]/d[O_DUSTH_DUST]
     pd(203,201) =  &
-        +k(4466)*n(idx_H_DUST)  &
-        +k(4467)*n(idx_H_DUSTH_DUST)
+        +k(4469)*n(idx_H_DUSTH_DUST)  &
+        +k(4468)*n(idx_H_DUST)
 
     !d[C_DUSTH_DUSTH_DUST_dot]/d[O_DUSTH_DUST]
     pd(204,201) =  &
-        -k(4476)*n(idx_C_DUSTH_DUSTH_DUST)
+        -k(4478)*n(idx_C_DUSTH_DUSTH_DUST)
 
     !d[H_DUSTO_DUSTC_DUST_dot]/d[O_DUSTH_DUST]
     pd(207,201) =  &
-        +k(4470)*n(idx_C_DUST)
+        +k(4472)*n(idx_C_DUST)
 
     !d[H_DUSTC_DUSTO_DUST_dot]/d[O_DUSTH_DUST]
     pd(208,201) =  &
-        +k(4471)*n(idx_C_DUST)
+        +k(4473)*n(idx_C_DUST)
 
     !d[C_DUSTH_DUSTO_DUSTH_DUST_dot]/d[O_DUSTH_DUST]
     pd(210,201) =  &
-        +k(4474)*n(idx_C_DUSTH_DUST)
+        +k(4476)*n(idx_C_DUSTH_DUST)
 
     !d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[O_DUSTH_DUST]
-    pd(214,201) =  &
-        +k(4476)*n(idx_C_DUSTH_DUSTH_DUST)
+    pd(215,201) =  &
+        +k(4478)*n(idx_C_DUSTH_DUSTH_DUST)
 
     !d[CO_dot]/d[C_DUSTO_DUST]
     pd(21,202) =  &
-        +k(4454)
+        +k(4455)
 
     !d[H_DUST_dot]/d[C_DUSTO_DUST]
     pd(196,202) =  &
-        -k(4478)*n(idx_H_DUST)
+        -k(4480)*n(idx_H_DUST)
 
     !d[C_DUSTO_DUST_dot]/d[C_DUSTO_DUST]
     pd(202,202) =  &
-        -k(4478)*n(idx_H_DUST)  &
-        -k(4454)
+        -k(4455)  &
+        -k(4480)*n(idx_H_DUST)
 
     !d[H_DUSTO_DUSTC_DUST_dot]/d[C_DUSTO_DUST]
     pd(207,202) =  &
-        +k(4478)*n(idx_H_DUST)
+        +k(4480)*n(idx_H_DUST)
 
     !d[H2O_dot]/d[H_DUSTH_DUSTO_DUST]
     pd(61,203) =  &
-        +k(4456)
+        +k(4457)
 
     !d[H_DUSTH_DUSTO_DUST_dot]/d[H_DUSTH_DUSTO_DUST]
     pd(203,203) =  &
-        -k(4456)
+        -k(4457)
 
     !d[CH2_dot]/d[C_DUSTH_DUSTH_DUST]
     pd(59,204) =  &
-        +k(4455)
+        +k(4456)
 
     !d[H_DUST_dot]/d[C_DUSTH_DUSTH_DUST]
     pd(196,204) =  &
-        -k(4475)*n(idx_H_DUST)
+        -k(4477)*n(idx_H_DUST)
 
     !d[O_DUSTH_DUST_dot]/d[C_DUSTH_DUSTH_DUST]
     pd(201,204) =  &
-        -k(4476)*n(idx_O_DUSTH_DUST)
+        -k(4478)*n(idx_O_DUSTH_DUST)
 
     !d[C_DUSTH_DUSTH_DUST_dot]/d[C_DUSTH_DUSTH_DUST]
     pd(204,204) =  &
-        -k(4476)*n(idx_O_DUSTH_DUST)  &
-        -k(4455)  &
-        -k(4475)*n(idx_H_DUST)
+        -k(4478)*n(idx_O_DUSTH_DUST)  &
+        -k(4477)*n(idx_H_DUST)  &
+        -k(4456)
 
     !d[C_DUSTH_DUSTH_DUSTH_DUST_dot]/d[C_DUSTH_DUSTH_DUST]
     pd(205,204) =  &
-        +k(4475)*n(idx_H_DUST)
+        +k(4477)*n(idx_H_DUST)
 
     !d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[C_DUSTH_DUSTH_DUST]
-    pd(214,204) =  &
-        +k(4476)*n(idx_O_DUSTH_DUST)
+    pd(215,204) =  &
+        +k(4478)*n(idx_O_DUSTH_DUST)
 
     !d[CH3_dot]/d[C_DUSTH_DUSTH_DUSTH_DUST]
     pd(94,205) =  &
-        +k(4459)
+        +k(4460)
 
     !d[H_DUST_dot]/d[C_DUSTH_DUSTH_DUSTH_DUST]
     pd(196,205) =  &
-        -k(4477)*n(idx_H_DUST)
+        -k(4479)*n(idx_H_DUST)
 
     !d[C_DUSTH_DUSTH_DUSTH_DUST_dot]/d[C_DUSTH_DUSTH_DUSTH_DUST]
     pd(205,205) =  &
-        -k(4477)*n(idx_H_DUST)  &
-        -k(4459)
+        -k(4479)*n(idx_H_DUST)  &
+        -k(4460)
 
     !d[C_DUSTH_DUSTH_DUSTH_DUSTH_DUST_dot]/d[C_DUSTH_DUSTH_DUSTH_DUST]
-    pd(216,205) =  &
-        +k(4477)*n(idx_H_DUST)
+    pd(213,205) =  &
+        +k(4479)*n(idx_H_DUST)
 
     !d[HOC_dot]/d[HOC]
     pd(206,206) =  &
@@ -107098,37 +107114,37 @@ contains
 
     !d[H_DUST_dot]/d[H_DUSTO_DUSTC_DUST]
     pd(196,207) =  &
-        -k(4479)*n(idx_H_DUST)
+        -k(4481)*n(idx_H_DUST)
 
     !d[HOC_dot]/d[H_DUSTO_DUSTC_DUST]
     pd(206,207) =  &
-        +k(4457)
+        +k(4458)
 
     !d[H_DUSTO_DUSTC_DUST_dot]/d[H_DUSTO_DUSTC_DUST]
     pd(207,207) =  &
-        -k(4479)*n(idx_H_DUST)  &
-        -k(4457)
+        -k(4458)  &
+        -k(4481)*n(idx_H_DUST)
 
     !d[C_DUSTH_DUSTO_DUSTH_DUST_dot]/d[H_DUSTO_DUSTC_DUST]
     pd(210,207) =  &
-        +k(4479)*n(idx_H_DUST)
+        +k(4481)*n(idx_H_DUST)
 
     !d[HCO_dot]/d[H_DUSTC_DUSTO_DUST]
     pd(64,208) =  &
-        +k(4458)
+        +k(4459)
 
     !d[H_DUST_dot]/d[H_DUSTC_DUSTO_DUST]
     pd(196,208) =  &
-        -k(4480)*n(idx_H_DUST)
+        -k(4482)*n(idx_H_DUST)
 
     !d[H_DUSTC_DUSTO_DUST_dot]/d[H_DUSTC_DUSTO_DUST]
     pd(208,208) =  &
-        -k(4458)  &
-        -k(4480)*n(idx_H_DUST)
+        -k(4482)*n(idx_H_DUST)  &
+        -k(4459)
 
     !d[H_DUSTC_DUSTH_DUSTO_DUST_dot]/d[H_DUSTC_DUSTO_DUST]
     pd(212,208) =  &
-        +k(4480)*n(idx_H_DUST)
+        +k(4482)*n(idx_H_DUST)
 
     !d[CHOH_dot]/d[CHOH]
     pd(209,209) =  &
@@ -107140,11 +107156,11 @@ contains
 
     !d[CHOH_dot]/d[C_DUSTH_DUSTO_DUSTH_DUST]
     pd(209,210) =  &
-        +k(4460)
+        +k(4461)
 
     !d[C_DUSTH_DUSTO_DUSTH_DUST_dot]/d[C_DUSTH_DUSTO_DUSTH_DUST]
     pd(210,210) =  &
-        -k(4460)
+        -k(4461)
 
     !d[HCHO_dot]/d[HCHO]
     pd(211,211) =  &
@@ -107156,57 +107172,65 @@ contains
 
     !d[H_DUST_dot]/d[H_DUSTC_DUSTH_DUSTO_DUST]
     pd(196,212) =  &
-        -k(4481)*n(idx_H_DUST)
+        -k(4483)*n(idx_H_DUST)
 
     !d[H_DUSTH_DUST_dot]/d[H_DUSTC_DUSTH_DUSTO_DUST]
     pd(199,212) =  &
-        +k(4481)*n(idx_H_DUST)
+        +k(4483)*n(idx_H_DUST)
 
     !d[H_DUSTC_DUSTO_DUST_dot]/d[H_DUSTC_DUSTH_DUSTO_DUST]
     pd(208,212) =  &
-        +k(4481)*n(idx_H_DUST)
+        +k(4483)*n(idx_H_DUST)
 
     !d[HCHO_dot]/d[H_DUSTC_DUSTH_DUSTO_DUST]
     pd(211,212) =  &
-        +k(4461)
+        +k(4462)
 
     !d[H_DUSTC_DUSTH_DUSTO_DUST_dot]/d[H_DUSTC_DUSTH_DUSTO_DUST]
     pd(212,212) =  &
-        -k(4481)*n(idx_H_DUST)  &
-        -k(4461)
-
-    !d[CH2OH_dot]/d[CH2OH]
-    pd(213,213) =  &
-        -k(4446)
-
-    !d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[CH2OH]
-    pd(214,213) =  &
-        +k(4446)
-
-    !d[H_DUST_dot]/d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST]
-    pd(196,214) =  &
-        -k(4482)*n(idx_H_DUST)
-
-    !d[CH2OH_dot]/d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST]
-    pd(213,214) =  &
-        +k(4462)
-
-    !d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST]
-    pd(214,214) =  &
         -k(4462)  &
-        -k(4482)*n(idx_H_DUST)
+        -k(4483)*n(idx_H_DUST)
 
-    !d[C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST]
-    pd(215,214) =  &
-        +k(4482)*n(idx_H_DUST)
-
-    !d[CH3OH_dot]/d[C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST]
-    pd(133,215) =  &
+    !d[CH4_dot]/d[C_DUSTH_DUSTH_DUSTH_DUSTH_DUST]
+    pd(119,213) =  &
         +k(4463)
 
-    !d[C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST]
-    pd(215,215) =  &
+    !d[C_DUSTH_DUSTH_DUSTH_DUSTH_DUST_dot]/d[C_DUSTH_DUSTH_DUSTH_DUSTH_DUST]
+    pd(213,213) =  &
         -k(4463)
+
+    !d[CH2OH_dot]/d[CH2OH]
+    pd(214,214) =  &
+        -k(4447)
+
+    !d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[CH2OH]
+    pd(215,214) =  &
+        +k(4447)
+
+    !d[H_DUST_dot]/d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST]
+    pd(196,215) =  &
+        -k(4484)*n(idx_H_DUST)
+
+    !d[CH2OH_dot]/d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST]
+    pd(214,215) =  &
+        +k(4464)
+
+    !d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST]
+    pd(215,215) =  &
+        -k(4484)*n(idx_H_DUST)  &
+        -k(4464)
+
+    !d[C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[C_DUSTH_DUSTH_DUSTO_DUSTH_DUST]
+    pd(216,215) =  &
+        +k(4484)*n(idx_H_DUST)
+
+    !d[CH3OH_dot]/d[C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST]
+    pd(133,216) =  &
+        +k(4465)
+
+    !d[C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST_dot]/d[C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST]
+    pd(216,216) =  &
+        -k(4465)
 
     !d[E_dot]/d[C+]
     pd(1,217) =  &

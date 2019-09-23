@@ -15549,7 +15549,7 @@ contains
     end if
 
     !H -> H+ + E
-    k(4452) = (small + ratexH) * J21xray
+    k(4452) = small + ratexH * J21xray
 
         !C -> C+ + E
         k(14) = k(14) + 3.11361486414008 * k(4452)
@@ -15591,7 +15591,7 @@ contains
         !k(32) = k(32) + 4.7093110781728 * k(4452)*0.2
 
     !HE -> HE+ + E
-    k(4453) = (small + ratexHe) * J21xray
+    k(4453) = small + ratexHe * J21xray
     !print '(E11.3)',k(4452)/k(36)
     coe(:) = k(:) !set coefficients to return variable
 

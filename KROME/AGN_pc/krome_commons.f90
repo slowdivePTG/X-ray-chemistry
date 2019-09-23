@@ -5,7 +5,7 @@ module krome_commons
 
   ! *************************************************************
   !  This file has been generated with:
-  !  KROME 14.08.dev on 2019-09-22 11:19:31
+  !  KROME 14.08.dev on 2019-09-22 21:54:28
   !  Changeset xxxxxxx
   !  see http://kromepackage.org
   !
@@ -229,10 +229,10 @@ module krome_commons
   integer,parameter::idx_C_DUSTH_DUSTO_DUSTH_DUST=210
   integer,parameter::idx_HCHO=211
   integer,parameter::idx_H_DUSTC_DUSTH_DUSTO_DUST=212
-  integer,parameter::idx_CH2OH=213
-  integer,parameter::idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST=214
-  integer,parameter::idx_C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST=215
-  integer,parameter::idx_C_DUSTH_DUSTH_DUSTH_DUSTH_DUST=216
+  integer,parameter::idx_C_DUSTH_DUSTH_DUSTH_DUSTH_DUST=213
+  integer,parameter::idx_CH2OH=214
+  integer,parameter::idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST=215
+  integer,parameter::idx_C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST=216
   integer,parameter::idx_Cj=217
   integer,parameter::idx_FEj=218
   integer,parameter::idx_Hj=219
@@ -494,7 +494,7 @@ module krome_commons
   integer,parameter::idx_g=475
   integer,parameter::idx_Tgas=476
   integer,parameter::idx_dummy=477
-  integer,parameter::nrea=4482
+  integer,parameter::nrea=4484
   integer,parameter::nmols=473
   integer,parameter::nspec=477
   integer,parameter::natoms=16
