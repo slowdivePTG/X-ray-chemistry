@@ -249,10 +249,10 @@ contains
     get_mass(206) = 4.85179877728d-23	!HOC
     get_mass(207) = 4.85179877728d-23	!H_DUSTO_DUSTC_DUST
     get_mass(208) = 4.85179877728d-23	!H_DUSTC_DUSTO_DUST
-    get_mass(209) = 5.0191520291d-23	!CHOH
-    get_mass(210) = 5.0191520291d-23	!C_DUSTH_DUSTO_DUSTH_DUST
-    get_mass(211) = 5.0191520291d-23	!HCHO
-    get_mass(212) = 5.0191520291d-23	!H_DUSTC_DUSTH_DUSTO_DUST
+    get_mass(209) = 7.36127154001d-23	!C_DUSTO_DUSTO_DUST
+    get_mass(210) = 5.0191520291d-23	!CHOH
+    get_mass(211) = 5.0191520291d-23	!C_DUSTH_DUSTO_DUSTH_DUST
+    get_mass(212) = 5.0191520291d-23	!H_DUSTH_DUSTC_DUSTO_DUST
     get_mass(213) = 2.67703251819d-23	!C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
     get_mass(214) = 5.18650528092d-23	!CH2OH
     get_mass(215) = 5.18650528092d-23	!C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
@@ -736,10 +736,10 @@ contains
     get_imass_sqrt(206) = 1.43565011358d+11	!HOC
     get_imass_sqrt(207) = 1.43565011358d+11	!H_DUSTO_DUSTC_DUST
     get_imass_sqrt(208) = 1.43565011358d+11	!H_DUSTC_DUSTO_DUST
-    get_imass_sqrt(209) = 1.4115128127d+11	!CHOH
-    get_imass_sqrt(210) = 1.4115128127d+11	!C_DUSTH_DUSTO_DUSTH_DUST
-    get_imass_sqrt(211) = 1.4115128127d+11	!HCHO
-    get_imass_sqrt(212) = 1.4115128127d+11	!H_DUSTC_DUSTH_DUSTO_DUST
+    get_imass_sqrt(209) = 1.16553033405d+11	!C_DUSTO_DUSTO_DUST
+    get_imass_sqrt(210) = 1.4115128127d+11	!CHOH
+    get_imass_sqrt(211) = 1.4115128127d+11	!C_DUSTH_DUSTO_DUSTH_DUST
+    get_imass_sqrt(212) = 1.4115128127d+11	!H_DUSTH_DUSTC_DUSTO_DUST
     get_imass_sqrt(213) = 1.93273885081d+11	!C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
     get_imass_sqrt(214) = 1.38855340508d+11	!CH2OH
     get_imass_sqrt(215) = 1.38855340508d+11	!C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
@@ -1223,10 +1223,10 @@ contains
     get_imass(206) = 2.06109124864d+22	!HOC
     get_imass(207) = 2.06109124864d+22	!H_DUSTO_DUSTC_DUST
     get_imass(208) = 2.06109124864d+22	!H_DUSTC_DUSTO_DUST
-    get_imass(209) = 1.99236842041d+22	!CHOH
-    get_imass(210) = 1.99236842041d+22	!C_DUSTH_DUSTO_DUSTH_DUST
-    get_imass(211) = 1.99236842041d+22	!HCHO
-    get_imass(212) = 1.99236842041d+22	!H_DUSTC_DUSTH_DUSTO_DUST
+    get_imass(209) = 1.35846095958d+22	!C_DUSTO_DUSTO_DUST
+    get_imass(210) = 1.99236842041d+22	!CHOH
+    get_imass(211) = 1.99236842041d+22	!C_DUSTH_DUSTO_DUSTH_DUST
+    get_imass(212) = 1.99236842041d+22	!H_DUSTH_DUSTC_DUSTO_DUST
     get_imass(213) = 3.73547946544d+22	!C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
     get_imass(214) = 1.92808055875d+22	!CH2OH
     get_imass(215) = 1.92808055875d+22	!C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
@@ -1757,10 +1757,10 @@ contains
     get_kevap70(idx_HOC) = 0d0
     get_kevap70(idx_H_DUSTO_DUSTC_DUST) = 0d0
     get_kevap70(idx_H_DUSTC_DUSTO_DUST) = 0d0
+    get_kevap70(idx_C_DUSTO_DUSTO_DUST) = 0d0
     get_kevap70(idx_CHOH) = 0d0
     get_kevap70(idx_C_DUSTH_DUSTO_DUSTH_DUST) = 0d0
-    get_kevap70(idx_HCHO) = 0d0
-    get_kevap70(idx_H_DUSTC_DUSTH_DUSTO_DUST) = 0d0
+    get_kevap70(idx_H_DUSTH_DUSTC_DUSTO_DUST) = 0d0
     get_kevap70(idx_C_DUSTH_DUSTH_DUSTH_DUSTH_DUST) = 0d0
     get_kevap70(idx_CH2OH) = 0d0
     get_kevap70(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST) = 0d0
@@ -2256,10 +2256,10 @@ contains
     get_names(206) = "HOC"
     get_names(207) = "H_DUSTO_DUSTC_DUST"
     get_names(208) = "H_DUSTC_DUSTO_DUST"
-    get_names(209) = "CHOH"
-    get_names(210) = "C_DUSTH_DUSTO_DUSTH_DUST"
-    get_names(211) = "HCHO"
-    get_names(212) = "H_DUSTC_DUSTH_DUSTO_DUST"
+    get_names(209) = "C_DUSTO_DUSTO_DUST"
+    get_names(210) = "CHOH"
+    get_names(211) = "C_DUSTH_DUSTO_DUSTH_DUST"
+    get_names(212) = "H_DUSTH_DUSTC_DUSTO_DUST"
     get_names(213) = "C_DUSTH_DUSTH_DUSTH_DUSTH_DUST"
     get_names(214) = "CH2OH"
     get_names(215) = "C_DUSTH_DUSTH_DUSTO_DUSTH_DUST"
@@ -2730,8 +2730,7 @@ contains
         n(idx_H_DUSTC_DUSTO_DUST) + &
         n(idx_CHOH)*2d0 + &
         n(idx_C_DUSTH_DUSTO_DUSTH_DUST)*2d0 + &
-        n(idx_HCHO)*2d0 + &
-        n(idx_H_DUSTC_DUSTH_DUSTO_DUST)*2d0 + &
+        n(idx_H_DUSTH_DUSTC_DUSTO_DUST)*2d0 + &
         n(idx_C_DUSTH_DUSTH_DUSTH_DUSTH_DUST)*4d0 + &
         n(idx_CH2OH)*3d0 + &
         n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST)*3d0 + &
@@ -3146,10 +3145,10 @@ contains
     get_zatoms(206) = 15	!HOC
     get_zatoms(207) = 15	!H_DUSTO_DUSTC_DUST
     get_zatoms(208) = 15	!H_DUSTC_DUSTO_DUST
-    get_zatoms(209) = 16	!CHOH
-    get_zatoms(210) = 16	!C_DUSTH_DUSTO_DUSTH_DUST
-    get_zatoms(211) = 16	!HCHO
-    get_zatoms(212) = 16	!H_DUSTC_DUSTH_DUSTO_DUST
+    get_zatoms(209) = 22	!C_DUSTO_DUSTO_DUST
+    get_zatoms(210) = 16	!CHOH
+    get_zatoms(211) = 16	!C_DUSTH_DUSTO_DUSTH_DUST
+    get_zatoms(212) = 16	!H_DUSTH_DUSTC_DUSTO_DUST
     get_zatoms(213) = 10	!C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
     get_zatoms(214) = 17	!CH2OH
     get_zatoms(215) = 17	!C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
@@ -3997,10 +3996,10 @@ num2col = max(ncalc,1d-40)*1.25e+19
     get_charges(206) = 0.d0 	!HOC
     get_charges(207) = 0.d0 	!H_DUSTO_DUSTC_DUST
     get_charges(208) = 0.d0 	!H_DUSTC_DUSTO_DUST
-    get_charges(209) = 0.d0 	!CHOH
-    get_charges(210) = 0.d0 	!C_DUSTH_DUSTO_DUSTH_DUST
-    get_charges(211) = 0.d0 	!HCHO
-    get_charges(212) = 0.d0 	!H_DUSTC_DUSTH_DUSTO_DUST
+    get_charges(209) = 0.d0 	!C_DUSTO_DUSTO_DUST
+    get_charges(210) = 0.d0 	!CHOH
+    get_charges(211) = 0.d0 	!C_DUSTH_DUSTO_DUSTH_DUST
+    get_charges(212) = 0.d0 	!H_DUSTH_DUSTC_DUSTO_DUST
     get_charges(213) = 0.d0 	!C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
     get_charges(214) = 0.d0 	!CH2OH
     get_charges(215) = 0.d0 	!C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
@@ -4419,10 +4418,10 @@ num2col = max(ncalc,1d-40)*1.25e+19
         + n(idx_HOC) &
         + n(idx_H_DUSTO_DUSTC_DUST) &
         + n(idx_H_DUSTC_DUSTO_DUST) &
+        + n(idx_C_DUSTO_DUSTO_DUST) &
         + n(idx_CHOH) &
         + n(idx_C_DUSTH_DUSTO_DUSTH_DUST) &
-        + n(idx_HCHO) &
-        + n(idx_H_DUSTC_DUSTH_DUSTO_DUST) &
+        + n(idx_H_DUSTH_DUSTC_DUSTO_DUST) &
         + n(idx_C_DUSTH_DUSTH_DUSTH_DUSTH_DUST) &
         + n(idx_CH2OH) &
         + n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST) &
@@ -4824,10 +4823,10 @@ num2col = max(ncalc,1d-40)*1.25e+19
         + n(idx_HOC) &
         + n(idx_H_DUSTO_DUSTC_DUST) &
         + n(idx_H_DUSTC_DUSTO_DUST) &
+        + 2d0*n(idx_C_DUSTO_DUSTO_DUST) &
         + n(idx_CHOH) &
         + n(idx_C_DUSTH_DUSTO_DUSTH_DUST) &
-        + n(idx_HCHO) &
-        + n(idx_H_DUSTC_DUSTH_DUSTO_DUST) &
+        + n(idx_H_DUSTH_DUSTC_DUSTO_DUST) &
         + n(idx_CH2OH) &
         + n(idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST) &
         + n(idx_C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST) &

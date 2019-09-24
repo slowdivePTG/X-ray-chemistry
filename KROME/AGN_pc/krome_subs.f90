@@ -16005,213 +16005,261 @@ contains
         *sqrt(Tgas&
         /29.018000))
 
-    !CHOH -> C_DUSTH_DUSTO_DUSTH_DUST
+    !CO2 -> C_DUSTO_DUSTO_DUST
     k(4444) = small + (6.0557e-14&
         *sqrt(Tgas&
-        /30.025900))
+        /44.009500))
 
-    !HCHO -> H_DUSTC_DUSTH_DUSTO_DUST
+    !CHOH -> C_DUSTH_DUSTO_DUSTH_DUST
     k(4445) = small + (6.0557e-14&
         *sqrt(Tgas&
         /30.025900))
 
-    !CH4 -> C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
+    !H2CO -> H_DUSTH_DUSTC_DUSTO_DUST
     k(4446) = small + (6.0557e-14&
+        *sqrt(Tgas&
+        /30.025900))
+
+    !CH4 -> C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
+    k(4447) = small + (6.0557e-14&
         *sqrt(Tgas&
         /16.042300))
 
     !CH2OH -> C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
-    k(4447) = small + (6.0557e-14&
+    k(4448) = small + (6.0557e-14&
         *sqrt(Tgas&
         /31.033800))
 
     !CH3OH -> C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST
-    k(4448) = small + (6.0557e-14&
+    k(4449) = small + (6.0557e-14&
         *sqrt(Tgas&
         /32.041700))
 
     !H_DUST -> H
-    k(4449) = small + (2.140000e+12&
+    k(4450) = small + (2.140000e+12&
         *exp(-350.000000&
-        /Tgas)+4.554852e-09+7.59e-05*exp(-user_Av))
+        /Tgas)+4.554852e-09+7.59e-11*exp(-user_Av))
 
     !H_DUSTH_DUST -> H2
-    k(4450) = small + (1.715817e+12&
+    k(4451) = small + (1.715817e+12&
         *exp(-450.000000&
-        /Tgas)+8.752071e-10+7.59e-05*exp(-user_Av))
+        /Tgas)+8.752071e-10+7.59e-11*exp(-user_Av))
 
     !C_DUST -> C
-    k(4451) = small + (9.372367e+11&
+    k(4452) = small + (9.372367e+11&
         *exp(-800.000000&
-        /Tgas)+3.221193e-12+7.59e-05*exp(-user_Av))
+        /Tgas)+3.221193e-12+7.59e-11*exp(-user_Av))
 
     !O_DUST -> O
-    k(4452) = small + (8.120478e+11&
+    k(4453) = small + (8.120478e+11&
         *exp(-800.000000&
-        /Tgas)+2.790931e-12+7.59e-05*exp(-user_Av))
+        /Tgas)+2.790931e-12+7.59e-11*exp(-user_Av))
 
     !C_DUSTH_DUST -> CH
-    k(4453) = small + (8.143805e+11&
+    k(4454) = small + (8.143805e+11&
         *exp(-654.699659&
-        /Tgas)+2.230839e-11+7.59e-05*exp(-user_Av))
+        /Tgas)+2.230839e-11+7.59e-11*exp(-user_Av))
 
     !O_DUSTH_DUST -> OH
-    k(4454) = small + (9.880756e+11&
+    k(4455) = small + (9.880756e+11&
         *exp(-1259.037806&
-        /Tgas)+4.819390e-15+7.59e-05*exp(-user_Av))
+        /Tgas)+4.819390e-15+7.59e-11*exp(-user_Av))
 
     !C_DUSTO_DUST -> CO
-    k(4455) = small + (7.543730e+11&
+    k(4456) = small + (7.543730e+11&
         *exp(-1208.676294&
-        /Tgas)+7.555119e-15+7.59e-05*exp(-user_Av))
+        /Tgas)+7.555119e-15+7.59e-11*exp(-user_Av))
 
     !C_DUSTH_DUSTH_DUST -> CH2
-    k(4456) = small + (9.485058e+11&
+    k(4457) = small + (9.485058e+11&
         *exp(-956.868733&
-        /Tgas)+3.467060e-13+7.59e-05*exp(-user_Av))
+        /Tgas)+3.467060e-13+7.59e-11*exp(-user_Av))
 
     !H_DUSTH_DUSTO_DUST -> H2O
-    k(4457) = small + (1.033992e+12&
+    k(4458) = small + (1.033992e+12&
         *exp(-1460.483855&
-        /Tgas)+2.837306e-16+7.59e-05*exp(-user_Av))
+        /Tgas)+2.837306e-16+7.59e-11*exp(-user_Av))
 
     !H_DUSTO_DUSTC_DUST -> HOC
-    k(4458) = small + (8.950311e+11&
+    k(4459) = small + (8.950311e+11&
         *exp(-1762.652929&
-        /Tgas)+3.277235e-18+7.59e-05*exp(-user_Av))
+        /Tgas)+3.277235e-18+7.59e-11*exp(-user_Av))
 
     !H_DUSTC_DUSTO_DUST -> HCO
-    k(4459) = small + (8.284059e+11&
+    k(4460) = small + (8.284059e+11&
         *exp(-1510.000000&
-        /Tgas)+1.120531e-16+7.59e-05*exp(-user_Av))
+        /Tgas)+1.120531e-16+7.59e-11*exp(-user_Av))
+
+    !C_DUSTO_DUSTO_DUST -> CO2
+    k(4461) = small + (8.655362e+11&
+        *exp(-2500.000000&
+        /Tgas)+8.439194e-23+7.59e-11*exp(-user_Av))
 
     !C_DUSTH_DUSTH_DUSTH_DUST -> CH3
-    k(4460) = small + (1.007996e+12&
+    k(4462) = small + (1.007996e+12&
         *exp(-1158.314782&
-        /Tgas)+2.072846e-14+7.59e-05*exp(-user_Av))
+        /Tgas)+2.072846e-14+7.59e-11*exp(-user_Av))
 
     !C_DUSTH_DUSTO_DUSTH_DUST -> CHOH
-    k(4461) = small + (9.168148e+11&
+    k(4463) = small + (9.168148e+11&
         *exp(-1913.737466&
-        /Tgas)+3.877854e-19+7.59e-05*exp(-user_Av))
+        /Tgas)+3.877854e-19+7.59e-11*exp(-user_Av))
 
-    !H_DUSTC_DUSTH_DUSTO_DUST -> HCHO
-    k(4462) = small + (8.792184e+11&
+    !H_DUSTH_DUSTC_DUSTO_DUST -> H2CO
+    k(4464) = small + (8.792184e+11&
         *exp(-1760.000000&
-        /Tgas)+3.343687e-18+7.59e-05*exp(-user_Av))
+        /Tgas)+3.343687e-18+7.59e-11*exp(-user_Av))
 
     !C_DUSTH_DUSTH_DUSTH_DUSTH_DUST -> CH4
-    k(4463) = small + (1.057364e+12&
+    k(4465) = small + (1.057364e+12&
         *exp(-1360.000000&
-        /Tgas)+1.219091e-15+7.59e-05*exp(-user_Av))
+        /Tgas)+1.219091e-15+7.59e-11*exp(-user_Av))
 
     !C_DUSTH_DUSTH_DUSTO_DUSTH_DUST -> CH2OH
-    k(4464) = small + (9.593004e+11&
+    k(4466) = small + (9.593004e+11&
         *exp(-2165.545027&
-        /Tgas)+1.111727e-20+7.59e-05*exp(-user_Av))
+        /Tgas)+1.111727e-20+7.59e-11*exp(-user_Av))
 
     !C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST -> CH3OH
-    k(4465) = small + (9.218749e+11&
+    k(4467) = small + (9.218749e+11&
         *exp(-2064.822002&
-        /Tgas)+4.504245e-20+7.59e-05*exp(-user_Av))
+        /Tgas)+4.504245e-20+7.59e-11*exp(-user_Av))
 
     !H_DUST + H_DUST -> H_DUSTH_DUST
-    k(4466) = small + (1.231708e+12+1.231708e+12)
+    k(4468) = small + (1.231708e+12+1.231708e+12)
+
+    !H_DUST + C_DUST -> C_DUSTH_DUST
+    k(4469) = small + (1.231708e+12+3.518377e+13&
+        *exp(-0.3*800.0&
+        /Tgas))
 
     !H_DUST + O_DUST -> O_DUSTH_DUST
-    k(4467) = small + (1.231708e+12+3.048420e+13&
+    k(4470) = small + (1.231708e+12+3.048420e+13&
         *exp(-0.3*800.0&
+        /Tgas))
+
+    !H_DUST + C_DUSTH_DUST -> C_DUSTH_DUSTH_DUST
+    k(4471) = small + (1.231708e+12+3.057176e+13&
+        *exp(-0.3*654.6996593219958&
         /Tgas))
 
     !H_DUST + O_DUSTH_DUST -> H_DUSTH_DUSTO_DUST
-    k(4468) = small + (1.231708e+12+3.709226e+13&
+    k(4472) = small + (1.231708e+12+3.709226e+13&
         *exp(-0.3*1259.0378063884534&
+        /Tgas))
+
+    !H_DUST + C_DUSTO_DUST -> H_DUSTO_DUSTC_DUST
+    k(4473) = small + (3.883765e+06+8.929445e+07&
+        *exp(-0.3*1208.6762941329152&
+        /Tgas))
+
+    !H_DUST + C_DUSTO_DUST -> H_DUSTC_DUSTO_DUST
+    k(4474) = small + (3.883765e+06+8.929445e+07&
+        *exp(-0.3*1208.6762941329152&
+        /Tgas))
+
+    !H_DUST + C_DUSTH_DUSTH_DUST -> C_DUSTH_DUSTH_DUSTH_DUST
+    k(4475) = small + (1.231708e+12+3.560681e+13&
+        *exp(-0.3*956.8687328552245&
+        /Tgas))
+
+    !H_DUST + C_DUSTH_DUSTH_DUSTH_DUST -> C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
+    k(4476) = small + (1.231708e+12+3.784006e+13&
+        *exp(-0.3*1158.314781877377&
+        /Tgas))
+
+    !H_DUST + H_DUSTO_DUSTC_DUST -> C_DUSTH_DUSTO_DUSTH_DUST
+    k(4477) = small + (1.231708e+12+3.359938e+13&
+        *exp(-0.3*1762.6529289438347&
+        /Tgas))
+
+    !H_DUST + H_DUSTC_DUSTO_DUST -> H_DUSTH_DUSTC_DUSTO_DUST
+    k(4478) = small + (1.231708e+12+3.109828e+13&
+        *exp(-0.3*1510.0&
+        /Tgas))
+
+    !H_DUST + C_DUSTH_DUSTH_DUSTH_DUST -> C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
+    k(4479) = small + (1.231708e+12+3.784006e+13&
+        *exp(-0.3*1158.314781877377&
+        /Tgas))
+
+    !H_DUST + H_DUSTH_DUSTC_DUSTO_DUST -> H_DUSTC_DUSTO_DUST + H_DUSTH_DUST
+    k(4480) = small + (3.974229e+04+1.064964e+06&
+        *exp(-0.3*1760.0&
+        /Tgas))
+
+    !H_DUST + C_DUSTH_DUSTO_DUSTH_DUST -> C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
+    k(4481) = small + (1.231708e+12+3.441714e+13&
+        *exp(-0.3*1913.737465710449&
+        /Tgas))
+
+    !H_DUST + C_DUSTH_DUSTH_DUSTO_DUSTH_DUST -> C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST
+    k(4482) = small + (1.231708e+12+3.601204e+13&
+        *exp(-0.3*2165.54502698814&
         /Tgas))
 
     !H_DUSTH_DUST + O_DUSTH_DUST -> H_DUSTH_DUSTO_DUST + H_DUST
-    k(4469) = small + (6.705112e-02+3.134993e+01&
+    k(4483) = small + (6.705112e-02+3.134993e+01&
         *exp(-0.3*1259.0378063884534&
         /Tgas))
 
-    !C_DUST + H_DUST -> C_DUSTH_DUST
-    k(4470) = small + (3.518377e+13&
-        *exp(-0.3*800.0&
-        /Tgas)+1.231708e+12)
-
     !C_DUST + O_DUST -> C_DUSTO_DUST
-    k(4471) = small + (3.518377e+13&
+    k(4484) = small + (3.518377e+13&
         *exp(-0.3*800.0&
         /Tgas)+3.048420e+13*exp(-0.3*800.0/Tgas))
 
     !C_DUST + O_DUSTH_DUST -> H_DUSTO_DUSTC_DUST
-    k(4472) = small + (3.518377e+13&
-        *exp(-0.3*800.0&
-        /Tgas)+3.709226e+13*exp(-0.3&
-        *1259.0378063884534/Tgas))
-
-    !C_DUST + O_DUSTH_DUST -> H_DUSTC_DUSTO_DUST
-    k(4473) = small + (3.518377e+13&
+    k(4485) = small + (3.518377e+13&
         *exp(-0.3*800.0&
         /Tgas)+3.709226e+13*exp(-0.3&
         *1259.0378063884534/Tgas))
 
     !C_DUST + O_DUSTH_DUST -> C_DUSTO_DUST + H_DUST
-    k(4474) = small + (3.518377e+13&
+    k(4486) = small + (3.518377e+13&
         *exp(-0.3*800.0&
         /Tgas)+3.709226e+13*exp(-0.3&
         *1259.0378063884534/Tgas))
 
-    !C_DUSTH_DUST + H_DUST -> C_DUSTH_DUSTH_DUST
-    k(4475) = small + (3.057176e+13&
-        *exp(-0.3*654.6996593219958&
-        /Tgas)+1.231708e+12)
+    !O_DUST + C_DUSTH_DUST -> H_DUSTC_DUSTO_DUST
+    k(4487) = small + (3.048420e+13&
+        *exp(-0.3*800.0&
+        /Tgas)+3.057176e+13*exp(-0.3&
+        *654.6996593219958/Tgas))
+
+    !O_DUST + C_DUSTO_DUST -> C_DUSTO_DUSTO_DUST
+    k(4488) = small + (3.048420e+13&
+        *exp(-0.3*800.0&
+        /Tgas)+2.831909e+13*exp(-0.3&
+        *1208.6762941329152/Tgas))
+
+    !O_DUST + H_DUSTC_DUSTO_DUST -> C_DUSTO_DUSTO_DUST + H_DUST
+    k(4489) = small + (3.048420e+13&
+        *exp(-0.3*800.0&
+        /Tgas)+3.109828e+13*exp(-0.3*1510.0/Tgas))
+
+    !O_DUST + C_DUSTH_DUSTH_DUST -> H_DUSTH_DUSTC_DUSTO_DUST
+    k(4490) = small + (3.048420e+13&
+        *exp(-0.3*800.0&
+        /Tgas)+3.560681e+13*exp(-0.3&
+        *956.8687328552245/Tgas))
+
+    !O_DUST + C_DUSTH_DUSTH_DUSTH_DUST -> C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
+    k(4491) = small + (3.048420e+13&
+        *exp(-0.3*800.0&
+        /Tgas)+3.784006e+13*exp(-0.3&
+        *1158.314781877377/Tgas))
 
     !C_DUSTH_DUST + O_DUSTH_DUST -> C_DUSTH_DUSTO_DUSTH_DUST
-    k(4476) = small + (3.057176e+13&
+    k(4492) = small + (3.057176e+13&
         *exp(-0.3*654.6996593219958&
         /Tgas)+3.709226e+13*exp(-0.3&
         *1259.0378063884534/Tgas))
 
-    !C_DUSTH_DUSTH_DUST + H_DUST -> C_DUSTH_DUSTH_DUSTH_DUST
-    k(4477) = small + (3.560681e+13&
-        *exp(-0.3*956.8687328552245&
-        /Tgas)+1.231708e+12)
-
     !C_DUSTH_DUSTH_DUST + O_DUSTH_DUST -> C_DUSTH_DUSTH_DUSTO_DUSTH_DUST
-    k(4478) = small + (3.560681e+13&
+    k(4493) = small + (3.560681e+13&
         *exp(-0.3*956.8687328552245&
         /Tgas)+3.709226e+13*exp(-0.3&
         *1259.0378063884534/Tgas))
-
-    !C_DUSTH_DUSTH_DUSTH_DUST + H_DUST -> C_DUSTH_DUSTH_DUSTH_DUSTH_DUST
-    k(4479) = small + (3.784006e+13&
-        *exp(-0.3*1158.314781877377&
-        /Tgas)+1.231708e+12)
-
-    !C_DUSTO_DUST + H_DUST -> H_DUSTO_DUSTC_DUST
-    k(4480) = small + (8.929445e+07&
-        *exp(-0.3*1208.6762941329152&
-        /Tgas)+3.883765e+06)
-
-    !H_DUSTO_DUSTC_DUST + H_DUST -> C_DUSTH_DUSTO_DUSTH_DUST
-    k(4481) = small + (3.359938e+13&
-        *exp(-0.3*1762.6529289438347&
-        /Tgas)+1.231708e+12)
-
-    !H_DUSTC_DUSTO_DUST + H_DUST -> H_DUSTC_DUSTH_DUSTO_DUST
-    k(4482) = small + (3.109828e+13&
-        *exp(-0.3*1510.0&
-        /Tgas)+1.231708e+12)
-
-    !H_DUSTC_DUSTH_DUSTO_DUST + H_DUST -> H_DUSTC_DUSTO_DUST + H_DUSTH_DUST
-    k(4483) = small + (1.064964e+06&
-        *exp(-0.3*1760.0&
-        /Tgas)+3.974229e+04)
-
-    !C_DUSTH_DUSTH_DUSTO_DUSTH_DUST + H_DUST -> C_DUSTH_DUSTH_DUSTH_DUSTO_DUSTH_DUST
-    k(4484) = small + (3.601204e+13&
-        *exp(-0.3*2165.54502698814&
-        /Tgas)+1.231708e+12)
 
     coe(:) = k(:) !set coefficients to return variable
 

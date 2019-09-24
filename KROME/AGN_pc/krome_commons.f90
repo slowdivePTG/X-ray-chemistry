@@ -5,7 +5,7 @@ module krome_commons
 
   ! *************************************************************
   !  This file has been generated with:
-  !  KROME 14.08.dev on 2019-09-23 21:07:03
+  !  KROME 14.08.dev on 2019-09-24 20:44:27
   !  Changeset xxxxxxx
   !  see http://kromepackage.org
   !
@@ -225,10 +225,10 @@ module krome_commons
   integer,parameter::idx_HOC=206
   integer,parameter::idx_H_DUSTO_DUSTC_DUST=207
   integer,parameter::idx_H_DUSTC_DUSTO_DUST=208
-  integer,parameter::idx_CHOH=209
-  integer,parameter::idx_C_DUSTH_DUSTO_DUSTH_DUST=210
-  integer,parameter::idx_HCHO=211
-  integer,parameter::idx_H_DUSTC_DUSTH_DUSTO_DUST=212
+  integer,parameter::idx_C_DUSTO_DUSTO_DUST=209
+  integer,parameter::idx_CHOH=210
+  integer,parameter::idx_C_DUSTH_DUSTO_DUSTH_DUST=211
+  integer,parameter::idx_H_DUSTH_DUSTC_DUSTO_DUST=212
   integer,parameter::idx_C_DUSTH_DUSTH_DUSTH_DUSTH_DUST=213
   integer,parameter::idx_CH2OH=214
   integer,parameter::idx_C_DUSTH_DUSTH_DUSTO_DUSTH_DUST=215
@@ -494,7 +494,7 @@ module krome_commons
   integer,parameter::idx_g=475
   integer,parameter::idx_Tgas=476
   integer,parameter::idx_dummy=477
-  integer,parameter::nrea=4484
+  integer,parameter::nrea=4493
   integer,parameter::nmols=473
   integer,parameter::nspec=477
   integer,parameter::natoms=16
