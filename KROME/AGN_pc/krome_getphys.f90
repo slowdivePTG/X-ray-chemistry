@@ -3490,7 +3490,7 @@ contains
     real*8::num2col,ncalc,n(:),Tgas
     Tgas = max(n(idx_Tgas),phys_Tcmb)
 
-num2col = max(ncalc,1d-40)*1.25e+19
+num2col = max(ncalc,1d-40)*5e+18
 
   end function num2col
 
