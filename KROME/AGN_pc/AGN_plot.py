@@ -25,7 +25,7 @@ def latex_name(S):
     S_n = ''
     for i in S:
         S_n += Name[i]
-    return '({})'.format(S_n)
+    return '{}'.format(S_n)
 
 class Abu:
     def __init__(self, i):
