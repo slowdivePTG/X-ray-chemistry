@@ -56,7 +56,7 @@ class Abu:
             t = self.t
         ax.loglog(t, self.abu[:, eval('krome_idx_' + spe)], label=label, color=color, linestyle=linestyle)
 
-    def plot_ul(self, ax, spe='H', color=None, Dt=True, Nolabel=True):
+    def plot_ul(self, ax, spe='H', color=None, Dt=True, Nolabel=True, NoX=False):
         if Dt:
             t = self.dt
         else:
@@ -65,7 +65,10 @@ class Abu:
             label1 = None
             label2 = None
         else:
-            label1 = r'$10^{23}$ cm$^{-2}$'
-            label2 = r'$10^{22}$ cm$^{-2}$'
+            label1 = r'$N_{\mathrm{H}}=10^{23}$ cm$^{-2}$'
+            label2 = r'$N_{\mathrm{H}}=10^{22}$ cm$^{-2}$'
+        if NoX:
+            label1 = 'No X-ray, ' + label1
+            label2 = 'No X-ray, ' + label2
         ax.loglog(t, self.abu_l[:, eval('krome_idx_' + spe)], color=color, linestyle=':', label=label1)
         ax.loglog(t, self.abu_u[:, eval('krome_idx_' + spe)], color=color, linestyle='-.', label=label2)
