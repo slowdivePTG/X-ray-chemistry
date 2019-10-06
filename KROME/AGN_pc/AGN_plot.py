@@ -31,9 +31,9 @@ class Abu:
     def __init__(self, i):
         txt = './data/2dis' + i
         raw = np.loadtxt(txt)
-        txt_l = './data/1dis' + i
+        txt_l = './data/1dis' + i #lower limit of extinction
         raw_l = np.loadtxt(txt_l)
-        txt_u = './data/3dis' + i
+        txt_u = './data/3dis' + i #upper limit of extinction
         raw_u = np.loadtxt(txt_u)
 
         self.t = raw[:, 0]
@@ -65,8 +65,8 @@ class Abu:
             label1 = None
             label2 = None
         else:
-            label1 = r'$N_{\mathrm{H}}=10^{23}$ cm$^{-2}$'
-            label2 = r'$N_{\mathrm{H}}=10^{22}$ cm$^{-2}$'
+            label1 = r'$N_{\mathrm{H}}=10^{22}$ cm$^{-2}$'
+            label2 = r'$N_{\mathrm{H}}=10^{23}$ cm$^{-2}$'
         if NoX:
             label1 = 'No X-ray, ' + label1
             label2 = 'No X-ray, ' + label2
