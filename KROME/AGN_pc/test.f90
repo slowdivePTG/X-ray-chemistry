@@ -70,7 +70,7 @@ program test_krome
     x1(:)=max(1d-50*xH,x1(:))
     k = k + 1
     t = t + dt !increase time
-    if (mod(k,10) == 0) call trace(nx,t,x1(:))
+    if (mod(k,8) == 0) call trace(nx,t,x1(:))
     dt = max(dt,t/10d0) !increase time-step
     write(77,'(999E15.5)') t/spy,x1(:)/xH
     if(t>1d8*spy) exit !exit when overshoot 1d8 years

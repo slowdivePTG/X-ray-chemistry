@@ -71,7 +71,7 @@ program test_krome
     x1(:)=max(1d-50*xH,x1(:))
     k = k + 1
     t = t + dt !increase time
-    if (mod(k,10) == 0) call trace(nx,t/spy,x1(:))
+    if (mod(k,8) == 0) call trace(nx,t/spy,x1(:))
     call krome_set_J21xray(0d0)
     dt = max(dt, (t-1d6*spy)/1d1) !increase time-step
     write(77,'(999E18.8)') t/spy,x1(:)/xH
