@@ -94,19 +94,3 @@ class Trace():
                          label=d)
         ax[0].legend(prop={'size': 10})
         ax[1].legend(prop={'size': 10})
-
-tr21 = Trace('2Trace1')
-tr201 = Trace('2Trace01')
-tr22 = Trace('2Trace2')
-tr202 = Trace('2Trace02')
-tr24 = Trace('2Trace4')
-tr204 = Trace('2Trace04')
-tr28 = Trace('2Trace8')
-tr208 = Trace('2Trace08')
-
-tr104 = Trace('1Trace04')
-tr304 = Trace('3Trace04')
-
-tr1inf = Trace('1Trace_inf')
-tr2inf = Trace('2Trace_inf')
-tr3inf = Trace('3Trace_inf')
