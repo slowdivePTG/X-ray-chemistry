@@ -1,4 +1,4 @@
-subroutine trace(neq,tt,nin,FILE)
+subroutine trace(neq,tt,nin)
   use krome_commons
   use krome_constants
   use krome_subs
@@ -16,13 +16,12 @@ subroutine trace(neq,tt,nin,FILE)
   real*8::rr
   integer::neq
   integer::i,r1,r2,p1,p2,p3,p4
-  character*20::FILE
 
   n(:) = nin(:)
 
   k(:) = coe_tab(n(:)) !compute coefficients
 
-  open(unit=66, file=FILE, position="append")
+  open(unit=66, file='./data/Trace', position="append")
 
   !E
   !E

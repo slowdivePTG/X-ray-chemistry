@@ -24,7 +24,7 @@ program test_krome
   xH = 2d4 !Hydrogen density
 
   !user commons for opacity and CR rate
-  call krome_set_user_av(5.3d0) !opacity Av (#)
+  call krome_set_user_av(52.99999999999999d0) !opacity Av (#)
   call krome_set_user_crate(1.3d-17) !CR rate (1/s)
   call krome_set_user_gas_dust_ratio(1d2) !gas/dust
   call krome_init()
@@ -70,7 +70,7 @@ program test_krome
     x1(:)=max(1d-50*xH,x1(:))
     k = k + 1
     t = t + dt !increase time
-    if (mod(k,10) == 0) call trace(nx,t/spy,x1(:),"./data/Trace")
+    if (mod(k,10) == 0) call trace(nx,t/spy,x1(:))
     dt = max(dt,t/10d0) !increase time-step
     write(77,'(999E15.5)') t/spy,x1(:)/xH
     if(t>1d8*spy) exit !exit when overshoot 1d8 years
