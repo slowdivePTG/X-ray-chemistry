@@ -93,4 +93,6 @@ class Trace():
                          [-i[sp]['destruct'][d] for i in self.species],
                          label=d)
         ax[0].legend(prop={'size': 10})
+        ax[0].set_xlim([1e2, 1e8])
         ax[1].legend(prop={'size': 10})
+        ax[1].set_xlim([1e2, 1e8])
