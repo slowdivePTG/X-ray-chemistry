@@ -445,13 +445,9 @@ $$
 
 1. Plot and compare the $\alpha$ of Krolik’s and the calculation results
 
-![](./KROME/build_dustH2/data/Table1.png)
+![](./KROME/build_dustH2/data/Table2.eps)
 
-![](./KROME/build_dustH2/data/Table2.png)
-
-![](./KROME/build_dustH2/data/Table3.png)
-
-![](./KROME/build_dustH2/data/Table4.png)
+![](./KROME/build_dustH2/data/Table4.eps)
 
 
 
