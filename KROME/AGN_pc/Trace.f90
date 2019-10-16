@@ -22,7 +22,7 @@ subroutine trace(neq,tt,nin)
   k(:) = coe_tab(n(:)) !compute coefficients
 
   open(unit=66, file='./data/Trace', position="append")
-  write(66, '(E15.5)')  tt
+  write(66, '(E18.8)')  tt
 
   !E
   write(66, '(i4, i5, E15.5)') 1, 1, min(-k(1)*n(idx_E)*n(idx_GRAIN0), -1d-90)
