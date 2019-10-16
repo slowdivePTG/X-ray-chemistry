@@ -67,8 +67,8 @@ program test_krome
     x1(:)=max(1d-50*xH,x1(:))
     t = t + dt !increase time
     call trace(nx,t/spy,x1(:))
-    dt = max(dt, (t-1d6*spy)/1.25d0) !increase time-step
-    if(t>1d8*spy) exit !exit when overshoot 1d8 years
+    dt = max(dt, (t-1d6*spy)) !increase time-step
+    if(t>1d9*spy) exit !exit when overshoot 1d8 years
   end do
 
 end program test_krome
