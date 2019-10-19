@@ -483,7 +483,7 @@ contains
     rateEvaluateOnce(125) = small + (1.50e+03&
         *user_crate)
 
-    !C2H2N -> CH2 + CN
+    !CH2CN -> CH2 + CN
     rateEvaluateOnce(126) = small + (5.00e+03&
         *user_crate)
 
@@ -571,11 +571,11 @@ contains
     rateEvaluateOnce(147) = small + (1.50e+03&
         *user_crate)
 
-    !C2H3N -> CH3 + CN
+    !CH3CN -> CH3 + CN
     rateEvaluateOnce(148) = small + (4.76e+03&
         *user_crate)
 
-    !C2H3N -> C2H3N+ + E
+    !CH3CN -> CH3CN+ + E
     rateEvaluateOnce(149) = small + (2.24e+03&
         *user_crate)
 
@@ -1183,11 +1183,11 @@ contains
     rateEvaluateOnce(4349) = small + (9.54e-10&
         *exp(-1.83e+00*user_Av))
 
-    !C2H3N -> CH3 + CN
+    !CH3CN -> CH3 + CN
     rateEvaluateOnce(4350) = small + (1.56e-09&
         *exp(-1.95e+00*user_Av))
 
-    !C2H3N -> C2H3N+ + E
+    !CH3CN -> CH3CN+ + E
     rateEvaluateOnce(4351) = small + (5.29e-10&
         *exp(-3.11e+00*user_Av))
 

@@ -59,18 +59,23 @@ program test_krome
 
   call krome_set_J21xray(1d0)
   !output header
+  open(unit=77, file="./data/dis")
+  write(77,'(a)') "#time "//trim(krome_get_names_header())
   x1(:)=x(:)
   call krome(x1(:),Tgas,1d6*spy)
   m(:)=get_mass()
+  k = 0
   do
     print '(a10,E18.8,a3)',"time:",t/spy,"yr"
     call krome(x1(:),Tgas,dt) !call KROME
     x1(:)=max(1d-50*xH,x1(:))
+    k = k + 1
     t = t + dt !increase time
-    call trace(nx,t/spy,x1(:))
+    if (mod(k,8) == 0) call trace(nx,t/spy,x1(:))
     call krome_set_J21xray(0d0)
-    dt = max(dt, (t-1d6*spy)) !increase time-step
-    if(t>1d9*spy) exit !exit when overshoot 1d8 years
+    dt = max(dt, (t-1d6*spy)/1d1) !increase time-step
+    write(77,'(999E18.8)') t/spy,x1(:)/xH
+    if(t>1d8*spy) exit !exit when overshoot 1d8 years
   end do
 
 end program test_krome

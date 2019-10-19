@@ -54,11 +54,13 @@ program test_krome
   ! myCoe(:) is defined in krome_user_commons
   !myCoe(:) = krome_get_coef(Tgas,x(:))
 
-  dt = 1d-1*spy !time-step (s)
-  t = 1d6*spy !initial time (s)
+  dt = 1d2*spy !time-step (s)
+  t = 0d0 !initial time (s)
 
   call krome_set_J21xray(0d0)
   !output header
+  open(unit=77, file="./data/dis_inf")
+  write(77,'(a)') "#time "//trim(krome_get_names_header())
   x1(:)=x(:)
   m(:)=get_mass()
   k = 0
@@ -68,9 +70,10 @@ program test_krome
     x1(:)=max(1d-50*xH,x1(:))
     k = k + 1
     t = t + dt !increase time
-    call trace(nx,t/spy,x1(:))
-    dt = max(dt, (t-1d6*spy)) !increase time-step
-    if(t>1d9*spy) exit !exit when overshoot 1d8 years
+    if (mod(k,8) == 0) call trace(nx,t/spy,x1(:))
+    dt = max(dt,t/10d0) !increase time-step
+    write(77,'(999E15.5)') t/spy,x1(:)/xH
+    if(t>1d8*spy) exit !exit when overshoot 1d8 years
   end do
 
 end program test_krome
