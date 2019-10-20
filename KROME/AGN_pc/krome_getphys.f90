@@ -2180,7 +2180,7 @@ contains
   function get_names()
     use krome_commons
     implicit none
-    character*16::get_names(nspec)
+    character*50::get_names(nspec)
 
     get_names(1) = "E"
     get_names(2) = "GRAIN-"

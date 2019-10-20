@@ -1370,7 +1370,7 @@ contains
   end function krome_get_charges
 
   !*****************
-  !get an array of character*16 and size krome_nmols
+  !get an array of character*50 and size krome_nmols
   ! containing the names of all the species.
   ! alias for get_names
   !!  !! cannot yet be called from C
@@ -1379,8 +1379,8 @@ contains
     use krome_commons
     use krome_getphys
     implicit none
-    character*16 :: krome_get_names(nmols)
-    character*16::tmp(nspec)
+    character*50 :: krome_get_names(nmols)
+    character*50::tmp(nspec)
     tmp(:) = get_names()
     krome_get_names = tmp(1:nmols)
   end function krome_get_names
@@ -1392,7 +1392,7 @@ contains
     use krome_getphys
     implicit none
     character*3344::krome_get_names_header
-    character*16::tmp(nspec)
+    character*50::tmp(nspec)
     integer::i
 
     tmp(:) = get_names()
@@ -1411,7 +1411,7 @@ contains
     use krome_getphys
     implicit none
     character*141::krome_get_cooling_names_header
-    character*16::tmp(ncools)
+    character*50::tmp(ncools)
     integer::i
 
     tmp(:) = get_cooling_names()
@@ -1431,7 +1431,7 @@ contains
     use krome_getphys
     implicit none
     character*87::krome_get_heating_names_header
-    character*16::tmp(nheats)
+    character*50::tmp(nheats)
     integer::i
 
     tmp(:) = get_heating_names()
@@ -1716,7 +1716,7 @@ contains
     real*8 :: x(nmols)
     real*8 :: Tgas
     real*8::masses(nspec)
-    character*16::names(nspec)
+    character*50::names(nspec)
 
     names(:) = get_names()
     charges(:) = get_charges()
