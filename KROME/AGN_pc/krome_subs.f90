@@ -16713,9 +16713,9 @@ contains
         /Tgas)+2.650986e+13*exp(-0.3*1210/Tgas))
 
     !O_DUST + C_DUSTO_DUST -> C_DUSTO_DUSTO_DUST
-    k(4586) = small + (3.048420e+13&
-        *exp(-0.3*800.0&
-        /Tgas)+2.833459e+13*exp(-0.3*1210/Tgas))
+    k(4586) = small !+ (3.048420e+13&
+        !*exp(-0.3*800.0&
+        !/Tgas)+2.833459e+13*exp(-0.3*1210/Tgas))
 
     !O_DUST + H_DUSTC_DUSTO_DUST -> C_DUSTO_DUSTO_DUST + H_DUST
     k(4587) = small + (3.048420e+13&
