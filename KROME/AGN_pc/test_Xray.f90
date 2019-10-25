@@ -42,22 +42,30 @@ program test_krome
   !calculate elctrons (neutral cloud)
   x(KROME_idx_e) = krome_get_electrons(x(:))
 
-  !NOTE: here myCoe array is employed to store the
-  ! coefficient values, since the temperature is
-  ! constant during the model evolution.
-  ! myCoe(:) is defined in krome_user_commons
-  !myCoe(:) = krome_get_coef(Tgas,x(:))
-
+  call krome(x(:),Tgas,1d8*spy)
   dt = 1d0*spy !time-step (s)
-  t = 1d6*spy !initial time (s)
+  t = 0 !initial time (s)
 
   call krome_set_J21xray(1d0)
   !output header
   open(unit=77, file="./data/dis")
   write(77,'(a)') "#time "//trim(krome_get_names_header())
   x1(:)=x(:)
-  call krome(x1(:),Tgas,1d6*spy)
-  m(:)=get_mass()
+  do
+    print '(a10,E18.8,a3)',"time:",t/spy,"yr"
+    call krome(x1(:),Tgas,dt) !call KROME
+    x1(:)=max(1d-50*xH,x1(:))
+    k = k + 1
+    t = t + dt !increase time
+    dt = max(dt, t/5d0) !increase time-step
+    write(77,'(999E18.8)') t/spy,x1(:)/xH
+    if(t>1d6*spy) exit !exit when overshoot ~1d6 years
+  end do
+
+  call krome_set_J21xray(1d0)
+  dt = 1d0*spy !time-step (s) renewed
+  t = 1d6*spy !initial time (s) renewed
+
   k = 0
   do
     print '(a10,E18.8,a3)',"time:",t/spy,"yr"
