@@ -51,6 +51,10 @@ class Abu:
         self.abu_u /= raw_u[:, eval('krome_idx_' + div)]
         self.name_div = r'$n{}$'.format(latex_name(div))
 
+    def print(self, spe='H'):
+        for i in range(len(self.t)):
+            print(self.t[i], 'yr', self.abu[i, eval('krome_idx_' + spe)])
+
     def plot(self,
              ax,
              spe='H',
@@ -63,8 +67,11 @@ class Abu:
             t = self.dt
         else:
             t = self.t
-        ax.loglog(t,
-                  self.abu[:, eval('krome_idx_' + spe)],
+        arg = np.where(t > 0)
+        x = t[arg]
+        y = self.abu[:, eval('krome_idx_' + spe)][arg]
+        ax.loglog(x,
+                  y,
                   label=label,
                   color=color,
                   linestyle=linestyle,
@@ -84,8 +91,11 @@ class Abu:
         if NoX:
             label = 'No X-ray, ' + label
             linewidth = 1
-        ax.loglog(t,
-                  self.abu_u[:, eval('krome_idx_' + spe)],
+        arg = np.where(t > 0)
+        x = t[arg]
+        y = self.abu[:, eval('krome_idx_' + spe)][arg]
+        ax.loglog(x,
+                  y,
                   color=color,
                   linestyle='-.',
                   label=label,
@@ -98,6 +108,7 @@ class Abu:
             t = self.dt
         else:
             t = self.t
+        arg = np.where(t > 0)
         if Nolabel:
             label = None
         else:
@@ -105,8 +116,11 @@ class Abu:
         if NoX:
             label = 'No X-ray, ' + label
             linewidth = 1
-        ax.loglog(t,
-                  self.abu_l[:, eval('krome_idx_' + spe)],
+        arg = np.where(t > 0)
+        x = t[arg]
+        y = self.abu[:, eval('krome_idx_' + spe)][arg]
+        ax.loglog(x,
+                  y,
                   color=color,
                   linestyle=':',
                   label=label,
