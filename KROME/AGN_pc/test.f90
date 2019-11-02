@@ -18,7 +18,7 @@ program test_krome
   xH = 2d4 !Hydrogen density
 
   !user commons for opacity and CR rate
-  call krome_set_user_av(53.0000d0) !opacity Av (#)
+  call krome_set_user_av(16.76d0) !opacity Av (#)
   call krome_set_user_crate(1.3d-17) !CR rate (1/s)
   call krome_set_user_gas_dust_ratio(1d2) !gas/dust
   call krome_init()
@@ -42,10 +42,11 @@ program test_krome
   !calculate elctrons (neutral cloud)
   x(KROME_idx_e) = krome_get_electrons(x(:))
 
+  call krome_set_J21xray(0d0)
+  call krome(x(:),Tgas,1.0e+07*spy) !call KROME before the AGN event
+
   dt = 1d0*spy !time-step (s)
   t = 0 !initial time (s)
-
-  call krome_set_J21xray(0d0)
   call krome_set_J21xray(0d0)
   open(unit=77, file="./data/dis_inf")
   write(77,'(a)') "#time "//trim(krome_get_names_header())
