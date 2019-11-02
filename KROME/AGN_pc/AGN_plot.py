@@ -33,17 +33,19 @@ class Abu:
     def __init__(self, i):
         txt = './data/2dis' + i
         raw = np.loadtxt(txt)
-        txt_l = './data/1dis' + i  #lower limit of extinction
-        raw_l = np.loadtxt(txt_l)
-        txt_u = './data/3dis' + i  #upper limit of extinction
-        raw_u = np.loadtxt(txt_u)
-
         self.t = raw[:, 0]
         self.dt = self.t - 1e6
         self.abu = raw
-        self.abu_l = raw_l
-        self.abu_u = raw_u
         self.name_div = r'$n_{\mathrm{H}}$'
+        try:
+            txt_l = './data/1dis' + i  #lower limit of extinction
+            raw_l = np.loadtxt(txt_l)
+            txt_u = './data/3dis' + i  #upper limit of extinction
+            raw_u = np.loadtxt(txt_u)
+            self.abu_l = raw_l
+            self.abu_u = raw_u
+        except:
+            pass
 
     def Div(self, div):
         self.abu /= raw[:, eval('krome_idx_' + div)]
@@ -77,8 +79,14 @@ class Abu:
                   linestyle=linestyle,
                   linewidth=linewidth)
 
-    def plot_u(self, ax, spe='H', color=None, Dt=True, Nolabel=True,
-               NoX=False):
+    def plot_u(self,
+               ax,
+               spe='H',
+               color=None,
+               Dt=True,
+               Nolabel=True,
+               NoX=False,
+               linewidth=1):
         linewidth = 3
         if Dt:
             t = self.dt
@@ -93,7 +101,7 @@ class Abu:
             linewidth = 1
         arg = np.where(t > 0)
         x = t[arg]
-        y = self.abu[:, eval('krome_idx_' + spe)][arg]
+        y = self.abu_u[:, eval('krome_idx_' + spe)][arg]
         ax.loglog(x,
                   y,
                   color=color,
@@ -101,8 +109,14 @@ class Abu:
                   label=label,
                   linewidth=linewidth)
 
-    def plot_l(self, ax, spe='H', color=None, Dt=True, Nolabel=True,
-               NoX=False):
+    def plot_l(self,
+               ax,
+               spe='H',
+               color=None,
+               Dt=True,
+               Nolabel=True,
+               NoX=False,
+               linewidth=1):
         linewidth = 3
         if Dt:
             t = self.dt
@@ -118,7 +132,7 @@ class Abu:
             linewidth = 1
         arg = np.where(t > 0)
         x = t[arg]
-        y = self.abu[:, eval('krome_idx_' + spe)][arg]
+        y = self.abu_l[:, eval('krome_idx_' + spe)][arg]
         ax.loglog(x,
                   y,
                   color=color,
