@@ -69,7 +69,7 @@ class Trace():
                 print(j, i[sp]['destruct'][j])
 
     def plot(self, sp, num=5):
-        f, ax = plt.subplots(1, 2, figsize=(24, 8))
+        f, ax = plt.subplots(1, 2, figsize=(24, 8), sharey=True)
         ax[0].set_title('Formation', fontsize=25)
         ax[0].set_xlabel(r'$t-10^6$ (yr)', fontsize=25)
         ax[0].set_ylabel(r'd$n$/d$t$ (s$^{-1}$)', fontsize=25)
