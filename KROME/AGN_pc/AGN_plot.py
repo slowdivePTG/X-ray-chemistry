@@ -98,7 +98,6 @@ class Abu:
             label = r'$N_{\mathrm{H}}=10^{23}$ cm$^{-2}$'
         if NoX:
             label = 'No X-ray, ' + label
-            linewidth = 1
         arg = np.where(t > 0)
         x = t[arg]
         y = self.abu_u[:, eval('krome_idx_' + spe)][arg]
@@ -129,7 +128,6 @@ class Abu:
             label = r'$N_{\mathrm{H}}=10^{22}$ cm$^{-2}$'
         if NoX:
             label = 'No X-ray, ' + label
-            linewidth = 1
         arg = np.where(t > 0)
         x = t[arg]
         y = self.abu_l[:, eval('krome_idx_' + spe)][arg]
