@@ -43,7 +43,7 @@ program test_krome
   x(KROME_idx_e) = krome_get_electrons(x(:))
 
   call krome_set_J21xray(0d0)
-  call krome(x(:),Tgas,1.0e+07*spy) !call KROME before the AGN event
+  
 
   dt = 1d0*spy !time-step (s)
   t = 0 !initial time (s)
@@ -52,12 +52,15 @@ program test_krome
   write(77,'(a)') "#time "//trim(krome_get_names_header())
 
   x1(:)=x(:)
+  k = 0
   do
     print '(a10,E18.8,a3)',"time:",t/spy,"yr"
     if (t + dt > 1d6*spy) dt = 1d6*spy - t
     call krome(x1(:),Tgas,dt) !call KROME
     x1(:)=max(1d-50*xH,x1(:))
+    k = k + 1
     t = t + dt !increase time
+    if (mod(k,10) == 0) call trace(nx,t/spy,x1(:))
     dt = max(dt, t/5d0) !increase time-step
     write(77,'(999E18.8)') t/spy,x1(:)/xH
     if(t >= 1d6*spy) exit !exit when overshoot ~1d6 years
