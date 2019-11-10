@@ -86,7 +86,10 @@ class Abu:
                Dt=True,
                Nolabel=True,
                NoX=False,
-               linewidth=1):
+               stop=False,
+               label = r'$N_{\mathrm{H}}=10^{23}$ cm$^{-2}$',
+               linewidth=1,
+               linestyle='-.'):
         linewidth = 3
         if Dt:
             t = self.dt
@@ -94,17 +97,17 @@ class Abu:
             t = self.t
         if Nolabel:
             label = None
-        else:
-            label = r'$N_{\mathrm{H}}=10^{23}$ cm$^{-2}$'
         if NoX:
             label = 'No X-ray, ' + label
+        elif stop:
+            label = 'X-ray removed, ' + label
         arg = np.where(t > 0)
         x = t[arg]
         y = self.abu_u[:, eval('krome_idx_' + spe)][arg]
         ax.loglog(x,
                   y,
                   color=color,
-                  linestyle='-.',
+                  linestyle=linestyle,
                   label=label,
                   linewidth=linewidth)
 
@@ -115,7 +118,10 @@ class Abu:
                Dt=True,
                Nolabel=True,
                NoX=False,
-               linewidth=1):
+               stop=False,
+               label=r'$N_{\mathrm{H}}=10^{22}$ cm$^{-2}$',
+               linewidth=1,
+               linestyle=':'):
         linewidth = 3
         if Dt:
             t = self.dt
@@ -124,16 +130,16 @@ class Abu:
         arg = np.where(t > 0)
         if Nolabel:
             label = None
-        else:
-            label = r'$N_{\mathrm{H}}=10^{22}$ cm$^{-2}$'
         if NoX:
             label = 'No X-ray, ' + label
+        elif stop:
+            label = 'X-ray removed, ' + label
         arg = np.where(t > 0)
         x = t[arg]
         y = self.abu_l[:, eval('krome_idx_' + spe)][arg]
         ax.loglog(x,
                   y,
                   color=color,
-                  linestyle=':',
+                  linestyle=linestyle,
                   label=label,
                   linewidth=linewidth)
