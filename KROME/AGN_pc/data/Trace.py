@@ -79,7 +79,7 @@ class Trace():
             ax[1].set_xlabel(r'$t-10^6$ (yr)', fontsize=25)
             ax[2].set_xlabel(r'$t$ (yr)', fontsize=25)
             ax[2].set_ylabel(r'd$n$/d$t$ (s$^{-1}$)', fontsize=25)
-            ax[3].set_xlabel(r'$t-10^6$ (yr)', fontsize=25)
+            ax[3].set_xlabel(r'$t$ (yr)', fontsize=25)
 
             setf, setd = set(), set()
             for i in self.species:
