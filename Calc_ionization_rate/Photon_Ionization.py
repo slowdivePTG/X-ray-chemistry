@@ -168,6 +168,7 @@ def Jeans(nH, nHe):
 def Tau(E, H, He, nH=1e5, nHe=1e4,
         radius=3.0856775809623245e+18):  #radius: 1 pc/cm
     #radius = Jeans(nH, nHe)/2
+    radius=3.0856775809623245e+18
     NH, NHe = nH * radius, nHe * radius
     tau = H.cross(E) * NH + He.cross(E) * NHe
     return (tau)
@@ -362,15 +363,15 @@ def draw_Fnu_model():
 
 
 def draw_nuF(i, col1, col2):
-    plt.loglog(i.nu, i.Fnu * i.nu, label=i.title(), lw=0.4, color=col1)
-    plt.loglog(i.nu,
+    plt.loglog(i.E_eV, i.Fnu * i.nu, label=i.title(), lw=0.4, color=col1)
+    plt.loglog(i.E_eV,
                i.Fnu_abs * i.nu,
                '-.',
                label=i.title(),
                lw=0.8,
                color=col2)
     plt.ylim([1e-8, (i.Fnu * i.nu).max() * 10])
-    plt.xlim([1e13, 1e21])
+    plt.xlim([1e-1, 1e6])
     #plt.legend()
 
 
@@ -380,7 +381,7 @@ def draw_nuF_model():
     F0 = 4 * np.pi * J21 * 1e-21 * np.power(E / 1000.0, -1.5)
     Fx = F0 * ext
 
-    plt.loglog(E * 1.6021773e-12 / h,
+    plt.loglog(E * 1.6021773e-12 / h * 4.13566553853599E-15, #Hertz to eV
                Fx * E / (4.135667662e-15),
                label='power law',
                color='#006284')
