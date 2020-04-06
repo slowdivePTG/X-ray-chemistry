@@ -71,7 +71,7 @@ class atom:
         plt.yscale('log')
         plt.plot(E, sigma, label=self.name)
         plt.xlabel("E(eV)", fontsize=13)
-        plt.ylabel("$\sigma$(cm$^2$)", fontsize=13)
+        plt.ylabel(r"$\sigma$(cm$^2$)", fontsize=13)
         plt.legend()
 
     def min(self):
@@ -406,6 +406,7 @@ def draw_nuL(i, col, xlabel='nu'):
         plt.xlim([1e-4, 1e4])
     col1 = col[0]
     plt.loglog(x, i.Lnu * i.nu, lw=1, color=col1)
+    plt.loglog(x, i.nuL, lw=0.5, color=col1, linestyle=':')
     if len(col) == 2:
         plt.loglog(x,
                    i.Fnu_abs * i.nu * 4 * np.pi * i.distance_cm**2,
