@@ -363,12 +363,12 @@ def draw_Fnu_model():
 
 
 def draw_nuF(i, col1, col2):
-    plt.loglog(i.E_eV, i.Fnu * i.nu, label=i.title(), lw=0.4, color=col1)
+    plt.loglog(i.E_eV, i.Fnu * i.nu, label=i.title(), lw=1, color=col1)
     plt.loglog(i.E_eV,
                i.Fnu_abs * i.nu,
                '-.',
                label=i.title(),
-               lw=0.8,
+               lw=1,
                color=col2)
     plt.ylim([1e-8, (i.Fnu * i.nu).max() * 10])
     plt.xlim([1e-1, 1e6])

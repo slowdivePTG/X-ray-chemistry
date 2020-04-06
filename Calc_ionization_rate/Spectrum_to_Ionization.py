@@ -57,10 +57,10 @@ class Spec:
         self.nu = 10**raw_data[:, 0]
         self.E_eV = self.nu * (4.13566553853599E-15)  #Hertz to eV
         self.E_keV = self.E_eV / 1000
-        self.Lnu = 10**raw_data[:, 1]# * 4 #Jieying Liu's suggestion
-        self.Lnus = 10**raw_data[:, 2]# * 4 #Jieying Liu's suggestion
-        self.nuL = 10**raw_data[:, 3]# * 4 #Jieying Liu's suggestion
-        self.nuLs = 10**raw_data[:, 4]# * 4 #Jieying Liu's suggestion
+        self.Lnu = 10**raw_data[:, 1] * 2 #Jieying Liu's suggestion
+        self.Lnus = 10**raw_data[:, 2] * 2 #Jieying Liu's suggestion
+        self.nuL = 10**raw_data[:, 3] * 2 #Jieying Liu's suggestion
+        self.nuLs = 10**raw_data[:, 4] * 2 #Jieying Liu's suggestion
 
     def intro(self):
         print('************************')
