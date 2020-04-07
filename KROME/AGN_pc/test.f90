@@ -43,7 +43,7 @@ program test_krome
   x(KROME_idx_e) = krome_get_electrons(x(:))
 
   call krome_set_J21xray(0d0)
-  
+  call krome(x(:),Tgas,1.0e+07*spy) !call KROME before the AGN event
 
   dt = 1d0*spy !time-step (s)
   t = 0 !initial time (s)

@@ -59,8 +59,8 @@ class Spec:
         self.E_keV = self.E_eV / 1000
         self.Lnu = 10**raw_data[:, 1] * 2 #Jieying Liu's suggestion
         self.Lnus = 10**raw_data[:, 2] * 2 #Jieying Liu's suggestion
-        self.nuL = 10**raw_data[:, 3] * 2 #Jieying Liu's suggestion
-        self.nuLs = 10**raw_data[:, 4] * 2 #Jieying Liu's suggestion
+        self.nuL = 10**raw_data[:, 3] * 4 #Jieying Liu's suggestion
+        self.nuLs = 10**raw_data[:, 4] * 4 #Jieying Liu's suggestion
 
     def intro(self):
         print('************************')
