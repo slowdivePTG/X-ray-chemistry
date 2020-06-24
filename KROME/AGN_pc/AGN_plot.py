@@ -48,10 +48,14 @@ class Abu:
             pass
 
     def Div(self, div):
-        self.abu /= raw[:, eval('krome_idx_' + div)]
-        self.abu_l /= raw_l[:, eval('krome_idx_' + div)]
-        self.abu_u /= raw_u[:, eval('krome_idx_' + div)]
-        self.name_div = r'$n{}$'.format(latex_name(div))
+        abu_div = self.abu[:, eval('krome_idx_' + div)].copy()
+        abu_div_l = self.abu_l[:, eval('krome_idx_' + div)].copy()
+        abu_div_u = self.abu_u[:, eval('krome_idx_' + div)].copy()
+        for i in range(len(self.abu[0,:])):
+          self.abu[:, i] /= abu_div
+          self.abu_l[:, i] /= abu_div_l
+          self.abu_u[:, i] /= abu_div_u
+        self.name_div = r'$n({})$'.format(latex_name(div))
 
     def print(self, spe='H'):
         for i in range(len(self.t)):
