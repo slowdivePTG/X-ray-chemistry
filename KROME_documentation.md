@@ -4,7 +4,7 @@ In this project, we use the *astrochemistry* package [`KROME`](packagekromepacka
 
 >  The official documentation
 >
->  - https://bitbucket.org/tgrassi/krome/wiki/Home](https://bitbucket.org/tgrassi/krome/wiki/Home)
+>  - [https://bitbucket.org/tgrassi/krome/wiki/Home](https://bitbucket.org/tgrassi/krome/wiki/Home)
 
 ## A Quick Start
 
