@@ -7,3 +7,6 @@ Necessary files, codes and weekly progress of Chang's Undergraduate Research &am
 > Explore the universe, benefit the society.
 >
 > <p align = right>—— A respectful elder</p>
+
+A documentation of `KROME` in our project can be found [here](./KROME_documentation).
+
