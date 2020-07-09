@@ -3,8 +3,8 @@
 In this project, we use the *astrochemistry* package [`KROME`](packagekromepackage.org) to perform all our X-ray chemistry simulations. This documentation concludes the basic set-ups of Chang Liu's undergraduate research (under the supervision of Prof. Xian Chen and Prof. Fujun Du).
 
 >  The official documentation
-
-  - [https://bitbucket.org/tgrassi/krome/wiki/Home](https://bitbucket.org/tgrassi/krome/wiki/Home)
+>
+>  - https://bitbucket.org/tgrassi/krome/wiki/Home](https://bitbucket.org/tgrassi/krome/wiki/Home)
 
 ## A Quick Start
 
@@ -59,7 +59,7 @@ In this project, we use the *astrochemistry* package [`KROME`](packagekromepacka
       -n = networks/react_hello
      ```
    
-     that are information relative to the test, namely the name of the test (`hello`), a control to avoid sink species, and the network name (`networks/react_hello`). These options are stored in `tests/hello/options.opt`.
+     that are information relative to the test, namely the name of the test (`hello`), a control to avoid sink species, and the network name (`networks/react_hello`). These options are stored in `tests/hello/options.opt`. For more options, please visit the official docs for [Options](https://bitbucket.org/tgrassi/krome/wiki/optionsALL).
    
      Then
    
@@ -127,8 +127,64 @@ In this project, we use the *astrochemistry* package [`KROME`](packagekromepacka
    - Compile and run the test
    
      `KROME` is a pre-processor. In the previous step we have created all necessary files (mainly Fortran files) in the `build/` directory.
+   
+     In the `build/` directory, if you have `ifort` compiler, type
+   
+     ```shell
+     make
+     ./test
+     ```
+   
+     or if you have `gfortran` compiler, type
+   
+     ```shell
+     make gfortran
+     ./test
+     ```
+   
+     then you should obtain the message
+   
+     ```
+     Test OK!
+     ```
+   
+     If there are anything wrong, check the prerequisites.
 
 ## Basic Operations
+
+1. Chemical Network
+
+   All astrochemical simulations on `KROME` start with a chemical network in a `network_file`
+
+   ```shell
+   ./krome -n=network_file
+   ```
+
+   `network_file` is a Comma-Separated Values (CSV) file with the follow default format
+
+   ```
+   idx,R,R,R,P,P,P,P,Tmin,Tmax,rate
+   ```
+
+   - `idx` - reaction index (integer)
+   - `R` - a reactant (string)
+   - `P` - a product (string)
+   - `Tmin` and `Tmax` - the temperature limits of the reaction (double)
+   - `rate` - chemical coefficient written in Fortran style (string)
+
+   For example, the reaction `HCO + HNO -> H2CO + NO` has
+
+   ```
+   3637,HCO,HNO,,H2CO,NO,,,NONE,NONE,1.00e-12*exp(-9.76e+02/Tgas)
+   ```
+
+   the coefficient has a unit of $\text{cm}^{3(n-1)}/\text{s}$, where $n$ is the number of reactants.
+
+2. How to run `KROME`
+
+## A Review of Fortran Files
+
+
 
 ## Embedding X-ray
 
