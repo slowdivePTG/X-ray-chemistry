@@ -8,5 +8,5 @@ Necessary files, codes and weekly progress of Chang's Undergraduate Research &am
 >
 > <p align = right>—— A respectful elder</p>
 
-A documentation of `KROME` in our project can be found [here](./KROME_documentation).
+A documentation of `KROME` in our project can be found [here](./KROME_documentation.md).
 
