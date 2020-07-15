@@ -15,14 +15,14 @@ In this project, we use the *astrochemistry* package [`KROME`](packagekromepacka
    - Python
 
      - Python 2.7 (Python 3 is not supported)
-     - *Optional*: Anaconda (for environment management)
      - `Numpy` and `Scipy`
+     
+- Fortran
+  
+  `KROME` needs a Fortran compiler, such as `gfortran` or `ifort`, the former is free and is now embedded in the `gcc` complier.
+  
 
-   - Fortran
-
-     `KROME` needs a Fortran compiler, such as `gfortran` or `ifort`, the former is free and is now embedded in the `gcc` complier.
-
-   More information can be found in the [official documentation](https://bitbucket.org/tgrassi/krome/wiki/Prerequisities).
+More information can be found in the [official documentation](https://bitbucket.org/tgrassi/krome/wiki/Prerequisities).
 
 2. Getting Started
 
@@ -59,7 +59,7 @@ In this project, we use the *astrochemistry* package [`KROME`](packagekromepacka
       -n = networks/react_hello
      ```
    
-     that are information relative to the test, namely the name of the test (`hello`), a control to avoid sink species, and the network name (`networks/react_hello`). These options are stored in `tests/hello/options.opt`. For more options, please visit the official docs for [Options](https://bitbucket.org/tgrassi/krome/wiki/optionsALL).
+     that are information relative to the test, namely the name of the test (`hello`), a control to avoid sink species, and the network name (`networks/react_hello`). These options are stored in `tests/hello/options.opt`.
    
      Then
    
@@ -180,11 +180,58 @@ In this project, we use the *astrochemistry* package [`KROME`](packagekromepacka
 
    the coefficient has a unit of $\text{cm}^{3(n-1)}/\text{s}$, where $n$ is the number of reactants.
 
-2. How to run `KROME`
+2. How to run `KROME` (by using an optional file)
+
+   To create necassary files for a specific model, the user may look through the official docs for [Options](https://bitbucket.org/tgrassi/krome/wiki/optionsALL). For our simple X-ray chemistry model for dense cores, apart from calling the chemical network, currently there is no need for other options, thus the command looks like
+
+   ```shell
+   ./krome -n=networks/x_grain
+   ```
+
+   Below are some of the possible options
+
+   - `-project=NAME` build everything in a folder called `build_NAME/` instead of building all in the default `build/` folder. It also creates a `NAME.kpj` file with the krome input used.
+
+   - `-dust=N,TYPE1,TYPE2,..., -dustOption=OPTIONS` 
+
+     Even in a purely gas-phase model for cold, dense cores, the formation of H2 on the grain should be taken into account.
+
+     - With `-dust=N,TYPE1,TYPE2,...`, we initialize the dust module by subdividing all dust into `N` bins times the type of dust employed. The dust can be carbon-based (graphite) or silicon-based (silicates) and the option `TYPE` allows to determine what grains are used. An example is `-dust=10,C,Si` that creates 10 bins of dust of graphite and 10 bins of silicates.
+     - `-dustOptions=OPTIONS` activates the options related to the dust processes. For H2 formation on dust (Cazaux 2009), the `OPTIONS` should be `H2`.
+     - **In a gas-grain model where H2 formation on the grains is automatically counted (like in ours), there is no need to call this module.**
+
+   - `-checkConserv` check mass conservation during integration (slower).
 
 ## A Review of Fortran Files
 
+Type `ls *.f90` in the `build/` directory, you will see all the Fortran files produced by the pre-processor
 
+```
+krome.f90              krome_gadiab.f90       krome_reduction.f90
+krome_commons.f90      krome_getphys.f90      krome_stars.f90
+krome_constants.f90    krome_grfuncs.f90      krome_subs.f90
+krome_cooling.f90      krome_heating.f90      krome_tabs.f90
+krome_coolingGH.f90    krome_ode.f90          krome_user.f90
+krome_dust.f90         krome_phfuncs.f90      krome_user_commons.f90
+krome_fit.f90          krome_photo.f90        test.f90
+```
+
+Here is a review for the most vital Fortran files.
+
+### `test.f90`
+
+### `krome_subs.f90`
+
+### `krome_ode.f90`
+
+### `krome_user.f90`
+
+### `krome_getphys.f90`
 
 ## Embedding X-ray
+
+1. `KROME` X-ray ionization module for H and He
+2. Secondary ionization for other species
+
+## Reaction Tracing Module
 
