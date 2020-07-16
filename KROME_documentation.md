@@ -295,9 +295,15 @@ This file includes the defination the change in adundances for all species at ea
 
   There is chance that in the `fes()` subroutine, `dn(idx_H2)`, the change in the abundance of hydrogen molecules, appears twice. As a result, the latter overwrites the former and the total atom number is not conserved. The user should pay attention and may manually remove the second line with `dn(idx_H2) = ` to solve the bug.
 
-### `krome_user.f90`
+### `krome_user_commons.f90`
+
+User can add here the common variables needed for rate calculation (e.g. optical depth, CR rate, pressure, density, ...)
 
 ### `krome_getphys.f90`
+
+This module contains useful routines to get physical quantities, like mean molecular weight, mass density, mass, jeans length, etc.
+
+Currently the `num2col()`/`col2num()` function has two options. The default one assume the amount of atoms in a molecular cloud remains a constant, and that `N=1.8e21*(n*1e-3)**(2./3.)`  is applied for column density calculation (N) from number density (n). Alternatively the user may assume the cloud is of the Jeans size so that `N=n*l`, where `l` is the Jeans length. To utilize the latter one may have `-columnDensityMethod=JEANS` when running the pre-processor. In our model we use a simpler conversion rule since we have not only assumed each molecular cloud is sphereical and homogeneous but fixed the size for each cloud. The user may also revise this function for different purposes.
 
 ## Embedding X-ray
 
