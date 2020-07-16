@@ -287,6 +287,8 @@ end do
 
 ### `krome_subs.f90`
 
+In this file, some important subroutines are defined. The most crucial one, `coe()`, is defined to compute the reaction rates by transforming the CSV-style chemical network into Fortran expressions. When embedding X-ray ionization we need to modify the `coe()` subroutine generated automatically by the pre-processor.
+
 ### `krome_ode.f90`
 
 ### `krome_user.f90`
