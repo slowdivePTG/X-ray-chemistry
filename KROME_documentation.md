@@ -220,6 +220,71 @@ Here is a review for the most vital Fortran files.
 
 ### `test.f90`
 
+In the `test.f90` file, we call the ODE solver `krome()` to numerically solve a large system of linear differential equations of chemical reactions. 
+
+For example, first we set the gas temperature, visual extinction (Av), cosmic ray (CR) ionization rate, and the gas-to-dust ratio, and initialize the `krome` module BEFORE calling it.
+
+```fortran
+Tgas = 1d1 !gas temperature (K)
+!user commons for opacity and CR rate
+call krome_set_user_av(Av) !opacity Av (#)
+call krome_set_user_crate(CR_Rate) !CR rate (1/s)
+!user commans for gas/dust ratio - ONLY for empirical H2 formation rate on grains
+call krome_set_user_gas_dust_ratio(Gas_To_Dust_Ratio)
+!Initialization the krome module
+call krome_init()
+```
+
+Then we set the initial densities for each species.
+
+```fortran
+xH = 2d4 !Hydrogen density
+x(:) = Min_Dens !the array to store all densities
+!initial densities (model EA2 Wakelam+Herbst 2008)
+x(KROME_idx_H2)  = 0.5d0   * xH
+x(KROME_idx_He)  = 9d-2   * xH
+x(KROME_idx_N)   = 7.6d-5  * xH
+x(KROME_idx_O)   = 2.56d-4 * xH
+x(KROME_idx_Cj)  = 1.2d-4  * xH
+x(KROME_idx_Sj)  = 1.5d-5  * xH
+x(KROME_idx_SIj) = 1.7d-6  * xH
+x(KROME_idx_Fej) = 2d-7   * xH
+x(KROME_idx_Naj) = 2d-7   * xH
+x(KROME_idx_Mgj) = 2.4d-6  * xH
+x(KROME_idx_Clj) = 1.8d-7  * xH
+x(KROME_idx_Pj)  = 1.17d-7 * xH
+x(KROME_idx_Fj)  = 1.8d-8  * xH
+
+!calculate elctrons (neutral cloud)
+x(KROME_idx_e) = krome_get_electrons(x(:))
+```
+
+Then we compute the chemical abundances after a time-step of `dt` (in the unit of second). Note that the ODE solver automatically determines its time-step, which has nothing to do with `dt`, to solve a possibly stiff system of linear differential equation in higher accuracy. Calling the `krome` module renews values in `x(:)`.
+
+```fortran
+call krome(x(:),Tgas,dt)
+```
+
+For abundance evolutions, this is usually put in a loop
+
+```fortran
+spy = 3600. * 24. * 365. !seconds per year
+t = 0 !initial time
+dt = 1d3 * spy !initial time-step
+open(unit=77, file=File_Name)
+write(77,'(a)') "#time "//trim(krome_get_names_header()) !header for the output
+do
+  print '(a10,E18.8,a3)',"time:",t/spy,"yr"
+  call krome(x(:),Tgas,dt) !call KROME
+  t = t + dt !increase time
+  dt = max(dt, t/5d0) !increase time-step
+  write(77,'(999E18.8)') t/spy,x(:)/xH
+  if(t >= 1d6*spy) exit !exit when overshoot ~1d6 years
+end do
+```
+
+
+
 ### `krome_subs.f90`
 
 ### `krome_ode.f90`
