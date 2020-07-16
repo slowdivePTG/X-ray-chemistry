@@ -283,13 +283,17 @@ do
 end do
 ```
 
-
-
 ### `krome_subs.f90`
 
 In this file, some important subroutines are defined. The most crucial one, `coe()`, is defined to compute the reaction rates by transforming the CSV-style chemical network into Fortran expressions. When embedding X-ray ionization we need to modify the `coe()` subroutine generated automatically by the pre-processor.
 
 ### `krome_ode.f90`
+
+This file includes the defination the change in adundances for all species at each time-step (`fes()`) and a Jacobian (`jes()`). 
+
+- **One caveat**
+
+  There is chance that in the `fes()` subroutine, `dn(idx_H2)`, the change in the abundance of hydrogen molecules, appears twice. As a result, the latter overwrites the former and the total atom number is not conserved. The user should pay attention and may manually remove the second line with `dn(idx_H2) = ` to solve the bug.
 
 ### `krome_user.f90`
 
