@@ -344,5 +344,28 @@ Currently the `num2col()`/`col2num()` function has two options. The default one 
 
 2. Secondary ionization for other species
 
+   In our work, the ionization rate of heavy elements and molecules can be derived from
+   $$
+   \zeta ^ { m } =\frac { \sigma _ {
+   \mathrm { ei } ,m} ( E ) } { \sigma _ { \mathrm { ei } , \mathrm { H } } ( E )
+   } \zeta ^ { \ce{H} }_{\rm sec}
+   $$
+   where $\sigma_{\text{ei}}(E)$ is the electron-impact cross section at energy $E$.  We note that heavy elements are
+   usually bound in molecules, but the current derivation of $\sigma_{\text{ei}}(E)$ assumes that the cross section  is unaffected by the molecular binding energy.  Moreover, we notice that the ratio of the cross sections, which appears in the last equation, is insensitive to $E$. For this reason, we use the cross sections at $E=50\text{
+   eV}$ (Maloney+1996), which is the typical energy of the secondary electrons.
+
+   In `krome_subs.f90` we further write
+
+   ```fortran
+   ! 50eV cross section ratio
+   k(14) = k(14) + 3.1136*k(4452) !C -> C+ + E
+   k(22) = k(22) + 1.5957*k(4452) !O -> O+ + E
+   k(20) = k(20) + 2.0029*k(4452) !N -> N+ + E
+   k(19) = k(19) + 13.1726*k(4452) !Mg -> Mg+ + E
+   ......
+   ```
+
+   to add the contribution of X-ray ionization to the total ionization rate.
+
 ## Reaction Tracing Module
 
