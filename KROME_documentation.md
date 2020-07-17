@@ -308,6 +308,40 @@ Currently the `num2col()`/`col2num()` function has two options. The default one 
 ## Embedding X-ray
 
 1. `KROME` X-ray ionization module for H and He
+
+   `KROME` has an X-ray physics module estimating the primary and secondary ionization rate of H and He, the most abundant species in interstellar medium.
+
+   In the original version, the primary ionization rates for H and He given certain X-ray flux are recorded in `rateH.dat` and `rateHe.dat`. The secondary ionization rates are determined based on Shull+1985 (see the [official docs for X-ray physics](https://bitbucket.org/tgrassi/krome/wiki/physics5)).
+
+   `ratexH.dat` contains a 30$\times$30 table. Each element contains the column density of H, He, and the (primary) ionization rate.
+
+   ```
+   # Xray rate including primary H ionization in 1/s
+   # first line indicates the size of the table (30x30)
+   # then first column is the parameter log10(nH), where nH is the H column density in cm-2
+   # second column is log10(xHe), where xHe = nHe/nH both in cm-2
+   # third column is log10(rate), where rate is in units of 1/s
+   ```
+
+   The default ionization rates in the datafiles, however, are derived assuming a power-law spectrum for X-ray with a power index $\alpha=-1.5$. For a more realistic spectrum, the user may directly derive corresponding secondary ionization rates and overwrite these datafiles. See our notebook [Create_KROME's_Datafile](./Calc_ionization_rate/Create_KROME's_Datafile.ipynb) for an example.
+
+   According to the real densities of H and He, a 2-D linear interpolation is performed to find the best fit for the ionization rate for a certain model. Then the ionization rates are stored in two variables, namely `ratexH` and `ratexHe`. In `krome_subs.f90` the reaction rates are derived
+
+   ```fortran
+   !small is defined as a proper mininum value according to the environment
+   !H -> H+ + E
+   k(4430) = small + ratexH * J21xray
+   
+   !HE -> HE+ + E
+   k(4431) = small + ratexHe * J21xray
+   ```
+
+   Where `J21xray` is a scale factor (flux in the unit of $10^{-21}$ erg/s/cm$^2$) defined in `text.f90`
+
+   ```fortran
+   call krome_set_J21xray(J21xray)
+   ```
+
 2. Secondary ionization for other species
 
 ## Reaction Tracing Module
