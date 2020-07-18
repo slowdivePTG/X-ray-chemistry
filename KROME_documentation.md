@@ -283,6 +283,8 @@ do
 end do
 ```
 
+Usually the user could put the outputs in a `data/` directory for future convenience.
+
 ### `krome_subs.f90`
 
 In this file, some important subroutines are defined. The most crucial one, `coe()`, is defined to compute the reaction rates by transforming the CSV-style chemical network into Fortran expressions. When embedding X-ray ionization we need to modify the `coe()` subroutine generated automatically by the pre-processor.
@@ -379,3 +381,28 @@ Currently the `num2col()`/`col2num()` function has two options. The default one 
 
 ## Reaction Tracing Module
 
+> Not included in the `KROME` pre-processor so far, thus this module only works for the reaction network in our project.
+
+To trace the dominant formation/destruction reactions for certain species, the user can call the `trace()` function
+
+```fortran
+!nx - number of species
+call trace(nx,t/spy,x(:))
+```
+
+Then the contribution of each channel to the change in abundance of each species is written into a file in `data/Trace`.
+
+```
+    0.12441600E+02 #Time
+# Species / Reaction / Rate(s^-1)
+   1    1   -0.11268250E-34
+   1   14    0.15858254E-17
+   1   15    0.14002601E-15
+   1   16    0.47634489E-16
+   1   17    0.13542470E-16
+   ......
+```
+
+`1` in the first column corresponds to electrons (the complete list is in [`species.py`](./species.py)). The second column shows the reactions related to the formation/destruction of the certain species (the complete list is in [`reactions_verbatim.dat`](./reactions_verbatim.dat)). The last column shows the corresponding formation(+)/destruction(-) rate for this species.
+
+There is a script ([`Trace.py`](./data/Trace.py)) for the user to read this datafile and manage all reaction rates with a class `Trace`. Please take a look at this [notebook](./data/Trace_Default.ipynb) as an example.
